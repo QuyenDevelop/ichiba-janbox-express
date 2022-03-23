@@ -1,8 +1,6 @@
 import { SCREENS } from "@configs";
 import { RootStackParamList } from "@navigation";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { AnimationImages } from "@themes";
-import LottieView from "lottie-react-native";
 import React, { FunctionComponent, useEffect } from "react";
 import { Text, View } from "react-native";
 import styles from "./styles";
@@ -20,13 +18,7 @@ export const ForgotPasswordScreen: FunctionComponent<Props> = ({
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Janbox</Text>
-      <LottieView
-        style={styles.loadingView}
-        autoPlay={true}
-        loop={true}
-        source={AnimationImages.launchAnimation}
-      />
+      <Text style={styles.title}>Janbox Forgot Password</Text>
     </View>
   );
 };

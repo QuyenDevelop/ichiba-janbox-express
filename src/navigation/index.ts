@@ -1,3 +1,4 @@
+export * from "./AuthNavigator";
 export * from "./BottomTabNavigator";
 export * from "./HomeNavigator";
 export * from "./NotificationNavigator";

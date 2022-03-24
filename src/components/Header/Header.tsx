@@ -1,5 +1,7 @@
 import { ScreenUtils } from "@helpers";
+import { useAppDispatch } from "@hooks";
 import { useNavigation } from "@react-navigation/core";
+import { changeLanguage } from "@redux";
 import { BottomSheet, Icon, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
 import React, { FunctionComponent, useState } from "react";
@@ -89,7 +91,7 @@ export const Header: FunctionComponent<Props> = props => {
   );
   const [isShowChangeLanguageModal, setIsShowChangeLanguageModal] =
     useState(false);
-  // const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigation = useNavigation();
 
   const arrOptions = [
@@ -130,8 +132,8 @@ export const Header: FunctionComponent<Props> = props => {
     // },
   ];
 
-  const setLanguage = (value: any) => {
-    console.log("Setting language:", value);
+  const setLanguage = (value: string) => {
+    dispatch(changeLanguage(value));
   };
 
   const getIconWidth = () => {

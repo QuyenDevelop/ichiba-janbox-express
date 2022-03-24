@@ -89,12 +89,15 @@ export const BottomSheet: FunctionComponent<IProps> = props => {
     setMaxHeight(Dimensions.get("window").height * 0.9);
   }
 
+  const subscriptions = [
+    Keyboard.addListener("keyboardWillShow", onKeyboardDidShow),
+    Keyboard.addListener("keyboardWillHide", onKeyboardDidHide),
+  ];
+
   useEffect(() => {
-    Keyboard.addListener("keyboardDidShow", onKeyboardDidShow);
-    Keyboard.addListener("keyboardDidHide", onKeyboardDidHide);
+    subscriptions;
     return (): void => {
-      Keyboard.removeListener("keyboardDidShow", onKeyboardDidShow);
-      Keyboard.removeListener("keyboardDidHide", onKeyboardDidHide);
+      subscriptions.forEach(s => s?.remove?.());
     };
   }, []);
   useEffect(() => {

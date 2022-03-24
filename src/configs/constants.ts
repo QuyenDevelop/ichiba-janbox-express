@@ -18,6 +18,7 @@ export const CONSTANT = {
     LANGUAGE: "language",
     ANONYMOUS_ID: "ANONYMOUS_ID",
     PRIMARY_CURRENCY: "PRIMARY_CURRENCY",
+    REMEMBER_USER: "remember_user",
   },
   CURRENCY: {
     JA: "JPY",

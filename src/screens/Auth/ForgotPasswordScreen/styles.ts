@@ -1,25 +1,40 @@
 import { ScreenUtils } from "@helpers";
-import { FontFamily, Themes } from "@themes";
+import { Themes } from "@themes";
 import { StyleSheet } from "react-native";
+
 export default StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: Themes.colors.white,
   },
-  loadingView: {
-    position: "absolute",
-    bottom: ScreenUtils.scale(70),
-    justifyContent: "center",
-    alignSelf: "center",
-    width: ScreenUtils.scale(120),
-    height: ScreenUtils.scale(120),
+  childContainer: {
+    paddingTop: ScreenUtils.scale(18),
+    paddingHorizontal: ScreenUtils.scale(10),
   },
   title: {
-    fontFamily: FontFamily.bold,
-    fontSize: 32,
-    fontWeight: "bold",
-    fontStyle: "italic",
-    color: Themes.colors.warningMain,
+    ...Themes.font.bold,
+    fontSize: 24,
+    color: Themes.colors.textPrimary,
+  },
+  textContainer: {
+    alignItems: "flex-start",
+    marginTop: ScreenUtils.scale(8),
+  },
+  text: {
+    ...Themes.font.medium,
+    fontSize: 14,
+    color: Themes.colors.coolGray,
+  },
+  buttonForgot: {
+    ...Themes.font.bold,
+    fontSize: 14,
+    color: Themes.colors.primary,
+    marginLeft: ScreenUtils.scale(4),
+  },
+  input: {
+    marginTop: ScreenUtils.scale(48),
+  },
+  button: {
+    marginTop: ScreenUtils.scale(56),
   },
 });

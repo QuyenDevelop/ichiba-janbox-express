@@ -1,15 +1,18 @@
 import { Footer, Header } from "@components";
-import { SCREENS } from "@configs";
-import { ScreenUtils } from "@helpers";
+import { CONSTANT, SCREENS } from "@configs";
+import { removeAsyncItem, ScreenUtils, setAsyncItem } from "@helpers";
+import { useAppDispatch, useLoading } from "@hooks";
+import { Account } from "@models";
 import { RootStackParamList } from "@navigation";
 import { useNavigation } from "@react-navigation/native";
 import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from "@react-navigation/native-stack";
+import { loginAction } from "@redux";
 import { Button, Checkbox, Icon, TextInput, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import {
   KeyboardAvoidingView,
   Platform,
@@ -19,28 +22,159 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { connect } from "react-redux";
 import styles from "./styles";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 export const LoginScreen: FunctionComponent<Props> = () => {
   const insets = useSafeAreaInsets();
+  const dispatch = useAppDispatch();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("quyenph@ichiba.vn");
+  const [password, setPassword] = useState("Phamquyen97");
   const [isSecure, setIsSecure] = useState(true);
   const [isRemember, setIsRemember] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const { showLoading, hideLoading } = useLoading();
 
   const loginWithEmail = () => {
-    // setIsButtonClickSubmit(true);
-    // if (Utils.isValidEmail(email) && Utils.isValidPassword(password)) {
+    if (isRemember) {
+      setAsyncItem(CONSTANT.TOKEN_STORAGE_KEY.REMEMBER_USER, email);
+    } else {
+      removeAsyncItem(CONSTANT.TOKEN_STORAGE_KEY.REMEMBER_USER);
+    }
     setIsLoading(true);
+    dispatch(loginAction({ username: email, password: password }));
+    setIsLoading(false);
+  };
+
+  useEffect(() => {}, [email]);
+
+  const externalLogin = (profile: Account) => {
+    // AccountApi.getUserInfoByToken(profile.idToken, profile.provider)?.then(
+    //   res => {
+    //     if (res?.isAssociate) {
+    //       dispatch(
+    //         loginExternal(
+    //           {
+    //             token: profile.idToken,
+    //             email: profile.email,
+    //             provider: profile.provider,
+    //           },
+    //           {
+    //             onFailure: (err: any) => {},
+    //             onSuccess: () => {
+    //               getUserInformation();
+    //             },
+    //           },
+    //         ),
+    //       );
+    //     } else {
+    //       // if (res?.email) {
+    //       //   externalRegister(profile);
+    //       // } else {
+    //       //   hideLoading();
+    //       // }
+    //     }
+    //   },
+    // );
+  };
+
+  // const getUserInformation = () => {
+  //   dispatch(
+  //     authApi.userInfo(
+  //       {},
+  //       {
+  //         onFailure: (err: any) => {
+  //           setIsLoading(false);
+  //         },
+  //         onSuccess: () => {
+  //           setEmail("");
+  //           setPassword("");
+  //           setIsButtonClickSubmit(false);
+  //           dispatch(AccountAction.setCountFavoriteProduct());
+  //           dispatch(AccountAction.setCountBidProduct());
+  //           // dispatch(AccountAction.checkExistCard());
+  //           messaging()
+  //             .getToken()
+  //             .then(token => {
+  //               dispatch(AccountAction.changeDeviceId({ deviceId: token }));
+  //               customerApi.updateDeviceId(token);
+  //             });
+  //           dispatch(
+  //             AccountAction.mergeCart(
+  //               {
+  //                 identityRefId: anonymousId,
+  //               },
+  //               {
+  //                 onFailure: () => {
+  //                   setIsLoading(false);
+  //                   hideLoading();
+  //                 },
+  //                 onSuccess: () => {
+  //                   dispatch(
+  //                     CartAction.changeCart(
+  //                       { anonymousId: anonymousId },
+  //                       {
+  //                         onSuccess: () => {
+  //                           setIsLoading(false);
+  //                           // if (
+  //                           //   route.params?.returnStack &&
+  //                           //   route.params?.returnScreen
+  //                           // ) {
+  //                           //   navigation.navigate(route.params?.returnStack, {
+  //                           //     screen: route.params?.returnScreen,
+  //                           //   });
+  //                           //   return;
+  //                           // }
+  //                           navigation.navigate(SCREENS.BottomTabNavigation);
+  //                           hideLoading();
+  //                         },
+  //                         onFailure: () => {
+  //                           setIsLoading(false);
+  //                         },
+  //                       },
+  //                     ),
+  //                   );
+  //                 },
+  //               },
+  //             ),
+  //           );
+  //         },
+  //       },
+  //     ),
+  //   );
+  //   // hideLoading();
+  // };
+
+  const getUserInformation = () => {
+    // dispatch(
+    //   AccountAction.userInfo(
+    //     {},
+    //     {
+    //       onFailure: (err: any) => {
+    //         console.log("fail: ", err);
+    //         setIsLoading(false);
+    //       },
+    //       onSuccess: (response: { account: Account }) => {
+    //         setEmail("");
+    //         setPassword("");
+    //         // navigation.goBack();
+    //         navigation.reset({
+    //           index: 0,
+    //           routes: [{ name: SCREENS.HOME_STACK }],
+    //         });
+    //       },
+    //     },
+    //   ),
+    // );
+    // hideLoading();
   };
 
   const loginWithFacebook = () => {
-    // ExternalAuthenticationUtils.signInByFacebook().then((user) => {
+    // ExternalAuthenticationUtils.signInByFacebook().then(user => {
     //   showLoading();
     //   externalLogin(user);
     // });
@@ -208,3 +342,14 @@ export const LoginScreen: FunctionComponent<Props> = () => {
     </View>
   );
 };
+
+const mapStateToProps = (state: any) => ({
+  language: state.account.language,
+});
+
+const mapDispatchToProps = () => ({});
+
+export const LoginContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(LoginScreen);

@@ -1,16 +1,21 @@
+import { Account } from "@models";
 import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { SliceName } from "./constants";
 
 export interface IUserState {
-  name: string | null;
-  age: number | null;
-  sex: string | null;
+  profile: Account | null;
+  language: string | null;
+  loading: boolean;
+  anonymousId: string | null;
+  deviceId: string | null;
 }
 
 const initialState: IUserState = {
-  name: null,
-  age: null,
-  sex: null,
+  profile: null,
+  language: null,
+  loading: false,
+  anonymousId: null,
+  deviceId: null,
 };
 
 export const userSlice = createSlice({
@@ -20,10 +25,13 @@ export const userSlice = createSlice({
     updateInfo: (_state: IUserState, action: PayloadAction<IUserState>) => {
       return action.payload;
     },
+    changeLoading: (state: IUserState, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
   },
 });
 
-export const userAction = userSlice.actions;
+export const { updateInfo, changeLoading } = userSlice.actions;
 
 export const userReducer = userSlice.reducer;
 

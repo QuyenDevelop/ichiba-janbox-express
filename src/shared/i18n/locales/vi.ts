@@ -1,15 +1,25 @@
 export default {
   error: {
     generic: "Đã có lỗi xảy ra",
+    validation: {
+      email: "Email is invalid",
+      password:
+        "Invalid password (with at least one uppercase letter and one special character)",
+      passwordNoMatch: "Password does not match",
+    },
   },
   label: {
+    signup: "Sign up",
     login: "Login",
     noAccount: "Don’t have an account?",
+    alreadyAccount: "Already have an Janbox account?",
     email: "Your email",
     password: "Password",
     orLogin: "or login with",
     needHelp: "Need help?",
     contact: "Contact the Janbox help",
+    forgotPassword: "Forgot Password",
+    verification: "Verification",
   },
   placeholder: {
     enterNotes: "Enter notes",
@@ -55,5 +65,26 @@ export default {
     back: "Back",
     confirm: "Confirm",
     signup: "Sign up",
+    homePage: "Homepage",
+  },
+  text: {
+    forgotPasswordNotification: {
+      firstContent: "Reset password request has been sent to your email!",
+      secondContent:
+        "We have sent an email to your email address. Please! check your email and click on the ULR attached to reset your password",
+      thirdContent: "* The validity period of the URL is 24 hours",
+    },
+    signUpVerification: {
+      firstContent: "Your verification link is sent to your email",
+      secondContent:
+        "We have sent a email to the email address you have entered. Please click on the URL attached in the email. Please enter the necessary information and continue to the main registration.",
+      thirdContent: "* The validity period of the URL is 24 hours",
+      fourthContent:
+        "* If registration failed, we will send an email with the error details to the address you provided. Please check the email for more information",
+    },
+    forgotPassword: {
+      firstContent:
+        "For your security, we need to make sure it's really you. Please let us know your email.",
+    },
   },
 };

@@ -1,11 +1,21 @@
 import { SCREENS } from "@configs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { ForgotPasswordScreen, LoginScreen, RegisterScreen } from "@screens";
+import {
+  ForgotPasswordNotificationRouteParams,
+  ForgotPasswordNotificationScreen,
+  ForgotPasswordScreen,
+  LoginScreen,
+  RegisterScreen,
+  VerificationRouteParams,
+  VerificationScreen,
+} from "@screens";
 import React from "react";
 export type AuthStackParamList = {
   [SCREENS.LOGIN]: undefined;
   [SCREENS.REGISTER]: undefined;
   [SCREENS.FORGOT_PASSWORD]: undefined;
+  [SCREENS.VERIFICATION]: VerificationRouteParams;
+  [SCREENS.FORGOT_PASSWORD_NOTIFICATION]: ForgotPasswordNotificationRouteParams;
 };
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -20,6 +30,14 @@ export function AuthNavigation() {
     >
       <AuthStack.Screen name={SCREENS.LOGIN} component={LoginScreen} />
       <AuthStack.Screen name={SCREENS.REGISTER} component={RegisterScreen} />
+      <AuthStack.Screen
+        name={SCREENS.FORGOT_PASSWORD_NOTIFICATION}
+        component={ForgotPasswordNotificationScreen}
+      />
+      <AuthStack.Screen
+        name={SCREENS.VERIFICATION}
+        component={VerificationScreen}
+      />
       <AuthStack.Screen
         name={SCREENS.FORGOT_PASSWORD}
         component={ForgotPasswordScreen}

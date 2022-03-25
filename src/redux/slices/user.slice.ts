@@ -2,52 +2,75 @@ import { Account } from "@models";
 import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { SliceName } from "./constants";
 
+export interface loginPayload {
+  username?: string;
+  password?: string;
+}
 export interface IUserState {
   profile: Account | null;
   language: string | null;
   loading: boolean;
+  tokenId: string | null;
   anonymousId: string | null;
   deviceId: string | null;
-  successMessage: string | null;
-  failureMessage: string | null;
+  isLogging: boolean;
+  messageFailed: string | null;
 }
 
 const initialState: IUserState = {
   profile: null,
   language: null,
   loading: false,
+  tokenId: null,
   anonymousId: null,
   deviceId: null,
-  successMessage: null,
-  failureMessage: null,
+  isLogging: false,
+  messageFailed: null,
 };
 
 export const userSlice = createSlice({
   name: SliceName.USER_SLICE,
   initialState,
   reducers: {
+    loginSuccess: (state: IUserState, action: PayloadAction<any>) => {
+      state.tokenId = action.payload;
+      state.isLogging = false;
+    },
+    loginFailure: (state: IUserState, action: PayloadAction<string>) => {
+      state.messageFailed = action.payload;
+      state.isLogging = false;
+    },
     updateInfo: (_state: IUserState, action: PayloadAction<IUserState>) => {
       return action.payload;
     },
-    changeLoading: (state: IUserState, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
+    getUserInfo: (state: IUserState, action: PayloadAction<Account>) => {
+      state.profile = action.payload;
     },
     changeLanguage: (state: IUserState, action: PayloadAction<string>) => {
       state.language = action.payload;
     },
-    success: (state: IUserState, action: PayloadAction<string>) => {
-      state.successMessage = action.payload;
-    },
-    failures: (state: IUserState, action: PayloadAction<string>) => {
-      state.failureMessage = action.payload;
+    logout: (state: IUserState) => {
+      state.tokenId = null;
+      state.profile = null;
     },
   },
 });
 
-export const { updateInfo, changeLoading, changeLanguage } = userSlice.actions;
-
-export const userReducer = userSlice.reducer;
-
 export const loginAction = createAction<{ username: string; password: string }>(
   `${SliceName.USER_SLICE}/login`,
 );
+// export Actions
+export const {
+  loginSuccess,
+  loginFailure,
+  updateInfo,
+  logout,
+  changeLanguage,
+} = userSlice.actions;
+
+// export reducer
+export const userReducer = userSlice.reducer;
+
+// reducers
+export const selectIsLogging = (state: IUserState) => state.isLogging;
+export const messageFailed = (state: IUserState) => state.messageFailed;

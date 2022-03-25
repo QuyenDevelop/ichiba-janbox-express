@@ -1,21 +1,80 @@
-import { SCREENS } from "@configs";
+import { CONSTANT, SCREENS } from "@configs";
 import { RootStackParamList } from "@navigation";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import NetInfo, { NetInfoState } from "@react-native-community/netinfo";
+import { useFocusEffect } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { UserActions } from "@redux";
 import { AnimationImages } from "@themes";
 import LottieView from "lottie-react-native";
-import React, { FunctionComponent, useEffect } from "react";
-import { Text, View } from "react-native";
+import React, { FunctionComponent, useCallback } from "react";
+import { Alert, Text, View } from "react-native";
+import { useDispatch } from "react-redux";
 import styles from "./styles";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 export const LaunchScreen: FunctionComponent<Props> = ({ navigation }) => {
-  useEffect(() => {
-    setTimeout(() => {
-      navigation.navigate(SCREENS.AUTH_STACK);
-    }, 3000);
-  }, [navigation]);
+  const dispatch = useDispatch();
 
+  const authenticate = async (): Promise<void> => {
+    const [accessToken, currency, language] = await Promise.all([
+      AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.ACCESS_TOKEN),
+      AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.CURRENCY),
+      AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.LANGUAGE),
+    ]);
+
+    console.log("🚀🚀🚀 => authenticate => accessToken", accessToken);
+
+    if (language != null) {
+      dispatch(
+        UserActions.changeLanguage(language ? language : CONSTANT.LANGUAGES.EN),
+      );
+    }
+    // else if (locates && locates.locates.length > 0) {
+    //   let location = DATA_CONSTANT.LANGUAGE_CODE.find(
+    //     x => x.code === locates.locates[0].languageCode,
+    //   );
+    //   dispatch(
+    //     AccountAction.changeLanguageWithLaunch({
+    //       language: location ? location.tag : CONSTANT.LANGUAGES.EN,
+    //     }),
+    //   );
+    // }
+    if (currency) {
+    }
+
+    if (accessToken) {
+      navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION);
+    } else {
+      navigation.navigate(SCREENS.AUTH_STACK);
+    }
+  };
+
+  const checkConnectivity = (): void => {
+    NetInfo.fetch()
+      .then((state: NetInfoState): void => {
+        if (state.isConnected) {
+          authenticate();
+        } else {
+          Alert.alert("You are offline!");
+        }
+      })
+      .catch((): void => {
+        Alert.alert("Error");
+      });
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      const timer = setTimeout(() => {
+        checkConnectivity();
+      }, 2000);
+      return () => {
+        clearTimeout(timer);
+      };
+    }, []),
+  );
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Janbox</Text>

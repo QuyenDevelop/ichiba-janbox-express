@@ -19,7 +19,6 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { connect } from "react-redux";
 import styles from "./styles";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
@@ -100,12 +99,3 @@ export const ForgotPasswordScreen: FunctionComponent<Props> = () => {
     </View>
   );
 };
-const mapStateToProps = (state: any) => ({
-  language: state.account.language,
-});
-const mapDispatchToProps = () => ({});
-
-export const ForgotPasswordContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ForgotPasswordScreen);

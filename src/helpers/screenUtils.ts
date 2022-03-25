@@ -58,6 +58,8 @@ const deviceHeight =
 // };
 
 export const ScreenUtils = {
+  WIDTH: width,
+  HEIGHT: height,
   isPad() {
     if (Platform.OS === "ios") {
       const platformIOS = Platform as PlatformIOSStatic;

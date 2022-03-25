@@ -1,16 +1,24 @@
 import { Account } from "@models";
-import Config from "react-native-config";
 import { BaseApi } from "./baseApi";
 
-const {
-  IDENTITY_HOST,
-  GRANT_TYPE_PASSWORD,
-  GRANT_TYPE_EXTERNAL,
-  GRANT_TYPE_REFRESH_TOKEN,
-  SCOPES,
-  CLIENT_ID,
-  CLIENT_SECRET,
-} = Config;
+// const {
+//   IDENTITY_HOST,
+//   GRANT_TYPE_PASSWORD,
+//   GRANT_TYPE_EXTERNAL,
+//   GRANT_TYPE_REFRESH_TOKEN,
+//   SCOPES,
+//   CLIENT_ID,
+//   CLIENT_SECRET,
+// } = Config;
+
+const IDENTITY_HOST = "https://iddev.ezbuy.jp";
+const GRANT_TYPE_PASSWORD = "password";
+const GRANT_TYPE_EXTERNAL = "external";
+const GRANT_TYPE_REFRESH_TOKEN = "refresh";
+const CLIENT_SECRET = "mobile";
+const CLIENT_ID = "mobile";
+const SCOPES =
+  "offline_access profile email ez-api-mobile openid ichiba-identity-api phone";
 
 class AuthApi extends BaseApi {
   login(email?: string, password?: string) {

@@ -13,7 +13,6 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { connect } from "react-redux";
 import styles from "./styles";
 
 export interface ForgotPasswordNotificationRouteParams {
@@ -91,14 +90,3 @@ export const ForgotPasswordNotificationScreen: FunctionComponent<
     </View>
   );
 };
-
-const mapStateToProps = (state: any) => ({
-  language: state.account.language,
-});
-
-const mapDispatchToProps = () => ({});
-
-export const ForgotPasswordNotificationContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ForgotPasswordNotificationScreen);

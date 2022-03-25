@@ -7,7 +7,6 @@ import { Button, translate } from "@shared";
 import React, { FunctionComponent, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { connect } from "react-redux";
 import styles from "./styles";
 
 type NavigationProp = NativeStackNavigationProp<
@@ -79,14 +78,3 @@ export const VerificationScreen: FunctionComponent<Props> = () => {
     </View>
   );
 };
-
-const mapStateToProps = (state: any) => ({
-  language: state.account.language,
-});
-
-const mapDispatchToProps = () => ({});
-
-export const VerificationContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(VerificationScreen);

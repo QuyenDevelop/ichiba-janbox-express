@@ -22,7 +22,6 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { connect } from "react-redux";
 import styles from "./styles";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
@@ -283,14 +282,3 @@ export const RegisterScreen: FunctionComponent<Props> = () => {
     </View>
   );
 };
-
-const mapStateToProps = (state: any) => ({
-  language: state.account.language,
-});
-
-const mapDispatchToProps = () => ({});
-
-export const RegisterContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(RegisterScreen);

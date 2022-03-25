@@ -1,24 +1,33 @@
+import { SCREENS } from "@configs";
+import { useAppDispatch } from "@hooks";
 import { useNavigation } from "@react-navigation/core";
-import { userAction } from "@redux";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { logout } from "@redux";
 import React, { FunctionComponent, useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { IRootState } from "src/redux/store";
 import styles from "./styles";
 
 export const InfoScreen: FunctionComponent = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const userInfo = useSelector((state: IRootState) => state.user);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+
   const [username, setUsername] = useState<string>(userInfo.name || "");
   const [age, setAge] = useState<string>(userInfo.age?.toString() || "");
   const [sex, setSex] = useState<string>(userInfo.sex || "");
 
   const updateInfo = () => {
-    dispatch(
-      userAction.updateInfo({ name: username, age: Number(age), sex: sex }),
-    );
+    dispatch(updateInfo({ name: username, age: Number(age), sex: sex }));
     navigation.goBack();
+  };
+
+  const handeLogout = () => {
+    dispatch(logout());
+    navigation.navigate(SCREENS.AUTH_STACK, {
+      screen: SCREENS.LOGIN,
+    });
   };
 
   return (
@@ -54,6 +63,9 @@ export const InfoScreen: FunctionComponent = () => {
       </View>
       <TouchableOpacity style={styles.applyBtn} onPress={updateInfo}>
         <Text style={styles.applyBtnText}>Apply</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.applyBtn} onPress={handeLogout}>
+        <Text style={styles.applyBtnText}>Logout</Text>
       </TouchableOpacity>
     </View>
   );

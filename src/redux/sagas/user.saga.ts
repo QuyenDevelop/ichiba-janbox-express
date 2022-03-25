@@ -1,11 +1,12 @@
 import { authApi } from "@api";
+import { CONSTANT } from "@configs";
 import { Utils } from "@helpers";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { loginAction } from "@redux";
-import { PayloadAction } from "@reduxjs/toolkit";
 import { onChangeLanguage } from "@shared";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { AuthorizeResult } from "src/@types/api-sso";
-import { changeLanguage, changeLoading } from "../slices";
+import { changeLanguage, loginFailure, loginSuccess, logout } from "../slices";
 
 // const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 
@@ -15,45 +16,70 @@ function* takeLogin(action: any) {
   try {
     async function loginRequest() {
       const data: AuthorizeResult = await authApi.login(username, password);
-      if (data.access_token) {
-        await Utils.storeTokenResponse(data);
-      }
+      return data;
     }
 
-    yield call(loginRequest);
-    // console.log("có vào");
+    const response: AuthorizeResult = yield call(loginRequest);
+    console.log("🚀🚀🚀 => function*takeLogin => response", response);
+    Utils.storeTokenResponse(response);
+    yield put(loginSuccess(response));
+    return response;
+  } catch (error: any) {
+    yield put(loginFailure(error?.error_description));
+  }
+}
+function* loginFlow() {
+  yield takeLatest(loginAction, takeLogin);
+}
+
+function* takeChangeLanguage(action: any) {
+  try {
+    async function language() {
+      await onChangeLanguage(action.payload);
+      return action.payload;
+    }
+    yield call(language);
+  } catch (error) {}
+}
+
+function* changeLanguageFlow() {
+  yield takeLatest(changeLanguage, takeChangeLanguage);
+}
+
+function* takeLogout() {
+  try {
+    async function handlerLogout() {
+      const [accessToken, refreshToken] = await Promise.all([
+        AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.ACCESS_TOKEN),
+        AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.REFRESH_TOKEN),
+      ]);
+      await Promise.all([
+        authApi.revokeToken(accessToken),
+        authApi.revokeToken(refreshToken),
+      ]);
+      await Promise.all([
+        AsyncStorage.removeItem(CONSTANT.TOKEN_STORAGE_KEY.ACCESS_TOKEN),
+        AsyncStorage.removeItem(CONSTANT.TOKEN_STORAGE_KEY.REFRESH_TOKEN),
+      ]);
+      // GoogleSignin.configure({
+      //   webClientId: GOOGLE_CLIENT_ID,
+      //   offlineAccess: true,
+      // });
+      // await GoogleSignin.signOut();
+      // LoginManager.logOut();
+      return true;
+    }
+
+    yield call(handlerLogout);
   } catch (error) {
-    console.log(error);
+    console.log("🚀🚀🚀 => function*takeLogout => error", error);
   }
 }
 
-export function* takeChangeLoading(action: PayloadAction<boolean>) {
-  try {
-    yield put(changeLoading(action.payload));
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export function* takeChangeLanguage(action: PayloadAction<string>) {
-  // delay(5000);
-  try {
-    async function onChange() {
-      const data = await onChangeLanguage({ language: action.payload });
-    }
-    // yield put(changeLanguage(action.payload));
-    console.log("có vào");
-    yield call(onChange);
-    // console.log(action.payload);
-  } catch (error) {
-    console.log(error);
-  }
+function* logoutFlow() {
+  yield takeLatest(logout, takeLogout);
 }
 
 export default function* userSaga() {
-  yield all([
-    takeLatest(loginAction, takeLogin),
-    takeLatest(changeLoading, takeChangeLoading),
-    takeLatest(changeLanguage, takeChangeLanguage),
-  ]);
+  yield all([loginFlow(), changeLanguageFlow(), logoutFlow()]);
 }

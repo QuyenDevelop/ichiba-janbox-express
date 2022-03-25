@@ -22,7 +22,6 @@ import {
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { connect } from "react-redux";
 import styles from "./styles";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
@@ -36,18 +35,24 @@ export const LoginScreen: FunctionComponent<Props> = () => {
   const [password, setPassword] = useState("Phamquyen97");
   const [isSecure, setIsSecure] = useState(true);
   const [isRemember, setIsRemember] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const { showLoading, hideLoading } = useLoading();
 
   const loginWithEmail = () => {
+    // setIsLoading(true);
     if (isRemember) {
       setAsyncItem(CONSTANT.TOKEN_STORAGE_KEY.REMEMBER_USER, email);
     } else {
       removeAsyncItem(CONSTANT.TOKEN_STORAGE_KEY.REMEMBER_USER);
     }
-    setIsLoading(true);
-    dispatch(loginAction({ username: email, password: password }));
-    setIsLoading(false);
+    dispatch(
+      loginAction({
+        username: email,
+        password: password,
+      }),
+    );
+    // dispatch(UserInfo);
+    navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION);
   };
 
   useEffect(() => {}, [email]);
@@ -342,14 +347,3 @@ export const LoginScreen: FunctionComponent<Props> = () => {
     </View>
   );
 };
-
-const mapStateToProps = (state: any) => ({
-  language: state.account.language,
-});
-
-const mapDispatchToProps = () => ({});
-
-export const LoginContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(LoginScreen);

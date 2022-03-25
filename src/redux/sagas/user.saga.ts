@@ -6,26 +6,33 @@ import { loginAction } from "@redux";
 import { onChangeLanguage } from "@shared";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { AuthorizeResult } from "src/@types/api-sso";
-import { changeLanguage, loginFailure, loginSuccess, logout } from "../slices";
+import {
+  changeLanguage,
+  loginFailure,
+  loginLoading,
+  loginSuccess,
+  logout,
+} from "../slices";
 
-// const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+export const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 
 function* takeLogin(action: any) {
-  // console.log("🚀🚀🚀 => function*takeLogin => action", action);
   const { username, password } = action.payload;
   try {
-    async function loginRequest() {
-      const data: AuthorizeResult = await authApi.login(username, password);
-      return data;
+    yield put(loginLoading(true));
+    const response: AuthorizeResult = yield call(async () => {
+      return await authApi.login(username, password);
+    });
+    // console.log(response);
+    if (response.access_token) {
+      yield put(loginSuccess);
+      yield Utils.storeTokenResponse(response);
     }
-
-    const response: AuthorizeResult = yield call(loginRequest);
-    console.log("🚀🚀🚀 => function*takeLogin => response", response);
-    Utils.storeTokenResponse(response);
-    yield put(loginSuccess(response));
     return response;
   } catch (error: any) {
-    yield put(loginFailure(error?.error_description));
+    yield put(loginFailure(error.error_description));
+  } finally {
+    yield put(loginLoading(false));
   }
 }
 function* loginFlow() {
@@ -35,7 +42,7 @@ function* loginFlow() {
 function* takeChangeLanguage(action: any) {
   try {
     async function language() {
-      await onChangeLanguage(action.payload);
+      await onChangeLanguage({ language: action.payload });
       return action.payload;
     }
     yield call(language);

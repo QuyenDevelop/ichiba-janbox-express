@@ -1,7 +1,7 @@
 import { Footer, Header } from "@components";
 import { CONSTANT, SCREENS } from "@configs";
-import { removeAsyncItem, ScreenUtils, setAsyncItem } from "@helpers";
-import { useAppDispatch, useLoading } from "@hooks";
+import { Alert, removeAsyncItem, ScreenUtils, setAsyncItem } from "@helpers";
+import { useAppDispatch, useAppSelector, useLoading } from "@hooks";
 import { Account } from "@models";
 import { RootStackParamList } from "@navigation";
 import { useNavigation } from "@react-navigation/native";
@@ -23,19 +23,25 @@ import {
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import styles from "./styles";
+import { IRootState } from "./../../../redux/store";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 export const LoginScreen: FunctionComponent<Props> = () => {
   const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
+  const { loading, isLogging, messageFailed } = useAppSelector(
+    (state: IRootState) => state.user,
+  );
+
+  console.log("mess:", messageFailed);
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const [email, setEmail] = useState("quyenph@ichiba.vn");
   const [password, setPassword] = useState("Phamquyen97");
   const [isSecure, setIsSecure] = useState(true);
   const [isRemember, setIsRemember] = useState(false);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(loading);
   const { showLoading, hideLoading } = useLoading();
 
   const loginWithEmail = () => {
@@ -45,6 +51,10 @@ export const LoginScreen: FunctionComponent<Props> = () => {
     } else {
       removeAsyncItem(CONSTANT.TOKEN_STORAGE_KEY.REMEMBER_USER);
     }
+    messageFailed &&
+      Alert.error(messageFailed || translate("error.generic"), true);
+    isLogging && navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION);
+
     dispatch(
       loginAction({
         username: email,
@@ -52,7 +62,6 @@ export const LoginScreen: FunctionComponent<Props> = () => {
       }),
     );
     // dispatch(UserInfo);
-    navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION);
   };
 
   useEffect(() => {}, [email]);

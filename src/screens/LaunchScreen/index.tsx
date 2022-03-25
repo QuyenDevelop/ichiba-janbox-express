@@ -4,7 +4,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import NetInfo, { NetInfoState } from "@react-native-community/netinfo";
 import { useFocusEffect } from "@react-navigation/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { UserActions } from "@redux";
+import { changeLanguage } from "@redux";
 import { AnimationImages } from "@themes";
 import LottieView from "lottie-react-native";
 import React, { FunctionComponent, useCallback } from "react";
@@ -27,9 +27,7 @@ export const LaunchScreen: FunctionComponent<Props> = ({ navigation }) => {
     console.log("🚀🚀🚀 => authenticate => accessToken", accessToken);
 
     if (language != null) {
-      dispatch(
-        UserActions.changeLanguage(language ? language : CONSTANT.LANGUAGES.EN),
-      );
+      dispatch(changeLanguage(language ? language : CONSTANT.LANGUAGES.EN));
     }
     // else if (locates && locates.locates.length > 0) {
     //   let location = DATA_CONSTANT.LANGUAGE_CODE.find(

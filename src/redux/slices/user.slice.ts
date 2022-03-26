@@ -35,16 +35,11 @@ export const userSlice = createSlice({
     loginLoading: (state: IUserState, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
     },
-    loginSuccess: (state: IUserState, action: PayloadAction<any>) => {
-      // đang không put vào đây được
-      // state.tokenId = action.payload;
-      state.isLogging = true;
-      console.log("có vào");
+    loginStatus: (state: IUserState, action: PayloadAction<boolean>) => {
+      state.isLogging = action.payload;
     },
     loginFailure: (state: IUserState, action: PayloadAction<string>) => {
       state.messageFailed = action.payload;
-      state.isLogging = false;
-      console.log("có vào failue");
     },
     updateInfo: (_state: IUserState, action: PayloadAction<IUserState>) => {
       return action.payload;
@@ -56,6 +51,7 @@ export const userSlice = createSlice({
       state.language = action.payload;
     },
     logout: (state: IUserState) => {
+      state.isLogging = false;
       state.tokenId = null;
       state.profile = null;
     },
@@ -68,7 +64,7 @@ export const loginAction = createAction<{ username: string; password: string }>(
 // export Actions
 export const {
   loginLoading,
-  loginSuccess,
+  loginStatus,
   loginFailure,
   updateInfo,
   logout,

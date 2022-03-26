@@ -10,7 +10,7 @@ import {
   changeLanguage,
   loginFailure,
   loginLoading,
-  loginSuccess,
+  loginStatus,
   logout,
 } from "../slices";
 
@@ -23,15 +23,15 @@ function* takeLogin(action: any) {
     const response: AuthorizeResult = yield call(async () => {
       return await authApi.login(username, password);
     });
-    // console.log(response);
     if (response.access_token) {
-      yield put(loginSuccess);
+      yield put(loginStatus(true));
       yield Utils.storeTokenResponse(response);
     }
-    return response;
   } catch (error: any) {
+    yield delay(1000);
     yield put(loginFailure(error.error_description));
   } finally {
+    yield delay(1000);
     yield put(loginLoading(false));
   }
 }
@@ -55,6 +55,7 @@ function* changeLanguageFlow() {
 
 function* takeLogout() {
   try {
+    yield put(loginStatus(false));
     async function handlerLogout() {
       const [accessToken, refreshToken] = await Promise.all([
         AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.ACCESS_TOKEN),
@@ -74,7 +75,6 @@ function* takeLogout() {
       // });
       // await GoogleSignin.signOut();
       // LoginManager.logOut();
-      return true;
     }
 
     yield call(handlerLogout);
@@ -88,5 +88,5 @@ function* logoutFlow() {
 }
 
 export default function* userSaga() {
-  yield all([loginFlow(), changeLanguageFlow(), logoutFlow()]);
+  yield all([loginFlow(), logoutFlow(), changeLanguageFlow()]);
 }

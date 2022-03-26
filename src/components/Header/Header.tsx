@@ -1,5 +1,5 @@
 import { ScreenUtils } from "@helpers";
-import { useAppDispatch } from "@hooks";
+import { useAppDispatch, useAppSelector } from "@hooks";
 import { useNavigation } from "@react-navigation/core";
 import { changeLanguage } from "@redux";
 import { BottomSheet, Icon, translate } from "@shared";
@@ -85,7 +85,7 @@ export const Header: FunctionComponent<Props> = props => {
     colorIconGoBack,
     onGoBack,
   } = props;
-  const accLanguage: string = "";
+  const accLanguage = useAppSelector(state => state.user.language);
   const languageSelected = Object.values(language).find(
     item => item.value === accLanguage,
   );

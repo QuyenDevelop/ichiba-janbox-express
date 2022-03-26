@@ -17,8 +17,8 @@ export interface Account {
   gender?: string;
   birthdate?: string;
   address?: string;
-  provider?: string;
-  idToken?: string;
+  provider: string;
+  idToken: string;
   base64_picture?: any;
   city?: string;
   country?: string;

@@ -1,24 +1,25 @@
 import { Account } from "@models";
+import Config from "react-native-config";
 import { BaseApi } from "./baseApi";
 
-// const {
-//   IDENTITY_HOST,
-//   GRANT_TYPE_PASSWORD,
-//   GRANT_TYPE_EXTERNAL,
-//   GRANT_TYPE_REFRESH_TOKEN,
-//   SCOPES,
-//   CLIENT_ID,
-//   CLIENT_SECRET,
-// } = Config;
+const {
+  IDENTITY_HOST,
+  GRANT_TYPE_PASSWORD,
+  GRANT_TYPE_EXTERNAL,
+  GRANT_TYPE_REFRESH_TOKEN,
+  SCOPES,
+  CLIENT_ID,
+  CLIENT_SECRET,
+} = Config;
 
-const IDENTITY_HOST = "https://iddev.ezbuy.jp";
-const GRANT_TYPE_PASSWORD = "password";
-const GRANT_TYPE_EXTERNAL = "external";
-const GRANT_TYPE_REFRESH_TOKEN = "refresh";
-const CLIENT_SECRET = "mobile";
-const CLIENT_ID = "mobile";
-const SCOPES =
-  "offline_access profile email ez-api-mobile openid ichiba-identity-api phone";
+// const IDENTITY_HOST = "https://iddev.ezbuy.jp";
+// const GRANT_TYPE_PASSWORD = "password";
+// const GRANT_TYPE_EXTERNAL = "external";
+// const GRANT_TYPE_REFRESH_TOKEN = "refresh";
+// const CLIENT_SECRET = "mobile";
+// const CLIENT_ID = "mobile";
+// const SCOPES =
+//   "offline_access profile email ez-api-mobile openid ichiba-identity-api phone";
 
 class AuthApi extends BaseApi {
   login(email?: string, password?: string) {
@@ -28,26 +29,28 @@ class AuthApi extends BaseApi {
       {
         username: email,
         password: password,
-        grant_type: GRANT_TYPE_PASSWORD,
-        client_secret: CLIENT_SECRET,
-        scope: SCOPES,
-        client_id: CLIENT_ID,
+        grant_type: `${GRANT_TYPE_PASSWORD}`,
+        client_secret: `${CLIENT_SECRET}`,
+        scope: `${SCOPES}`,
+        client_id: `${CLIENT_ID}`,
       },
       true,
     );
   }
 
   loginExternal(token: string, provider: string) {
+    // console.log("🚀🚀🚀 => loginExternal => provider", provider);
+    // console.log("🚀🚀🚀 => loginExternal => token", token);
     let url = `${IDENTITY_HOST}/connect/token`;
     return this.postUrlEncoded(
       url,
       {
         token: token,
         provider: provider,
-        grant_type: GRANT_TYPE_EXTERNAL,
-        scope: SCOPES,
-        client_id: CLIENT_ID,
-        client_secret: CLIENT_SECRET,
+        grant_type: `${GRANT_TYPE_EXTERNAL}`,
+        client_secret: `${CLIENT_SECRET}`,
+        scope: `${SCOPES}`,
+        client_id: `${CLIENT_ID}`,
       },
       true,
     );
@@ -59,10 +62,10 @@ class AuthApi extends BaseApi {
       url,
       {
         refresh_token: refreshToken,
-        grant_type: GRANT_TYPE_REFRESH_TOKEN,
-        scope: SCOPES,
-        client_id: CLIENT_ID,
-        client_secret: CLIENT_SECRET,
+        grant_type: `${GRANT_TYPE_REFRESH_TOKEN}`,
+        client_secret: `${CLIENT_SECRET}`,
+        scope: `${SCOPES}`,
+        client_id: `${CLIENT_ID}`,
       },
       true,
     );
@@ -70,6 +73,7 @@ class AuthApi extends BaseApi {
 
   revokeToken(token?: string | null) {
     let url = `${IDENTITY_HOST}/connect/revocation`;
+    console.log(url);
     return this.postUrlEncoded(
       url,
       {

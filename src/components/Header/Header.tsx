@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/core";
 import { changeLanguage } from "@redux";
 import { BottomSheet, Icon, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import {
   StyleProp,
   Text,
@@ -47,7 +47,7 @@ interface OwnProps {
   onGoBack?: () => void;
 }
 
-const language = {
+const languageList = {
   VietNam: { label: "Tiếng Việt", value: "vi-VN" },
   English: { label: "English", value: "en-US" },
   Japan: { label: "日本語", value: "ja-JP" },
@@ -85,48 +85,54 @@ export const Header: FunctionComponent<Props> = props => {
     colorIconGoBack,
     onGoBack,
   } = props;
-  const accLanguage = useAppSelector(state => state.user.language);
-  const languageSelected = Object.values(language).find(
-    item => item.value === accLanguage,
-  );
+  const language = useAppSelector(state => state.user.language);
   const [isShowChangeLanguageModal, setIsShowChangeLanguageModal] =
     useState(false);
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
+  // const [accLanguage] = useState(useAppSelector(state => state.user.language));
+  const [languageSelected, setLanguageSelected] = useState(
+    Object.values(languageList).find(item => item.value === language),
+  );
+  useEffect(() => {
+    setLanguageSelected(
+      Object.values(languageList).find(item => item.value === language),
+    );
+  }, [language]);
 
   const arrOptions = [
     {
-      title: language.VietNam.label,
+      title: languageList.VietNam.label,
       onPress: () => {
-        setLanguage(language.VietNam.value);
+        setLanguage(languageList.VietNam.value);
         setIsShowChangeLanguageModal(false);
       },
     },
     {
-      title: language.English.label,
+      title: languageList.English.label,
       onPress: () => {
-        setLanguage(language.English.value);
+        setLanguage(languageList.English.value);
         setIsShowChangeLanguageModal(false);
       },
     },
     {
-      title: language.Japan.label,
+      title: languageList.Japan.label,
       onPress: () => {
-        setLanguage(language.Japan.value);
+        setLanguage(languageList.Japan.value);
         setIsShowChangeLanguageModal(false);
       },
     },
     // {
-    //   title: language.China.label,
+    //   title: languageList.China.label,
     //   onPress: () => {
-    //     setLanguage(language.China.value);
+    //     setLanguage(languageList.China.value);
     //     setIsShowChangeLanguageModal(false);
     //   },
     // },
     // {
-    //   title: language.Taiwan.label,
+    //   title: languageList.Taiwan.label,
     //   onPress: () => {
-    //     setLanguage(language.Taiwan.value);
+    //     setLanguage(languageList.Taiwan.value);
     //     setIsShowChangeLanguageModal(false);
     //   },
     // },

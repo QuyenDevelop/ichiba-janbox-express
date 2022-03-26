@@ -14,12 +14,13 @@ export const InfoScreen: FunctionComponent = () => {
   const userInfo = useSelector((state: IRootState) => state.user);
   const dispatch = useAppDispatch();
 
-  const [username, setUsername] = useState<string>(userInfo.name || "");
-  const [age, setAge] = useState<string>(userInfo.age?.toString() || "");
-  const [sex, setSex] = useState<string>(userInfo.sex || "");
+  const [username, setUsername] = useState<string>(
+    userInfo.profile?.name || "",
+  );
+  const [age, setAge] = useState<string>(userInfo.profile?.address || "");
+  const [sex, setSex] = useState<string>(userInfo.profile?.gender || "");
 
   const updateInfo = () => {
-    dispatch(updateInfo({ name: username, age: Number(age), sex: sex }));
     navigation.goBack();
   };
 
@@ -45,11 +46,10 @@ export const InfoScreen: FunctionComponent = () => {
       <View style={styles.infoRow}>
         <Text>Age: </Text>
         <TextInput
-          placeholder="Enter your age"
+          placeholder="Enter your address"
           defaultValue={age}
           onChangeText={setAge}
           style={styles.input}
-          keyboardType="number-pad"
         />
       </View>
       <View style={styles.infoRow}>

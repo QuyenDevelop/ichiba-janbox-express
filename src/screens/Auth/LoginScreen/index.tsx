@@ -1,7 +1,13 @@
+import { AccountApi } from "@api";
 import { Footer, Header } from "@components";
 import { CONSTANT, SCREENS } from "@configs";
-import { removeAsyncItem, ScreenUtils, setAsyncItem } from "@helpers";
-import { useAppDispatch, useAppSelector } from "@hooks";
+import {
+  ExternalAuthenticationUtils,
+  removeAsyncItem,
+  ScreenUtils,
+  setAsyncItem,
+} from "@helpers";
+import { useAppDispatch, useAppSelector, useLoading } from "@hooks";
 import { Account } from "@models";
 import { RootStackParamList } from "@navigation";
 import { useNavigation } from "@react-navigation/native";
@@ -9,7 +15,7 @@ import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from "@react-navigation/native-stack";
-import { loginAction } from "@redux";
+import { loginAction, loginExternalAction } from "@redux";
 import { Button, Checkbox, Icon, TextInput, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
 import React, { FunctionComponent, useEffect, useState } from "react";
@@ -41,7 +47,7 @@ export const LoginScreen: FunctionComponent<Props> = () => {
   const [isSecure, setIsSecure] = useState(true);
   const [isRemember, setIsRemember] = useState(false);
   const [isLoading, setIsLoading] = useState<boolean>(loading);
-  // const { showLoading, hideLoading } = useLoading();
+  const { showLoading, hideLoading } = useLoading();
 
   useEffect(() => {
     setIsLoading(loading);
@@ -71,33 +77,25 @@ export const LoginScreen: FunctionComponent<Props> = () => {
   };
 
   const externalLogin = (profile: Account) => {
-    // AccountApi.getUserInfoByToken(profile.idToken, profile.provider)?.then(
-    //   res => {
-    //     if (res?.isAssociate) {
-    //       dispatch(
-    //         loginExternal(
-    //           {
-    //             token: profile.idToken,
-    //             email: profile.email,
-    //             provider: profile.provider,
-    //           },
-    //           {
-    //             onFailure: (err: any) => {},
-    //             onSuccess: () => {
-    //               getUserInformation();
-    //             },
-    //           },
-    //         ),
-    //       );
-    //     } else {
-    //       // if (res?.email) {
-    //       //   externalRegister(profile);
-    //       // } else {
-    //       //   hideLoading();
-    //       // }
-    //     }
-    //   },
-    // );
+    AccountApi.getUserInfoByToken(profile?.idToken, profile.provider)?.then(
+      res => {
+        if (res?.isAssociate) {
+          dispatch(
+            loginExternalAction({
+              token: profile.idToken,
+              email: profile.email,
+              provider: profile.provider,
+            }),
+          );
+        } else {
+          // if (res?.email) {
+          //   externalRegister(profile);
+          // } else {
+          hideLoading();
+          // }
+        }
+      },
+    );
   };
 
   // const getUserInformation = () => {
@@ -199,10 +197,10 @@ export const LoginScreen: FunctionComponent<Props> = () => {
   };
 
   const loginWithGoogle = () => {
-    // ExternalAuthenticationUtils.signInByGoogle().then((user) => {
-    //   showLoading();
-    //   externalLogin(user);
-    // });
+    ExternalAuthenticationUtils.signInByGoogle().then(user => {
+      showLoading();
+      externalLogin(user);
+    });
   };
 
   const loginWithApple = () => {

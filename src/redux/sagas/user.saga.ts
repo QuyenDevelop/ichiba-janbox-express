@@ -58,10 +58,10 @@ function* takeLoginExternal(action: any) {
       response,
     );
 
-    // if (response.access_token) {
-    //   yield put(loginStatus(true));
-    //   yield Utils.storeTokenResponse(response);
-    // }
+    if (response.access_token) {
+      yield put(loginStatus(true));
+      yield Utils.storeTokenResponse(response);
+    }
   } catch (error: any) {
     yield delay(1000);
     yield put(loginFailure(error.error_description));
@@ -77,9 +77,9 @@ function* loginExternalFlow() {
 // ----- region change language
 function* takeChangeLanguage(action: any) {
   try {
-    yield call(async () => {
-      await onChangeLanguage(action.payload);
-    });
+    // yield delay(1000);
+    // console.log("Có vào");
+    yield call(onChangeLanguage(action.payload));
     yield put(changeLanguage(action.payload));
   } catch (error) {}
 }

@@ -35,6 +35,12 @@ export const userSlice = createSlice({
     loginLoading: (state: IUserState, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
     },
+    loginExternalSuccess: (
+      state: IUserState,
+      action: PayloadAction<Account>,
+    ) => {
+      state.profile = action.payload;
+    },
     loginStatus: (state: IUserState, action: PayloadAction<boolean>) => {
       state.isLogging = action.payload;
     },
@@ -61,6 +67,9 @@ export const userSlice = createSlice({
 export const loginAction = createAction<{ username: string; password: string }>(
   `${SliceName.USER_SLICE}/login`,
 );
+export const loginExternalAction = createAction<{
+  payload: PayloadAction<any>;
+}>(`${SliceName.USER_SLICE}/loginExternal`);
 // export Actions
 export const {
   loginLoading,
@@ -68,6 +77,7 @@ export const {
   loginFailure,
   updateInfo,
   logout,
+  loginExternalSuccess,
   changeLanguage,
 } = userSlice.actions;
 

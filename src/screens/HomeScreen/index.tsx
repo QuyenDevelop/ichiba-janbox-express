@@ -106,7 +106,7 @@ export const HomeScreen: FunctionComponent = () => {
         />
         {isLoading && <ActivityIndicator />}
       </View>
-      <Text style={styles.userName}>{userInfo.name}</Text>
+      <Text style={styles.userName}>{userInfo?.profile?.name}</Text>
       <TouchableOpacity style={styles.settingBtn} onPress={goToInfoScreen}>
         <Text style={styles.settingBtnText}>Setting</Text>
       </TouchableOpacity>

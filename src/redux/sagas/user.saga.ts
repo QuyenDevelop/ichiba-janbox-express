@@ -47,16 +47,12 @@ function* loginFlow() {
 
 // ----- region Login External
 function* takeLoginExternal(action: any) {
-  const { token, provider, email } = action.payload;
+  const { token, provider } = action.payload;
   try {
     yield put(loginLoading(true));
     const response: AuthorizeResult = yield call(async () => {
       return await authApi.loginExternal(token, provider);
     });
-    console.log(
-      "🚀🚀🚀 => constresponse:AuthorizeResult=yieldcall => response",
-      response,
-    );
 
     if (response.access_token) {
       yield put(loginStatus(true));
@@ -78,7 +74,7 @@ function* loginExternalFlow() {
 function* takeChangeLanguage(action: any) {
   try {
     // yield delay(1000);
-    // console.log("Có vào");
+    console.log("Có vào");
     yield call(onChangeLanguage(action.payload));
     yield put(changeLanguage(action.payload));
   } catch (error) {}

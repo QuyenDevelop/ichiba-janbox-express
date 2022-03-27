@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JanboxExpress</string>
+    <!-- Check mã này -->
+    <string name="facebook_app_id">824013764887974</string>
 </resources>

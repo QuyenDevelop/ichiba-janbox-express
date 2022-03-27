@@ -54,6 +54,7 @@ export const userSlice = createSlice({
       state.profile = action.payload;
     },
     changeLanguage: (state: IUserState, action: PayloadAction<string>) => {
+      // console.log("🚀 ~ file: user.slice.ts ~ line 57 ~ state", state);
       state.language = action.payload;
     },
     logout: (state: IUserState) => {
@@ -68,7 +69,9 @@ export const loginAction = createAction<{ username: string; password: string }>(
   `${SliceName.USER_SLICE}/login`,
 );
 export const loginExternalAction = createAction<{
-  payload: PayloadAction<any>;
+  token: string;
+  provider: string;
+  email?: string;
 }>(`${SliceName.USER_SLICE}/loginExternal`);
 // export Actions
 export const {

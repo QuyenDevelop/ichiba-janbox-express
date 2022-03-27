@@ -37,12 +37,12 @@ type Props = NativeStackScreenProps<RootStackParamList>;
 export const LoginScreen: FunctionComponent<Props> = () => {
   const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
-  const { loading, isLogging, messageFailed } = useAppSelector(
+  const { loading, isLogging, messageFailed, language } = useAppSelector(
     (state: IRootState) => state.user,
   );
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState("");
   const [isSecure, setIsSecure] = useState(true);
   const [isRemember, setIsRemember] = useState(false);
@@ -51,7 +51,7 @@ export const LoginScreen: FunctionComponent<Props> = () => {
 
   useEffect(() => {
     setIsLoading(loading);
-  }, [loading]);
+  }, [loading, language]);
 
   useEffect(() => {
     messageFailed && Alert.alert(messageFailed);
@@ -77,14 +77,14 @@ export const LoginScreen: FunctionComponent<Props> = () => {
   };
 
   const externalLogin = (profile: Account) => {
-    AccountApi.getUserInfoByToken(profile?.idToken, profile.provider)?.then(
-      res => {
+    AccountApi.getUserInfoByToken(profile.idToken, profile.provider)?.then(
+      (res: any) => {
         if (res?.isAssociate) {
           dispatch(
             loginExternalAction({
               token: profile.idToken,
               email: profile.email,
-              provider: profile.provider,
+              provider: profile?.provider,
             }),
           );
         } else {
@@ -97,73 +97,6 @@ export const LoginScreen: FunctionComponent<Props> = () => {
       },
     );
   };
-
-  // const getUserInformation = () => {
-  //   dispatch(
-  //     authApi.userInfo(
-  //       {},
-  //       {
-  //         onFailure: (err: any) => {
-  //           setIsLoading(false);
-  //         },
-  //         onSuccess: () => {
-  //           setEmail("");
-  //           setPassword("");
-  //           setIsButtonClickSubmit(false);
-  //           dispatch(AccountAction.setCountFavoriteProduct());
-  //           dispatch(AccountAction.setCountBidProduct());
-  //           // dispatch(AccountAction.checkExistCard());
-  //           messaging()
-  //             .getToken()
-  //             .then(token => {
-  //               dispatch(AccountAction.changeDeviceId({ deviceId: token }));
-  //               customerApi.updateDeviceId(token);
-  //             });
-  //           dispatch(
-  //             AccountAction.mergeCart(
-  //               {
-  //                 identityRefId: anonymousId,
-  //               },
-  //               {
-  //                 onFailure: () => {
-  //                   setIsLoading(false);
-  //                   hideLoading();
-  //                 },
-  //                 onSuccess: () => {
-  //                   dispatch(
-  //                     CartAction.changeCart(
-  //                       { anonymousId: anonymousId },
-  //                       {
-  //                         onSuccess: () => {
-  //                           setIsLoading(false);
-  //                           // if (
-  //                           //   route.params?.returnStack &&
-  //                           //   route.params?.returnScreen
-  //                           // ) {
-  //                           //   navigation.navigate(route.params?.returnStack, {
-  //                           //     screen: route.params?.returnScreen,
-  //                           //   });
-  //                           //   return;
-  //                           // }
-  //                           navigation.navigate(SCREENS.BottomTabNavigation);
-  //                           hideLoading();
-  //                         },
-  //                         onFailure: () => {
-  //                           setIsLoading(false);
-  //                         },
-  //                       },
-  //                     ),
-  //                   );
-  //                 },
-  //               },
-  //             ),
-  //           );
-  //         },
-  //       },
-  //     ),
-  //   );
-  //   // hideLoading();
-  // };
 
   const getUserInformation = () => {
     // dispatch(
@@ -190,10 +123,10 @@ export const LoginScreen: FunctionComponent<Props> = () => {
   };
 
   const loginWithFacebook = () => {
-    // ExternalAuthenticationUtils.signInByFacebook().then(user => {
-    //   showLoading();
-    //   externalLogin(user);
-    // });
+    ExternalAuthenticationUtils.signInByFacebook().then(user => {
+      showLoading();
+      externalLogin(user);
+    });
   };
 
   const loginWithGoogle = () => {
@@ -246,11 +179,6 @@ export const LoginScreen: FunctionComponent<Props> = () => {
             value={email}
             onChangeText={(text: string) => setEmail(text)}
             isRequired
-            // errorMessage={
-            //   isButtonClickSubmit && !Utils.isValidEmail(email)
-            //     ? translate("error.validation.email")
-            //     : ""
-            // }
           />
           <TextInput
             editable={!isLoading}
@@ -265,11 +193,6 @@ export const LoginScreen: FunctionComponent<Props> = () => {
             iconRightName={isSecure ? "ic_eye" : "ic_eye_slash"}
             iconRightSize={Metrics.icons.smallSmall}
             onPressIconRight={() => setIsSecure(!isSecure)}
-            // errorMessage={
-            //   isButtonClickSubmit && !Utils.isValidPassword(password)
-            //     ? translate("error.validation.password")
-            //     : ""
-            // }
           />
           <View style={styles.space}>
             <Checkbox

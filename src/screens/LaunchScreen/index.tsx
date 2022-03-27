@@ -2,8 +2,11 @@ import { CONSTANT, SCREENS } from "@configs";
 import { RootStackParamList } from "@navigation";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import NetInfo, { NetInfoState } from "@react-native-community/netinfo";
-import { useFocusEffect } from "@react-navigation/native";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from "@react-navigation/native-stack";
 import { changeLanguage } from "@redux";
 import { AnimationImages } from "@themes";
 import LottieView from "lottie-react-native";
@@ -14,8 +17,9 @@ import styles from "./styles";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
-export const LaunchScreen: FunctionComponent<Props> = ({ navigation }) => {
+export const LaunchScreen: FunctionComponent<Props> = () => {
   const dispatch = useDispatch();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const authenticate = async (): Promise<void> => {
     const [accessToken, currency, language] = await Promise.all([

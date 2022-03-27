@@ -74,4 +74,5 @@ export default StyleSheet.create({
     borderRadius: ScreenUtils.scale(38),
     borderWidth: 2,
   },
+  buttonChildStyle: { width: "100%" },
 });

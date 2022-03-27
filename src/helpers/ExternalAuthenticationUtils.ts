@@ -1,7 +1,15 @@
 // import appleAuth from "@invertase/react-native-apple-authentication";
 import { Account } from "@models";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import { Platform } from "react-native";
+import {
+  AccessToken,
+  GraphRequest,
+  GraphRequestManager,
+  LoginManager,
+} from "react-native-fbsdk-next";
 import Config from "react-native-config";
+import { RNFetchBlob } from "rn-fetch-blob";
 
 const { GOOGLE_CLIENT_ID } = Config;
 
@@ -44,72 +52,75 @@ export const ExternalAuthenticationUtils = {
     });
   },
 
-  // fetchFacebookInfo() {
-  //   return new Promise((resolved, reject) => {
-  //     const callback = (error?: any, result?: any) => {
-  //       if (error) {
-  //         reject(error);
-  //       } else {
-  //         resolved(result);
-  //       }
-  //     };
-  //     const infoRequest = new GraphRequest(
-  //       "/me",
-  //       {
-  //         parameters: {
-  //           fields: {
-  //             string:
-  //               "email,name,first_name,middle_name,last_name,picture.type(large)",
-  //           },
-  //         },
-  //       },
-  //       callback,
-  //     );
-  //     new GraphRequestManager().addRequest(infoRequest).start();
-  //   });
-  // },
+  fetchFacebookInfo() {
+    return new Promise((resolved, reject) => {
+      const callback = (error?: any, result?: any) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolved(result);
+        }
+      };
+      const infoRequest = new GraphRequest(
+        "/me",
+        {
+          parameters: {
+            fields: {
+              string:
+                "email,name,first_name,middle_name,last_name,picture.type(large)",
+            },
+          },
+        },
+        callback,
+      );
+      new GraphRequestManager().addRequest(infoRequest).start();
+    });
+  },
 
-  // signInByFacebook() {
-  //   return new Promise<Account>((resolve, reject) => {
-  //     LoginManager.setLoginBehavior("native_with_fallback");
-  //     LoginManager.logInWithPermissions(["public_profile", "email"]).then(
-  //       (result: any) => {
-  //         if (result.isCancelled) {
-  //           reject();
-  //         } else {
-  //           AccessToken.getCurrentAccessToken().then((token: any) => {
-  //             this.fetchFacebookInfo().then((res: any) => {
-  //               RNFetchBlob.config({
-  //                 fileCache: true,
-  //                 appendExt: "png",
-  //               })
-  //                 .fetch("GET", res.picture?.data?.url)
-  //                 .then(
-  //                   async (response: {
-  //                     path: () => string | undefined;
-  //                     readFile: (arg0: string) => any;
-  //                   }) => {
-  //                     resolve({
-  //                       given_name: `${res.last_name}`,
-  //                       family_name: res.first_name,
-  //                       picture:
-  //                         Platform.OS === "android"
-  //                           ? `file://${response.path()}`
-  //                           : response.path(),
-  //                       email: res.email,
-  //                       idToken: token?.accessToken,
-  //                       provider: ExternelAuth.Facebook,
-  //                       base64_picture: await response.readFile("base64"),
-  //                     } as Account);
-  //                   },
-  //                 );
-  //             });
-  //           });
-  //         }
-  //       },
-  //     );
-  //   });
-  // },
+  signInByFacebook() {
+    return new Promise<Account>((resolve, reject) => {
+      LoginManager.setLoginBehavior("native_with_fallback");
+      LoginManager.logInWithPermissions(["public_profile", "email"]).then(
+        (result: any) => {
+          if (result.isCancelled) {
+            reject();
+          } else {
+            AccessToken.getCurrentAccessToken().then((token: any) => {
+              this.fetchFacebookInfo().then((res: any) => {
+                RNFetchBlob.config({
+                  fileCache: true,
+                  appendExt: "png",
+                })
+                  .fetch("GET", res.picture?.data?.url)
+                  .then(
+                    async (response: {
+                      path: () => string | undefined;
+                      readFile: (arg0: string) => any;
+                    }) => {
+                      resolve({
+                        given_name: `${res.last_name}`,
+                        family_name: res.first_name,
+                        picture:
+                          Platform.OS === "android"
+                            ? `file://${response.path()}`
+                            : response.path(),
+                        email: res.email,
+                        idToken: token?.accessToken,
+                        provider: ExternelAuth.Facebook,
+                        base64_picture: await response.readFile("base64"),
+                      } as Account);
+                    },
+                  )
+                  .catch(err => {
+                    console.error(err);
+                  });
+              });
+            });
+          }
+        },
+      );
+    });
+  },
 
   // signInByApple() {
   //   return new Promise<Account>((resolve, reject) => {

@@ -2,7 +2,7 @@ import { AccountApi } from "@api";
 import { Footer, Header } from "@components";
 import { SCREENS } from "@configs";
 import { Alert, ScreenUtils, Utils } from "@helpers";
-import { useLoading } from "@hooks";
+// import { useLoading } from "@hooks";
 import { Account } from "@models";
 import { RootStackParamList } from "@navigation";
 import { useNavigation } from "@react-navigation/native";
@@ -34,7 +34,7 @@ export const RegisterScreen: FunctionComponent<Props> = () => {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isButtonClickSubmit, setIsButtonClickSubmit] = useState(false);
-  const { showLoading, hideLoading } = useLoading();
+  // const { showLoading, hideLoading } = useLoading();
 
   const signUp = () => {
     setIsButtonClickSubmit(true);
@@ -174,7 +174,7 @@ export const RegisterScreen: FunctionComponent<Props> = () => {
       <KeyboardAvoidingView
         enabled={Platform.OS === "ios"}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
-        style={{ flex: 1 }}
+        style={styles.container}
       >
         <ScrollView
           style={styles.childContainer}
@@ -216,7 +216,7 @@ export const RegisterScreen: FunctionComponent<Props> = () => {
             onPress={signUp}
             title={translate("button.signup")}
             isLoading={isLoading}
-            buttonChildStyle={{ width: "100%" }}
+            buttonChildStyle={styles.buttonChildStyle}
             buttonStyle={styles.button}
           />
           <View style={styles.loginSocialContainer}>

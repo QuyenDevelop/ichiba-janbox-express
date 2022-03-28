@@ -36,7 +36,7 @@ export const ForgotPasswordNotificationScreen: FunctionComponent<
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const route = useRoute<NavigationRoute>();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
   //#endRegion
 
   const { email } = route?.params;
@@ -47,7 +47,7 @@ export const ForgotPasswordNotificationScreen: FunctionComponent<
       <KeyboardAvoidingView
         enabled={Platform.OS === "ios"}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
-        style={{ flex: 1 }}
+        style={styles.container}
       >
         <ScrollView
           style={styles.childContainer}
@@ -81,7 +81,7 @@ export const ForgotPasswordNotificationScreen: FunctionComponent<
             onPress={() => navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION)}
             title={translate("button.homePage")}
             isLoading={isLoading}
-            buttonChildStyle={{ width: "100%" }}
+            buttonChildStyle={styles.buttonChildStyle}
             buttonStyle={styles.button}
           />
         </ScrollView>

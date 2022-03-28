@@ -22,6 +22,7 @@ export default StyleSheet.create({
     minWidth: 150,
   },
   applyBtn: {
+    marginTop: ScreenUtils.scale(10),
     backgroundColor: Themes.colors.primary,
     paddingVertical: ScreenUtils.scale(10),
     paddingHorizontal: ScreenUtils.scale(20),

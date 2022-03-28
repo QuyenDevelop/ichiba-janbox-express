@@ -63,4 +63,5 @@ export default StyleSheet.create({
   button: {
     marginTop: ScreenUtils.scale(56),
   },
+  buttonChildStyle: { width: "100%" },
 });

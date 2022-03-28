@@ -1,17 +1,16 @@
 import { SCREENS } from "@configs";
-import { useAppDispatch } from "@hooks";
+import { useAppDispatch, useAppSelector } from "@hooks";
 import { useNavigation } from "@react-navigation/core";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { logout } from "@redux";
 import React, { FunctionComponent, useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
-import { useSelector } from "react-redux";
 import { IRootState } from "src/redux/store";
 import styles from "./styles";
 
 export const InfoScreen: FunctionComponent = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
-  const userInfo = useSelector((state: IRootState) => state.user);
+  const userInfo = useAppSelector((state: IRootState) => state.user);
   const dispatch = useAppDispatch();
 
   const [username, setUsername] = useState<string>(

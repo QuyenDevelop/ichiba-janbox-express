@@ -37,7 +37,7 @@ type Props = NativeStackScreenProps<RootStackParamList>;
 export const LoginScreen: FunctionComponent<Props> = () => {
   const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
-  const { loading, isLogging, messageFailed, language } = useAppSelector(
+  const { loading, isLogging, messageFailed } = useAppSelector(
     (state: IRootState) => state.user,
   );
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
@@ -51,10 +51,11 @@ export const LoginScreen: FunctionComponent<Props> = () => {
 
   useEffect(() => {
     setIsLoading(loading);
-  }, [loading, language]);
+  }, [loading]);
 
   useEffect(() => {
-    messageFailed && Alert.alert(messageFailed);
+    messageFailed && Alert.alert(messageFailed || translate("error.generic"));
+    console.log("🚀🚀🚀 => useEffect => messageFailed", messageFailed);
   }, [messageFailed]);
 
   useEffect(() => {
@@ -68,6 +69,7 @@ export const LoginScreen: FunctionComponent<Props> = () => {
     } else {
       removeAsyncItem(CONSTANT.TOKEN_STORAGE_KEY.REMEMBER_USER);
     }
+
     dispatch(
       loginAction({
         username: email,

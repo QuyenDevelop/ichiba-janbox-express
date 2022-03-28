@@ -53,7 +53,10 @@ export const userSlice = createSlice({
     getUserInfo: (state: IUserState, action: PayloadAction<Account>) => {
       state.profile = action.payload;
     },
-    changeLanguage: (state: IUserState, action: PayloadAction<string>) => {
+    changeLanguageSuccess: (
+      state: IUserState,
+      action: PayloadAction<string>,
+    ) => {
       // console.log("🚀 ~ file: user.slice.ts ~ line 57 ~ state", state);
       state.language = action.payload;
     },
@@ -73,6 +76,10 @@ export const loginExternalAction = createAction<{
   provider: string;
   email?: string;
 }>(`${SliceName.USER_SLICE}/loginExternal`);
+export const changeLanguage = createAction<string>(
+  `${SliceName.USER_SLICE}/changeLanguage`,
+);
+
 // export Actions
 export const {
   loginLoading,
@@ -81,13 +88,10 @@ export const {
   updateInfo,
   logout,
   loginExternalSuccess,
-  changeLanguage,
+  changeLanguageSuccess,
 } = userSlice.actions;
 
 // export reducer
 export const userReducer = userSlice.reducer;
 
 // reducers
-export const selectLoginLoading = (state: IUserState) => state.loading;
-export const selectIsLogging = (state: IUserState) => state.isLogging;
-export const messageFailed = (state: IUserState) => state.messageFailed;

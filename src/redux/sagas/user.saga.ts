@@ -10,6 +10,7 @@ import { all, call, put, takeLatest } from "redux-saga/effects";
 import { AuthorizeResult } from "src/@types/api-sso";
 import {
   changeLanguage,
+  changeLanguageSuccess,
   loginExternalAction,
   loginFailure,
   loginLoading,
@@ -25,19 +26,20 @@ export const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 function* takeLogin(action: any) {
   const { username, password } = action.payload;
   try {
-    yield put(loginLoading(true));
-    const response: AuthorizeResult = yield call(async () => {
-      return await authApi.login(username, password);
-    });
-    if (response.access_token) {
-      yield put(loginStatus(true));
-      yield Utils.storeTokenResponse(response);
+    if (username && password) {
+      yield put(loginLoading(true));
+      const response: AuthorizeResult = yield call(async () => {
+        return await authApi.login(username, password);
+      });
+      if (response.access_token) {
+        yield put(loginStatus(true));
+        yield Utils.storeTokenResponse(response);
+      }
     }
   } catch (error: any) {
-    yield delay(1000);
+    yield delay(100);
     yield put(loginFailure(error.error_description));
   } finally {
-    yield delay(1000);
     yield put(loginLoading(false));
   }
 }
@@ -74,9 +76,8 @@ function* loginExternalFlow() {
 function* takeChangeLanguage(action: any) {
   try {
     // yield delay(1000);
-    console.log("Có vào");
-    yield call(onChangeLanguage(action.payload));
-    yield put(changeLanguage(action.payload));
+    yield call(onChangeLanguage, action.payload);
+    yield put(changeLanguageSuccess(action.payload));
   } catch (error) {}
 }
 

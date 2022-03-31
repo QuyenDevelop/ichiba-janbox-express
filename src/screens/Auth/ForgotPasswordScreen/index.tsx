@@ -54,7 +54,7 @@ export const ForgotPasswordScreen: FunctionComponent<Props> = () => {
       <KeyboardAvoidingView
         enabled={Platform.OS === "ios"}
         behavior={Platform.OS === "ios" ? "padding" : undefined}
-        style={{ flex: 1 }}
+        style={styles.container}
       >
         <ScrollView
           style={styles.childContainer}
@@ -90,7 +90,7 @@ export const ForgotPasswordScreen: FunctionComponent<Props> = () => {
             onPress={sendResetPasswordEmail}
             title={translate("button.confirm")}
             isLoading={isLoading}
-            buttonChildStyle={{ width: "100%" }}
+            buttonChildStyle={styles.buttonChildStyle}
             buttonStyle={styles.button}
           />
         </ScrollView>

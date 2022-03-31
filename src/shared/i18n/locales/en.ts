@@ -20,6 +20,9 @@ export default {
     contact: "Contact the Janbox help",
     forgotPassword: "Forgot Password",
     verification: "Verification",
+    titleLocked: "Your account has been locked",
+    descriptionLocked:
+      "Your account is temporarily locked for 5 minutes, please try again later or contact Janbox for support!",
   },
   placeholder: {
     enterNotes: "Enter notes",

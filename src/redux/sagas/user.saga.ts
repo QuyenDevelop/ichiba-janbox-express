@@ -11,6 +11,7 @@ import { AuthorizeResult } from "src/@types/api-sso";
 import {
   changeLanguage,
   changeLanguageSuccess,
+  locked,
   loginExternalAction,
   loginFailure,
   loginLoading,
@@ -37,7 +38,9 @@ function* takeLogin(action: any) {
       }
     }
   } catch (error: any) {
-    yield delay(100);
+    if (error?.locked) {
+      yield put(locked(true));
+    }
     yield put(loginFailure(error.error_description));
   } finally {
     yield put(loginLoading(false));
@@ -61,10 +64,9 @@ function* takeLoginExternal(action: any) {
       yield Utils.storeTokenResponse(response);
     }
   } catch (error: any) {
-    yield delay(1000);
     yield put(loginFailure(error.error_description));
   } finally {
-    yield delay(1000);
+    yield delay(100);
     yield put(loginLoading(false));
   }
 }

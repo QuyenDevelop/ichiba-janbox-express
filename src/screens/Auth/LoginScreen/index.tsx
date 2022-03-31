@@ -37,11 +37,11 @@ type Props = NativeStackScreenProps<RootStackParamList>;
 export const LoginScreen: FunctionComponent<Props> = () => {
   const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
-  const { loading, isLogging, messageFailed } = useAppSelector(
+  const { loading, isLogging, messageFailed, isLocked } = useAppSelector(
     (state: IRootState) => state.user,
   );
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
-
+  const [login, setLogin] = useState(0);
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState("");
   const [isSecure, setIsSecure] = useState(true);
@@ -54,16 +54,20 @@ export const LoginScreen: FunctionComponent<Props> = () => {
   }, [loading]);
 
   useEffect(() => {
-    messageFailed && Alert.alert(messageFailed || translate("error.generic"));
-    console.log("🚀🚀🚀 => useEffect => messageFailed", messageFailed);
-  }, [messageFailed]);
-
-  useEffect(() => {
     isLogging && navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION);
   }, [isLogging, navigation]);
 
+  useEffect(() => {
+    isLocked && Number(messageFailed) > 1
+      ? navigation.navigate(SCREENS.LOCKED_SCREEN, {
+          countDown: messageFailed || "0",
+        })
+      : messageFailed
+      ? Alert.alert(messageFailed)
+      : null;
+  }, [messageFailed, navigation, isLocked, login]);
+
   const loginWithEmail = () => {
-    // setIsLoading(true);
     if (isRemember) {
       setAsyncItem(CONSTANT.TOKEN_STORAGE_KEY.REMEMBER_USER, email);
     } else {
@@ -76,6 +80,7 @@ export const LoginScreen: FunctionComponent<Props> = () => {
         password: password,
       }),
     );
+    setLogin(log => log++);
   };
 
   const externalLogin = (profile: Account) => {

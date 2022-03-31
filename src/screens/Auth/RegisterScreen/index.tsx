@@ -1,7 +1,13 @@
 import { AccountApi } from "@api";
 import { Footer, Header } from "@components";
 import { SCREENS } from "@configs";
-import { Alert, ScreenUtils, Utils } from "@helpers";
+import {
+  Alert,
+  ExternalAuthenticationUtils,
+  ScreenUtils,
+  Utils,
+} from "@helpers";
+import { useAppDispatch, useLoading } from "@hooks";
 // import { useLoading } from "@hooks";
 import { Account } from "@models";
 import { RootStackParamList } from "@navigation";
@@ -10,6 +16,7 @@ import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from "@react-navigation/native-stack";
+import { loginExternalAction } from "@redux";
 import { Button, Icon, TextInput, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
 import React, { FunctionComponent, useState } from "react";
@@ -30,11 +37,11 @@ export const RegisterScreen: FunctionComponent<Props> = () => {
   // useStatusBar("dark-content");
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
-  // const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isButtonClickSubmit, setIsButtonClickSubmit] = useState(false);
-  // const { showLoading, hideLoading } = useLoading();
+  const { showLoading, hideLoading } = useLoading();
 
   const signUp = () => {
     setIsButtonClickSubmit(true);
@@ -53,21 +60,21 @@ export const RegisterScreen: FunctionComponent<Props> = () => {
   };
 
   const loginWithFacebook = () => {
-    // ExternalAuthenticationUtils.signInByFacebook()
-    //   .then(user => {
-    //     showLoading();
-    //     externalLogin(user);
-    //   })
-    //   .catch(err => Alert.warning(err));
+    ExternalAuthenticationUtils.signInByFacebook()
+      .then(user => {
+        showLoading();
+        externalLogin(user);
+      })
+      .catch(err => Alert.warning(err));
   };
 
   const loginWithGoogle = () => {
-    // ExternalAuthenticationUtils.signInByGoogle()
-    //   .then(user => {
-    //     showLoading();
-    //     externalLogin(user);
-    //   })
-    //   .catch(err => Alert.warning(err));
+    ExternalAuthenticationUtils.signInByGoogle()
+      .then(user => {
+        showLoading();
+        externalLogin(user);
+      })
+      .catch(err => Alert.warning(err));
   };
 
   const loginWithApple = () => {
@@ -115,36 +122,28 @@ export const RegisterScreen: FunctionComponent<Props> = () => {
   };
 
   const externalLogin = (profile: Account) => {
-    // accountApi
-    //   .getUserInfoByToken(profile.idToken, profile.provider)
-    //   ?.then((res) => {
-    //     if (res?.isAssociate) {
-    //       dispatch(
-    //         AccountAction.externalLogin(
-    //           {
-    //             token: profile.idToken,
-    //             email: profile.email,
-    //             provider: profile.provider,
-    //           },
-    //           {
-    //             onFailure: (err: any) => {},
-    //             onSuccess: () => {
-    //               getUserInformation();
-    //             },
-    //           }
-    //         )
-    //       );
-    //     } else {
-    //       if (res?.email) {
-    //         externalRegister(profile);
-    //       } else {
-    //         hideLoading();
-    //         // navigation.navigate(SCREENS.ConfirmProfileInformationScreen, {
-    //         //   profile,
-    //         // });
-    //       }
-    //     }
-    //   });
+    AccountApi.getUserInfoByToken(profile.idToken, profile.provider)?.then(
+      res => {
+        if (res?.isAssociate) {
+          dispatch(
+            loginExternalAction({
+              token: profile.idToken,
+              email: profile.email,
+              provider: profile.provider,
+            }),
+          );
+        } else {
+          if (res?.email) {
+            externalRegister(profile);
+          } else {
+            hideLoading();
+            // navigation.navigate(SCREENS.ConfirmProfileInformationScreen, {
+            //   profile,
+            // });
+          }
+        }
+      },
+    );
   };
 
   const getUserInformation = () => {

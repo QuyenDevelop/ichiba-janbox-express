@@ -7,6 +7,7 @@ export const Images = {
   icPackageFill: require("../assets/icons/bottomTab/ic_package_fill.png"),
   icMyJanbox: require("../assets/icons/bottomTab/ic_my_janbox.png"),
   icMyJanboxFill: require("../assets/icons/bottomTab/ic_my_janbox_fill.png"),
+  lockedAccount: require("../assets/lockedAccount.png"),
 };
 
 export const AnimationImages = {

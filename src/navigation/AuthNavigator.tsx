@@ -4,6 +4,8 @@ import {
   ForgotPasswordNotificationRouteParams,
   ForgotPasswordNotificationScreen,
   ForgotPasswordScreen,
+  LockedParams,
+  LockedScreen,
   LoginScreen,
   RegisterScreen,
   VerificationRouteParams,
@@ -16,6 +18,7 @@ export type AuthStackParamList = {
   [SCREENS.FORGOT_PASSWORD]: undefined;
   [SCREENS.VERIFICATION]: VerificationRouteParams;
   [SCREENS.FORGOT_PASSWORD_NOTIFICATION]: ForgotPasswordNotificationRouteParams;
+  [SCREENS.LOCKED_SCREEN]: LockedParams;
 };
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -42,6 +45,7 @@ export function AuthNavigation() {
         name={SCREENS.FORGOT_PASSWORD}
         component={ForgotPasswordScreen}
       />
+      <AuthStack.Screen name={SCREENS.LOCKED_SCREEN} component={LockedScreen} />
     </AuthStack.Navigator>
   );
 }

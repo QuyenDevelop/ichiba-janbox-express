@@ -21,6 +21,9 @@ export default {
     contact: "Liên hệ Janbox",
     forgotPassword: "Quên mật khẩu",
     verification: "Xác nhận",
+    titleLocked: "Tài khoản của bạn đã bị khóa",
+    descriptionLocked:
+      "Tài khoản của bạn tạm thời bị khóa trong vòng 5 phút, vui lòng thử lại sau hoặc liên hệ với Janbox để được hỗ trợ!",
   },
   placeholder: {
     enterNotes: "Nhập ghi chú",

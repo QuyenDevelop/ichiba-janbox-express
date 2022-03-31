@@ -22,6 +22,9 @@ export default {
     needHelp: "助けが必要？",
     contact: "Janboxヘルプに連絡",
     verification: "確認",
+    titleLocked: "您的帐户已被锁定",
+    descriptionLocked:
+      "您的账户被暂时锁定5分钟，请稍后重试或联系支Janbox支持！",
   },
   placeholder: {
     enterNotes: "ノートを入力してください",

@@ -15,6 +15,7 @@ export interface IUserState {
   deviceId: string | null;
   isLogging: boolean;
   messageFailed: string | null;
+  isLocked: boolean;
 }
 
 const initialState: IUserState = {
@@ -26,6 +27,7 @@ const initialState: IUserState = {
   deviceId: null,
   isLogging: false,
   messageFailed: null,
+  isLocked: false,
 };
 
 export const userSlice = createSlice({
@@ -47,6 +49,9 @@ export const userSlice = createSlice({
     loginFailure: (state: IUserState, action: PayloadAction<string>) => {
       state.messageFailed = action.payload;
     },
+    locked: (state: IUserState, action: PayloadAction<boolean>) => {
+      state.isLocked = action.payload;
+    },
     updateInfo: (_state: IUserState, action: PayloadAction<IUserState>) => {
       return action.payload;
     },
@@ -57,7 +62,6 @@ export const userSlice = createSlice({
       state: IUserState,
       action: PayloadAction<string>,
     ) => {
-      // console.log("🚀 ~ file: user.slice.ts ~ line 57 ~ state", state);
       state.language = action.payload;
     },
     logout: (state: IUserState) => {
@@ -87,6 +91,7 @@ export const {
   loginFailure,
   updateInfo,
   logout,
+  locked,
   loginExternalSuccess,
   changeLanguageSuccess,
 } = userSlice.actions;

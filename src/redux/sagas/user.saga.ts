@@ -6,7 +6,7 @@ import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { loginAction } from "@redux";
 import { onChangeLanguage } from "@shared";
 import Config from "react-native-config";
-import { all, call, put, takeLatest } from "redux-saga/effects";
+import { all, call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import { AuthorizeResult } from "src/@types/api-sso";
 import {
   changeLanguage,
@@ -32,10 +32,16 @@ function* takeLogin(action: any) {
       const response: AuthorizeResult = yield call(async () => {
         return await authApi.login(username, password);
       });
+      console.log(
+        "🚀🚀🚀 => constresponse:AuthorizeResult=yieldcall => response",
+        response,
+      );
       if (response.access_token) {
         yield put(loginStatus(true));
         yield Utils.storeTokenResponse(response);
       }
+    } else {
+      yield put(loginFailure("Chưa nhập Username hoặc Password!!"));
     }
   } catch (error: any) {
     if (error?.locked) {
@@ -47,7 +53,7 @@ function* takeLogin(action: any) {
   }
 }
 function* loginFlow() {
-  yield takeLatest(loginAction, takeLogin);
+  yield takeEvery(loginAction, takeLogin);
 }
 
 // ----- region Login External
@@ -91,6 +97,7 @@ function* changeLanguageFlow() {
 function* takeLogout() {
   try {
     yield put(loginStatus(false));
+    yield put(loginFailure(""));
     async function handlerLogout() {
       const [accessToken, refreshToken] = await Promise.all([
         AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.ACCESS_TOKEN),

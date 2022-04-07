@@ -1,14 +1,25 @@
 /* eslint-disable react-native/no-inline-styles */
 import { CreateShipmentButton } from "@components";
 import { SCREENS, Sizes } from "@configs";
-import { ScreenUtils } from "@helpers";
+import { NavigationUtils, ScreenUtils } from "@helpers";
 import { HomeStack, NotificationStack } from "@navigation";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { HomeAccountScreen } from "@screens";
 import { Images, Themes } from "@themes";
 import React from "react";
 import { Image, Text, View } from "react-native";
 
 const Tab = createBottomTabNavigator();
+
+export type AccountParamList = {
+  [SCREENS.ACCOUNT_SCREEN]: undefined;
+  [SCREENS.ACCOUNT_SETTING_SCREEN]: undefined;
+  [SCREENS.ACCOUNT_INFORMATION]: undefined;
+  // [SCREENS.RECENTLY_VIEWED_SCREEN]: undefined;
+  // [SCREENS.FAVORITES_SCREEN]: undefined;
+  // [SCREENS.BID_MANAGEMENT_SCREEN]: undefined;
+  // [SCREENS.SHIPMENT_DETAILS_SCREEN]: undefined;
+};
 
 const getTabBarIconImage = (
   icon: any,
@@ -52,6 +63,48 @@ const getTabBarIconImage = (
     </Text>
   </View>
 );
+
+const AccountStackNavigator =
+  NavigationUtils.createNavigation<AccountParamList>();
+
+function AccountStack() {
+  return (
+    <AccountStackNavigator.Navigator initialRouteName={SCREENS.ACCOUNT_SCREEN}>
+      <AccountStackNavigator.Screen
+        name={SCREENS.ACCOUNT_SCREEN}
+        component={HomeAccountScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      {/* <AccountStackNavigator.Screen
+        name={SCREENS.CHANGE_PASSWORD}
+        component={ChangePasswordContainer}
+        options={{ headerShown: false }}
+      />
+      <AccountStackNavigator.Screen
+        options={{ headerShown: false }}
+        name={SCREENS.ACCOUNT_INFORMATION}
+        component={AccountInformationContainer}
+      />
+      <AccountStackNavigator.Screen
+        options={{ headerShown: false }}
+        name={SCREENS.RECENTLY_VIEWED_SCREEN}
+        component={RecentlyViewedContainer}
+      />
+      <AccountStackNavigator.Screen
+        options={{ headerShown: false }}
+        name={SCREENS.FAVORITES_SCREEN}
+        component={FavoriteScreen}
+      />
+      <AccountStackNavigator.Screen
+        options={{ headerShown: false }}
+        name={SCREENS.BID_MANAGEMENT_SCREEN}
+        component={BidManagementScreen}
+      /> */}
+    </AccountStackNavigator.Navigator>
+  );
+}
 
 export function BottomTabNavigator() {
   return (
@@ -117,7 +170,7 @@ export function BottomTabNavigator() {
       />
       <Tab.Screen
         name={SCREENS.MY_JANBOX_STACK}
-        component={NotificationStack}
+        component={AccountStack}
         options={{
           tabBarIcon: ({ focused }) =>
             getTabBarIconImage(

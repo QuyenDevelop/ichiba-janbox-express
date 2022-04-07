@@ -24,6 +24,13 @@ export default {
     titleLocked: "Tài khoản của bạn đã bị khóa",
     descriptionLocked:
       "Tài khoản của bạn tạm thời bị khóa trong vòng 5 phút, vui lòng thử lại sau hoặc liên hệ với Janbox để được hỗ trợ!",
+    firstTimeUser: "",
+    usageGuide: "",
+    faq: "",
+    manageComplaint: "",
+    language: "",
+    setting: "",
+    logout: "",
   },
   placeholder: {
     enterNotes: "Nhập ghi chú",
@@ -70,6 +77,7 @@ export default {
     confirm: "Xác nhận",
     createAccount: "Tạo tài khoản ngay",
     homePage: "Trang chủ",
+    logout: "Đăng xuất",
   },
   text: {
     forgotPasswordNotification: {

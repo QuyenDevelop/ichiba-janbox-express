@@ -1,3 +1,4 @@
+export * from "./Account";
 export * from "./Auth";
 export * from "./DetailScreen";
 export * from "./HomeScreen";

@@ -3,6 +3,7 @@ import { BottomTabNavigator } from "@navigation";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { LaunchScreen } from "@screens";
 import React from "react";
+import { AccountNavigator } from "./AccountNavigator";
 import { AuthNavigation } from "./AuthNavigator";
 
 export type RootStackParamList = {
@@ -10,6 +11,7 @@ export type RootStackParamList = {
   [SCREENS.HOME_STACK]: undefined;
   [SCREENS.BOTTOM_TAB_NAVIGATION]: undefined;
   [SCREENS.AUTH_STACK]: undefined;
+  [SCREENS.ACCOUNT_STACK]: undefined;
 };
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -25,6 +27,10 @@ export const RootNavigator = () => {
     >
       <RootStack.Screen name={SCREENS.LAUNCH_SCREEN} component={LaunchScreen} />
       <RootStack.Screen name={SCREENS.AUTH_STACK} component={AuthNavigation} />
+      <RootStack.Screen
+        name={SCREENS.ACCOUNT_STACK}
+        component={AccountNavigator}
+      />
       <RootStack.Screen
         name={SCREENS.BOTTOM_TAB_NAVIGATION}
         component={BottomTabNavigator}

@@ -2,6 +2,7 @@ import { AccountApi } from "@api";
 import { Footer, Header } from "@components";
 import { CONSTANT, SCREENS } from "@configs";
 import {
+  Alert,
   ExternalAuthenticationUtils,
   removeAsyncItem,
   ScreenUtils,
@@ -20,7 +21,6 @@ import { Button, Checkbox, Icon, TextInput, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
 import React, { FunctionComponent, useEffect, useState } from "react";
 import {
-  Alert,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
@@ -50,7 +50,7 @@ export const LoginScreen: FunctionComponent<Props> = () => {
 
   useEffect(() => {
     setIsLoading(loading);
-    messageFailed && !loading && !isLogging && Alert.alert(messageFailed);
+    messageFailed && !loading && !isLogging && Alert.error(messageFailed, true);
   }, [isLogging, loading, messageFailed]);
 
   useEffect(() => {

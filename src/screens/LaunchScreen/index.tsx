@@ -1,4 +1,5 @@
 import { CONSTANT, SCREENS } from "@configs";
+import { useAppDispatch } from "@hooks";
 import { RootStackParamList } from "@navigation";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import NetInfo, { NetInfoState } from "@react-native-community/netinfo";
@@ -7,18 +8,17 @@ import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from "@react-navigation/native-stack";
-import { changeLanguage } from "@redux";
+import { changeLanguage, getUserAction } from "@redux";
 import { AnimationImages } from "@themes";
 import LottieView from "lottie-react-native";
 import React, { FunctionComponent, useCallback } from "react";
 import { Alert, Text, View } from "react-native";
-import { useDispatch } from "react-redux";
 import styles from "./styles";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 export const LaunchScreen: FunctionComponent<Props> = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const authenticate = async (): Promise<void> => {
@@ -47,6 +47,7 @@ export const LaunchScreen: FunctionComponent<Props> = () => {
     }
 
     if (accessToken) {
+      dispatch(getUserAction());
       navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION);
     } else {
       navigation.navigate(SCREENS.AUTH_STACK);

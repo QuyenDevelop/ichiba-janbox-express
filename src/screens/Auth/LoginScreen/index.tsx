@@ -55,8 +55,9 @@ export const LoginScreen: FunctionComponent<Props> = () => {
 
   useEffect(() => {
     if (isLogging) {
-      navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION);
-      getUserInformation();
+      navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION, {
+        screen: SCREENS.HOME_SCREEN,
+      });
       return;
     }
     isLocked &&
@@ -101,30 +102,6 @@ export const LoginScreen: FunctionComponent<Props> = () => {
         }
       },
     );
-  };
-
-  const getUserInformation = () => {
-    // dispatch(
-    //   AccountAction.userInfo(
-    //     {},
-    //     {
-    //       onFailure: (err: any) => {
-    //         console.log("fail: ", err);
-    //         setIsLoading(false);
-    //       },
-    //       onSuccess: (response: { account: Account }) => {
-    //         setEmail("");
-    //         setPassword("");
-    //         // navigation.goBack();
-    //         navigation.reset({
-    //           index: 0,
-    //           routes: [{ name: SCREENS.HOME_STACK }],
-    //         });
-    //       },
-    //     },
-    //   ),
-    // );
-    // hideLoading();
   };
 
   const loginWithFacebook = () => {

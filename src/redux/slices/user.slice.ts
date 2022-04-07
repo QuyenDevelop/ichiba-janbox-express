@@ -57,6 +57,7 @@ export const userSlice = createSlice({
     },
     getUserInfo: (state: IUserState, action: PayloadAction<Account>) => {
       state.profile = action.payload;
+      state.anonymousId = action.payload?.sub || "";
     },
     changeLanguageSuccess: (
       state: IUserState,
@@ -75,6 +76,9 @@ export const userSlice = createSlice({
 export const loginAction = createAction<{ username: string; password: string }>(
   `${SliceName.USER_SLICE}/login`,
 );
+export const getUserAction = createAction(
+  `${SliceName.USER_SLICE}/getUserAction`,
+);
 export const loginExternalAction = createAction<{
   token: string;
   provider: string;
@@ -92,6 +96,7 @@ export const {
   updateInfo,
   logout,
   locked,
+  getUserInfo,
   loginExternalSuccess,
   changeLanguageSuccess,
 } = userSlice.actions;

@@ -1,7 +1,7 @@
 import { imageApi } from "@api";
 import { SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
-import { useBoolean, useDebounce } from "@hooks";
+import { useAppSelector, useBoolean, useDebounce } from "@hooks";
 import { IPhoto } from "@models";
 import { HomeStackParamsList } from "@navigation";
 import { useNavigation } from "@react-navigation/core";
@@ -60,6 +60,8 @@ export const HomeScreen: FunctionComponent = () => {
     navigation.navigate(SCREENS.INFO_SCREEN);
   };
 
+  const profile = useAppSelector(state => state.user.profile);
+  console.log("Profile:", JSON.stringify(profile));
   return (
     <View style={styles.container}>
       <View style={StyleSheet.absoluteFillObject}>

@@ -1,6 +1,7 @@
 import { authApi } from "@api";
 import { CONSTANT } from "@configs";
 import { Utils } from "@helpers";
+import { Account } from "@models";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { loginAction } from "@redux";
@@ -11,6 +12,8 @@ import { AuthorizeResult } from "src/@types/api-sso";
 import {
   changeLanguage,
   changeLanguageSuccess,
+  getUserAction,
+  getUserInfo,
   locked,
   loginExternalAction,
   loginFailure,
@@ -32,11 +35,8 @@ function* takeLogin(action: any) {
       const response: AuthorizeResult = yield call(async () => {
         return await authApi.login(username, password);
       });
-      console.log(
-        "🚀🚀🚀 => constresponse:AuthorizeResult=yieldcall => response",
-        response,
-      );
-      if (response.access_token) {
+      if (response) {
+        yield put(getUserAction());
         yield put(loginStatus(true));
         yield Utils.storeTokenResponse(response);
       }
@@ -53,7 +53,7 @@ function* takeLogin(action: any) {
   }
 }
 function* loginFlow() {
-  yield takeEvery(loginAction, takeLogin);
+  yield takeLatest(loginAction, takeLogin);
 }
 
 // ----- region Login External
@@ -121,11 +121,29 @@ function* takeLogout() {
 
     yield call(handlerLogout);
   } catch (error) {
-    console.log("🚀🚀🚀 => function*takeLogout => error", error);
+    console.log("🚀🚀🚀 => error", error);
   }
 }
 function* logoutFlow() {
   yield takeLatest(logout, takeLogout);
+}
+// ----- region getUserInfo
+function* takeUserInfo() {
+  console.log("🚀🚀🚀 => be here");
+  try {
+    const response: Account = yield call(async () => {
+      return await authApi.getUserInfo();
+    });
+    if (response) {
+      yield put(getUserInfo(response));
+      console.log("🚀🚀🚀 => response", JSON.stringify(response));
+    }
+  } catch (error) {
+    console.log("🚀🚀🚀 => error", error);
+  }
+}
+function* followGetUserInfo() {
+  yield takeEvery(getUserAction, takeUserInfo);
 }
 
 // ----- region root userSaga
@@ -135,5 +153,6 @@ export default function* userSaga() {
     loginExternalFlow(),
     logoutFlow(),
     changeLanguageFlow(),
+    followGetUserInfo(),
   ]);
 }

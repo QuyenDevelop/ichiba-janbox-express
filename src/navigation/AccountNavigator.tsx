@@ -2,6 +2,7 @@ import { SCREENS } from "@configs";
 import { NavigationUtils } from "@helpers";
 import {
   AccountSettingOptionsScreen,
+  ChangePasswordScreen,
   FirstTimeUserScreen,
   HomeAccountScreen,
 } from "@screens";
@@ -57,10 +58,10 @@ export const AccountNavigator = () => {
         name={SCREENS.REGION_SCREEN}
         component={RegionScreen}
       /> */}
-      {/* <AccountStack.Screen
+      <AccountStack.Screen
         name={SCREENS.CHANGE_PASSWORD}
         component={ChangePasswordScreen}
-      /> */}
+      />
     </AccountStack.Navigator>
   );
 };

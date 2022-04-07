@@ -9,6 +9,9 @@ export default {
     },
   },
   label: {
+    error: "Error",
+    warning: "Warning",
+    success: "Success",
     signup: "Sign up",
     login: "Login",
     noAccount: "Don’t have an account?",
@@ -112,6 +115,8 @@ export default {
     diverseShippingMethods: "Diverse shipping methods",
     ezbuyIsPartner:
       "Janbox is a partner of top leading carriers in the world such as: EMS, DHL, FedEx… Hence, you can opt for suitable methods to optimize delivery time and cost-saving.",
+    oldPassword: "Old Password",
+    confirmPassword: "Confirm Password",
   },
   placeholder: {
     enterNotes: "Enter notes",
@@ -181,5 +186,8 @@ export default {
       firstContent:
         "For your security, we need to make sure it's really you. Please let us know your email.",
     },
+  },
+  success: {
+    changePassword: "Your password has been changed",
   },
 };

@@ -19,7 +19,7 @@ export const AccountSettingOptionsScreen: FunctionComponent<Props> = () => {
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <Header
-        title={translate("label.account")}
+        title={translate("label.setting")}
         iconLeftName={["ic_arrow_left"]}
         iconLeftOnPress={[() => navigation.goBack()]}
         isCenterTitle

@@ -8,13 +8,15 @@
  * @format
  */
 
-import { navigationRef } from "@helpers";
+import { DropdownMessageHolder } from "@helpers";
 import { RootNavigator } from "@navigation";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import { StatusBar, StyleSheet, View } from "react-native";
+import { Platform, StatusBar, StyleSheet, View } from "react-native";
+import DropdownAlert from "react-native-dropdownalert";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Provider } from "react-redux";
+import { navigationRef } from "./helpers/NavigationUtils";
 import { store } from "./redux/store";
 
 const App = () => {
@@ -26,6 +28,11 @@ const App = () => {
           <RootNavigator />
         </NavigationContainer>
       </View>
+      <DropdownAlert
+        ref={(ref: DropdownAlert) => DropdownMessageHolder.setDropDown(ref)}
+        closeInterval={2000}
+        updateStatusBar={Platform.OS === "ios"}
+      />
     </SafeAreaProvider>
   );
 };

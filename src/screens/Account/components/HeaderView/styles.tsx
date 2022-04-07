@@ -8,20 +8,54 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: ScreenUtils.scale(32),
-    paddingHorizontal: ScreenUtils.scale(20),
+    paddingHorizontal: ScreenUtils.scale(10),
+    paddingVertical: ScreenUtils.scale(8),
   },
   headerLeft: {
     display: "flex",
+    flexDirection: "row",
+  },
+  avatar: {
+    width: ScreenUtils.scale(60),
+    height: ScreenUtils.scale(60),
+    borderRadius: ScreenUtils.scale(30),
+
+    overflow: "hidden",
+  },
+  image: {
+    width: ScreenUtils.scale(60),
+    height: ScreenUtils.scale(60),
+  },
+  headerLeftContent: {
+    flexDirection: "column",
+    alignItems: "flex-start",
   },
   headerRight: {
     display: "flex",
     flexDirection: "row",
   },
+  notAccept: {
+    height: ScreenUtils.scale(24),
+    borderRadius: ScreenUtils.scale(5),
+    marginRight: ScreenUtils.scale(8),
+    paddingHorizontal: ScreenUtils.scale(5),
+    backgroundColor: Themes.colors.yellow279,
+  },
+  notAcceptText: {
+    ...Themes.font.regular,
+    fontSize: 12,
+    lineHeight: 20,
+    color: Themes.colors.warningMain,
+  },
   name: {
-    ...Themes.font.bold,
-    fontSize: 18,
-    color: Themes.colors.textPrimary,
+    ...Themes.font.regular,
+    fontSize: 16,
+    color: Themes.colors.coolGray100,
+  },
+  phoneNumber: {
+    ...Themes.font.regular,
+    fontSize: 14,
+    color: Themes.colors.coolGray60,
   },
   accountLevelWrapper: {
     display: "flex",

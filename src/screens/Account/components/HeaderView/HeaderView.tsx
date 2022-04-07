@@ -1,14 +1,14 @@
-/* eslint-disable react-native/no-inline-styles */
 import { HeaderAccoutLoading } from "@components";
 import { SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
 import { Account } from "@models";
 import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { Icon } from "@shared";
-import { Metrics, Themes } from "@themes";
+import { translate } from "@shared";
+import { Icons, Images, Metrics, Themes } from "@themes";
 import React, { FunctionComponent } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import FastImage from "react-native-fast-image";
 import styles from "./styles";
 interface OwnProps {
   profile: Account;
@@ -22,47 +22,46 @@ export const HeaderView: FunctionComponent<Props> = props => {
   return (
     <>
       {profile ? (
-        <View style={styles.header}>
+        <TouchableOpacity
+          style={styles.header}
+          onPress={() => navigation.navigate(SCREENS.MY_JANBOX_STACK)}
+        >
           <View style={styles.headerLeft}>
-            <View
-              style={{ flex: 1, flexDirection: "row", alignItems: "center" }}
-            >
+            <View style={styles.avatar}>
+              <FastImage
+                resizeMode={FastImage.resizeMode.contain}
+                source={profile?.avatar ? profile.avatar : Images.lockedAccount}
+                style={styles.image}
+              />
+            </View>
+            <View style={styles.headerLeftContent}>
               <Text style={styles.name} numberOfLines={1}>
                 {profile?.name}
+              </Text>
+              <Text style={styles.phoneNumber} numberOfLines={1}>
+                {profile?.phone_number}
               </Text>
             </View>
           </View>
           <View style={styles.headerRight}>
-            <TouchableOpacity style={styles.button}>
-              <Icon
-                name={"ic_envelope"}
-                size={
-                  ScreenUtils.isPad()
-                    ? Metrics.icons.mediumLarge
-                    : Metrics.icons.small
-                }
-                color={Themes.colors.coolGray60}
-              />
-              <View style={styles.badgeWrapper}>
-                <Text style={styles.badge}>0</Text>
+            {!profile.phone_number_verified && (
+              <View style={styles.notAccept}>
+                <Text style={styles.notAcceptText}>
+                  {translate("label.unconfirmed")}
+                </Text>
               </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => navigation.navigate(SCREENS.MY_JANBOX_STACK)}
-            >
-              <Icon
-                name={"ic_setting"}
-                size={
-                  ScreenUtils.isPad()
-                    ? Metrics.icons.mediumLarge
-                    : Metrics.icons.small
-                }
-                color={Themes.colors.coolGray60}
-              />
-            </TouchableOpacity>
+            )}
+            <Icons.MaterialIcons
+              name={"arrow-forward-ios"}
+              size={
+                ScreenUtils.isPad()
+                  ? Metrics.icons.mediumLarge
+                  : Metrics.icons.small
+              }
+              color={Themes.colors.coolGray60}
+            />
           </View>
-        </View>
+        </TouchableOpacity>
       ) : (
         <HeaderAccoutLoading />
       )}

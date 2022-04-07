@@ -36,7 +36,7 @@ export default StyleSheet.create({
   },
   optionTitle: {
     color: Themes.colors.coolGray100,
-    ...Themes.font.bold,
+    ...Themes.font.regular,
     fontSize: 14,
     marginLeft: ScreenUtils.scale(8),
   },

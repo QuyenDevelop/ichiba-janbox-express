@@ -50,7 +50,10 @@ export const LaunchScreen: FunctionComponent<Props> = () => {
       dispatch(getUserAction());
       navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION);
     } else {
-      navigation.navigate(SCREENS.AUTH_STACK);
+      navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION, {
+        screen: SCREENS.HOME_STACK,
+      });
+      // navigation.navigate(SCREENS.AUTH_STACK);
     }
   };
 

@@ -1,4 +1,4 @@
-import { ConfirmDialog, Separator } from "@components";
+import { ConfirmDialog, Header, Separator } from "@components";
 import { SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
 import { useAppDispatch, useAppSelector, useStatusBar } from "@hooks";
@@ -13,6 +13,7 @@ import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { IRootState } from "src/redux/store";
 import { AccountOptions } from "./components/AccountOptions/AccountOptions";
+import { HeaderView } from "./components/HeaderView/HeaderView";
 // import { IRootState } from "src/redux/reducers";
 // import { BalanceView, HeaderView } from "./AccountScreen/components";
 import styles from "./styles";
@@ -43,6 +44,7 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
 
   const handleLogout = () => {
     dispatch(logout());
+    setIsShowConfirm(false);
     navigation.navigate(SCREENS.AUTH_STACK, {
       screen: SCREENS.LOGIN,
     });
@@ -117,7 +119,11 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
         </View>
         <AccountOptions
           title={translate("label.firstTimeUser")}
-          // onPress={() => navigation.navigate(SCREENS.CHANGE_PASSWORD)}
+          onPress={() =>
+            navigation.navigate(SCREENS.ACCOUNT_STACK, {
+              screen: SCREENS.FIRST_TIME_USER,
+            })
+          }
           iconLeftName={"ic_gavel_fill"}
           iconRightName={"arrow-forward-ios"}
         />
@@ -136,25 +142,29 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
         <AccountOptions
           title={translate("label.manageComplaint")}
           // onPress={() => navigation.navigate(SCREENS.CHANGE_PASSWORD)}
-          iconLeftName={"ic_heart_fill"}
+          iconLeftName={"ic_comment_dots"}
           iconRightName={"arrow-forward-ios"}
         />
         <AccountOptions
           title={translate("label.language")}
           rightTitle={language ? language : translate("label.language")}
           // onPress={() => navigation.navigate(SCREENS.CHANGE_PASSWORD)}
-          iconLeftName={"ic_heart_fill"}
+          iconLeftName={"ic_globe"}
           iconRightName={"arrow-forward-ios"}
         />
         <AccountOptions
           title={translate("label.setting")}
           rightTitle={translate("label.passAndSecurity")}
           onPress={() =>
-            navigation.navigate(SCREENS.ACCOUNT_STACK, {
-              screen: SCREENS.ACCOUNT_SETTING_SCREEN,
-            })
+            profile
+              ? navigation.navigate(SCREENS.ACCOUNT_STACK, {
+                  screen: SCREENS.ACCOUNT_SETTING_SCREEN,
+                })
+              : navigation.navigate(SCREENS.AUTH_STACK, {
+                  screen: SCREENS.LOGIN,
+                })
           }
-          iconLeftName={"ic_heart_fill"}
+          iconLeftName={"ic_setting"}
           iconRightName={"arrow-forward-ios"}
         />
       </View>
@@ -167,24 +177,23 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
         showsVerticalScrollIndicator={false}
         style={styles.scrollView}
       >
+        <Header isCenterTitle={true} title={translate("label.account")} />
+        <Separator />
         {profile ? (
           <>
-            {/* <HeaderView
-             dataCustomerLevel={dataCustomerLevel!}
-             profile={profile}
-           /> */}
+            <HeaderView profile={profile} />
           </>
         ) : (
           headerViewNotLogged()
         )}
         {/*{profile ? auctionView() : null}*/}
-        <Separator height={ScreenUtils.scale(8)} />
+        <Separator height={ScreenUtils.scale(5)} />
         {optionTopView()}
-        <Separator height={ScreenUtils.scale(8)} />
+        <Separator height={ScreenUtils.scale(5)} />
         {optionView()}
         {profile && (
           <>
-            <Separator height={ScreenUtils.scale(8)} />
+            <Separator height={ScreenUtils.scale(5)} />
             <View style={styles.optionWrapper}>
               <TouchableOpacity
                 onPress={() => setIsShowConfirm(true)}
@@ -222,12 +231,7 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
         message={translate("button.confirmLogout")}
         isVisible={isShowConfirm}
         onDismiss={() => setIsShowConfirm(false)}
-        onDeclinePress={() => {
-          setIsShowConfirm(false);
-          navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION, {
-            screen: SCREENS.HOME_SCREEN,
-          });
-        }}
+        onDeclinePress={() => setIsShowConfirm(false)}
         onAcceptPress={handleLogout}
         acceptText={translate("button.logout")}
       />

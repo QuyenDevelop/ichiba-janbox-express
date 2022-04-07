@@ -8,6 +8,15 @@ export const Images = {
   icMyJanbox: require("../assets/icons/bottomTab/ic_my_janbox.png"),
   icMyJanboxFill: require("../assets/icons/bottomTab/ic_my_janbox_fill.png"),
   lockedAccount: require("../assets/lockedAccount.png"),
+  interface: require("../assets/interface.png"),
+  easyPayment: require("../assets/easyPayment.png"),
+  automated: require("../assets/automated.png"),
+  deliveryTruck: require("../assets/delivery-truck.png"),
+  imgDefautFirstTime: require("../assets/imgDefautFirstTime.png"),
+  imgBackgroundDeliver: require("../assets/imgBackgroundDeliver.png"),
+  ems: require("../assets/ems.png"),
+  dhl: require("../assets/dhl.png"),
+  fedEx: require("../assets/fedEx.png"),
 };
 
 export const AnimationImages = {

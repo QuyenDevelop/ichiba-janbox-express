@@ -1,5 +1,6 @@
 export default {
   error: {
+    updateAddressFail: "Change of address failed. Please try again!",
     generic: "Đã có lỗi xảy ra",
     validation: {
       sellerName: "Please enter the seller name",
@@ -171,6 +172,13 @@ export default {
     notify: "Notifications",
     shipment: "Shipments",
     myJanbox: "My Janbox",
+    default: "Default",
+    provinces: "Province",
+    district: "District",
+    ward: "Wards",
+    zip: "Zip Code",
+    addressDetail: "Address Detail",
+    addAddress: "Add Address",
   },
   placeholder: {
     enterNotes: "Enter notes",
@@ -226,6 +234,12 @@ export default {
     changeLanguage:
       "Are you sure you want to change the language? Please wait a moment for the application to restart!",
     verify: "Verify",
+    addAddress: "Add a new address",
+    setDefault: "Set default",
+    edit: "Edit",
+    delete: "Delete",
+    deleteAddress: "Do you want to delete this address?",
+    updateAddress: "Update",
   },
   search: {
     prefixPhone: "Search for the beginning of a phone number",
@@ -258,8 +272,26 @@ export default {
       notReceived: "I didn’t receive a code!",
       resentOTP: "Resend OTP?",
     },
+    footer: {
+      address: "Address",
+    },
   },
   success: {
-    changePassword: "Your password has been changed",
+    updateAddressSuccess: "Change the successful address",
+    addFavoriteSellerSuccess: "Added seller to favorite list",
+    addFavoriteProductSuccess: "Added products to your favorite list",
+    receivedSuccess: "Received success",
+    consolidationSuccess: "Consolidation success",
+    updateSuccess: "Update successful",
+    verifyPhone:
+      "Sent verification code, please enter your verification code in the box below",
+    changePassword:
+      "You have successfully changed your password, please login again",
+    updateAccount: "You have successfully updated your personal information",
+    addAddress: "Successfully added address",
+    updateAddress: "Address update successful",
+    cancelOrder: "Order cancel successfully",
+    resend: "Resend link. Please check your mailbox",
+    copy: "Copied",
   },
 };

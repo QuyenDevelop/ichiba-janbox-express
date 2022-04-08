@@ -131,7 +131,15 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
         />
         <AccountOptions
           title={translate("label.addressList")}
-          // onPress={() => navigation.navigate(SCREENS.CHANGE_PASSWORD)}
+          onPress={() =>
+            profile
+              ? navigation.navigate(SCREENS.ACCOUNT_STACK, {
+                  screen: SCREENS.ADDRESS_LIST_SCREEN,
+                })
+              : navigation.navigate(SCREENS.AUTH_STACK, {
+                  screen: SCREENS.LOGIN,
+                })
+          }
           iconLeftName={"ic_location"}
           iconLeftColor={Themes.colors.location}
           iconRightName={"arrow-forward-ios"}

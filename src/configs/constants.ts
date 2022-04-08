@@ -20,6 +20,10 @@ export const CONSTANT = {
     PRIMARY_CURRENCY: "PRIMARY_CURRENCY",
     REMEMBER_USER: "remember_user",
   },
+  RELOAD_CONSTANTS: {
+    RELOAD_PACKAGE_DELIVERY: "reload_package_delivery",
+    RELOAD_ADDRESS: "reload_address",
+  },
   CURRENCY: {
     JA: "JPY",
     VND: "VND",

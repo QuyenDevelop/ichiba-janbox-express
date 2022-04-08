@@ -1,6 +1,7 @@
 export default {
   error: {
     generic: "Đã có lỗi xảy ra",
+    updateAddressFail: "Thay đổi địa chỉ không thành công. Vui lòng thử lại!",
     validation: {
       sellerName: "Vui lòng nhập tên người bán",
       pleaseSelectBank: "Vui lòng chọn một ngân hàng",
@@ -174,6 +175,10 @@ export default {
     notify: "Thông báo",
     shipment: "Gói hàng",
     myJanbox: "Cá nhân",
+    provinces: "Tỉnh/Thành phố",
+    district: "Quận/Huyện",
+    ward: "Phường",
+    addressDetail: "Địa chỉ chi tiết",
   },
   placeholder: {
     enterNotes: "Nhập ghi chú",
@@ -229,6 +234,12 @@ export default {
     changeLanguage:
       "Bạn có chắc chắn muốn thay đổi ngôn ngữ? Bạn xin vui lòng đợi trong giây lát để ứng dụng khởi động lại!",
     verify: "Xác thực",
+    addAddress: "Thêm địa chỉ mới",
+    setDefault: "Đặt mặc định",
+    edit: "Sửa",
+    delete: "Xóa",
+    deleteAddress: "Bán có muốn xóa địa chỉ này?",
+    updateAddress: "Cập nhật",
   },
   search: {
     prefixPhone: "Tìm kiếm đầu số điện thoại",
@@ -264,6 +275,22 @@ export default {
     },
   },
   success: {
-    changePassword: "Mật khẩu của bạn đã được đổi thành công",
+    updateAddressSuccess: "Thay đổi địa chỉ thành công",
+    addFavoriteSellerSuccess: "Đã thêm người bán vào danh sách yêu thích",
+    addFavoriteProductSuccess: "Đã thêm sản phẩm vào danh sách yêu thích",
+    receivedSuccess: "Đã nhận thành công",
+    consolidationSuccess: "Gom thành công",
+    verifyPhone: "Đã gửi mã xác thực, mời bạn nhập mã xác thực vào ô bên dưới",
+    changePassword:
+      "Bạn đã thay đổi mật khẩu thành công, xin vui lòng đăng nhập lại",
+    updateAccount: "Bạn đã cập nhật thông tin cá nhân thành công",
+    cancelOrder: "Hủy đơn hàng thành công",
+    addAddress: "Thêm địa chỉ thành công",
+    updateAddress: "Cập nhật địa chỉ thành công",
+    resend: "Đã gửi lại liên kết. Vui lòng kiểm tra hộp thư",
+    unActiveSuccess: "Bạn đã huỷ Kích hoạt thành công",
+    copy: "Đã sao chép",
+    order: "Thanh toán đơn hàng thành công",
+    updateSuccess: "Cập nhật thành công",
   },
 };

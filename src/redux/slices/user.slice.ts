@@ -16,6 +16,7 @@ export interface IUserState {
   isLogging: boolean;
   messageFailed: string | null;
   isLocked: boolean;
+  selectedAddressId: number | null;
 }
 
 const initialState: IUserState = {
@@ -28,6 +29,7 @@ const initialState: IUserState = {
   isLogging: false,
   messageFailed: null,
   isLocked: false,
+  selectedAddressId: null,
 };
 
 export const userSlice = createSlice({

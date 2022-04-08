@@ -3,6 +3,8 @@ import { NavigationUtils } from "@helpers";
 import {
   AccountInformationScreen,
   AccountSettingOptionsScreen,
+  AddAddressScreen,
+  AddressListScreen,
   ChangePasswordScreen,
   FirstTimeUserScreen,
   HomeAccountScreen,
@@ -19,6 +21,7 @@ export type AccountStackParamList = {
   [SCREENS.EZ_WALLET_SCREEN]: undefined;
   [SCREENS.CHANGE_PASSWORD]: undefined;
   [SCREENS.LANGUAGES]: undefined;
+  [SCREENS.ADD_ADDRESS_SCREEN]: undefined;
   [SCREENS.ACCOUNT_SETTING_SCREEN]: undefined;
 };
 
@@ -55,6 +58,14 @@ export const AccountNavigator = () => {
       <AccountStack.Screen
         name={SCREENS.CHANGE_PASSWORD}
         component={ChangePasswordScreen}
+      />
+      <AccountStack.Screen
+        name={SCREENS.ADDRESS_LIST_SCREEN}
+        component={AddressListScreen}
+      />
+      <AccountStack.Screen
+        name={SCREENS.ADD_ADDRESS_SCREEN}
+        component={AddAddressScreen}
       />
     </AccountStack.Navigator>
   );

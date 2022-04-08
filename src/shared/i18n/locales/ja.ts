@@ -156,6 +156,7 @@ export default {
     notify: "Thông báo",
     shipment: "Gói hàng",
     myJanbox: "Cá nhân",
+    default: "Default",
   },
   placeholder: {
     enterNotes: "ノートを入力してください",
@@ -209,6 +210,7 @@ export default {
     confirmed: "Confirmed",
     changeLanguage:
       "言語を変更してもよろしいですか？アプリケーションが再起動するまでしばらくお待ちください",
+    addAddress: "Add Address",
   },
   text: {
     signUpVerification: {

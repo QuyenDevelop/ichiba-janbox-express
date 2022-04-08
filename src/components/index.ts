@@ -4,6 +4,7 @@ export * from "./CreateShipmentButton";
 export * from "./DateTime/DateTime";
 export * from "./Footer/Footer";
 export * from "./Header/Header";
+export * from "./LocationModal/LocationModal";
 export * from "./PhoneNumber/PhoneNumber";
 export * from "./Picker/Picker";
 export * from "./PickerItems/PickerItems";

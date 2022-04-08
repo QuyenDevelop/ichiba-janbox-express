@@ -4,4 +4,5 @@ export * from "./DetailScreen";
 export * from "./FirstTimesUser/FirtsTimeUserScreen";
 export * from "./HomeScreen";
 export * from "./InfoScreen";
+export * from "./Language/LanguageScreen";
 export * from "./LaunchScreen";

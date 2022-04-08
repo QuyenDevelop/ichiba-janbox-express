@@ -27,5 +27,9 @@ export const CONSTANT = {
     CNY: "CNY",
     TWD: "TWD",
   },
+  TYPE_PICKER: {
+    LANGUAGES: "Languages",
+    CURRENCY: "Currency",
+  },
   REVOKE_TOKEN_ENDPOINT: "revocation",
 };

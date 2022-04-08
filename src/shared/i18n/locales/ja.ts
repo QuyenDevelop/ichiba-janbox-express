@@ -10,6 +10,9 @@ export default {
     },
   },
   label: {
+    error: "Lỗi",
+    warning: "Cảnh báo",
+    success: "Thành công",
     login: "ログイン",
     signup: "サインアップ",
     noAccount: "アカウントなし？",
@@ -25,6 +28,96 @@ export default {
     titleLocked: "您的帐户已被锁定",
     descriptionLocked:
       "您的账户被暂时锁定5分钟，请稍后重试或联系支Janbox支持！",
+    firstTimeUser: "",
+    usageGuide: "Usage Guide/Help",
+    faq: "FAQs/Contact Us",
+    manageComplaint: "Management Complaints",
+    language: "Language",
+    setting: "Setting",
+    confirmation: "Confirm",
+    points: "Points",
+    wallet: "My Wallet",
+    addressList: "Address List",
+    history: "History",
+    passAndSecurity: "Password and Security",
+    changePassword: "Change Password",
+    information: "Information",
+    account: "Account",
+    security: "Security",
+    notificationSetting: "Notifications Setting",
+    unconfirmed: "Unconfirmed",
+    packageConsolidation: "Package consolidation",
+    checkingService: "Checking service",
+    photoService: "Photo service",
+    whenYouBuy: "When You Buy",
+    checkingSevice:
+      "Checking service is the process of inspection, classification and recording of the actual item quantity. This is evidence for you to know the actual receive quantity and as a basis for making complaints and compensation to the buyer.",
+    ezSupportYou:
+      "Janbox supports you to take the photo of the item when it arrives Janbox warehouse in japan. Photo service helps you take a clearer look at how the package is packed and the item quantity before they are shipped.",
+    insuranceIsSevice:
+      "Insurance is a service that Janbox undertakes to compensate for external risks causing loss or damage of insured items, occurring during international transportation (or temporary storage).",
+    protectivePackagingSevice:
+      "Protective packaging service ensures that the items are not damaged during international shipping. We encourage customers to use this service with fragile items to help your shipment be protected and minimize unexpected risks.",
+    favoriteItems: "Favorite items",
+    favoriteShop: "Favorite shop",
+    insurance: "Insurance",
+    protectivePackaging: "Protective packaging",
+    ezbuyOptionalService: "Janbox Optional Service",
+    ezHelpsYou:
+      "Janbox helps you buy and auction all items from Japan with a multilingual interface.",
+    easyPayment: "Easy Payment",
+    youCanMakeCard:
+      "You can make payments quickly and easily with VISA, PayPal, MasterCard ...",
+    automatedProcess: "Automated process",
+    byUsingTechnologi:
+      "By using modern technology, Janbox helps you to buy and track orders automatically, saving maximum purchasing time.",
+    commitment: "Commitment",
+    weAreCommitment:
+      "We are committed to helping you deliver quickly and economically. If your product doesn't arrive safely, you'll get a refund.",
+    howUseEz: "How to use Janbox Service",
+    makeAPurchase: "Make a purchase",
+    placeABid: "Place a bid",
+    step: "Step",
+    searchForItems: "Search for items",
+    readInformationCarefully: "Read information carefully",
+    theFirstCharge: "The first Charge",
+    waitACoupleOfDays: "Wait a couple of days",
+    specialInternational: "Specify international shipping details",
+    theSecondCharge: "The second charge",
+    receiveYourPackageDelivered: "Receive your package delivered",
+    youCanSearch:
+      "You can search for your favorite item by entering its name or URL into our search bar; or you can search for multiple items by using the ‘’ quick order’’ tool.",
+    pleaseReadCarefully:
+      "Please read carefully the information: price, size, weight, reputable… of the item and seller. Click on “Buy Now’’ to place an order or add to cart if you want to continue shopping.",
+    afterConfirm:
+      "After confirming the order information, you need to make a payment including: item’s price, service fee.",
+    ezPurchase:
+      "Janbox’s purchase department will process to buy the item. You need to wait a couple of days for the shipping from the seller to Janbox warehouse in Japan.",
+    afterTheItem:
+      "After the item arrives at the warehouse, you choose an international carrier and optional service if needed.",
+    payForDomestic:
+      "Pay for domestic, international shipping fees and optional service fee (if occurred).",
+    theItemDelivered:
+      "The item will be delivered safely to your registered address.",
+    selectYahoo:
+      "Select Yahoo! Auction section on the menu bar, enter the item’s name or URL.",
+    depositPoint:
+      "Deposit points into Janbox wallet to be able to place a bid.",
+    depositpoints: "Deposit points",
+    readCarefully:
+      "Read carefully the item’s information, current price, and place your bidding price.",
+    afterTheAuction:
+      "After the auction ends, if you are the winner, the system will automatically deduct the points corresponding to the item price and service fee. Then, the item will be shipped to our warehouse.",
+    whatKind: "What kind of service is Janbox?",
+    ezInJapan:
+      "Janbox is a Japanese proxy shopping service provider. Our platform helps users worldwide order and bid products from all e-commerce websites in Japan.",
+    weWillDeliver: "We will deliver directly to your address wherever you are.",
+    whyChooseEz: "Why should you choose Janbox?",
+    multilingualInterface: "Multilingual Interface",
+    diverseShippingMethods: "Diverse shipping methods",
+    ezbuyIsPartner:
+      "Janbox is a partner of top leading carriers in the world such as: EMS, DHL, FedEx… Hence, you can opt for suitable methods to optimize delivery time and cost-saving.",
+    confirmPassword: "Confirm Password",
   },
   placeholder: {
     enterNotes: "ノートを入力してください",
@@ -71,6 +164,11 @@ export default {
     signup: "サインアップ",
     back: "戻る",
     homePage: "ホームページ",
+    logout: "Đăng xuất",
+    confirmLogout: "Are you sure you want to sign out of this account?",
+    cancel: "Cancel",
+    changeLanguage:
+      "言語を変更してもよろしいですか？アプリケーションが再起動するまでしばらくお待ちください",
   },
   text: {
     signUpVerification: {
@@ -91,5 +189,8 @@ export default {
         "あなたのメールアドレスにメールを送信しました。お願いします！メールを確認し、添付のULRをクリックしてパスワードをリセットしてください",
       thirdContent: "* URLの有効期間は24時間です",
     },
+  },
+  success: {
+    changePassword: "Your password has been changed",
   },
 };

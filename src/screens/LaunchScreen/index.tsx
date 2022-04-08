@@ -1,4 +1,4 @@
-import { CONSTANT, SCREENS } from "@configs";
+import { CONSTANT, DATA_CONSTANT, SCREENS } from "@configs";
 import { useAppDispatch } from "@hooks";
 import { RootStackParamList } from "@navigation";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -11,8 +11,9 @@ import {
 import { changeLanguage, getUserAction } from "@redux";
 import { AnimationImages } from "@themes";
 import LottieView from "lottie-react-native";
-import React, { FunctionComponent, useCallback } from "react";
+import React, { FunctionComponent, useCallback, useState } from "react";
 import { Alert, Text, View } from "react-native";
+import * as RNLocalize from "react-native-localize";
 import styles from "./styles";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
@@ -21,28 +22,26 @@ export const LaunchScreen: FunctionComponent<Props> = () => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
+  const [locates] = useState({
+    locates: RNLocalize.getLocales(),
+  });
+
   const authenticate = async (): Promise<void> => {
     const [accessToken, currency, language] = await Promise.all([
       AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.ACCESS_TOKEN),
       AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.CURRENCY),
       AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.LANGUAGE),
     ]);
-
     console.log("🚀🚀🚀 => authenticate => accessToken", accessToken);
 
     if (language != null) {
       dispatch(changeLanguage(language ? language : CONSTANT.LANGUAGES.EN));
+    } else if (locates) {
+      let location = DATA_CONSTANT.LANGUAGE_CODE.find(
+        x => x.code === locates.locates[0].languageCode,
+      );
+      dispatch(changeLanguage(location ? location.tag : CONSTANT.LANGUAGES.EN));
     }
-    // else if (locates && locates.locates.length > 0) {
-    //   let location = DATA_CONSTANT.LANGUAGE_CODE.find(
-    //     x => x.code === locates.locates[0].languageCode,
-    //   );
-    //   dispatch(
-    //     AccountAction.changeLanguageWithLaunch({
-    //       language: location ? location.tag : CONSTANT.LANGUAGES.EN,
-    //     }),
-    //   );
-    // }
     if (currency) {
     }
 

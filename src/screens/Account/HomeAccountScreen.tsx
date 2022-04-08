@@ -1,14 +1,19 @@
 import { ConfirmDialog, Header, Separator } from "@components";
-import { SCREENS } from "@configs";
+import { CONSTANT, SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
 import { useAppDispatch, useAppSelector, useStatusBar } from "@hooks";
-import { Account } from "@models";
+import { Account, PickerItemsResponse } from "@models";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { logout } from "@redux";
 import { Button, Icon, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
-import React, { FunctionComponent, useState } from "react";
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { IRootState } from "src/redux/store";
@@ -21,6 +26,24 @@ import styles from "./styles";
 interface OwnProps {}
 
 type Props = OwnProps;
+
+let dataLanguages: Array<PickerItemsResponse> = [
+  {
+    id: "1",
+    name: "Tiếng Việt",
+    value: "vi-VN",
+  },
+  {
+    id: "2",
+    name: "English",
+    value: "en-US",
+  },
+  {
+    id: "3",
+    name: "日本語",
+    value: "ja-JP",
+  },
+];
 
 export const HomeAccountScreen: FunctionComponent<Props> = () => {
   useStatusBar("dark-content");
@@ -36,6 +59,8 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
     (state: IRootState) => state.user.profile,
   ) as Account;
   const language = useAppSelector(state => state.user.language);
+  const [selectedLanguage, setSelectedLanguage] =
+    useState<PickerItemsResponse>();
   const dispatch = useAppDispatch();
   // const [customerWallet, setCustomerWallet] = useState<Wallet[] | undefined>();
   // const [dataCustomerLevel, setDataCustomerLevel] =
@@ -147,8 +172,21 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
         />
         <AccountOptions
           title={translate("label.language")}
-          rightTitle={language ? language : translate("label.language")}
-          // onPress={() => navigation.navigate(SCREENS.CHANGE_PASSWORD)}
+          rightTitle={
+            selectedLanguage
+              ? selectedLanguage.name
+              : translate("label.language")
+          }
+          onPress={() =>
+            navigation.navigate(SCREENS.ACCOUNT_STACK, {
+              screen: SCREENS.LANGUAGES,
+              params: {
+                language: selectedLanguage
+                  ? selectedLanguage.name
+                  : CONSTANT.LANGUAGES.EN,
+              },
+            })
+          }
           iconLeftName={"ic_globe"}
           iconRightName={"arrow-forward-ios"}
         />
@@ -170,6 +208,25 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
       </View>
     );
   };
+
+  const checkedSelectedLanguage = useCallback(() => {
+    if (language) {
+      let selected = dataLanguages.find(x => x.value === language);
+      if (selected) {
+        setSelectedLanguage(selected);
+      }
+    }
+  }, [language]);
+
+  useEffect(() => {
+    checkedSelectedLanguage();
+  }, [checkedSelectedLanguage]);
+
+  useEffect(() => {
+    return navigation.addListener("focus", () => {
+      checkedSelectedLanguage();
+    });
+  }, [checkedSelectedLanguage, navigation]);
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>

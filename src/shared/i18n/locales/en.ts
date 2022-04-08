@@ -166,6 +166,8 @@ export default {
     logout: "Logout",
     confirmLogout: "Are you sure you want to sign out of this account?",
     cancel: "Cancel",
+    changeLanguage:
+      "Are you sure you want to change the language? Please wait a moment for the application to restart!",
   },
   text: {
     forgotPasswordNotification: {

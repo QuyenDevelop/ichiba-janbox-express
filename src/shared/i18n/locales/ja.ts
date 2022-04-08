@@ -152,6 +152,10 @@ export default {
     ezbuyIsPartner:
       "Janbox is a partner of top leading carriers in the world such as: EMS, DHL, FedEx… Hence, you can opt for suitable methods to optimize delivery time and cost-saving.",
     confirmPassword: "Confirm Password",
+    home: "Trang chủ",
+    notify: "Thông báo",
+    shipment: "Gói hàng",
+    myJanbox: "Cá nhân",
   },
   placeholder: {
     enterNotes: "ノートを入力してください",

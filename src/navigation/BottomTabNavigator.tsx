@@ -5,6 +5,7 @@ import { NavigationUtils, ScreenUtils } from "@helpers";
 import { HomeStack, NotificationStack } from "@navigation";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { HomeAccountScreen } from "@screens";
+import { translate } from "@shared";
 import { Images, Themes } from "@themes";
 import React from "react";
 import { Image, Text, View } from "react-native";
@@ -50,6 +51,7 @@ const getTabBarIconImage = (
       style={[
         {
           marginTop: ScreenUtils.scale(6),
+          marginBottom: ScreenUtils.scale(10),
           textAlign: "center",
           ...Themes.font.medium,
         },
@@ -123,7 +125,7 @@ export function BottomTabNavigator() {
             getTabBarIconImage(
               Images.icHome,
               Images.icHomeFill,
-              "Home",
+              translate("label.home"),
               focused,
             ),
         }}
@@ -136,7 +138,7 @@ export function BottomTabNavigator() {
             getTabBarIconImage(
               Images.icNotification,
               Images.icNotificationFill,
-              "Home",
+              translate("label.notify"),
               focused,
             ),
         }}
@@ -163,7 +165,7 @@ export function BottomTabNavigator() {
             getTabBarIconImage(
               Images.icPackage,
               Images.icPackageFill,
-              "Home",
+              translate("label.shipment"),
               focused,
             ),
         }}
@@ -176,7 +178,7 @@ export function BottomTabNavigator() {
             getTabBarIconImage(
               Images.icMyJanbox,
               Images.icMyJanboxFill,
-              "Home",
+              translate("label.myJanbox"),
               focused,
             ),
         }}

@@ -167,6 +167,10 @@ export default {
     confirm: "Confirm",
     cancel: "Cancel",
     countries: "Country/Region",
+    home: "Home",
+    notify: "Notifications",
+    shipment: "Shipments",
+    myJanbox: "My Janbox",
   },
   placeholder: {
     enterNotes: "Enter notes",

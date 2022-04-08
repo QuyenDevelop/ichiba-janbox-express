@@ -170,6 +170,10 @@ export default {
     confirmPassword: "Nhập lại mật khẩu",
     fullName: "Tên đầy đủ",
     verifyYourPhone: "Số điện thoại",
+    home: "Trang chủ",
+    notify: "Thông báo",
+    shipment: "Gói hàng",
+    myJanbox: "Cá nhân",
   },
   placeholder: {
     enterNotes: "Nhập ghi chú",

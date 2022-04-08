@@ -7,6 +7,7 @@ import styles from "./styles";
 interface Props {
   iconLeftName?: string;
   iconLeftColor?: string;
+  icon?: any;
   title: string;
   subTitle?: string;
   rightTitle?: string;
@@ -19,6 +20,7 @@ export const AccountOptions: FunctionComponent<Props> = props => {
   const {
     iconLeftName,
     iconLeftColor,
+    icon,
     title,
     subTitle,
     rightTitle,
@@ -60,15 +62,19 @@ export const AccountOptions: FunctionComponent<Props> = props => {
         style={styles.buttonOption}
       >
         <View style={styles.swapperOptionItem}>
-          {iconLeftName && (
-            <View style={styles.icons}>
-              <Icon
-                name={iconLeftName}
-                size={Metrics.icons.smallSmall}
-                color={iconLeftColor ? iconLeftColor : Themes.colors.coolGray60}
-              />
-            </View>
-          )}
+          {icon
+            ? icon()
+            : iconLeftName && (
+                <View style={styles.icons}>
+                  <Icon
+                    name={iconLeftName}
+                    size={Metrics.icons.smallSmall}
+                    color={
+                      iconLeftColor ? iconLeftColor : Themes.colors.coolGray60
+                    }
+                  />
+                </View>
+              )}
           {renderTitle()}
         </View>
         {renderRight()}

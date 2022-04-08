@@ -68,6 +68,8 @@ export const Themes = {
     yellow279: "#FFE279",
     black: "#000000",
     bg: "#00194F",
+    location: "#5A62E7",
+    wallet: "#2F6BFF",
   },
   font: {
     bold: {

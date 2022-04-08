@@ -7,7 +7,7 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { logout } from "@redux";
 import { Button, Icon, translate } from "@shared";
-import { Metrics, Themes } from "@themes";
+import { Icons, Metrics, Themes } from "@themes";
 import React, {
   FunctionComponent,
   useCallback,
@@ -110,26 +110,44 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
           title={translate("label.points")}
           rightTitle={translate("label.points")}
           // onPress={() => navigation.navigate(SCREENS.CHANGE_PASSWORD)}
-          iconLeftName={"ic_gavel_fill"}
+          iconLeftName={"ic_star"}
+          iconLeftColor={Themes.colors.red0033}
           iconRightName={"arrow-forward-ios"}
         />
         <AccountOptions
           title={translate("label.wallet")}
           rightTitle={translate("label.wallet")}
           // onPress={() => navigation.navigate(SCREENS.CHANGE_PASSWORD)}
-          iconLeftName={"ic_gavel_fill"}
+          icon={() => {
+            return (
+              <Icons.Entypo
+                name={"wallet"}
+                size={Metrics.icons.smallSmall}
+                color={Themes.colors.wallet}
+              />
+            );
+          }}
           iconRightName={"arrow-forward-ios"}
         />
         <AccountOptions
           title={translate("label.addressList")}
           // onPress={() => navigation.navigate(SCREENS.CHANGE_PASSWORD)}
-          iconLeftName={"ic_gavel_fill"}
+          iconLeftName={"ic_location"}
+          iconLeftColor={Themes.colors.location}
           iconRightName={"arrow-forward-ios"}
         />
         <AccountOptions
           title={translate("label.history")}
           // onPress={() => navigation.navigate(SCREENS.CHANGE_PASSWORD)}
-          iconLeftName={"ic_gavel_fill"}
+          icon={() => {
+            return (
+              <Icons.FontAwesome5
+                name={"hands-helping"}
+                size={Metrics.icons.smallSmall}
+                color={Themes.colors.coolGray60}
+              />
+            );
+          }}
           iconRightName={"arrow-forward-ios"}
         />
       </View>
@@ -149,13 +167,21 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
               screen: SCREENS.FIRST_TIME_USER,
             })
           }
-          iconLeftName={"ic_gavel_fill"}
+          iconLeftName={"ic_first_time_user"}
           iconRightName={"arrow-forward-ios"}
         />
         <AccountOptions
           title={translate("label.usageGuide")}
           // onPress={() => navigation.navigate(SCREENS.CHANGE_PASSWORD)}
-          iconLeftName={"ic_heart_fill"}
+          icon={() => {
+            return (
+              <Icons.FontAwesome5
+                name={"hands-helping"}
+                size={Metrics.icons.smallSmall}
+                color={Themes.colors.coolGray60}
+              />
+            );
+          }}
           iconRightName={"arrow-forward-ios"}
         />
         <AccountOptions

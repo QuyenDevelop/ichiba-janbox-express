@@ -2,6 +2,21 @@ export default {
   error: {
     generic: "Đã có lỗi xảy ra",
     validation: {
+      sellerName: "Vui lòng nhập tên người bán",
+      pleaseSelectBank: "Vui lòng chọn một ngân hàng",
+      taxCode: "Vui lòng nhập mã số thuế",
+      amountMin: "Bạn phải rút tối thiểu 10,000 ₫",
+      notEnoughMoney: "Tài khoản của bạn không đủ tiền",
+      pleaseEnterInfo: "Vui lòng nhập thông tin",
+      priceProductNonZero: "Giá sản phẩm phải lớn hơn 0",
+      depositValue5: "Số tiền bạn nạp không được lớn hơn $10,000",
+      depositValue4: "Số tiền bạn nạp không được lớn hơn ¥1,000,000",
+      depositValue3: "Số tiền bạn nạp không được lớn hơn 1,000,000,000₫",
+      depositValue2: "Vui lòng nạp tối thiểu 10,000₫",
+      productName: "Vui lòng nhập tên sản phẩm bạn muốn mua",
+      productPrice: "Vui lòng nhập giá cho sản phẩm",
+      productImageLink:
+        "Vui lòng nhập đường dẫn hình ảnh sản phẩm bạn muốn mua",
       email: "Email không hợp lệ",
       address: "Vui lòng thêm địa chỉ",
       password:
@@ -153,6 +168,8 @@ export default {
     placeABid: "Đặt một đấu giá",
     oldPassword: "Mật khẩu cũ",
     confirmPassword: "Nhập lại mật khẩu",
+    fullName: "Tên đầy đủ",
+    verifyYourPhone: "Số điện thoại",
   },
   placeholder: {
     enterNotes: "Nhập ghi chú",
@@ -200,8 +217,10 @@ export default {
     createAccount: "Tạo tài khoản ngay",
     homePage: "Trang chủ",
     logout: "Đăng xuất",
-    confirmLogout: "Are you sure you want to sign out of this account?",
-    cancel: "Cancel",
+    confirmLogout: "Bạn có chắc chắn muốn đăng xuất tài khoản này?",
+    cancel: "Hủy",
+    unconfirmed: "Xác nhận ngay",
+    confirmed: "Đã xác nhận",
     changeLanguage:
       "Bạn có chắc chắn muốn thay đổi ngôn ngữ? Bạn xin vui lòng đợi trong giây lát để ứng dụng khởi động lại!",
   },
@@ -224,6 +243,8 @@ export default {
       firstContent:
         "Để bảo mật cho bạn, chúng tôi cần đảm bảo đó thực sự là bạn. Vui lòng cho chúng tôi biết email của bạn.",
     },
+    confirmAccount:
+      "Xác thực tài khoản để bắt đầu sử dụng dịch vụ của chúng tôi",
   },
   success: {
     changePassword: "Mật khẩu của bạn đã được đổi thành công",

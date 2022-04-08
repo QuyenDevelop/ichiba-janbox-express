@@ -14,6 +14,7 @@ export const Themes = {
   colors: {
     ...DefaultTheme.colors,
     blue008: "#0080E4",
+    blueDf8: "#005DF8",
     green22: "#229F26",
     red0033: "#FF0033",
     red0722: "#FF0722",

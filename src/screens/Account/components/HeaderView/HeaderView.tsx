@@ -24,7 +24,11 @@ export const HeaderView: FunctionComponent<Props> = props => {
       {profile ? (
         <TouchableOpacity
           style={styles.header}
-          onPress={() => navigation.navigate(SCREENS.MY_JANBOX_STACK)}
+          onPress={() =>
+            navigation.navigate(SCREENS.ACCOUNT_STACK, {
+              screen: SCREENS.ACCOUNT_INFORMATION,
+            })
+          }
         >
           <View style={styles.headerLeft}>
             <View style={styles.avatar}>

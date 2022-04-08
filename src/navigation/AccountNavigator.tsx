@@ -1,6 +1,7 @@
 import { SCREENS } from "@configs";
 import { NavigationUtils } from "@helpers";
 import {
+  AccountInformationScreen,
   AccountSettingOptionsScreen,
   ChangePasswordScreen,
   FirstTimeUserScreen,
@@ -16,7 +17,6 @@ export type AccountStackParamList = {
   [SCREENS.FIRST_TIME_USER]: undefined;
   // [SCREENS.PAYMENT_METHOD_SCREEN]: undefined;
   [SCREENS.EZ_WALLET_SCREEN]: undefined;
-  // [SCREENS.REGION_SCREEN]: undefined;
   [SCREENS.CHANGE_PASSWORD]: undefined;
   [SCREENS.LANGUAGES]: undefined;
   [SCREENS.ACCOUNT_SETTING_SCREEN]: undefined;
@@ -35,6 +35,10 @@ export const AccountNavigator = () => {
       <AccountStack.Screen
         name={SCREENS.ACCOUNT_SCREEN}
         component={HomeAccountScreen}
+      />
+      <AccountStack.Screen
+        name={SCREENS.ACCOUNT_INFORMATION}
+        component={AccountInformationScreen}
       />
       <AccountStack.Screen
         name={SCREENS.ACCOUNT_SETTING_SCREEN}

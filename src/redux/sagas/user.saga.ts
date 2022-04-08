@@ -129,14 +129,12 @@ function* logoutFlow() {
 }
 // ----- region getUserInfo
 function* takeUserInfo() {
-  console.log("🚀🚀🚀 => be here");
   try {
     const response: Account = yield call(async () => {
       return await authApi.getUserInfo();
     });
     if (response) {
       yield put(getUserInfo(response));
-      console.log("🚀🚀🚀 => response", JSON.stringify(response));
     }
   } catch (error) {
     console.log("🚀🚀🚀 => error", error);

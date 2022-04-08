@@ -73,7 +73,6 @@ class AuthApi extends BaseApi {
 
   revokeToken(token?: string | null) {
     let url = `${IDENTITY_HOST}/connect/revocation`;
-    console.log(url);
     return this.postUrlEncoded(
       url,
       {

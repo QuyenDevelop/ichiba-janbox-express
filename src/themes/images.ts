@@ -17,6 +17,7 @@ export const Images = {
   ems: require("../assets/ems.png"),
   dhl: require("../assets/dhl.png"),
   fedEx: require("../assets/fedEx.png"),
+  shield: require("../assets/shield.png"),
 };
 
 export const AnimationImages = {

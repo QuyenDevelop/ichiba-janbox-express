@@ -230,11 +230,11 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
+      <Header isCenterTitle={true} title={translate("label.account")} />
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={styles.scrollView}
       >
-        <Header isCenterTitle={true} title={translate("label.account")} />
         <Separator />
         {profile ? (
           <>

@@ -78,6 +78,7 @@ export const PhoneNumber: FunctionComponent<Props> = props => {
     let phoneWrap = `${prefixPhone}${phone}`;
     if (Utils.isPhone(phoneWrap)) {
       AccountApi.verifyOtp(phoneWrap)?.then((response: any) => {
+        console.log("🚀🚀🚀 => AccountApi.verifyOtp => response", response);
         if (response.status === 500 || response.status === 400) {
           setIsSendVerify(false);
           Alert.error("error.generic");

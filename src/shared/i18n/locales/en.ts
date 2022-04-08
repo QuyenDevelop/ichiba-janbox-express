@@ -202,6 +202,7 @@ export default {
     enterTitle: "Enter title",
     enterID: "Enter ID",
     enterContent: "Enter content",
+    verify: "Verify",
   },
   button: {
     remember: "Remember my login",
@@ -220,6 +221,11 @@ export default {
     confirmed: "Confirmed",
     changeLanguage:
       "Are you sure you want to change the language? Please wait a moment for the application to restart!",
+    verify: "Verify",
+  },
+  search: {
+    prefixPhone: "Search for the beginning of a phone number",
+    search: "Search",
   },
   text: {
     forgotPasswordNotification: {
@@ -242,6 +248,12 @@ export default {
     },
     confirmAccount:
       "Xác thực tài khoản để bắt đầu sử dụng dịch vụ của chúng tôi",
+    verifyPhone: {
+      notification: "We sent you a code to verify your phone number",
+      sentTo: "Sent to",
+      notReceived: "I didn’t receive a code!",
+      resentOTP: "Resend OTP?",
+    },
   },
   success: {
     changePassword: "Your password has been changed",

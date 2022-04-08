@@ -1,10 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
+import { AccountApi } from "@api";
 import { Header, PhoneNumber, Separator } from "@components";
-import { ScreenUtils, Utils } from "@helpers";
+import { Alert, ScreenUtils, Utils } from "@helpers";
 import { useAppDispatch, useAppSelector, useStatusBar } from "@hooks";
-import { Account, LocationResponse } from "@models";
+import {
+  Account,
+  LocationResponse,
+  UpdateCustomerRequest,
+  UpdateProfileRequest,
+} from "@models";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { getUserAction } from "@redux";
 import { Button, TextInput, translate } from "@shared";
 import { Images, Themes } from "@themes";
 import React, {
@@ -144,57 +151,47 @@ export const AccountInformationScreen: FunctionComponent<Props> = () => {
   }, [getCountryApi]);
 
   const submit = () => {
-    // setIsButtonClickSubmit(true);
-    // const fullPhoneNumber = `${phonePrefix.trim()}${phone?.trim()}`;
-    // if (Utils.isEmpty(fullName!) && Utils.isPhone(fullPhoneNumber)) {
-    //   setIsLoading(true);
-    //   const updateProfile: UpdateProfileRequest = {
-    //     fullName: fullName ? fullName : "",
-    //     birthDate: birthDate ? birthDate : "",
-    //     gender: dataSelectedGender ? dataSelectedGender.value : "",
-    //     phoneNumber: fullPhoneNumber,
-    //     countryCode: idCountrySelect ? idCountrySelect : "",
-    //   };
-    //   const updateCustomer: UpdateCustomerRequest = {
-    //     fullName: fullName ? fullName : "",
-    //     birthDate: birthDate ? birthDate : "",
-    //     gender: dataSelectedGender ? Number(dataSelectedGender.value) : 1,
-    //     phone: fullPhoneNumber,
-    //     countryCode: idCountrySelect ? idCountrySelect : "",
-    //   };
-    //   accountApi
-    //     .updateProfile(updateProfile)
-    //     ?.then((response: { detail: string }) => {
-    //       if (response) {
-    //         Alert.success("success.updateAccount");
-    //         setIsLoading(false);
-    //         dispatch(
-    //           AccountAction.userInfo(
-    //             {},
-    //             {
-    //               onFailure: () => {},
-    //               onSuccess: () => {
-    //                 customerApi
-    //                   .updateCustomer(updateCustomer)
-    //                   ?.catch((err: any) => console.log(err))
-    //                   .finally(() => setIsLoading(false));
-    //                 setIsLoading(false);
-    //                 setIsButtonClickSubmit(false);
-    //                 navigation.goBack();
-    //               },
-    //             },
-    //           ),
-    //         );
-    //       } else {
-    //         Alert.error(response.detail, true);
-    //       }
-    //     })
-    //     .catch((err: any) => {
-    //       Alert.error(err.detail, true);
-    //       console.log(err);
-    //       setIsLoading(false);
-    //     });
-    // }
+    setIsButtonClickSubmit(true);
+    const fullPhoneNumber = `${phonePrefix.trim()}${phone?.trim()}`;
+    if (Utils.isEmpty(fullName!) && Utils.isPhone(fullPhoneNumber)) {
+      setIsLoading(true);
+      const updateProfile: UpdateProfileRequest = {
+        fullName: fullName ? fullName : "",
+        birthDate: "",
+        gender: "",
+        phoneNumber: fullPhoneNumber,
+        countryCode: idCountrySelect ? idCountrySelect : "",
+      };
+      const updateCustomer: UpdateCustomerRequest = {
+        fullName: fullName ? fullName : "",
+        birthDate: "",
+        gender: 2,
+        phone: fullPhoneNumber,
+        countryCode: idCountrySelect ? idCountrySelect : "",
+      };
+      AccountApi.updateProfile(updateProfile)
+        ?.then((response: any) => {
+          if (response) {
+            Alert.success("success.updateAccount");
+            setIsLoading(false);
+            dispatch(getUserAction());
+            // customerApi
+            //   .updateCustomer(updateCustomer)
+            //   ?.catch((err: any) => console.log(err))
+            //   .finally(() => setIsLoading(false));
+            setIsLoading(false);
+            setIsButtonClickSubmit(false);
+            navigation.goBack();
+          } else {
+            Alert.error(response.detail, true);
+          }
+        })
+        .catch((err: any) => {
+          Alert.error(err.detail, true);
+          console.log(err);
+          setIsLoading(false);
+        });
+    }
   };
 
   const updateCountry = (newCountry: string) => {
@@ -301,6 +298,7 @@ export const AccountInformationScreen: FunctionComponent<Props> = () => {
               setIsSendVerify={(value: boolean) => setIsSendVerify(value)}
               isSearchBottom={true}
               editable={!isLoading}
+              // isButtonVerify={profile?.phone_number_verified ? false : true}
               label={translate("label.verifyYourPhone")}
               placeholder={translate("placeholder.verifyYourPhone")}
               returnKeyType="next"

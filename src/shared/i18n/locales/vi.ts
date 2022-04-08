@@ -205,6 +205,7 @@ export default {
     enterTitle: "Nhập tiêu đề",
     enterID: "Nhập ID",
     enterContent: "Nhập nội dung",
+    verify: "Xác thực",
   },
   button: {
     remember: "Nhớ tài khoản",
@@ -223,6 +224,11 @@ export default {
     confirmed: "Đã xác nhận",
     changeLanguage:
       "Bạn có chắc chắn muốn thay đổi ngôn ngữ? Bạn xin vui lòng đợi trong giây lát để ứng dụng khởi động lại!",
+    verify: "Xác thực",
+  },
+  search: {
+    prefixPhone: "Tìm kiếm đầu số điện thoại",
+    search: "Tìm kiếm",
   },
   text: {
     forgotPasswordNotification: {
@@ -245,6 +251,13 @@ export default {
     },
     confirmAccount:
       "Xác thực tài khoản để bắt đầu sử dụng dịch vụ của chúng tôi",
+    verifyPhone: {
+      notification:
+        "Chúng tôi đã gửi cho bạn một mã để xác minh số điện thoại của bạn",
+      sentTo: "Gửi đến",
+      notReceived: "Tôi không nhận được mã!",
+      resentOTP: "Gửi lại OTP?",
+    },
   },
   success: {
     changePassword: "Mật khẩu của bạn đã được đổi thành công",

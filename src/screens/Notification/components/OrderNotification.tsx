@@ -82,10 +82,10 @@ export const OrderNotification: FunctionComponent<Props> = () => {
         resizeMode={FastImage.resizeMode.cover}
       />
       <Text style={styles.noResultTitle}>
-        {translate("label.noNotification")}
+        {translate("labelNoNotification")}
       </Text>
       <Text style={styles.noResultContent}>
-        {translate("label.noNotificationDes")}
+        {translate("labelNoNotificationDes")}
       </Text>
     </View>
   );
@@ -95,13 +95,13 @@ export const OrderNotification: FunctionComponent<Props> = () => {
       {!isLoading && count ? (
         <View style={styles.notificationHeader}>
           <View style={styles.notificationCount}>
-            <Text style={styles.countTitle}>{translate("label.result")}</Text>
+            <Text style={styles.countTitle}>{translate("labelResult")}</Text>
             <Text style={styles.countValue}>
-              {translate("label.notificationCount", { count: count })}
+              {translate("labelNotificationCount", { count: count })}
             </Text>
           </View>
           <TouchableOpacity disabled={isLoading}>
-            <Text style={styles.markRead}>{translate("button.markRead")}</Text>
+            <Text style={styles.markRead}>{translate("buttonMarkRead")}</Text>
           </TouchableOpacity>
         </View>
       ) : null}

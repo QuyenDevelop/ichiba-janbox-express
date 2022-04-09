@@ -31,7 +31,6 @@ export const RootNavigator = () => {
       initialRouteName={SCREENS.LAUNCH_SCREEN}
       screenOptions={{
         headerShown: false,
-        gestureEnabled: true,
       }}
     >
       <RootStack.Screen name={SCREENS.LAUNCH_SCREEN} component={LaunchScreen} />

@@ -34,11 +34,12 @@ const getTabBarIconImage = (
         ? {
             justifyContent: "center",
             alignItems: "center",
-            width: 100,
+            width: 120,
             paddingBottom: ScreenUtils.scale(7),
             marginTop: ScreenUtils.scale(10),
           }
         : {
+            width: 100,
             justifyContent: "center",
             alignItems: "center",
             marginTop: ScreenUtils.scale(10),

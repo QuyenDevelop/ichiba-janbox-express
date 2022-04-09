@@ -27,19 +27,21 @@ export const LaunchScreen: FunctionComponent<Props> = () => {
   });
 
   const authenticate = async (): Promise<void> => {
-    const [accessToken, currency, language] = await Promise.all([
+    const [accessToken, currency, anonymousId, language] = await Promise.all([
       AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.ACCESS_TOKEN),
       AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.CURRENCY),
+      AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.ANONYMOUS_ID),
       AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.LANGUAGE),
     ]);
     console.log("🚀🚀🚀 => authenticate => accessToken", accessToken);
 
     if (language != null) {
       dispatch(changeLanguage(language ? language : CONSTANT.LANGUAGES.EN));
-    } else if (locates) {
+    } else if (locates.locates.length > 0) {
       let location = DATA_CONSTANT.LANGUAGE_CODE.find(
         x => x.code === locates.locates[0].languageCode,
       );
+
       dispatch(changeLanguage(location ? location.tag : CONSTANT.LANGUAGES.EN));
     }
     if (currency) {

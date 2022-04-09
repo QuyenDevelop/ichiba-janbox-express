@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import { Icon } from "@shared";
 import { Icons, Metrics, Themes } from "@themes";
 import React, { FunctionComponent } from "react";
@@ -30,7 +31,10 @@ export const AccountOptions: FunctionComponent<Props> = props => {
   } = props;
   const renderTitle = () => {
     return subTitle ? (
-      <View />
+      <View style={{ flexDirection: "column" }}>
+        <Text style={styles.optionTitle}>{title}</Text>
+        <Text style={styles.optionSubTitle}>{subTitle}</Text>
+      </View>
     ) : (
       <Text style={styles.optionTitle}>{title}</Text>
     );
@@ -38,7 +42,7 @@ export const AccountOptions: FunctionComponent<Props> = props => {
   const renderRight = () => {
     return rightTitle ? (
       <View style={styles.swapperOptionRightItem}>
-        <Text style={styles.rightTitle}>{rightTitle}</Text>
+        <Text>{rightTitle}</Text>
         <View style={styles.iconRight}>
           <Icons.MaterialIcons
             name={iconRightName}
@@ -48,11 +52,13 @@ export const AccountOptions: FunctionComponent<Props> = props => {
         </View>
       </View>
     ) : (
-      <Icons.MaterialIcons
-        name={iconRightName}
-        size={Metrics.icons.smallSmall}
-        color={iconRightColor ? iconRightColor : Themes.colors.coolGray60}
-      />
+      <View style={styles.iconRight}>
+        <Icons.MaterialIcons
+          name={iconRightName}
+          size={Metrics.icons.smallSmall}
+          color={iconRightColor ? iconRightColor : Themes.colors.coolGray60}
+        />
+      </View>
     );
   };
   return (
@@ -62,19 +68,21 @@ export const AccountOptions: FunctionComponent<Props> = props => {
         style={styles.buttonOption}
       >
         <View style={styles.swapperOptionItem}>
-          {icon
-            ? icon()
-            : iconLeftName && (
-                <View style={styles.icons}>
-                  <Icon
-                    name={iconLeftName}
-                    size={Metrics.icons.smallSmall}
-                    color={
-                      iconLeftColor ? iconLeftColor : Themes.colors.coolGray60
-                    }
-                  />
-                </View>
-              )}
+          {icon ? (
+            <View style={styles.icons}>{icon()}</View>
+          ) : (
+            iconLeftName && (
+              <View style={styles.icons}>
+                <Icon
+                  name={iconLeftName}
+                  size={Metrics.icons.smallSmall}
+                  color={
+                    iconLeftColor ? iconLeftColor : Themes.colors.coolGray60
+                  }
+                />
+              </View>
+            )
+          )}
           {renderTitle()}
         </View>
         {renderRight()}

@@ -9,7 +9,7 @@ import deviceInfoModule from "react-native-device-info";
 const { width, height } = Dimensions.get("screen");
 const lagerValue = width > height ? width : height;
 const smallValue = width > height ? height : width;
-const { width: WIDTH_SCREEN, height: HEIGHT_SCREEN } = Dimensions.get("screen");
+// const { width: WIDTH_SCREEN, height: HEIGHT_SCREEN } = Dimensions.get("screen");
 export const isIphoneX = () => {
   const dimension = Dimensions.get("window");
   return (
@@ -28,18 +28,6 @@ export const isIphoneX = () => {
       dimension.width === 926)
   );
 };
-
-const standardLength = deviceInfoModule.isTablet() ? smallValue : lagerValue;
-const offset =
-  width > height
-    ? 0
-    : Platform.OS === "ios"
-    ? 78
-    : StatusBar.currentHeight || 0; // iPhone X style SafeAreaView size in portrait
-const deviceHeight =
-  isIphoneX() || Platform.OS === "android"
-    ? standardLength - offset
-    : standardLength;
 
 // export const ScreenUtils = {
 //   WIDTH: width,
@@ -81,7 +69,6 @@ export const ScreenUtils = {
     const XSMAX_HEIGHT = 896;
 
     let isIPhoneX = false;
-    const { height, width } = Dimensions.get("window");
     const W_HEIGHT = height > width ? height : width;
     const W_WIDTH = height > width ? width : height;
 
@@ -97,19 +84,19 @@ export const ScreenUtils = {
       default: 0,
     });
   },
-  WIDTH_SCREEN: WIDTH_SCREEN,
-  HEIGHT_SCREEN: HEIGHT_SCREEN,
+  WIDTH_SCREEN: width,
+  HEIGHT_SCREEN: width,
 
   scale(value: number) {
-    const { height, width } = Dimensions.get("window");
-    const standardLength = width > height ? width : height;
+    const standardLength = deviceInfoModule.isTablet()
+      ? smallValue
+      : lagerValue;
     const offset =
       width > height
         ? 0
         : Platform.OS === "ios"
         ? 78
         : StatusBar.currentHeight || 0; // iPhone X style SafeAreaView size in portrait
-
     const deviceHeight =
       isIphoneX() || Platform.OS === "android"
         ? standardLength - offset

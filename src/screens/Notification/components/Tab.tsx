@@ -19,15 +19,15 @@ export const Tab: FunctionComponent<Props> = props => {
   const tabs: TabModel[] = [
     {
       type: "general",
-      title: translate("label.general"),
+      title: translate("labelGeneral"),
     },
     {
       type: "order",
-      title: translate("label.order"),
+      title: translate("labelOrder"),
     },
     {
       type: "system",
-      title: translate("label.system"),
+      title: translate("labelSystem"),
     },
   ];
 

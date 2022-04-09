@@ -39,14 +39,14 @@ export const NotificationScreen: FunctionComponent = () => {
     "general" as "general" | "order" | "system",
   );
   const goToLogin = () => {
-    navigation.navigate(SCREENS.ACCOUNT_STACK, {
+    navigation.navigate(SCREENS.AUTH_STACK, {
       screen: SCREENS.LOGIN,
     });
   };
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <Header
-        title={translate("label.notification")}
+        title={translate("labelNotification")}
         iconLeftName={isShowBackOnHeader ? ["ic_arrow_left"] : []}
         iconLeftOnPress={[() => navigation.goBack()]}
         iconRightName={["ic_setting"]}
@@ -66,7 +66,7 @@ export const NotificationScreen: FunctionComponent = () => {
         </>
       ) : (
         <View style={styles.noProfile}>
-          <Text style={styles.noLogin}>{translate("text.notLogin")}</Text>
+          <Text style={styles.noLogin}>{translate("textNotLogin")}</Text>
           <Button title={translate("button.login")} onPress={goToLogin} />
         </View>
       )}

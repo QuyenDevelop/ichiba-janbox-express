@@ -54,7 +54,7 @@ export default StyleSheet.create({
     paddingVertical: ScreenUtils.scale(20),
   },
   optionWrapper: {
-    paddingVertical: ScreenUtils.scale(10),
+    paddingVertical: ScreenUtils.scale(16),
     borderBottomWidth: 1,
     borderBottomColor: Themes.colors.colGray10,
   },

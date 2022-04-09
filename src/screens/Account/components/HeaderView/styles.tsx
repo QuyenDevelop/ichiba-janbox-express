@@ -8,7 +8,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: ScreenUtils.scale(10),
+    paddingLeft: ScreenUtils.scale(8),
     paddingVertical: ScreenUtils.scale(8),
   },
   headerLeft: {
@@ -16,15 +16,14 @@ export default StyleSheet.create({
     flexDirection: "row",
   },
   avatar: {
-    width: ScreenUtils.scale(60),
-    height: ScreenUtils.scale(60),
-    borderRadius: ScreenUtils.scale(30),
-
+    width: ScreenUtils.scale(50),
+    height: ScreenUtils.scale(50),
     overflow: "hidden",
   },
   image: {
-    width: ScreenUtils.scale(60),
-    height: ScreenUtils.scale(60),
+    borderRadius: 25,
+    width: ScreenUtils.scale(50),
+    height: ScreenUtils.scale(50),
   },
   headerLeftContent: {
     flexDirection: "column",
@@ -33,13 +32,20 @@ export default StyleSheet.create({
   headerRight: {
     display: "flex",
     flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   notAccept: {
-    height: ScreenUtils.scale(24),
     borderRadius: ScreenUtils.scale(5),
-    marginRight: ScreenUtils.scale(8),
-    paddingHorizontal: ScreenUtils.scale(5),
+    height: ScreenUtils.scale(20),
+    paddingHorizontal: ScreenUtils.scale(2),
     backgroundColor: Themes.colors.yellow279,
+  },
+  icon: {
+    width: ScreenUtils.scale(40),
+    height: ScreenUtils.scale(40),
+    justifyContent: "center",
+    alignItems: "center",
   },
   notAcceptText: {
     ...Themes.font.regular,
@@ -48,7 +54,7 @@ export default StyleSheet.create({
     color: Themes.colors.warningMain,
   },
   name: {
-    ...Themes.font.regular,
+    ...Themes.font.medium,
     fontSize: 16,
     color: Themes.colors.coolGray100,
   },

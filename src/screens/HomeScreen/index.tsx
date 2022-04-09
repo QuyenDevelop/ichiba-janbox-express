@@ -1,22 +1,20 @@
 import { imageApi } from "@api";
 import { SCREENS } from "@configs";
-import { ScreenUtils } from "@helpers";
 import { useAppSelector, useBoolean, useDebounce } from "@hooks";
 import { IPhoto } from "@models";
 import { HomeStackParamsList } from "@navigation";
 import { useNavigation } from "@react-navigation/core";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import React, { FunctionComponent, useEffect, useRef, useState } from "react";
+import { Flatlist } from "@shared";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Animated,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
-import { useSelector } from "react-redux";
 import { IRootState } from "src/redux/store";
 import Photo from "./components/Photo";
 import styles from "./styles";
@@ -28,12 +26,13 @@ export type HomeScreenNavigationProp = NativeStackNavigationProp<
 
 export const HomeScreen: FunctionComponent = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
-  const userInfo = useSelector((state: IRootState) => state.user);
+  const userInfo = useAppSelector((state: IRootState) => state.user);
+  const language = useAppSelector((state: IRootState) => state.user.language);
+  console.log("🚀🚀🚀 => language", language);
   const [photos, setPhotos] = useState<Array<IPhoto>>([]);
   const [searchContent, setSearchContent] = useState<string>("");
   const searchText = useDebounce<string>(searchContent, 1000);
   const [isLoading, showLoading, hideLoading] = useBoolean();
-  const scrollX = useRef(new Animated.Value(0)).current;
 
   useEffect(() => {
     showLoading();
@@ -42,8 +41,7 @@ export const HomeScreen: FunctionComponent = () => {
       ?.then(response => {
         setPhotos(response?.photos || []);
       })
-      .catch(err => {
-        console.log("🚀🚀🚀 => useEffect => err", err);
+      .catch(() => {
         setPhotos([]);
       })
       .finally(() => {
@@ -60,25 +58,15 @@ export const HomeScreen: FunctionComponent = () => {
     navigation.navigate(SCREENS.INFO_SCREEN);
   };
 
-  const profile = useAppSelector(state => state.user.profile);
-  console.log("Profile:", JSON.stringify(profile));
+  // const profile = useAppSelector(state => state.user.profile);
+  // console.log("Profile:", JSON.stringify(profile));
   return (
     <View style={styles.container}>
-      <View style={StyleSheet.absoluteFillObject}>
-        {photos.map((photo, index) => {
-          const opacity = scrollX.interpolate({
-            inputRange: [
-              (index - 1) * ScreenUtils.WIDTH,
-              index * ScreenUtils.WIDTH,
-              (index + 1) * ScreenUtils.WIDTH,
-            ],
-            outputRange: [0, 1, 0],
-          });
-
+      <View>
+        {photos.map(photo => {
           return (
             <Animated.Image
               key={photo.id}
-              style={[StyleSheet.absoluteFillObject, { opacity }]}
               source={{
                 uri: photo.src.portrait,
               }}
@@ -87,16 +75,12 @@ export const HomeScreen: FunctionComponent = () => {
           );
         })}
       </View>
-      <Animated.FlatList
+      <Flatlist
         data={photos}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
         horizontal
         pagingEnabled
-        onScroll={Animated.event(
-          [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-          { useNativeDriver: true },
-        )}
         showsHorizontalScrollIndicator={false}
       />
       <View style={styles.inputView}>

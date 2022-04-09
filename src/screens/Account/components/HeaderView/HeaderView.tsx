@@ -55,15 +55,17 @@ export const HeaderView: FunctionComponent<Props> = props => {
                 </Text>
               </View>
             )}
-            <Icons.MaterialIcons
-              name={"arrow-forward-ios"}
-              size={
-                ScreenUtils.isPad()
-                  ? Metrics.icons.mediumLarge
-                  : Metrics.icons.small
-              }
-              color={Themes.colors.coolGray60}
-            />
+            <View style={styles.icon}>
+              <Icons.MaterialIcons
+                name={"arrow-forward-ios"}
+                size={
+                  ScreenUtils.isPad()
+                    ? Metrics.icons.mediumLarge
+                    : Metrics.icons.small
+                }
+                color={Themes.colors.coolGray60}
+              />
+            </View>
           </View>
         </TouchableOpacity>
       ) : (

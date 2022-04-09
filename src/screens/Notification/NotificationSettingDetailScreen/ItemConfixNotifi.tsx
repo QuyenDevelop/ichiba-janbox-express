@@ -36,28 +36,28 @@ export const ItemConfixNotifi: FunctionComponent<Props> = ({
           locationItemChange = index;
           itemChange = items;
           switch (item.name) {
-            case translate("label.viaEmail"):
+            case translate("labelViaEmail"):
               if (active) {
                 itemChange.sendEmail = 4;
               } else {
                 itemChange.sendEmail = 1;
               }
               break;
-            case translate("label.viaWebsite"):
+            case translate("labelViaWebsite"):
               if (active) {
                 itemChange.sendWeb = 4;
               } else {
                 itemChange.sendWeb = 1;
               }
               break;
-            case translate("label.viaDesktop"):
+            case translate("labelViaDesktop"):
               if (active) {
                 itemChange.sendDesktop = 4;
               } else {
                 itemChange.sendDesktop = 1;
               }
               break;
-            case translate("label.viaMobile"):
+            case translate("labelViaMobile"):
               if (active) {
                 itemChange.sendMobile = 4;
               } else {

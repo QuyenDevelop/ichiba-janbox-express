@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   optionWrapper: {
-    paddingVertical: ScreenUtils.scale(10),
+    paddingVertical: ScreenUtils.scale(8),
     borderBottomWidth: 1,
     borderBottomColor: Themes.colors.colGray10,
   },
@@ -13,7 +13,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: ScreenUtils.scale(20),
+    paddingLeft: ScreenUtils.scale(18),
   },
   swapperOptionItem: {
     display: "flex",
@@ -22,9 +22,14 @@ export default StyleSheet.create({
   },
   swapperOptionRightItem: {
     flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
   },
   iconRight: {
-    marginLeft: ScreenUtils.scale(16),
+    width: ScreenUtils.scale(40),
+    height: ScreenUtils.scale(40),
+    alignItems: "center",
+    justifyContent: "center",
   },
   icons: {
     width: ScreenUtils.scale(20),
@@ -38,6 +43,12 @@ export default StyleSheet.create({
     color: Themes.colors.coolGray100,
     ...Themes.font.regular,
     fontSize: 14,
+    marginLeft: ScreenUtils.scale(8),
+  },
+  optionSubTitle: {
+    color: Themes.colors.coolGray100,
+    ...Themes.font.regular,
+    fontSize: 13,
     marginLeft: ScreenUtils.scale(8),
   },
 });

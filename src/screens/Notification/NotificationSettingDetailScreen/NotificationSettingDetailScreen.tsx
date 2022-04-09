@@ -52,25 +52,25 @@ export const NotificationSettingDetailScreen = () => {
           let DataConfix: Array<any> = [
             {
               id: 1,
-              name: translate("label.viaEmail"),
+              name: translate("labelViaEmail"),
               state: items.customerNotifyConfigDto.sendEmail,
               type: items.code,
             },
             {
               id: 2,
-              name: translate("label.viaWebsite"),
+              name: translate("labelViaWebsite"),
               state: items.customerNotifyConfigDto.sendWeb,
               type: items.code,
             },
             {
               id: 3,
-              name: translate("label.viaMobile"),
+              name: translate("labelViaMobile"),
               state: items.customerNotifyConfigDto.sendMobile,
               type: items.code,
             },
             {
               id: 4,
-              name: translate("label.viaDesktop"),
+              name: translate("labelViaDesktop"),
               state: items.customerNotifyConfigDto.sendDesktop,
               type: items.code,
             },

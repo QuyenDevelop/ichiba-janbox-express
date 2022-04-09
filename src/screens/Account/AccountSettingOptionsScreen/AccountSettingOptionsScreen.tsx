@@ -2,7 +2,7 @@ import { Header, Separator } from "@components";
 import { SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
 import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { translate } from "@shared";
 import React, { FunctionComponent } from "react";
 import { View } from "react-native";
@@ -14,7 +14,7 @@ interface Props {}
 
 export const AccountSettingOptionsScreen: FunctionComponent<Props> = () => {
   const insets = useSafeAreaInsets();
-  const navigation = useNavigation<StackNavigationProp<any>>();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
@@ -36,7 +36,11 @@ export const AccountSettingOptionsScreen: FunctionComponent<Props> = () => {
       />
       <AccountOptions
         title={translate("label.notificationSetting")}
-        onPress={() => navigation.navigate(SCREENS.NOTIFICATION_SETTING)}
+        onPress={() =>
+          navigation.navigate(SCREENS.ACCOUNT_STACK, {
+            screen: SCREENS.NOTIFICATION_SETTING,
+          })
+        }
         iconRightName={"arrow-forward-ios"}
       />
       <Separator height={ScreenUtils.scale(8)} />

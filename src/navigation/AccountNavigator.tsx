@@ -9,6 +9,7 @@ import {
   FirstTimeUserScreen,
   HomeAccountScreen,
   LanguagesScreen,
+  NotificationSettingScreen,
 } from "@screens";
 import React from "react";
 
@@ -23,6 +24,7 @@ export type AccountStackParamList = {
   [SCREENS.LANGUAGES]: undefined;
   [SCREENS.ADD_ADDRESS_SCREEN]: undefined;
   [SCREENS.ACCOUNT_SETTING_SCREEN]: undefined;
+  [SCREENS.NOTIFICATION_SETTING]: undefined;
 };
 
 const AccountStack = NavigationUtils.createNavigation<AccountStackParamList>();
@@ -66,6 +68,10 @@ export const AccountNavigator = () => {
       <AccountStack.Screen
         name={SCREENS.ADD_ADDRESS_SCREEN}
         component={AddAddressScreen}
+      />
+      <AccountStack.Screen
+        name={SCREENS.NOTIFICATION_SETTING}
+        component={NotificationSettingScreen}
       />
     </AccountStack.Navigator>
   );

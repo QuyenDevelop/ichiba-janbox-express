@@ -1,7 +1,12 @@
 import { SCREENS } from "@configs";
 import { BottomTabNavigator } from "@navigation";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { LaunchScreen, NotificationSettingDetailRouteParams } from "@screens";
+import {
+  LaunchScreen,
+  NotificationSettingDetailRouteParams,
+  NotificationSettingDetailScreen,
+  NotificationSettingScreen,
+} from "@screens";
 import React from "react";
 import { AccountNavigator } from "./AccountNavigator";
 import { AuthNavigation } from "./AuthNavigator";
@@ -38,6 +43,14 @@ export const RootNavigator = () => {
       <RootStack.Screen
         name={SCREENS.NOTIFICATION_STACK}
         component={NotificationStack}
+      />
+      <RootStack.Screen
+        name={SCREENS.NOTIFICATION_SETTING}
+        component={NotificationSettingScreen}
+      />
+      <RootStack.Screen
+        name={SCREENS.NOTIFICATION_SETTING_DETAIL}
+        component={NotificationSettingDetailScreen}
       />
       <RootStack.Screen
         name={SCREENS.BOTTOM_TAB_NAVIGATION}

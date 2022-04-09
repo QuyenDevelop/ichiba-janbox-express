@@ -1,12 +1,17 @@
 import { SCREENS } from "@configs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { HomeScreen, IDetailScreenParams } from "@screens";
+import {
+  NotificationScreen,
+  NotificationScreenRouteParams,
+  NotificationSettingDetailScreen,
+  NotificationSettingScreen,
+} from "@screens";
 import React from "react";
 
 export type NotificationStackParamsList = {
-  [SCREENS.HOME_SCREEN]: undefined;
-  [SCREENS.DETAIL_SCREEN]: IDetailScreenParams;
-  [SCREENS.INFO_SCREEN]: undefined;
+  [SCREENS.NOTIFICATION]: NotificationScreenRouteParams;
+  [SCREENS.NOTIFICATION_SETTING]: undefined;
+  [SCREENS.NOTIFICATION_SETTING_DETAIL]: undefined;
 };
 
 const NotificationStackNavigator =
@@ -15,14 +20,31 @@ const NotificationStackNavigator =
 export const NotificationStack = () => {
   return (
     <NotificationStackNavigator.Navigator
-      initialRouteName={SCREENS.HOME_SCREEN}
+      initialRouteName={SCREENS.NOTIFICATION}
       screenOptions={{
         headerShown: false,
       }}
     >
       <NotificationStackNavigator.Screen
-        name={SCREENS.HOME_SCREEN}
-        component={HomeScreen}
+        name={SCREENS.NOTIFICATION}
+        component={NotificationScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <NotificationStackNavigator.Screen
+        name={SCREENS.NOTIFICATION_SETTING}
+        component={NotificationSettingScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <NotificationStackNavigator.Screen
+        name={SCREENS.NOTIFICATION_SETTING_DETAIL}
+        component={NotificationSettingDetailScreen}
+        options={{
+          headerShown: false,
+        }}
       />
     </NotificationStackNavigator.Navigator>
   );

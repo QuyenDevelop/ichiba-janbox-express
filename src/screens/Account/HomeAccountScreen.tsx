@@ -4,7 +4,7 @@ import { ScreenUtils } from "@helpers";
 import { useAppDispatch, useAppSelector, useStatusBar } from "@hooks";
 import { Account, PickerItemsResponse } from "@models";
 import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { logout } from "@redux";
 import { Button, Icon, translate } from "@shared";
 import { Icons, Metrics, Themes } from "@themes";
@@ -48,7 +48,7 @@ let dataLanguages: Array<PickerItemsResponse> = [
 export const HomeAccountScreen: FunctionComponent<Props> = () => {
   useStatusBar("dark-content");
   const insets = useSafeAreaInsets();
-  const navigation = useNavigation<StackNavigationProp<any>>();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [isShowConfirm, setIsShowConfirm] = useState(false);
   // const [isShowModalChangeLanguge, setIsShowModalChangeLanguge] =
   //   useState(false);

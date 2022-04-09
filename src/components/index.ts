@@ -2,6 +2,7 @@ export * from "./ConfirmDialog/ConfirmDialog";
 export * from "./ContentLoader";
 export * from "./CreateShipmentButton";
 export * from "./DateTime/DateTime";
+export * from "./FastImage/FastImageLoading";
 export * from "./Footer/Footer";
 export * from "./Header/Header";
 export * from "./LocationModal/LocationModal";

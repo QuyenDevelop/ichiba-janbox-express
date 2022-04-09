@@ -18,6 +18,12 @@ export const Images = {
   dhl: require("../assets/dhl.png"),
   fedEx: require("../assets/fedEx.png"),
   shield: require("../assets/shield.png"),
+  noGift: require("../assets/noGift.png"),
+  notificationNoResult: require("../assets/notification_noresult.png"),
+  productDefault: require("../assets/default-product.png"),
+  yourFavoriteItems1: require("../assets/home/YourFavoriteItem/ImageProduct.png"),
+  shoe: require("../assets/shoe.png"),
+  notificationSample: require("../assets/notification-sample.png"),
 };
 
 export const AnimationImages = {

@@ -5,9 +5,10 @@ import { Account } from "@models";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { loginAction } from "@redux";
+import { PayloadAction } from "@reduxjs/toolkit";
 import { onChangeLanguage } from "@shared";
 import Config from "react-native-config";
-import { all, call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { all, call, put, takeLatest } from "redux-saga/effects";
 import { AuthorizeResult } from "src/@types/api-sso";
 import {
   changeLanguage,
@@ -20,6 +21,8 @@ import {
   loginLoading,
   loginStatus,
   logout,
+  setAddressId,
+  setAddressSelectedId,
 } from "../slices";
 
 const { GOOGLE_CLIENT_ID } = Config;
@@ -141,9 +144,20 @@ function* takeUserInfo() {
   }
 }
 function* followGetUserInfo() {
-  yield takeEvery(getUserAction, takeUserInfo);
+  yield takeLatest(getUserAction, takeUserInfo);
 }
 
+// ----- region setSelectedAddressId
+function* takeSetAddressId(action: PayloadAction<number>) {
+  try {
+    yield put(setAddressId(action.payload));
+  } catch (error) {
+    console.log("🚀🚀🚀 => error", error);
+  }
+}
+function* followSetAddressId() {
+  yield takeLatest(setAddressSelectedId, takeSetAddressId);
+}
 // ----- region root userSaga
 export default function* userSaga() {
   yield all([
@@ -152,5 +166,6 @@ export default function* userSaga() {
     logoutFlow(),
     changeLanguageFlow(),
     followGetUserInfo(),
+    followSetAddressId(),
   ]);
 }

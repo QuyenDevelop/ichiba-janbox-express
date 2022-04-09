@@ -3,17 +3,17 @@ import { CustomerApi } from "@api";
 import { ConfirmDialog, Header } from "@components";
 import { SCREENS } from "@configs";
 import { Alert, ScreenUtils } from "@helpers";
-import { useAppDispatch, useStatusBar } from "@hooks";
+import { useAppDispatch, useAppSelector, useStatusBar } from "@hooks";
 import { Address } from "@models";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { IUserState } from "@redux";
+import { setAddressSelectedId } from "@redux";
 import { Flatlist, Icon, RadioButton, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useSelector } from "react-redux";
+import { IRootState } from "../../../redux/store";
 import EditAddressModal from "./EditAddressModal/EditAddressModal";
 import styles from "./styles";
 
@@ -25,8 +25,8 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
   const navigation = useNavigation<StackNavigationProp<any>>();
   const [data, setData] = useState<Address[] | undefined>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const selectedAddressId = useSelector(
-    (state: IUserState) => state.selectedAddressId,
+  const selectedAddressId = useAppSelector(
+    (state: IRootState) => state.user.selectedAddressId,
   );
   const [idAddress, setIdAddress] = useState<number>();
   const [isShowConfirm, setIsShowConfirm] = useState(false);
@@ -60,12 +60,8 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
           setData(res?.data || []);
         }
         if (!selectedAddressId) {
-          console.log("say hello");
-          // dispatch(
-          //   AccountAction.setSelectedAddressId({
-          //     selectedAddressId: res?.data?.find(a => a.active)?.id,
-          //   }),
-          // );
+          const id = res?.data?.find(address => address.active)?.id;
+          dispatch(setAddressSelectedId(id ? id : 0));
         }
       })
       .finally(() => setIsLoading(false));
@@ -105,11 +101,7 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
     return (
       <TouchableOpacity
         onPress={() => {
-          // dispatch(
-          //   AccountAction.setSelectedAddressId({
-          //     selectedAddressId: item?.id,
-          //   }),
-          // );
+          dispatch(setAddressSelectedId(item?.id));
         }}
         style={[
           styles.item,
@@ -121,11 +113,7 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
         <RadioButton
           checked={item?.id === selectedAddressId}
           onChange={() => {
-            // dispatch(
-            //   AccountAction.setSelectedAddressId({
-            //     selectedAddressId: item?.id,
-            //   }),
-            // );
+            dispatch(setAddressSelectedId(item?.id));
           }}
         />
         <View

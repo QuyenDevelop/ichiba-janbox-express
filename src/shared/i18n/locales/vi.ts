@@ -310,4 +310,5 @@ export default {
   labelViaWebsite: "Qua website",
   labelViaMobile: "Qua mobile",
   labelViaDesktop: "Qua Desktop",
+  textWarningUserAndPass: "Tài khoản hoặc mật khẩu không được trống",
 };

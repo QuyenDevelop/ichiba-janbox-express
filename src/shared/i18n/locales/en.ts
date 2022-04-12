@@ -307,4 +307,5 @@ export default {
   labelViaWebsite: "Via website",
   labelViaMobile: "Via mobile",
   labelViaDesktop: "Via Desktop",
+  textWarningUserAndPass: "You have not entered your username or password !!",
 };

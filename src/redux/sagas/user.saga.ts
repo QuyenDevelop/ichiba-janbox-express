@@ -6,7 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { loginAction } from "@redux";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { onChangeLanguage } from "@shared";
+import { onChangeLanguage, translate } from "@shared";
 import Config from "react-native-config";
 import { all, call, put, takeLatest } from "redux-saga/effects";
 import { AuthorizeResult } from "src/@types/api-sso";
@@ -44,7 +44,7 @@ function* takeLogin(action: any) {
         yield Utils.storeTokenResponse(response);
       }
     } else {
-      yield put(loginFailure("Chưa nhập Username hoặc Password!!"));
+      yield put(loginFailure(translate("textWarningUserAndPass")));
     }
   } catch (error: any) {
     if (error?.locked) {

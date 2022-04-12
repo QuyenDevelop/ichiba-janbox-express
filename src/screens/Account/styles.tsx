@@ -102,8 +102,9 @@ export default StyleSheet.create({
   buttonContainer: {
     flexDirection: "row",
     justifyContent: "center",
-    paddingVertical: ScreenUtils.scale(20),
-    paddingHorizontal: ScreenUtils.scale(20),
+    paddingVertical: ScreenUtils.scale(16),
+    paddingLeft: ScreenUtils.scale(20),
+    paddingRight: ScreenUtils.scale(10),
   },
   buttonHeader: {
     width: "48%",

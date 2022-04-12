@@ -4,6 +4,7 @@ import { ScreenUtils } from "@helpers";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { translate } from "@shared";
+import { Icons, Metrics, Themes } from "@themes";
 import React, { FunctionComponent } from "react";
 import { View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -28,13 +29,28 @@ export const AccountSettingOptionsScreen: FunctionComponent<Props> = () => {
         title={translate("label.changePassword")}
         onPress={() => navigation.navigate(SCREENS.CHANGE_PASSWORD)}
         iconRightName={"arrow-forward-ios"}
+        icon={() => {
+          return (
+            <Icons.FontAwesome5 name={"lock"} size={Metrics.icons.smallSmall} />
+          );
+        }}
       />
       <AccountOptions
         title={translate("label.security")}
         onPress={() => navigation.navigate(SCREENS.SECURITY_SCREEN)}
         iconRightName={"arrow-forward-ios"}
+        icon={() => {
+          return (
+            <Icons.FontAwesome5
+              name={"shield-alt"}
+              size={Metrics.icons.smallSmall}
+              color={Themes.colors.coolGray60}
+            />
+          );
+        }}
       />
       <AccountOptions
+        iconLeftName={"ic_notification"}
         title={translate("label.notificationSetting")}
         onPress={() =>
           navigation.navigate(SCREENS.ACCOUNT_STACK, {
@@ -44,14 +60,20 @@ export const AccountSettingOptionsScreen: FunctionComponent<Props> = () => {
         iconRightName={"arrow-forward-ios"}
       />
       <Separator height={ScreenUtils.scale(8)} />
-      {/* <AccountFunction
-        label={translate("label.paymentMethod")}
-        screen={SCREENS.PAYMENT_METHOD_SCREEN}
-      /> */}
-      {/*<AccountFunction*/}
-      {/*    label={translate("label.signinAndSecurity")}*/}
-      {/*    screen={SCREENS.ACCOUNT_INFORMATION}*/}
-      {/*/>*/}
+      <AccountOptions
+        iconLeftName="ic_facebook"
+        title={translate("label.notificationSetting")}
+        subTitle={"Liên kết với Facebook"}
+        onPress={() => {}}
+        iconRightName={"arrow-forward-ios"}
+      />
+      <AccountOptions
+        iconLeftName="ic_google"
+        title={translate("label.notificationSetting")}
+        subTitle={"Liên kết với Google"}
+        onPress={() => {}}
+        iconRightName={"arrow-forward-ios"}
+      />
     </View>
   );
 };

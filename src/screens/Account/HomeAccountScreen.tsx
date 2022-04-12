@@ -1,7 +1,12 @@
 import { ConfirmDialog, Header, Separator } from "@components";
 import { CONSTANT, SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
-import { useAppDispatch, useAppSelector, useStatusBar } from "@hooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+  useBoolean,
+  useStatusBar,
+} from "@hooks";
 import { Account, PickerItemsResponse } from "@models";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -49,7 +54,7 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
   useStatusBar("dark-content");
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
-  const [isShowConfirm, setIsShowConfirm] = useState(false);
+  const [showConfirm, setShowConfirm, setHideConfirm] = useBoolean(false);
   // const [isShowModalChangeLanguge, setIsShowModalChangeLanguge] =
   //   useState(false);
   // const anonymousId = useAppSelector(
@@ -69,7 +74,7 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
 
   const handleLogout = () => {
     dispatch(logout());
-    setIsShowConfirm(false);
+    setShowConfirm;
     navigation.navigate(SCREENS.AUTH_STACK, {
       screen: SCREENS.LOGIN,
     });
@@ -287,7 +292,7 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
             <Separator height={ScreenUtils.scale(5)} />
             <View style={styles.optionWrapper}>
               <TouchableOpacity
-                onPress={() => setIsShowConfirm(true)}
+                onPress={setShowConfirm}
                 style={styles.buttonOption}
               >
                 <View style={styles.swapperOptionItem}>
@@ -320,9 +325,9 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
 
       <ConfirmDialog
         message={translate("button.confirmLogout")}
-        isVisible={isShowConfirm}
-        onDismiss={() => setIsShowConfirm(false)}
-        onDeclinePress={() => setIsShowConfirm(false)}
+        isVisible={showConfirm}
+        onDismiss={setHideConfirm}
+        onDeclinePress={setHideConfirm}
         onAcceptPress={handleLogout}
         acceptText={translate("button.logout")}
       />

@@ -325,4 +325,6 @@ export default {
   labelViaMobile: "モバイル経由",
   labelViaDesktop: "デスクトップ経由",
   textWarningUserAndPass: "ユーザー名またはパスワードを入力していません!!",
+  titleCreateShipment: "配送ルートを選択",
+  titleShipmentManage: "出荷管理",
 };

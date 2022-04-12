@@ -1,4 +1,3 @@
-import { HeaderAccoutLoading } from "@components";
 import { SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
 import { Account } from "@models";
@@ -21,56 +20,52 @@ export const HeaderView: FunctionComponent<Props> = props => {
   const navigation = useNavigation<StackNavigationProp<any>>();
   return (
     <>
-      {profile ? (
-        <TouchableOpacity
-          style={styles.header}
-          onPress={() =>
-            navigation.navigate(SCREENS.ACCOUNT_STACK, {
-              screen: SCREENS.ACCOUNT_INFORMATION,
-            })
-          }
-        >
-          <View style={styles.headerLeft}>
-            <View style={styles.avatar}>
-              <FastImage
-                resizeMode={FastImage.resizeMode.contain}
-                source={profile?.avatar ? profile.avatar : Images.lockedAccount}
-                style={styles.image}
-              />
-            </View>
-            <View style={styles.headerLeftContent}>
-              <Text style={styles.name} numberOfLines={1}>
-                {profile?.name}
-              </Text>
-              <Text style={styles.phoneNumber} numberOfLines={1}>
-                {profile?.phone_number}
-              </Text>
-            </View>
+      <TouchableOpacity
+        style={styles.header}
+        onPress={() =>
+          navigation.navigate(SCREENS.ACCOUNT_STACK, {
+            screen: SCREENS.ACCOUNT_INFORMATION,
+          })
+        }
+      >
+        <View style={styles.headerLeft}>
+          <View style={styles.avatar}>
+            <FastImage
+              resizeMode={FastImage.resizeMode.contain}
+              source={profile?.avatar ? profile.avatar : Images.lockedAccount}
+              style={styles.image}
+            />
           </View>
-          <View style={styles.headerRight}>
-            {!profile.phone_number_verified && (
-              <View style={styles.notAccept}>
-                <Text style={styles.notAcceptText}>
-                  {translate("label.unconfirmed")}
-                </Text>
-              </View>
-            )}
-            <View style={styles.icon}>
-              <Icons.MaterialIcons
-                name={"arrow-forward-ios"}
-                size={
-                  ScreenUtils.isPad()
-                    ? Metrics.icons.mediumLarge
-                    : Metrics.icons.small
-                }
-                color={Themes.colors.coolGray60}
-              />
-            </View>
+          <View style={styles.headerLeftContent}>
+            <Text style={styles.name} numberOfLines={1}>
+              {profile?.name}
+            </Text>
+            <Text style={styles.phoneNumber} numberOfLines={1}>
+              {profile?.phone_number}
+            </Text>
           </View>
-        </TouchableOpacity>
-      ) : (
-        <HeaderAccoutLoading />
-      )}
+        </View>
+        <View style={styles.headerRight}>
+          {!profile.phone_number_verified && (
+            <View style={styles.notAccept}>
+              <Text style={styles.notAcceptText}>
+                {translate("label.unconfirmed")}
+              </Text>
+            </View>
+          )}
+          <View style={styles.icon}>
+            <Icons.MaterialIcons
+              name={"arrow-forward-ios"}
+              size={
+                ScreenUtils.isPad()
+                  ? Metrics.icons.mediumLarge
+                  : Metrics.icons.small
+              }
+              color={Themes.colors.coolGray60}
+            />
+          </View>
+        </View>
+      </TouchableOpacity>
     </>
   );
 };

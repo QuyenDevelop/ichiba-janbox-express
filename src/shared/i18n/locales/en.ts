@@ -308,4 +308,6 @@ export default {
   labelViaMobile: "Via mobile",
   labelViaDesktop: "Via Desktop",
   textWarningUserAndPass: "You have not entered your username or password !!",
+  titleCreateShipment: "Create Shipment",
+  titleShipmentManage: "Shipment manage",
 };

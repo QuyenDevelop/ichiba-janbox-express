@@ -10,3 +10,4 @@ export * from "./PhoneNumber/PhoneNumber";
 export * from "./Picker/Picker";
 export * from "./PickerItems/PickerItems";
 export * from "./Separator";
+export * from "./TopBarSearchResult/TopBarSearchResult";

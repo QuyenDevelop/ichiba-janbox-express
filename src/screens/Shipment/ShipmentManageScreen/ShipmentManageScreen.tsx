@@ -1,10 +1,10 @@
 import { Separator, TopBarSearchResult } from "@components";
 import { ScreenUtils } from "@helpers";
-import { useStatusBar } from "@hooks";
+import { useAppSelector, useStatusBar } from "@hooks";
 import { useNavigation } from "@react-navigation/core";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { translate } from "@shared";
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useEffect } from "react";
 import { Text, View } from "react-native";
 import styles from "./styles";
 
@@ -13,6 +13,9 @@ interface Props {}
 export const ShipmentManageScreen: FunctionComponent<Props> = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   useStatusBar("dark-content");
+  const language = useAppSelector(state => state.user.language);
+
+  useEffect(() => {}, [language]);
 
   const goBack = () => {
     navigation.goBack();

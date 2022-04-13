@@ -23,4 +23,20 @@ export default StyleSheet.create({
     color: Themes.colors.textPrimary,
     marginBottom: ScreenUtils.scale(20),
   },
+  tabBar: {
+    backgroundColor: Themes.colors.white,
+  },
+  tabBarLabel: {
+    ...Themes.font.medium,
+    fontSize: 14,
+    lineHeight: 21,
+    fontWeight: "500",
+  },
+  indicatorStyle: {
+    backgroundColor: Themes.colors.primary,
+    height: ScreenUtils.scale(4),
+    borderTopLeftRadius: ScreenUtils.scale(4),
+    borderTopRightRadius: ScreenUtils.scale(4),
+    marginHorizontal: ScreenUtils.scale(16),
+  },
 });

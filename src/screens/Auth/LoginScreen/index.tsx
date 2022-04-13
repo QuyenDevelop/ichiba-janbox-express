@@ -7,7 +7,7 @@ import {
   ScreenUtils,
   setAsyncItem,
 } from "@helpers";
-import { useAppDispatch, useAppSelector, useLoading } from "@hooks";
+import { useAppDispatch, useAppSelector } from "@hooks";
 import { Account } from "@models";
 import { RootStackParamList } from "@navigation";
 import { useNavigation } from "@react-navigation/native";
@@ -45,7 +45,6 @@ export const LoginScreen: FunctionComponent<Props> = () => {
   const [isSecure, setIsSecure] = useState(true);
   const [isRemember, setIsRemember] = useState(false);
   const [isLoading, setIsLoading] = useState<boolean>(loading);
-  const { showLoading, hideLoading } = useLoading();
 
   useEffect(() => {
     setIsLoading(loading);
@@ -93,8 +92,6 @@ export const LoginScreen: FunctionComponent<Props> = () => {
         } else {
           // if (res?.email) {
           //   externalRegister(profile);
-          // } else {
-          hideLoading();
           // }
         }
       },
@@ -103,21 +100,18 @@ export const LoginScreen: FunctionComponent<Props> = () => {
 
   const loginWithFacebook = () => {
     ExternalAuthenticationUtils.signInByFacebook().then(user => {
-      showLoading();
       externalLogin(user);
     });
   };
 
   const loginWithGoogle = () => {
     ExternalAuthenticationUtils.signInByGoogle().then(user => {
-      showLoading();
       externalLogin(user);
     });
   };
 
   const loginWithApple = () => {
     // ExternalAuthenticationUtils.signInByApple().then((user) => {
-    //   showLoading();
     //   externalLogin(user);
     // });
   };

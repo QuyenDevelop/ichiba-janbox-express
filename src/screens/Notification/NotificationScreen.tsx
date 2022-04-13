@@ -1,5 +1,6 @@
-import { Header } from "@components";
+import { Header, Separator } from "@components";
 import { SCREENS } from "@configs";
+import { ScreenUtils } from "@helpers";
 import { useAppSelector, useStatusBar } from "@hooks";
 import { Account } from "@models";
 import { NotificationStackParamsList } from "@navigation";
@@ -55,6 +56,7 @@ export const NotificationScreen: FunctionComponent = () => {
         ]}
         isCenterTitle
       />
+      <Separator height={ScreenUtils.scale(1)} />
       {profile ? (
         <>
           <Tab activeTab={activeTab} onPress={tab => setActiveTab(tab)} />

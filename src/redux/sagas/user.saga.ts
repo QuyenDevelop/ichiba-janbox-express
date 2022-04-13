@@ -1,6 +1,6 @@
 import { authApi } from "@api";
 import { CONSTANT } from "@configs";
-import { Utils } from "@helpers";
+import { Alert, Utils } from "@helpers";
 import { Account } from "@models";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
@@ -15,85 +15,76 @@ import {
   changeLanguageSuccess,
   getUserAction,
   getUserInfo,
-  locked,
   loginExternalAction,
+  loginExternalPayload,
   loginFailure,
+  loginInternalPayload,
   loginLoading,
   loginStatus,
   logout,
-  setAddressId,
-  setAddressSelectedId,
 } from "../slices";
 
 const { GOOGLE_CLIENT_ID } = Config;
 
-export const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
-
 // ----- region Login
-function* takeLogin(action: any) {
+function* takeLogin(action: PayloadAction<loginInternalPayload>) {
   const { username, password } = action.payload;
   try {
+    yield put(loginLoading(true));
     if (username && password) {
-      yield put(loginLoading(true));
-      const response: AuthorizeResult = yield call(async () => {
-        return await authApi.login(username, password);
-      });
+      const response: AuthorizeResult = yield call(
+        authApi.login,
+        username,
+        password,
+      );
+      console.log("🚀🚀🚀 => function*takeLogin => response", response);
       if (response) {
         yield put(getUserAction());
         yield put(loginStatus(true));
         yield Utils.storeTokenResponse(response);
       }
     } else {
-      yield put(loginFailure(translate("textWarningUserAndPass")));
+      Alert.error(translate("textWarningUserAndPass"), true);
     }
   } catch (error: any) {
     if (error?.locked) {
-      yield put(locked(true));
+      yield put(loginFailure(error.error_description));
     }
-    yield put(loginFailure(error.error_description));
+    Alert.error(error.error_description, true);
   } finally {
+    // hideLoading();
     yield put(loginLoading(false));
   }
-}
-function* loginFlow() {
-  yield takeLatest(loginAction, takeLogin);
 }
 
 // ----- region Login External
-function* takeLoginExternal(action: any) {
+function* takeLoginExternal(action: PayloadAction<loginExternalPayload>) {
   const { token, provider } = action.payload;
   try {
     yield put(loginLoading(true));
-    const response: AuthorizeResult = yield call(async () => {
-      return await authApi.loginExternal(token, provider);
-    });
-
+    const response: AuthorizeResult = yield call(
+      authApi.loginExternal,
+      token,
+      provider,
+    );
     if (response.access_token) {
       yield put(loginStatus(true));
+      yield put(getUserAction());
       yield Utils.storeTokenResponse(response);
     }
   } catch (error: any) {
-    yield put(loginFailure(error.error_description));
+    Alert.error(error.error_description, true);
   } finally {
-    yield delay(100);
     yield put(loginLoading(false));
   }
 }
-function* loginExternalFlow() {
-  yield takeLatest(loginExternalAction, takeLoginExternal);
-}
 
 // ----- region change language
-function* takeChangeLanguage(action: any) {
+function* takeChangeLanguage(action: PayloadAction<string>) {
   try {
-    // yield delay(1000);
     yield call(onChangeLanguage, action.payload);
     yield put(changeLanguageSuccess(action.payload));
   } catch (error) {}
-}
-
-function* changeLanguageFlow() {
-  yield takeLatest(changeLanguage, takeChangeLanguage);
 }
 
 // ----- region Logout
@@ -127,15 +118,11 @@ function* takeLogout() {
     console.log("🚀🚀🚀 => error", error);
   }
 }
-function* logoutFlow() {
-  yield takeLatest(logout, takeLogout);
-}
+
 // ----- region getUserInfo
 function* takeUserInfo() {
   try {
-    const response: Account = yield call(async () => {
-      return await authApi.getUserInfo();
-    });
+    const response: Account = yield call(authApi.getUserInfo);
     if (response) {
       yield put(getUserInfo(response));
     }
@@ -143,29 +130,14 @@ function* takeUserInfo() {
     console.log("🚀🚀🚀 => error", error);
   }
 }
-function* followGetUserInfo() {
-  yield takeLatest(getUserAction, takeUserInfo);
-}
 
-// ----- region setSelectedAddressId
-function* takeSetAddressId(action: PayloadAction<number>) {
-  try {
-    yield put(setAddressId(action.payload));
-  } catch (error) {
-    console.log("🚀🚀🚀 => error", error);
-  }
-}
-function* followSetAddressId() {
-  yield takeLatest(setAddressSelectedId, takeSetAddressId);
-}
 // ----- region root userSaga
 export default function* userSaga() {
   yield all([
-    loginFlow(),
-    loginExternalFlow(),
-    logoutFlow(),
-    changeLanguageFlow(),
-    followGetUserInfo(),
-    followSetAddressId(),
+    takeLatest(loginAction, takeLogin),
+    takeLatest(loginExternalAction, takeLoginExternal),
+    takeLatest(logout, takeLogout),
+    takeLatest(changeLanguage, takeChangeLanguage),
+    takeLatest(getUserAction, takeUserInfo),
   ]);
 }

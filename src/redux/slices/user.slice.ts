@@ -2,9 +2,14 @@ import { Account } from "@models";
 import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { SliceName } from "./constants";
 
-export interface loginPayload {
+export interface loginInternalPayload {
   username?: string;
   password?: string;
+}
+export interface loginExternalPayload {
+  token: string;
+  provider: string;
+  email?: string;
 }
 export interface IUserState {
   profile: Account | null;
@@ -15,7 +20,6 @@ export interface IUserState {
   deviceId: string | null;
   isLogging: boolean;
   messageFailed: string | null;
-  isLocked: boolean;
   selectedAddressId: number | null;
 }
 
@@ -28,7 +32,6 @@ const initialState: IUserState = {
   deviceId: null,
   isLogging: false,
   messageFailed: null,
-  isLocked: false,
   selectedAddressId: null,
 };
 
@@ -50,9 +53,6 @@ export const userSlice = createSlice({
     },
     loginFailure: (state: IUserState, action: PayloadAction<string>) => {
       state.messageFailed = action.payload;
-    },
-    locked: (state: IUserState, action: PayloadAction<boolean>) => {
-      state.isLocked = action.payload;
     },
     updateInfo: (_state: IUserState, action: PayloadAction<IUserState>) => {
       return action.payload;
@@ -78,23 +78,20 @@ export const userSlice = createSlice({
   },
 });
 
-export const loginAction = createAction<{ username: string; password: string }>(
+export const loginAction = createAction<loginInternalPayload>(
   `${SliceName.USER_SLICE}/login`,
+);
+export const loginExternalAction = createAction<loginExternalPayload>(
+  `${SliceName.USER_SLICE}/loginExternal`,
 );
 export const getUserAction = createAction(
   `${SliceName.USER_SLICE}/getUserAction`,
 );
-export const loginExternalAction = createAction<{
-  token: string;
-  provider: string;
-  email?: string;
-}>(`${SliceName.USER_SLICE}/loginExternal`);
 export const changeLanguage = createAction<string>(
   `${SliceName.USER_SLICE}/changeLanguage`,
 );
-
 export const setAddressSelectedId = createAction<number>(
-  `${SliceName.USER_SLICE}/setAddressSelectedId`,
+  `${SliceName.USER_SLICE}/setAddressId`,
 );
 // export Actions
 export const {
@@ -103,7 +100,6 @@ export const {
   loginFailure,
   updateInfo,
   logout,
-  locked,
   getUserInfo,
   loginExternalSuccess,
   changeLanguageSuccess,

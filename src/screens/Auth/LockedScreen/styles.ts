@@ -55,6 +55,7 @@ export default StyleSheet.create({
     color: Themes.colors.primary,
   },
   title: {
+    textAlign: "center",
     ...Themes.font.bold,
     fontSize: 16,
     color: Themes.colors.coolGray100,

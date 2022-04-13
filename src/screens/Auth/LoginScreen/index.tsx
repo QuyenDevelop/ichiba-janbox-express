@@ -2,7 +2,6 @@ import { AccountApi } from "@api";
 import { Footer, Header } from "@components";
 import { CONSTANT, SCREENS } from "@configs";
 import {
-  Alert,
   ExternalAuthenticationUtils,
   removeAsyncItem,
   ScreenUtils,
@@ -37,7 +36,7 @@ type Props = NativeStackScreenProps<RootStackParamList>;
 export const LoginScreen: FunctionComponent<Props> = () => {
   const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
-  const { loading, isLogging, messageFailed, isLocked } = useAppSelector(
+  const { loading, isLogging, messageFailed } = useAppSelector(
     (state: IRootState) => state.user,
   );
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
@@ -50,8 +49,7 @@ export const LoginScreen: FunctionComponent<Props> = () => {
 
   useEffect(() => {
     setIsLoading(loading);
-    messageFailed && !loading && !isLogging && Alert.error(messageFailed, true);
-  }, [isLogging, loading, messageFailed]);
+  }, [loading]);
 
   useEffect(() => {
     if (isLogging) {
@@ -60,12 +58,11 @@ export const LoginScreen: FunctionComponent<Props> = () => {
       });
       return;
     }
-    isLocked &&
-      Number(messageFailed) > 1 &&
+    Number(messageFailed) > 1 &&
       navigation.navigate(SCREENS.LOCKED_SCREEN, {
         countDown: messageFailed || "0",
       });
-  }, [isLocked, isLogging, messageFailed, navigation]);
+  }, [isLogging, messageFailed, navigation]);
 
   const loginWithEmail = () => {
     if (isRemember) {

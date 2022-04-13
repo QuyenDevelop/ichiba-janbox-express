@@ -62,14 +62,14 @@ export const AccountSettingOptionsScreen: FunctionComponent<Props> = () => {
       <Separator height={ScreenUtils.scale(8)} />
       <AccountOptions
         iconLeftName="ic_facebook"
-        title={translate("label.notificationSetting")}
+        title={"Facebook"}
         subTitle={"Liên kết với Facebook"}
         onPress={() => {}}
         iconRightName={"arrow-forward-ios"}
       />
       <AccountOptions
         iconLeftName="ic_google"
-        title={translate("label.notificationSetting")}
+        title={"Google"}
         subTitle={"Liên kết với Google"}
         onPress={() => {}}
         iconRightName={"arrow-forward-ios"}

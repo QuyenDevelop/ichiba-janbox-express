@@ -11,20 +11,11 @@ const {
   CLIENT_ID,
   CLIENT_SECRET,
 } = Config;
-
-// const IDENTITY_HOST = "https://iddev.ezbuy.jp";
-// const GRANT_TYPE_PASSWORD = "password";
-// const GRANT_TYPE_EXTERNAL = "external";
-// const GRANT_TYPE_REFRESH_TOKEN = "refresh";
-// const CLIENT_SECRET = "mobile";
-// const CLIENT_ID = "mobile";
-// const SCOPES =
-//   "offline_access profile email ez-api-mobile openid ichiba-identity-api phone";
-
 class AuthApi extends BaseApi {
-  login(email?: string, password?: string) {
+  login = async (email?: string, password?: string) => {
     let url = `${IDENTITY_HOST}/connect/token`;
-    return this.postUrlEncoded(
+    console.log("🚀🚀🚀 => login => url", url);
+    return await this.postUrlEncoded(
       url,
       {
         username: email,
@@ -36,11 +27,9 @@ class AuthApi extends BaseApi {
       },
       true,
     );
-  }
+  };
 
-  loginExternal(token: string, provider: string) {
-    // console.log("🚀🚀🚀 => loginExternal => provider", provider);
-    // console.log("🚀🚀🚀 => loginExternal => token", token);
+  loginExternal = async (token: string, provider: string) => {
     let url = `${IDENTITY_HOST}/connect/token`;
     return this.postUrlEncoded(
       url,
@@ -54,7 +43,7 @@ class AuthApi extends BaseApi {
       },
       true,
     );
-  }
+  };
 
   refreshToken(refreshToken: string) {
     let url = `${IDENTITY_HOST}/connect/token`;
@@ -82,15 +71,15 @@ class AuthApi extends BaseApi {
     );
   }
 
-  getUserInfo() {
+  getUserInfo = async () => {
     let url = `${IDENTITY_HOST}/connect/userinfo`;
-    return this.get<Account>(url, {}, true);
-  }
+    return await this.get<Account>(url, {}, true);
+  };
 
-  updateRegion(countryCode: string) {
-    let url = `${IDENTITY_HOST}/api/profile/updateregion`;
-    return this.post(url, { countryCode }, {}, true);
-  }
+  // updateRegion(countryCode: string) {
+  //   let url = `${IDENTITY_HOST}/api/profile/updateregion`;
+  //   return this.post(url, { countryCode }, {}, true);
+  // }
 }
 
 export default new AuthApi();

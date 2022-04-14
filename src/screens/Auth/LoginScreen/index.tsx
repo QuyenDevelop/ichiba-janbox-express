@@ -7,7 +7,7 @@ import {
   ScreenUtils,
   setAsyncItem,
 } from "@helpers";
-import { useAppDispatch, useAppSelector } from "@hooks";
+import { useAppDispatch, useAppSelector, useBoolean } from "@hooks";
 import { Account } from "@models";
 import { RootStackParamList } from "@navigation";
 import { useNavigation } from "@react-navigation/native";
@@ -36,7 +36,7 @@ type Props = NativeStackScreenProps<RootStackParamList>;
 export const LoginScreen: FunctionComponent<Props> = () => {
   const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
-  const { loading, isLogging, messageFailed } = useAppSelector(
+  const { isLogging, messageFailed } = useAppSelector(
     (state: IRootState) => state.user,
   );
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
@@ -44,11 +44,7 @@ export const LoginScreen: FunctionComponent<Props> = () => {
   const [password, setPassword] = useState("");
   const [isSecure, setIsSecure] = useState(true);
   const [isRemember, setIsRemember] = useState(false);
-  const [isLoading, setIsLoading] = useState<boolean>(loading);
-
-  useEffect(() => {
-    setIsLoading(loading);
-  }, [loading]);
+  const [isLoading, showLoading, hideLoading] = useBoolean(false);
 
   useEffect(() => {
     if (isLogging) {
@@ -64,6 +60,7 @@ export const LoginScreen: FunctionComponent<Props> = () => {
   }, [isLogging, messageFailed, navigation]);
 
   const loginWithEmail = () => {
+    showLoading();
     if (isRemember) {
       setAsyncItem(CONSTANT.TOKEN_STORAGE_KEY.REMEMBER_USER, email);
     } else {
@@ -74,11 +71,13 @@ export const LoginScreen: FunctionComponent<Props> = () => {
       loginAction({
         username: email,
         password: password,
+        callback: hideLoading,
       }),
     );
   };
 
   const externalLogin = (profile: Account) => {
+    showLoading();
     AccountApi.getUserInfoByToken(profile.idToken, profile.provider)?.then(
       (res: any) => {
         if (res?.isAssociate) {
@@ -87,6 +86,7 @@ export const LoginScreen: FunctionComponent<Props> = () => {
               token: profile.idToken,
               email: profile.email,
               provider: profile?.provider,
+              callback: hideLoading,
             }),
           );
         } else {

@@ -19,7 +19,6 @@ import {
   loginExternalPayload,
   loginFailure,
   loginInternalPayload,
-  loginLoading,
   loginStatus,
   logout,
 } from "../slices";
@@ -28,9 +27,8 @@ const { GOOGLE_CLIENT_ID } = Config;
 
 // ----- region Login
 function* takeLogin(action: PayloadAction<loginInternalPayload>) {
-  const { username, password } = action.payload;
+  const { username, password, callback } = action.payload;
   try {
-    yield put(loginLoading(true));
     if (username && password) {
       const response: AuthorizeResult = yield call(
         authApi.login,
@@ -51,16 +49,14 @@ function* takeLogin(action: PayloadAction<loginInternalPayload>) {
     }
     Alert.error(error.error_description, true);
   } finally {
-    // callback;
-    yield put(loginLoading(false));
+    callback?.();
   }
 }
 
 // ----- region Login External
 function* takeLoginExternal(action: PayloadAction<loginExternalPayload>) {
-  const { token, provider } = action.payload;
+  const { token, provider, callback } = action.payload;
   try {
-    yield put(loginLoading(true));
     const response: AuthorizeResult = yield call(
       authApi.loginExternal,
       token,
@@ -74,7 +70,7 @@ function* takeLoginExternal(action: PayloadAction<loginExternalPayload>) {
   } catch (error: any) {
     Alert.error(error.error_description, true);
   } finally {
-    yield put(loginLoading(false));
+    callback?.();
   }
 }
 
@@ -113,9 +109,7 @@ function* takeLogout() {
     }
 
     yield call(handlerLogout);
-  } catch (error) {
-    console.log("🚀🚀🚀 => error", error);
-  }
+  } catch (error) {}
 }
 
 // ----- region getUserInfo
@@ -125,9 +119,7 @@ function* takeUserInfo() {
     if (response) {
       yield put(getUserInfo(response));
     }
-  } catch (error) {
-    console.log("🚀🚀🚀 => error", error);
-  }
+  } catch (error) {}
 }
 
 // ----- region root userSaga

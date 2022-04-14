@@ -5,11 +5,13 @@ import { SliceName } from "./constants";
 export interface loginInternalPayload {
   username?: string;
   password?: string;
+  callback?: () => void;
 }
 export interface loginExternalPayload {
   token: string;
   provider: string;
   email?: string;
+  callback?: () => void;
 }
 export interface IUserState {
   profile: Account | null;
@@ -39,9 +41,6 @@ export const userSlice = createSlice({
   name: SliceName.USER_SLICE,
   initialState,
   reducers: {
-    loginLoading: (state: IUserState, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
-    },
     loginExternalSuccess: (
       state: IUserState,
       action: PayloadAction<Account>,
@@ -95,7 +94,6 @@ export const setAddressSelectedId = createAction<number>(
 );
 // export Actions
 export const {
-  loginLoading,
   loginStatus,
   loginFailure,
   updateInfo,

@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
 const sagaMiddleware = createSagaMiddleware();
 const middleware = (getDefaultMiddleware: any) =>
   getDefaultMiddleware({
-    serializableCheck: false,
+    // serializableCheck: false,
   }).concat(sagaMiddleware);
 
 export const store = configureStore<IRootState>({

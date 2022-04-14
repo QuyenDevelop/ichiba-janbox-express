@@ -19,6 +19,7 @@ import {
   loginExternalPayload,
   loginFailure,
   loginInternalPayload,
+  loginLoading,
   loginStatus,
   logout,
 } from "../slices";
@@ -27,8 +28,9 @@ const { GOOGLE_CLIENT_ID } = Config;
 
 // ----- region Login
 function* takeLogin(action: PayloadAction<loginInternalPayload>) {
-  const { username, password, callback } = action.payload;
+  const { username, password } = action.payload;
   try {
+    yield put(loginLoading(true));
     if (username && password) {
       const response: AuthorizeResult = yield call(
         authApi.login,
@@ -49,14 +51,16 @@ function* takeLogin(action: PayloadAction<loginInternalPayload>) {
     }
     Alert.error(error.error_description, true);
   } finally {
-    callback?.();
+    // callback?.();
+    yield put(loginLoading(false));
   }
 }
 
 // ----- region Login External
 function* takeLoginExternal(action: PayloadAction<loginExternalPayload>) {
-  const { token, provider, callback } = action.payload;
+  const { token, provider } = action.payload;
   try {
+    yield put(loginLoading(true));
     const response: AuthorizeResult = yield call(
       authApi.loginExternal,
       token,
@@ -70,7 +74,7 @@ function* takeLoginExternal(action: PayloadAction<loginExternalPayload>) {
   } catch (error: any) {
     Alert.error(error.error_description, true);
   } finally {
-    callback?.();
+    yield put(loginLoading(false));
   }
 }
 

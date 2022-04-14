@@ -237,14 +237,16 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
         onAcceptPress={onDelete}
         acceptText={translate("button.confirm")}
       />
-      <EditAddressModal
-        isShowModal={isShowEditAddress}
-        onCloseModal={() => {
-          setIsShowEditAddress(false);
-        }}
-        id={idAddress!}
-        setEdited={(pre: any) => setIsEdited(pre)}
-      />
+      {isShowEditAddress && (
+        <EditAddressModal
+          isShowModal={isShowEditAddress}
+          onCloseModal={() => {
+            setIsShowEditAddress(false);
+          }}
+          id={idAddress!}
+          setEdited={(pre: any) => setIsEdited(pre)}
+        />
+      )}
     </View>
   );
 };

@@ -73,11 +73,13 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
   // const [allExchange, setAllExchange] = useState<ExchangeRateResponseV2[]>([]);
 
   const handleLogout = () => {
+    setHideConfirm();
     dispatch(logout());
-    setShowConfirm;
-    navigation.navigate(SCREENS.AUTH_STACK, {
-      screen: SCREENS.LOGIN,
-    });
+    setTimeout(() => {
+      navigation.navigate(SCREENS.AUTH_STACK, {
+        screen: SCREENS.LOGIN,
+      });
+    }, 100);
   };
 
   const headerViewNotLogged = () => {
@@ -323,14 +325,16 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
         )}
       </ScrollView>
 
-      <ConfirmDialog
-        message={translate("button.confirmLogout")}
-        isVisible={showConfirm}
-        onDismiss={setHideConfirm}
-        onDeclinePress={setHideConfirm}
-        onAcceptPress={handleLogout}
-        acceptText={translate("button.logout")}
-      />
+      {showConfirm && (
+        <ConfirmDialog
+          message={translate("button.confirmLogout")}
+          isVisible={showConfirm}
+          onDismiss={setHideConfirm}
+          onDeclinePress={setHideConfirm}
+          onAcceptPress={handleLogout}
+          acceptText={translate("button.logout")}
+        />
+      )}
     </View>
   );
 };

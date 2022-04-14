@@ -37,7 +37,6 @@ function* takeLogin(action: PayloadAction<loginInternalPayload>) {
         username,
         password,
       );
-      console.log("🚀🚀🚀 => function*takeLogin => response", response);
       if (response) {
         yield put(getUserAction());
         yield put(loginStatus(true));
@@ -52,7 +51,7 @@ function* takeLogin(action: PayloadAction<loginInternalPayload>) {
     }
     Alert.error(error.error_description, true);
   } finally {
-    // hideLoading();
+    // callback;
     yield put(loginLoading(false));
   }
 }

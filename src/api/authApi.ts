@@ -14,7 +14,6 @@ const {
 class AuthApi extends BaseApi {
   login = async (email?: string, password?: string) => {
     let url = `${IDENTITY_HOST}/connect/token`;
-    console.log("🚀🚀🚀 => login => url", url);
     return await this.postUrlEncoded(
       url,
       {

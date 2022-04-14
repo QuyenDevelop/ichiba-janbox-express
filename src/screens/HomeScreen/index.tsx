@@ -27,8 +27,7 @@ export type HomeScreenNavigationProp = NativeStackNavigationProp<
 export const HomeScreen: FunctionComponent = () => {
   const navigation = useNavigation<HomeScreenNavigationProp>();
   const userInfo = useAppSelector((state: IRootState) => state.user);
-  const language = useAppSelector((state: IRootState) => state.user.language);
-  console.log("🚀🚀🚀 => language", language);
+  // const language = useAppSelector((state: IRootState) => state.user.language);
   const [photos, setPhotos] = useState<Array<IPhoto>>([]);
   const [searchContent, setSearchContent] = useState<string>("");
   const searchText = useDebounce<string>(searchContent, 1000);

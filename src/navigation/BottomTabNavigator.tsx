@@ -2,11 +2,12 @@
 import { CreateShipmentButton } from "@components";
 import { SCREENS, Sizes } from "@configs";
 import { ScreenUtils } from "@helpers";
+import { useAppSelector } from "@hooks";
 import { HomeStack, NotificationStack } from "@navigation";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { translate } from "@shared";
 import { Images, Themes } from "@themes";
-import React from "react";
+import React, { useEffect } from "react";
 import { Image, Text, View } from "react-native";
 import { AccountNavigator } from "./AccountNavigator";
 import { CreateShipmentStack } from "./CreateShipmentStack";
@@ -60,6 +61,9 @@ const getTabBarIconImage = (
 );
 
 export function BottomTabNavigator() {
+  const language = useAppSelector(state => state.user.language);
+  useEffect(() => {}, [language]);
+
   return (
     <Tab.Navigator
       initialRouteName={SCREENS.HOME_STACK}

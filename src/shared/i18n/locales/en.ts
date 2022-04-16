@@ -310,4 +310,6 @@ export default {
   textWarningUserAndPass: "You have not entered your username or password !!",
   titleCreateShipment: "Create Shipment",
   titleShipmentManage: "Shipment manage",
+  labelNews: "News",
+  labelReview: "Review",
 };

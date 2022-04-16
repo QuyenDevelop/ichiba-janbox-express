@@ -70,6 +70,7 @@ export const Themes = {
     bg: "#00194F",
     location: "#5A62E7",
     wallet: "#2F6BFF",
+    orangeF27: "#F27008",
   },
   font: {
     bold: {

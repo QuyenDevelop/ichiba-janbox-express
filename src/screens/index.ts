@@ -11,3 +11,5 @@ export * from "./Notification/NotificationScreen";
 export * from "./Notification/NotificationSettingDetailScreen/NotificationSettingDetailScreen";
 export * from "./Notification/NotificationSettingScreen/NotificationSettingScreen";
 export * from "./Shipment/ShipmentManageScreen/ShipmentManageScreen";
+export * from "./NewsScreen";
+export * from "./ReviewScreen";

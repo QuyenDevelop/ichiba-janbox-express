@@ -327,4 +327,6 @@ export default {
   textWarningUserAndPass: "ユーザー名またはパスワードを入力していません!!",
   titleCreateShipment: "配送ルートを選択",
   titleShipmentManage: "出荷管理",
+  labelNews: "ニュース",
+  labelReview: "レビュー",
 };

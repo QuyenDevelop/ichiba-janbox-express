@@ -1,0 +1,118 @@
+import { Themes } from "@themes";
+import { StyleSheet } from "react-native";
+import { ScreenUtils } from "./../../helpers/screenUtils";
+import { FontFamily } from "./../../themes/theme";
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: ScreenUtils.scale(10),
+    backgroundColor: Themes.colors.white,
+  },
+  settingBtn: {
+    backgroundColor: Themes.colors.bP60,
+    marginBottom: ScreenUtils.scale(20),
+    marginHorizontal: ScreenUtils.scale(50),
+    paddingVertical: ScreenUtils.scale(10),
+    borderRadius: ScreenUtils.scale(5),
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  settingBtnText: {
+    color: Themes.colors.white,
+    fontFamily: FontFamily.bold,
+  },
+  imgStyle: {
+    resizeMode: "cover",
+    width: "100%",
+    borderRadius: ScreenUtils.scale(12),
+    marginBottom: ScreenUtils.scale(12),
+  },
+  containerItems: {
+    marginBottom: ScreenUtils.scale(15),
+    backgroundColor: Themes.colors.white,
+    borderRadius: ScreenUtils.scale(12),
+    borderColor: Themes.colors.surface,
+    shadowColor: Themes.colors.black,
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.9,
+    shadowRadius: ScreenUtils.scale(12),
+    elevation: 3,
+  },
+  title: {
+    fontSize: 14,
+    lineHeight: 14,
+    fontFamily: FontFamily.medium,
+    color: Themes.colors.coolGray100,
+    marginVertical: ScreenUtils.scale(8),
+    marginHorizontal: ScreenUtils.scale(16),
+  },
+  detail: {
+    fontSize: 14,
+    lineHeight: 18,
+    fontFamily: FontFamily.regular,
+    color: Themes.colors.coolGray60,
+    marginHorizontal: ScreenUtils.scale(16),
+    marginBottom: ScreenUtils.scale(12),
+  },
+  customRatingBarStyle: {
+    justifyContent: "center",
+    flexDirection: "row",
+    marginTop: ScreenUtils.scale(8),
+  },
+  suggestContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    paddingHorizontal: ScreenUtils.scale(27),
+    marginTop: ScreenUtils.scale(16),
+  },
+  btnSuggest: {
+    padding: ScreenUtils.scale(10),
+    backgroundColor: Themes.colors.colGray10,
+    marginVertical: ScreenUtils.scale(4),
+    marginHorizontal: ScreenUtils.scale(4),
+    borderRadius: ScreenUtils.scale(20),
+    alignItems: "center",
+  },
+  titleContainer: {
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: ScreenUtils.scale(37),
+  },
+  txtTitle: {
+    fontFamily: FontFamily.bold,
+    fontSize: ScreenUtils.scale(18),
+    color: Themes.colors.coolGray100,
+  },
+  txtDescription: {
+    marginTop: ScreenUtils.scale(30),
+    marginLeft: ScreenUtils.scale(27),
+    fontFamily: FontFamily.bold,
+    fontSize: ScreenUtils.scale(14),
+    color: Themes.colors.coolGray100,
+  },
+  inputContainer: {
+    width: 327,
+    height: 111,
+    borderWidth: ScreenUtils.scale(0.4),
+    borderColor: Themes.colors.colGray20,
+    alignSelf: "center",
+    borderRadius: ScreenUtils.scale(8),
+    marginTop: ScreenUtils.scale(5),
+  },
+  maxCharacter: {
+    marginHorizontal: ScreenUtils.scale(35),
+    marginVertical: ScreenUtils.scale(10),
+  },
+  btnPhotos: {
+    marginVertical: ScreenUtils.scale(25),
+    flexDirection: "row",
+    paddingVertical: ScreenUtils.scale(10),
+    width: ScreenUtils.WIDTH_SCREEN / 3,
+    borderRadius: ScreenUtils.scale(8),
+    justifyContent: "space-around",
+    alignItems: "center",
+    backgroundColor: Themes.colors.colGray20,
+    marginHorizontal: ScreenUtils.scale(35),
+  },
+  betweenStar: { marginHorizontal: ScreenUtils.scale(5) },
+});

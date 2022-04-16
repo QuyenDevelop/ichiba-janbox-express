@@ -313,4 +313,6 @@ export default {
   textWarningUserAndPass: "Tài khoản hoặc mật khẩu không được trống",
   titleCreateShipment: "Tạo gói hàng",
   titleShipmentManage: "Quản lý gói hàng",
+  labelNews: "Tin tức",
+  labelReview: "Đánh giá",
 };

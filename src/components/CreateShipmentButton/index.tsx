@@ -2,8 +2,10 @@ import { SCREENS } from "@configs";
 import { BottomTabBarButtonProps } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { Icon } from "@shared";
+import { Metrics, Themes } from "@themes";
 import React, { FunctionComponent } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity, View } from "react-native";
 import styles from "./styles";
 
 interface Props {
@@ -23,7 +25,11 @@ export const CreateShipmentButton: FunctionComponent<Props> = ({ props }) => {
         }}
         style={styles.createShipmentButton}
       >
-        <Text style={styles.createShipmentText}>+</Text>
+        <Icon
+          name={"ic_plus"}
+          size={Metrics.icons.large}
+          color={Themes.colors.white}
+        />
       </TouchableOpacity>
     </View>
   );

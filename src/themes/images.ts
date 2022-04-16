@@ -1,4 +1,7 @@
 export const Images = {
+  bannerDefault: require("../assets/banner-default.png"),
+  bannerHomeDefault: require("../assets/banner/home_banner_default.png"),
+  bannerHomeBrandDefault: require("../assets/banner/home_banner_brand_default.png"),
   icHome: require("../assets/icons/bottomTab/ic_home.png"),
   icHomeFill: require("../assets/icons/bottomTab/ic_home_fill.png"),
   icNotification: require("../assets/icons/bottomTab/ic_notification.png"),
@@ -24,6 +27,7 @@ export const Images = {
   yourFavoriteItems1: require("../assets/home/YourFavoriteItem/ImageProduct.png"),
   shoe: require("../assets/shoe.png"),
   notificationSample: require("../assets/notification-sample.png"),
+  icQuestion: require("../assets/icons/ic_question.png"),
 };
 
 export const AnimationImages = {

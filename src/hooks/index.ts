@@ -2,6 +2,7 @@ export * from "./useAppDispatch";
 export * from "./useAppSelector";
 export * from "./useBoolean";
 export * from "./useDebounce";
+export * from "./useIsMounted";
 export * from "./useLoading";
 export * from "./useLoadMore";
 export * from "./useShow";

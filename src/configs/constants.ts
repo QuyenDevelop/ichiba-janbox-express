@@ -24,6 +24,8 @@ export const CONSTANT = {
     RELOAD_PACKAGE_DELIVERY: "reload_package_delivery",
     RELOAD_ADDRESS: "reload_address",
   },
+  WHATSAPP_LINK:
+    "https://api.whatsapp.com/send/?phone=818060227335&text&app_absent=0",
   CURRENCY: {
     JA: "JPY",
     VND: "VND",
@@ -36,4 +38,12 @@ export const CONSTANT = {
     CURRENCY: "Currency",
   },
   REVOKE_TOKEN_ENDPOINT: "revocation",
+  MENU_CONSTANT: {
+    CREATE_SHIPMENT: "CREATE_SHIPMENT",
+    CREATE_FROM_PAST: "CREATE_FROM_PAST",
+    WAREHOUSE: "WAREHOUSE",
+    SHIPMENT_MANAGE: "SHIPMENT_MANAGE",
+    RATE_TIME: "RATE_TIME",
+    ANALYTIC: "ANALYTIC",
+  },
 };

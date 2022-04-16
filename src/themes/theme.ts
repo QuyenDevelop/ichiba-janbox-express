@@ -70,6 +70,11 @@ export const Themes = {
     bg: "#00194F",
     location: "#5A62E7",
     wallet: "#2F6BFF",
+    menuRedBrand: "#FD2B18",
+    menuWarehouse: "#F43739",
+    menuGreenBrand: "#3DAB25",
+    menuManage: "#1E7EF7",
+    menuRate: "#364CC9",
   },
   font: {
     bold: {

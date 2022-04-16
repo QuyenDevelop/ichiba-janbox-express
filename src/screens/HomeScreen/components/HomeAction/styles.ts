@@ -1,0 +1,111 @@
+import { ScreenUtils } from "@helpers";
+import { Themes } from "@themes";
+import { StyleSheet } from "react-native";
+
+export default StyleSheet.create({
+  container: {
+    position: "absolute",
+    zIndex: 10,
+    right: ScreenUtils.scale(10),
+    bottom: ScreenUtils.scale(20),
+    flexDirection: "column",
+    alignItems: "flex-end",
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 8,
+  },
+  actionButton: {
+    width: ScreenUtils.scale(40),
+    height: ScreenUtils.scale(40),
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Themes.colors.white,
+    borderRadius: ScreenUtils.scale(20),
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 8,
+  },
+  overView: {
+    flexDirection: "column",
+    marginBottom: ScreenUtils.scale(10),
+    backgroundColor: Themes.colors.white,
+    paddingHorizontal: ScreenUtils.scale(16),
+    borderRadius: ScreenUtils.scale(12),
+  },
+  actionView: {
+    backgroundColor: Themes.colors.colGray10,
+    marginVertical: -ScreenUtils.scale(2),
+  },
+  actionButton1: {
+    flexDirection: "row",
+    alignItems: "center",
+    height: ScreenUtils.scale(48),
+    marginRight: ScreenUtils.scale(12),
+  },
+  buttonText: {
+    ...Themes.font.medium,
+    fontSize: 14,
+    fontWeight: "500",
+    lineHeight: 16,
+    color: Themes.colors.coolGray100,
+    marginLeft: ScreenUtils.scale(16),
+  },
+  hitSlop: {
+    top: 10,
+    bottom: 10,
+    left: 10,
+    right: 10,
+  },
+  imageView: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: ScreenUtils.scale(12),
+    justifyContent: "space-between",
+  },
+  image: {
+    width: ScreenUtils.scale(36),
+    height: ScreenUtils.scale(36),
+    borderRadius: ScreenUtils.scale(18),
+  },
+  moreImage: {
+    width: ScreenUtils.scale(36),
+    height: ScreenUtils.scale(36),
+    borderRadius: ScreenUtils.scale(18),
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Themes.colors.coolGray60,
+    position: "absolute",
+    right: 0,
+  },
+  moreText: {
+    ...Themes.font.medium,
+    fontSize: 10,
+    fontWeight: "600",
+    lineHeight: 15,
+    color: Themes.colors.white,
+  },
+  unreadMessage: {
+    width: ScreenUtils.scale(16),
+    height: ScreenUtils.scale(16),
+    backgroundColor: Themes.colors.danger60,
+    borderRadius: ScreenUtils.scale(8),
+    marginLeft: ScreenUtils.scale(8),
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  unreadMessageText: {
+    ...Themes.font.medium,
+    fontSize: 10,
+    fontWeight: "600",
+    lineHeight: 15,
+    color: Themes.colors.white,
+  },
+});

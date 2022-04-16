@@ -1,3 +1,4 @@
+export * from "./Banner/Banner";
 export * from "./ConfirmDialog/ConfirmDialog";
 export * from "./ContentLoader";
 export * from "./CreateShipmentButton";
@@ -5,6 +6,7 @@ export * from "./DateTime/DateTime";
 export * from "./FastImage/FastImageLoading";
 export * from "./Footer/Footer";
 export * from "./Header/Header";
+export * from "./HomeHeader/HomeHeaderAnimated";
 export * from "./LocationModal/LocationModal";
 export * from "./PhoneNumber/PhoneNumber";
 export * from "./Picker/Picker";

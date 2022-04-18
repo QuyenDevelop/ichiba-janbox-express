@@ -7,6 +7,7 @@ export * from "./FastImage/FastImageLoading";
 export * from "./Footer/Footer";
 export * from "./Header/Header";
 export * from "./HomeHeader/HomeHeaderAnimated";
+export * from "./ListProductSearchLoader/ListProductSearchLoader";
 export * from "./LocationModal/LocationModal";
 export * from "./PhoneNumber/PhoneNumber";
 export * from "./Picker/Picker";

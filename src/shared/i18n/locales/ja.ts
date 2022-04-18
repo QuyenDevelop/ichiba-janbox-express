@@ -323,6 +323,7 @@ export default {
   buttonRateAndTime: "レート＆時間",
   buttonAnalytics: "アナリティクス",
   buttonViewAll: "すべて見る",
+  buttonClearAll: "すべてクリア",
 
   labelNotification: "通知",
   labelResult: "結果",
@@ -345,9 +346,11 @@ export default {
   textNotLogin: "あなたはアカウントに記録されていません",
   textConvenientPurchase: "便利な購入",
   textEasyPayment: "簡単な支払い",
+  textRef: "参照番号:",
 
   titleCreateShipment: "配送ルートを選択",
   titleShipmentManage: "出荷管理",
   titlePoint: "パワーポイント",
   titleWallet: "私の財布",
+  titleScanQRCode: "スキャンコード",
 };

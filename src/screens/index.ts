@@ -10,4 +10,6 @@ export * from "./LaunchScreen";
 export * from "./Notification/NotificationScreen";
 export * from "./Notification/NotificationSettingDetailScreen/NotificationSettingDetailScreen";
 export * from "./Notification/NotificationSettingScreen/NotificationSettingScreen";
+export * from "./Search/ScanQRCodeScreen";
+export * from "./Search/SearchScreen";
 export * from "./Shipment/ShipmentManageScreen/ShipmentManageScreen";

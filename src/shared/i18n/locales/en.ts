@@ -306,6 +306,7 @@ export default {
   buttonRateAndTime: "Rate & Time",
   buttonAnalytics: "Analytics",
   buttonViewAll: "View all",
+  buttonClearAll: "Clear all",
 
   labelNotification: "Notification",
   labelResult: "results",
@@ -329,9 +330,11 @@ export default {
   textWarningUserAndPass: "You have not entered your username or password !!",
   textConvenientPurchase: "Convenient Purchase",
   textEasyPayment: "Easy Payment",
+  textRef: "Ref No.:",
 
   titleCreateShipment: "Create Shipment",
   titleShipmentManage: "Shipment manage",
   titlePoint: "Power Point",
   titleWallet: "My Wallet",
+  titleScanQRCode: "Scan QR code",
 };

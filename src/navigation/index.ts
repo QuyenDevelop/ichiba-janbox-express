@@ -6,4 +6,5 @@ export * from "./HomeNavigator";
 export * from "./NavigateManagement";
 export * from "./NotificationNavigator";
 export * from "./RootNavigator";
+export * from "./SearchStack";
 export * from "./ShipmentStack";

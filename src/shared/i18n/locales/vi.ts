@@ -309,6 +309,7 @@ export default {
   buttonRateAndTime: "Tỷ lệ & Thời gian",
   buttonAnalytics: "Thống kê",
   buttonViewAll: "Tất cả",
+  buttonClearAll: "Xóa tất cả",
 
   labelNotification: "Thông báo",
   labelResult: "Kết quả",
@@ -332,9 +333,11 @@ export default {
   textNotLogin: "Bạn chưa đăng nhập tài khoản",
   textConvenientPurchase: "Convenient Purchase",
   textEasyPayment: "Thanh toán dễ dàng",
+  textRef: "Số:",
 
   titleCreateShipment: "Tạo gói hàng",
   titleShipmentManage: "Quản lý gói hàng",
   titlePoint: "Điểm tích lũy",
   titleWallet: "Ví của tôi",
+  titleScanQRCode: "Quét mã vạch",
 };

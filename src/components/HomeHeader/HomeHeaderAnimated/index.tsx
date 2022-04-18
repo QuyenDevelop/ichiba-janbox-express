@@ -1,4 +1,7 @@
+import { SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Icon, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
 import React, { FunctionComponent } from "react";
@@ -14,7 +17,7 @@ interface Props {
 export const HomeHeaderAnimated: FunctionComponent<Props> = props => {
   const { scrollY } = props;
   const insets = useSafeAreaInsets();
-  // const navigation = useNavigation<any>();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   // const searchOpacity = scrollY?.interpolate({
   //   inputRange: [
@@ -40,8 +43,14 @@ export const HomeHeaderAnimated: FunctionComponent<Props> = props => {
     extrapolate: "clamp",
   });
 
-  const goToSearch = () => {};
-  const gotoScan = () => {};
+  const goToSearch = () => {
+    navigation.navigate(SCREENS.SEARCH_STACK);
+  };
+  const gotoScan = () => {
+    navigation.navigate(SCREENS.SEARCH_STACK, {
+      screen: SCREENS.SCAN_SCREEN,
+    });
+  };
 
   return (
     <View style={[styles.container]}>

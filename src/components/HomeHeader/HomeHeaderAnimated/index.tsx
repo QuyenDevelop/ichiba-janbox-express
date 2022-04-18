@@ -26,16 +26,6 @@ export const HomeHeaderAnimated: FunctionComponent<Props> = props => {
   //   extrapolate: "clamp",
   // });
 
-  // const heightTopBar = scrollY?.interpolate({
-  //   inputRange: [
-  //     0,
-  //     insets.top + ScreenUtils.scale(25),
-  //     insets.top + ScreenUtils.scale(50),
-  //   ],
-  //   outputRange: [44 + insets.top, 22, 0],
-  //   extrapolate: "clamp",
-  // });
-
   const backgroundColor = scrollY?.interpolate({
     inputRange: [
       0,
@@ -44,7 +34,7 @@ export const HomeHeaderAnimated: FunctionComponent<Props> = props => {
     ],
     outputRange: [
       Themes.colors.transparent,
-      Themes.colors.transparent,
+      Themes.colors.background,
       Themes.colors.primary,
     ],
     extrapolate: "clamp",
@@ -52,15 +42,6 @@ export const HomeHeaderAnimated: FunctionComponent<Props> = props => {
 
   const goToSearch = () => {};
   const gotoScan = () => {};
-
-  // const isLogin = (): boolean => {
-  //   if (!profile) {
-  //     goToLogin();
-  //     return false;
-  //   }
-
-  //   return true;
-  // };
 
   return (
     <View style={[styles.container]}>
@@ -94,35 +75,6 @@ export const HomeHeaderAnimated: FunctionComponent<Props> = props => {
           </TouchableOpacity>
         </Animated.View>
       </Animated.View>
-      {/* {showTopSearch && (
-        <Animated.View
-          style={[styles.topBarContainer, { backgroundColor: backgroundColor }]}
-        >
-          <TouchableOpacity hitSlop={styles.hitSlop} onPress={gotoScan}>
-            <Icon
-              name="ic_tracking_order"
-              size={Metrics.icons.small}
-              color={Themes.colors.white}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            hitSlop={styles.hitSlop}
-            onPress={goToSearch}
-            style={styles.inputSearch}
-          >
-            <Icon
-              name="ic_search"
-              size={Metrics.icons.small}
-              color={Themes.colors.coolGray100}
-            />
-            <TextInput
-              placeholder={translate("placeholder.search")}
-              style={styles.searchInput}
-              returnKeyType="done"
-            />
-          </TouchableOpacity>
-        </Animated.View>
-      )} */}
     </View>
   );
 };

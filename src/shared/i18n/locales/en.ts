@@ -189,7 +189,7 @@ export default {
     email: "Type your email",
     password: "Type your password",
     oldPassword: "Enter old password",
-    search: "Enter product name ...",
+    search: "Type your tracking number",
     firstName: "Type your first name",
     lastName: "Type your last name",
     confirmPassword: "Type your confirm password",

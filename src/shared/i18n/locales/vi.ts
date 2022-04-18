@@ -190,7 +190,7 @@ export default {
     email: "Nhập email",
     password: "Nhập mật khẩu",
     oldPassword: "Nhập mật khẩu cũ",
-    search: "Nhập tên sản phẩm ...",
+    search: "nhập số theo dõi của bạn",
     firstName: "Nhập họ",
     lastName: "Nhập tên",
     confirmPassword: "Nhập xác nhận mật khẩu",

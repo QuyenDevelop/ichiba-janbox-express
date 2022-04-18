@@ -94,7 +94,7 @@ export const HomeBanner: FunctionComponent<Props> = ({
           <View style={{ flexDirection: "row" }}>
             <View style={styles.icons}>
               <Icon
-                name={"ic_logo_janbox"}
+                name={"ic_star"}
                 size={Metrics.icons.smallSmall}
                 color={Themes.colors.primary}
               />

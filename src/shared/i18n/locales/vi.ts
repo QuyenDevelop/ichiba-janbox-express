@@ -326,6 +326,7 @@ export default {
   labelFirstTimeUserContent:
     "Janbox là một nền tảng thương mại điện tử xuyên biên giới giúp bạn mua và đấu giá các sản phẩm Nhật Bản trực tuyến. Chúng tôi thay mặt bạn mua hàng và lo vận chuyển theo yêu cầu của bạn.",
   labelNews: "Tin tức",
+  labelUseGuide: "Hướng dẫn sử dụng",
 
   textWarningUserAndPass: "Tài khoản hoặc mật khẩu không được trống",
   textNotLogin: "Bạn chưa đăng nhập tài khoản",

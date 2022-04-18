@@ -3,7 +3,7 @@ import { ItemHomeMenu } from "@models";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { translate } from "@shared";
-import { Themes } from "@themes";
+import { Images, Themes } from "@themes";
 import React, { FunctionComponent, useCallback } from "react";
 import { FlatList, ScrollView } from "react-native";
 import { HomeOptionItem } from "./HomeOptionItem";
@@ -13,37 +13,37 @@ export const HomeOptions: FunctionComponent = () => {
   const menuConstants: Array<ItemHomeMenu> = [
     {
       title: translate("buttonCreateShipment"),
-      iconName: "",
+      iconName: Images.icCreateShipment,
       headerColor: Themes.colors.red10,
       ref: CONSTANT.MENU_CONSTANT.CREATE_SHIPMENT,
     },
     {
       title: translate("buttonCreateFromPast"),
-      iconName: "",
+      iconName: Images.icCreateFromPast,
       headerColor: Themes.colors.menuGreenBrand,
       ref: CONSTANT.MENU_CONSTANT.CREATE_FROM_PAST,
     },
     {
       title: translate("buttonWarehouse"),
-      iconName: "",
+      iconName: Images.icWarehouse,
       headerColor: Themes.colors.menuWarehouse,
       ref: CONSTANT.MENU_CONSTANT.WAREHOUSE,
     },
     {
       title: translate("buttonShipmentManage"),
-      iconName: "",
+      iconName: Images.icShipmentManage,
       headerColor: Themes.colors.menuManage,
       ref: CONSTANT.MENU_CONSTANT.SHIPMENT_MANAGE,
     },
     {
       title: translate("buttonRateAndTime"),
-      iconName: "",
+      iconName: Images.icRateTime,
       headerColor: Themes.colors.menuRate,
       ref: CONSTANT.MENU_CONSTANT.RATE_TIME,
     },
     {
       title: translate("buttonAnalytics"),
-      iconName: "",
+      iconName: Images.icAnalytic,
       headerColor: Themes.colors.red10,
       ref: CONSTANT.MENU_CONSTANT.ANALYTIC,
     },

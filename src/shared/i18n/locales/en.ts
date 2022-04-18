@@ -323,6 +323,7 @@ export default {
   labelFirstTimeUserContent:
     "Janbox is a Cross-border E-commerce platform that helps you buy and auction Japanese products online. We buy goods on your behalf and take care of shipping as you require.",
   labelNews: "News",
+  labelUseGuide: "Use guide",
 
   textNotLogin: "You are not logged in account",
   textWarningUserAndPass: "You have not entered your username or password !!",

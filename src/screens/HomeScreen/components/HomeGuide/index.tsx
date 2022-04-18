@@ -8,10 +8,10 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { HomeNewsItem, newsItem } from "./HomeItem";
+import { GuideItem, HomeGuideItem } from "./HomeGuideItem";
 import styles from "./styles";
 
-const News: Array<newsItem> = [
+const News: Array<GuideItem> = [
   {
     id: 1,
     title: "Chiết khấu 6,8% thanh toán bằng ví janbox",
@@ -34,21 +34,21 @@ const News: Array<newsItem> = [
   },
 ];
 
-export const HomeNews: FunctionComponent = () => {
-  const [news] = useState<Array<newsItem>>(News);
+export const HomeUseGuide: FunctionComponent = () => {
+  const [guide] = useState<Array<GuideItem>>(News);
   // const navigation = useNavigation<StackNavigationProp<any>>();
 
   const gotoSomewhere = useCallback(() => {}, []);
   const gotoNewsList = () => {};
 
-  const renderItem = ({ item }: { item: newsItem }) => {
-    return <HomeNewsItem item={item} router={gotoSomewhere} />;
+  const renderItem = ({ item }: { item: GuideItem }) => {
+    return <HomeGuideItem item={item} router={gotoSomewhere} />;
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.headerContent}>
-        <Text style={styles.headerNews}>{translate("labelNews")}</Text>
+        <Text style={styles.headerNews}>{translate("labelUseGuide")}</Text>
         <TouchableOpacity onPress={gotoNewsList}>
           <Text style={styles.btnViewAll}>{translate("buttonViewAll")}</Text>
         </TouchableOpacity>
@@ -56,14 +56,18 @@ export const HomeNews: FunctionComponent = () => {
       <ScrollView
         contentContainerStyle={styles.scrollViewContainer}
         showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         horizontal
+        scrollEnabled={false}
       >
         <FlatList
-          data={news}
+          data={guide}
           keyExtractor={(item, index) => `${item.id}_${index}`}
           renderItem={renderItem}
-          numColumns={news.length}
+          numColumns={2}
+          // columnWrapperStyle={{ justifyContent: "space-between" }}
           scrollEnabled={false}
+          // onEndReachedThreshold={0.5}
         />
       </ScrollView>
     </View>

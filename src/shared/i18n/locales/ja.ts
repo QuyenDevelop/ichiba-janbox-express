@@ -339,6 +339,7 @@ export default {
   labelFirstTimeUserContent:
     "Janboxは、日本商品をオンラインで購入して入札にかけるのに役立つ国境を越えたEコマースプラットフォームです。 私たちはあなたに代わって商品を購入し、あなたが必要とするように輸送の世話をします。",
   labelNews: "News",
+  labelUseGuide: "Use guide",
 
   textWarningUserAndPass: "ユーザー名またはパスワードを入力していません!!",
   textNotLogin: "あなたはアカウントに記録されていません",

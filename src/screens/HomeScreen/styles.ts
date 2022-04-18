@@ -8,7 +8,6 @@ export default StyleSheet.create({
     backgroundColor: Themes.colors.white,
   },
   containerStyle: {
-    overflow: "hidden",
     backgroundColor: Themes.colors.white,
     borderBottomLeftRadius: ScreenUtils.scale(40),
     borderBottomRightRadius: ScreenUtils.scale(40),
@@ -58,9 +57,11 @@ export default StyleSheet.create({
   childContainer: {
     position: "absolute",
     flexDirection: "row",
-    top: ScreenUtils.scale(-40),
+    // top: ScreenUtils.scale(-40),
+    bottom: ScreenUtils.scale(-10),
     left: ScreenUtils.scale(16),
     backgroundColor: Themes.colors.white,
+    paddingVertical: ScreenUtils.scale(8),
     overflow: "hidden",
     borderRadius: ScreenUtils.scale(8),
     shadowColor: "#000",
@@ -74,9 +75,9 @@ export default StyleSheet.create({
   },
   pointContainer: {
     width: ScreenUtils.WIDTH_SCREEN / 2 - 16,
-    paddingVertical: ScreenUtils.scale(4),
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
   },
   icons: {
     width: ScreenUtils.scale(40),
@@ -97,14 +98,14 @@ export default StyleSheet.create({
   },
   walletContainer: {
     width: ScreenUtils.WIDTH_SCREEN / 2 - 16,
-    paddingVertical: ScreenUtils.scale(4),
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
   },
   heightSeparator: {
     width: ScreenUtils.scale(2),
     height: ScreenUtils.scale(30),
-    marginVertical: ScreenUtils.scale(10),
+    marginVertical: ScreenUtils.scale(12),
     backgroundColor: Themes.colors.colGray20,
   },
 });

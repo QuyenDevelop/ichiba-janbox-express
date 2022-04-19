@@ -1,11 +1,10 @@
-import { Themes } from "@themes";
 import { StyleSheet } from "react-native";
-import { ScreenUtils } from "./../../helpers/screenUtils";
-import { FontFamily } from "./../../themes/theme";
+import { ScreenUtils } from "@helpers";
+import { Themes, FontFamily } from "@themes";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: ScreenUtils.scale(10),
+    //marginTop: ScreenUtils.scale(10),
     backgroundColor: Themes.colors.white,
   },
   settingBtn: {
@@ -115,4 +114,46 @@ export default StyleSheet.create({
     marginHorizontal: ScreenUtils.scale(35),
   },
   betweenStar: { marginHorizontal: ScreenUtils.scale(5) },
+  closeImg: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: "red",
+    marginLeft: ScreenUtils.scale(60),
+    position: "absolute",
+  },
+  containerImg: {
+    flexDirection: "row",
+    marginHorizontal: ScreenUtils.scale(24),
+  },
+  txtClose: { textAlign: "center", color: "white" },
+  imgUpload: {
+    width: 88,
+    height: 88,
+    borderRadius: ScreenUtils.scale(10),
+    marginTop: ScreenUtils.scale(7),
+  },
+  imgSubContainer: {
+    marginLeft: ScreenUtils.scale(12),
+    flex: 1,
+    width: 100,
+    height: 100,
+  },
+  btnSubmitReview: {
+    paddingVertical: ScreenUtils.scale(14),
+    backgroundColor: Themes.colors.orangeF27,
+    marginHorizontal: ScreenUtils.scale(16),
+    borderRadius: ScreenUtils.scale(8),
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: ScreenUtils.scale(18),
+    marginBottom: ScreenUtils.scale(15),
+    // position: "absolute",
+    // bottom: ScreenUtils.scale(42),
+  },
+  txtSubmitReview: {
+    ...Themes.font.semiBold,
+    fontSize: ScreenUtils.scale(14),
+    color: Themes.colors.white,
+  },
 });

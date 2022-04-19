@@ -8,7 +8,7 @@ import styles from "./style";
 
 interface Props {
   container?: ViewStyle;
-  title: string;
+  title?: string;
   isButton?: boolean;
   titleButtonGoBack?: string;
   goBack?: () => void;
@@ -41,7 +41,7 @@ export const NoData: FunctionComponent<Props> = props => {
           resizeMode={FastImage.resizeMode.cover}
         />
       )}
-      <Text style={styles.noResultTitle}>{translate(title)}</Text>
+      {title && <Text style={styles.noResultTitle}>{translate(title)}</Text>}
       {content ? (
         <Text style={styles.textNodata} numberOfLines={2}>
           {translate(content)}

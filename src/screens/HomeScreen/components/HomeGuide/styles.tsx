@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: ScreenUtils.scale(12),
+    marginTop: ScreenUtils.scale(24),
   },
   headerContent: {
     flexDirection: "row",
@@ -33,6 +33,7 @@ export default StyleSheet.create({
     flexDirection: "column",
     width: (ScreenUtils.WIDTH_SCREEN - ScreenUtils.scale(40)) / 2,
     marginHorizontal: ScreenUtils.scale(6),
+    marginVertical: ScreenUtils.scale(6),
     borderRadius: ScreenUtils.scale(12),
     overflow: "hidden",
     borderColor: Themes.colors.coolGray30,

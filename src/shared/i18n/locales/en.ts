@@ -189,7 +189,7 @@ export default {
     email: "Type your email",
     password: "Type your password",
     oldPassword: "Enter old password",
-    search: "Enter product name ...",
+    search: "Type your tracking number",
     firstName: "Type your first name",
     lastName: "Type your last name",
     confirmPassword: "Type your confirm password",
@@ -306,6 +306,7 @@ export default {
   buttonRateAndTime: "Rate & Time",
   buttonAnalytics: "Analytics",
   buttonViewAll: "View all",
+  buttonClearAll: "Clear all",
 
   labelNotification: "Notification",
   labelResult: "results",
@@ -323,14 +324,17 @@ export default {
   labelFirstTimeUserContent:
     "Janbox is a Cross-border E-commerce platform that helps you buy and auction Japanese products online. We buy goods on your behalf and take care of shipping as you require.",
   labelNews: "News",
+  labelUseGuide: "Use guide",
 
   textNotLogin: "You are not logged in account",
   textWarningUserAndPass: "You have not entered your username or password !!",
   textConvenientPurchase: "Convenient Purchase",
   textEasyPayment: "Easy Payment",
+  textRef: "Ref No.:",
 
   titleCreateShipment: "Create Shipment",
   titleShipmentManage: "Shipment manage",
   titlePoint: "Power Point",
   titleWallet: "My Wallet",
+  titleScanQRCode: "Scan QR code",
 };

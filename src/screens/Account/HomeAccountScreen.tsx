@@ -24,8 +24,6 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { IRootState } from "src/redux/store";
 import { AccountOptions } from "./components/AccountOptions/AccountOptions";
 import { HeaderView } from "./components/HeaderView/HeaderView";
-// import { IRootState } from "src/redux/reducers";
-// import { BalanceView, HeaderView } from "./AccountScreen/components";
 import styles from "./styles";
 
 interface OwnProps {}
@@ -55,11 +53,6 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [showConfirm, setShowConfirm, setHideConfirm] = useBoolean(false);
-  // const [isShowModalChangeLanguge, setIsShowModalChangeLanguge] =
-  //   useState(false);
-  // const anonymousId = useAppSelector(
-  //   (state: IRootState) => state.user.anonymousId,
-  // ) as string;
   const profile = useAppSelector(
     (state: IRootState) => state.user.profile,
   ) as Account;
@@ -67,10 +60,6 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
   const [selectedLanguage, setSelectedLanguage] =
     useState<PickerItemsResponse>();
   const dispatch = useAppDispatch();
-  // const [customerWallet, setCustomerWallet] = useState<Wallet[] | undefined>();
-  // const [dataCustomerLevel, setDataCustomerLevel] =
-  //   useState<CustomerLevelResponse>();
-  // const [allExchange, setAllExchange] = useState<ExchangeRateResponseV2[]>([]);
 
   const handleLogout = () => {
     setHideConfirm();

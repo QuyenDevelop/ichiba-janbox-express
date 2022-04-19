@@ -11,6 +11,7 @@ import React from "react";
 import { AccountNavigator } from "./AccountNavigator";
 import { AuthNavigation } from "./AuthNavigator";
 import { NotificationStack } from "./NotificationNavigator";
+import { SearchStack } from "./SearchStack";
 
 export type RootStackParamList = {
   [SCREENS.LAUNCH_SCREEN]: undefined;
@@ -21,6 +22,7 @@ export type RootStackParamList = {
   [SCREENS.BOTTOM_TAB_NAVIGATION]: undefined;
   [SCREENS.AUTH_STACK]: undefined;
   [SCREENS.ACCOUNT_STACK]: undefined;
+  [SCREENS.SEARCH_STACK]: undefined;
 };
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -58,6 +60,7 @@ export const RootNavigator = () => {
           gestureEnabled: false,
         }}
       />
+      <RootStack.Screen name={SCREENS.SEARCH_STACK} component={SearchStack} />
     </RootStack.Navigator>
   );
 };

@@ -1,3 +1,4 @@
+import { HomeHeaderAnimated } from "@components";
 import { ScreenUtils } from "@helpers";
 import { useAppSelector, useStatusBar } from "@hooks";
 import React, { useEffect, useRef } from "react";
@@ -5,9 +6,9 @@ import { Animated, View } from "react-native";
 import { FirstTimeUser } from "./components/FirstTimeUser";
 import { HomeAction } from "./components/HomeAction";
 import { BannerKeys, HomeBanner } from "./components/HomeBanner";
+import { HomeUseGuide } from "./components/HomeGuide";
 import { HomeNews } from "./components/HomeNews";
 import { HomeOptions } from "./components/HomeOptions";
-import { HomePointAndWallet } from "./components/HomePointAndWallet";
 import styles from "./styles";
 
 export const HomeScreen = () => {
@@ -21,7 +22,7 @@ export const HomeScreen = () => {
 
   return (
     <View style={styles.container}>
-      {/* <HomeHeaderAnimated showTopSearch={true} scrollY={scrollY} /> */}
+      <HomeHeaderAnimated showTopSearch={true} scrollY={scrollY} />
       <Animated.ScrollView
         scrollEventThrottle={1}
         ref={scrollRef}
@@ -40,10 +41,10 @@ export const HomeScreen = () => {
           containerStyle={styles.containerStyle}
           group={BannerKeys.TOP_HOME_APP}
         />
-        <HomePointAndWallet />
         <View>
           <HomeOptions />
           <HomeNews />
+          <HomeUseGuide />
           <FirstTimeUser />
         </View>
       </Animated.ScrollView>

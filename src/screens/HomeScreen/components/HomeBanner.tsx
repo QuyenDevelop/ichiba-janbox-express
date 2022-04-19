@@ -1,10 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
-import { Banner, BannerContentLoader } from "@components";
+import { Banner, BannerContentLoader, Triangle } from "@components";
 import { ScreenUtils } from "@helpers";
 import { BannerResponse } from "@models";
-import { Images } from "@themes";
+import { Icon, translate } from "@shared";
+import { Icons, Images, Metrics, Themes } from "@themes";
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { Image, View, ViewStyle } from "react-native";
+import { Image, Text, TouchableOpacity, View, ViewStyle } from "react-native";
+import styles from "../styles";
 
 interface OwnProps {
   containerStyle?: ViewStyle;
@@ -46,35 +48,94 @@ export const HomeBanner: FunctionComponent<Props> = ({
     // fetchHomeBanner();
   }, []);
 
+  const gotoPoint = () => {};
+  const gotoWallet = () => {};
+
   return (
     <View style={containerStyle}>
       {isLoading && <BannerContentLoader height={250} />}
       {headerBannerHome?.length > 0 ? (
-        <Banner
-          items={headerBannerHome}
-          style={{
-            height:
-              group === BannerKeys.TOP_HOME_APP
-                ? ScreenUtils.scale(250)
-                : ScreenUtils.scale(136),
-          }}
-        />
+        <>
+          <Banner
+            items={headerBannerHome}
+            style={{
+              height:
+                group === BannerKeys.TOP_HOME_APP
+                  ? ScreenUtils.scale(250)
+                  : ScreenUtils.scale(136),
+            }}
+          />
+          <View />
+        </>
       ) : (
-        <Image
-          source={
-            group === BannerKeys.TOP_HOME_APP
-              ? Images.bannerHomeDefault
-              : Images.bannerHomeBrandDefault
-          }
-          style={{
-            width: "100%",
-            height:
+        <>
+          <Image
+            source={
               group === BannerKeys.TOP_HOME_APP
-                ? ScreenUtils.scale(250)
-                : ScreenUtils.scale(136),
-          }}
-        />
+                ? Images.bannerHomeDefault
+                : Images.bannerHomeBrandDefault
+            }
+            style={{
+              width: "100%",
+              height:
+                group === BannerKeys.TOP_HOME_APP
+                  ? ScreenUtils.scale(250)
+                  : ScreenUtils.scale(136),
+            }}
+          />
+          <View />
+        </>
       )}
+
+      <Triangle />
+
+      <View style={styles.childContainer}>
+        <TouchableOpacity style={styles.pointContainer} onPress={gotoPoint}>
+          <View style={{ flexDirection: "row" }}>
+            <View style={styles.icons}>
+              <Icon
+                name={"ic_star"}
+                size={Metrics.icons.smallSmall}
+                color={Themes.colors.primary}
+              />
+            </View>
+            <View style={styles.titleContent}>
+              <Text style={styles.title}>{translate("titlePoint")}</Text>
+              <Text style={styles.subTitle}>441</Text>
+            </View>
+          </View>
+          <View style={styles.icons}>
+            <Icons.MaterialIcons
+              name={"arrow-forward-ios"}
+              size={Metrics.icons.smallSmall}
+              color={Themes.colors.coolGray60}
+            />
+          </View>
+        </TouchableOpacity>
+        <View style={styles.heightSeparator} />
+        <TouchableOpacity style={styles.walletContainer} onPress={gotoWallet}>
+          <View style={{ flexDirection: "row" }}>
+            <View style={styles.icons}>
+              <Icons.Entypo
+                name={"wallet"}
+                size={Metrics.icons.smallSmall}
+                color={Themes.colors.wallet}
+              />
+            </View>
+            <View style={styles.titleContent}>
+              <Text style={styles.title}>{translate("titleWallet")}</Text>
+              <Text style={styles.subTitle}>Activation</Text>
+            </View>
+          </View>
+          <View style={styles.icons}>
+            <Icons.MaterialIcons
+              name={"arrow-forward-ios"}
+              size={Metrics.icons.smallSmall}
+              color={Themes.colors.coolGray60}
+            />
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

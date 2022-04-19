@@ -27,7 +27,7 @@ export const LaunchScreen: FunctionComponent<Props> = () => {
   });
 
   const authenticate = async (): Promise<void> => {
-    const [accessToken, currency, anonymousId, language] = await Promise.all([
+    const [accessToken, currency, language] = await Promise.all([
       AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.ACCESS_TOKEN),
       AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.CURRENCY),
       AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.ANONYMOUS_ID),

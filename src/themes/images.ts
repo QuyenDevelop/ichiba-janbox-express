@@ -28,6 +28,12 @@ export const Images = {
   shoe: require("../assets/shoe.png"),
   notificationSample: require("../assets/notification-sample.png"),
   icQuestion: require("../assets/icons/ic_question.png"),
+  icCreateShipment: require("../assets/home/menu/create_shipment.png"),
+  icCreateFromPast: require("../assets/home/menu/create_from_past.png"),
+  icWarehouse: require("../assets/home/menu/warehouse.png"),
+  icShipmentManage: require("../assets/home/menu/manage_shipment.png"),
+  icRateTime: require("../assets/home/menu/rate_time.png"),
+  icAnalytic: require("../assets/home/menu/analytic.png"),
 };
 
 export const AnimationImages = {

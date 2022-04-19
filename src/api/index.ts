@@ -1,4 +1,4 @@
-import AccountApi from "./account-api";
+import accountApi from "./account-api";
 import authApi from "./authApi";
 import CommonApi from "./common-api";
 import CustomerApi from "./customer-api";
@@ -9,7 +9,7 @@ import NotificationApi from "./notification-api";
 export {
   imageApi,
   authApi,
-  AccountApi,
+  accountApi,
   LocationApi,
   CustomerApi,
   NotificationApi,

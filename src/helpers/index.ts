@@ -4,4 +4,4 @@ export * from "./ExternalAuthenticationUtils";
 export * from "./screenUtils";
 export * from "./utils";
 export { NavigationUtils };
-import * as NavigationUtils from "./NavigationUtils";
+import * as NavigationUtils from "./navigationUtils";

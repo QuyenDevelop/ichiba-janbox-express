@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">JanboxExpress</string>
-    <!-- Check mã này -->
-    <string name="facebook_app_id">824013764887974</string>
+    <string name="app_name">Janbox Express</string>
+    <string name="facebook_app_id">1239336503174762</string>
+    <string name="fb_login_protocol_scheme">fb1239336503174762</string>
+    <string name="facebook_client_token">072e13970a79f1224fcfe869af686fff</string>
 </resources>

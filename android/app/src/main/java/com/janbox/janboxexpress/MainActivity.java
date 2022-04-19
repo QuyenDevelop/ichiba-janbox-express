@@ -1,4 +1,4 @@
-package com.awesome;
+package com.janbox.janboxexpress;
 
 import com.facebook.react.ReactActivity;
 

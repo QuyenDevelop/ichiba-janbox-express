@@ -72,4 +72,18 @@ export default StyleSheet.create({
     fontSize: 10,
     color: Themes.colors.coolGray80,
   },
+  RNcameraView: { height: "100%" },
+  RNCChildView: {
+    alignSelf: "center",
+    marginTop: ScreenUtils.scale(200),
+    width: ScreenUtils.WIDTH,
+    paddingHorizontal: ScreenUtils.scale(16),
+  },
+  labelScan: {
+    color: Themes.colors.white,
+    textAlign: "center",
+    lineHeight: 18,
+    ...Themes.font.regular,
+    fontSize: 14,
+  },
 });

@@ -9,9 +9,12 @@ import {
 } from "@screens";
 import React from "react";
 import { AccountNavigator } from "./AccountNavigator";
+import { AnalyticStack } from "./AnalyticStack";
 import { AuthNavigation } from "./AuthNavigator";
 import { NotificationStack } from "./NotificationNavigator";
+import { RateTimeStackStack } from "./RateAndTimeStack";
 import { SearchStack } from "./SearchStack";
+import { WarehouseStack } from "./WarehouseStack";
 
 export type RootStackParamList = {
   [SCREENS.LAUNCH_SCREEN]: undefined;
@@ -23,6 +26,9 @@ export type RootStackParamList = {
   [SCREENS.AUTH_STACK]: undefined;
   [SCREENS.ACCOUNT_STACK]: undefined;
   [SCREENS.SEARCH_STACK]: undefined;
+  [SCREENS.WAREHOUSE_STACK]: undefined;
+  [SCREENS.ANALYTIC_STACK]: undefined;
+  [SCREENS.RATE_TIME_STACK]: undefined;
 };
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -61,6 +67,18 @@ export const RootNavigator = () => {
         }}
       />
       <RootStack.Screen name={SCREENS.SEARCH_STACK} component={SearchStack} />
+      <RootStack.Screen
+        name={SCREENS.WAREHOUSE_STACK}
+        component={WarehouseStack}
+      />
+      <RootStack.Screen
+        name={SCREENS.ANALYTIC_STACK}
+        component={AnalyticStack}
+      />
+      <RootStack.Screen
+        name={SCREENS.RATE_TIME_STACK}
+        component={RateTimeStackStack}
+      />
     </RootStack.Navigator>
   );
 };

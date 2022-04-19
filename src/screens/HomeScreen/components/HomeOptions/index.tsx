@@ -62,7 +62,9 @@ export const HomeOptions: FunctionComponent = () => {
           () => {};
           break;
         case CONSTANT.MENU_CONSTANT.WAREHOUSE:
-          () => {};
+          navigation.navigate(SCREENS.WAREHOUSE_STACK, {
+            screen: SCREENS.WAREHOUSE_SCREEN,
+          });
           break;
         case CONSTANT.MENU_CONSTANT.SHIPMENT_MANAGE:
           navigation.navigate(SCREENS.SHIPMENT_STACK, {
@@ -70,10 +72,14 @@ export const HomeOptions: FunctionComponent = () => {
           });
           break;
         case CONSTANT.MENU_CONSTANT.RATE_TIME:
-          () => {};
+          navigation.navigate(SCREENS.RATE_TIME_STACK, {
+            screen: SCREENS.RATE_TIME_SCREEN,
+          });
           break;
         case CONSTANT.MENU_CONSTANT.ANALYTIC:
-          () => {};
+          navigation.navigate(SCREENS.ANALYTIC_STACK, {
+            screen: SCREENS.ANALYTIC_SCREEN,
+          });
           break;
       }
     },

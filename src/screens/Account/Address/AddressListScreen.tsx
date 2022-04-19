@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { CustomerApi } from "@api";
+import { customerApi } from "@api";
 import { ConfirmDialog, Header } from "@components";
 import { SCREENS } from "@configs";
 import { Alert, ScreenUtils } from "@helpers";
@@ -47,7 +47,8 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
   }, [isEdited]);
 
   const getData = () => {
-    CustomerApi.getListAddress()
+    customerApi
+      .getListAddress()
       ?.then(res => {
         const defaultAddress = res?.data?.find(address => address.active);
         if (defaultAddress) {
@@ -68,7 +69,8 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
   };
 
   const onDelete = () => {
-    CustomerApi.deleteAddress(idAddress!)
+    customerApi
+      .deleteAddress(idAddress!)
       ?.then((response: any) => {
         if (response.status) {
           Alert.success(response.message[0], true);
@@ -82,7 +84,7 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
   };
 
   const setDefault = (id: number) => {
-    CustomerApi.setDefaultAddress(id)?.then(() => {
+    customerApi.setDefaultAddress(id)?.then(() => {
       let newData = data && [...data];
       newData?.map(address => {
         if (address.active) {

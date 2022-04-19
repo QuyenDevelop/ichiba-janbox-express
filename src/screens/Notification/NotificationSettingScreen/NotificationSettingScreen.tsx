@@ -1,4 +1,4 @@
-import { NotificationApi } from "@api";
+import { notificationApi } from "@api";
 import { Header } from "@components";
 import { SCREENS } from "@configs";
 import { useStatusBar } from "@hooks";
@@ -62,7 +62,8 @@ export const NotificationSettingScreen = () => {
   };
 
   const getData = () => {
-    NotificationApi.getNotifiConfig()
+    notificationApi
+      .getNotifiConfig()
       ?.then(res => {
         setData(res?.data);
       })

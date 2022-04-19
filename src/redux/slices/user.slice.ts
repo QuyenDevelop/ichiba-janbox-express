@@ -77,6 +77,9 @@ export const userSlice = createSlice({
     setAddressId: (state: IUserState, action: PayloadAction<number>) => {
       state.selectedAddressId = action.payload;
     },
+    changeLoading: (state: IUserState, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
   },
 });
 
@@ -95,6 +98,7 @@ export const changeLanguage = createAction<string>(
 export const setAddressSelectedId = createAction<number>(
   `${SliceName.USER_SLICE}/setAddressId`,
 );
+
 // export Actions
 export const {
   loginLoading,
@@ -106,6 +110,7 @@ export const {
   loginExternalSuccess,
   changeLanguageSuccess,
   setAddressId,
+  changeLoading,
 } = userSlice.actions;
 
 // export reducer

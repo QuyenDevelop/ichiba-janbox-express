@@ -1,0 +1,114 @@
+{
+  "project_info": {
+    "project_number": "526209044156",
+    "project_id": "ezbuy-mobileapp",
+    "storage_bucket": "ezbuy-mobileapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526209044156:android:01ad5b03e9f5943a25cab9",
+        "android_client_info": {
+          "package_name": "com.ezbuyrn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526209044156-4enf3sme97900apbtveogl8eunrhpbi3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ezbuyrn",
+            "certificate_hash": "86708511a33bee070d4fef096f26819775b13f1b"
+          }
+        },
+        {
+          "client_id": "526209044156-ctbai446lm821a7c2q0ea7aokuk4unm0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ezbuyrn",
+            "certificate_hash": "380c51fcaea59de94bf7f7cdfa4b0c85adee8ced"
+          }
+        },
+        {
+          "client_id": "526209044156-vep6l3jlr8notjnce5jvlch5rdfcvh3n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ezbuyrn",
+            "certificate_hash": "4aa32a351612fda4d0e59cfb278c579625e335db"
+          }
+        },
+        {
+          "client_id": "526209044156-cqf1r4b5mb2grmm6acrppkq0931a7k2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2b1jlNUnGfIsDqDs37Ii3hG_yiPLLpLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526209044156-cqf1r4b5mb2grmm6acrppkq0931a7k2h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "526209044156-0581th3ge13f3dgrp4mph879mm1e868s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "jp.ezbuy.ezbuyRn"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526209044156:android:ffc039d0a62117ac25cab9",
+        "android_client_info": {
+          "package_name": "com.janbox.janboxexpress"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526209044156-l02u8s9mqo8m8bb5m6gmllt1qirligel.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.janbox.janboxexpress",
+            "certificate_hash": "b89c15afabb516b778c26ef2f7aea32d9ede591d"
+          }
+        },
+        {
+          "client_id": "526209044156-cqf1r4b5mb2grmm6acrppkq0931a7k2h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2b1jlNUnGfIsDqDs37Ii3hG_yiPLLpLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526209044156-cqf1r4b5mb2grmm6acrppkq0931a7k2h.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "526209044156-0581th3ge13f3dgrp4mph879mm1e868s.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "jp.ezbuy.ezbuyRn"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

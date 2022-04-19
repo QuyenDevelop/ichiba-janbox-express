@@ -1,14 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
-import { AccountApi } from "@api";
+import { accountApi } from "@api";
 import { Header, PhoneNumber, Separator } from "@components";
 import { Alert, ScreenUtils, Utils } from "@helpers";
 import { useAppDispatch, useAppSelector, useStatusBar } from "@hooks";
-import {
-  Account,
-  LocationResponse,
-  UpdateCustomerRequest,
-  UpdateProfileRequest,
-} from "@models";
+import { Account, LocationResponse, UpdateProfileRequest } from "@models";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { getUserAction } from "@redux";
@@ -110,7 +105,7 @@ export const AccountInformationScreen: FunctionComponent<Props> = () => {
   const [phone, setPhone] = useState<string>(getPhone(profile).phoneNumber);
   const [isSendVerify, setIsSendVerify] = useState<boolean>(false);
   const [, setConfirmCode] = useState("");
-  const [countryData, setCountryData] = useState<Array<LocationResponse>>();
+  const [countryData] = useState<Array<LocationResponse>>();
   const [country, setCountry] = useState<string>("");
   const [idCountrySelect, setIdCountrySelect] = useState(
     getPhone(profile).code,
@@ -144,7 +139,7 @@ export const AccountInformationScreen: FunctionComponent<Props> = () => {
     //       }
     //     },
     //   );
-  }, [profile?.locale]);
+  }, []);
 
   useEffect(() => {
     getCountryApi();
@@ -162,14 +157,15 @@ export const AccountInformationScreen: FunctionComponent<Props> = () => {
         phoneNumber: fullPhoneNumber,
         countryCode: idCountrySelect ? idCountrySelect : "",
       };
-      const updateCustomer: UpdateCustomerRequest = {
-        fullName: fullName ? fullName : "",
-        birthDate: "",
-        gender: 2,
-        phone: fullPhoneNumber,
-        countryCode: idCountrySelect ? idCountrySelect : "",
-      };
-      AccountApi.updateProfile(updateProfile)
+      // const updateCustomer: UpdateCustomerRequest = {
+      //   fullName: fullName ? fullName : "",
+      //   birthDate: "",
+      //   gender: 2,
+      //   phone: fullPhoneNumber,
+      //   countryCode: idCountrySelect ? idCountrySelect : "",
+      // };
+      accountApi
+        .updateProfile(updateProfile)
         ?.then((response: any) => {
           if (response) {
             Alert.success("success.updateAccount");

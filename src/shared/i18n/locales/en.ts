@@ -307,6 +307,7 @@ export default {
   buttonAnalytics: "Analytics",
   buttonViewAll: "View all",
   buttonClearAll: "Clear all",
+  buttonGetQuote: "Get a quote",
 
   labelNotification: "Notification",
   labelResult: "results",
@@ -327,16 +328,27 @@ export default {
   labelUseGuide: "Use guide",
   labelScanBarCodeTitle:
     "Please move your camera over this Bar Code to scan it",
+  labelFrom: "From",
+  labelTo: "To",
+  labelNote: "Notice: ",
+  labelPrice: "Price {{index}}",
+  labelWeight: "Weight",
+  labelGram: "(Gram)",
+  labelDimension: "Dimension (width x length x height)",
+  labelCm: "(cm)",
+  labelShippingAs: "I am shipping as ...",
 
   textNotLogin: "You are not logged in account",
   textWarningUserAndPass: "You have not entered your username or password !!",
   textConvenientPurchase: "Convenient Purchase",
   textEasyPayment: "Easy Payment",
   textRef: "Ref No.:",
+  textNote: "Estimated price does not include import tax",
 
   titleCreateShipment: "Create Shipment",
   titleShipmentManage: "Shipment manage",
   titlePoint: "Power Point",
   titleWallet: "My Wallet",
   titleScanQRCode: "Scan QR code",
+  titleShipment: "Your shipment",
 };

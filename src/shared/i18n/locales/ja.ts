@@ -324,6 +324,7 @@ export default {
   buttonAnalytics: "アナリティクス",
   buttonViewAll: "すべて見る",
   buttonClearAll: "すべてクリア",
+  buttonGetQuote: "見積もりを取得",
 
   labelNotification: "通知",
   labelResult: "結果",
@@ -343,16 +344,27 @@ export default {
   labelUseGuide: "使用ガイド",
   labelScanBarCodeTitle:
     "カメラをこのバーコードの上に移動してスキャンしてください",
+  labelFrom: "から",
+  labelTo: "に",
+  labelNote: "注意事項: ",
+  labelPrice: "価格 {{index}}",
+  labelWeight: "重さ",
+  labelGram: "(Gram)",
+  labelDimension: "寸法（幅x長さx高さ）",
+  labelCm: "(cm)",
+  labelShippingAs: "Tôi đang vận chuyên như ...",
 
   textWarningUserAndPass: "ユーザー名またはパスワードを入力していません!!",
   textNotLogin: "あなたはアカウントに記録されていません",
   textConvenientPurchase: "便利な購入",
   textEasyPayment: "簡単な支払い",
   textRef: "参照番号:",
+  textNote: "推定価格には輸入税は含まれていません",
 
   titleCreateShipment: "配送ルートを選択",
   titleShipmentManage: "出荷管理",
   titlePoint: "パワーポイント",
   titleWallet: "私の財布",
   titleScanQRCode: "スキャンコード",
+  titleShipment: "あなたの積荷",
 };

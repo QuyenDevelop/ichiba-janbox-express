@@ -310,6 +310,7 @@ export default {
   buttonAnalytics: "Thống kê",
   buttonViewAll: "Tất cả",
   buttonClearAll: "Xóa tất cả",
+  buttonGetQuote: "Nhận báo giá",
 
   labelNotification: "Thông báo",
   labelResult: "Kết quả",
@@ -330,16 +331,27 @@ export default {
   labelUseGuide: "Hướng dẫn sử dụng",
   labelScanBarCodeTitle:
     "Vui lòng di chuyển máy ảnh của bạn qua mã vạch này để quét",
+  labelFrom: "Gửi từ",
+  labelTo: "Gửi đến",
+  labelNote: "Chú ý: ",
+  labelPrice: "Gói {{index}}",
+  labelWeight: "Cân nặng",
+  labelGram: "(Gram)",
+  labelDimension: "Dimension (dài x rộng x cao)",
+  labelCm: "(cm)",
+  labelShippingAs: "Tôi đang vận chuyên như ...",
 
   textWarningUserAndPass: "Tài khoản hoặc mật khẩu không được trống",
   textNotLogin: "Bạn chưa đăng nhập tài khoản",
   textConvenientPurchase: "Convenient Purchase",
   textEasyPayment: "Thanh toán dễ dàng",
   textRef: "Số:",
+  textNote: "Ước tính giá chưa bao gồm thuế nhập khẩu",
 
   titleCreateShipment: "Tạo gói hàng",
   titleShipmentManage: "Quản lý gói hàng",
   titlePoint: "Điểm tích lũy",
   titleWallet: "Ví của tôi",
   titleScanQRCode: "Quét mã vạch",
+  titleShipment: "Gói hàng của bạn",
 };

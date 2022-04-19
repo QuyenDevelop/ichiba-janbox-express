@@ -164,7 +164,7 @@ export const RateAndTimeScreen: FunctionComponent<Props> = () => {
         onClose={hideShowFromCountry}
         isVisible={isShowFromCountry}
         data={countries}
-        onPress={data => onChangeFromCountry(data)}
+        onPress={onChangeFromCountry}
         selectedItem={fromCountry?.id}
       />
       <LocationModal
@@ -172,7 +172,7 @@ export const RateAndTimeScreen: FunctionComponent<Props> = () => {
         onClose={hideShowToCountry}
         isVisible={isShowToCountry}
         data={countries}
-        onPress={data => onChangeToCountry(data)}
+        onPress={onChangeToCountry}
         selectedItem={toCountry?.id}
       />
     </ScrollView>

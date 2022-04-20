@@ -5,7 +5,7 @@ import styles from "./styles";
 export const DebtInfo = () => {
   return (
     <View style={styles.container}>
-      <NoData title="label.noDataService" />
+      <NoData title="labelNoDataService" />
     </View>
   );
 };

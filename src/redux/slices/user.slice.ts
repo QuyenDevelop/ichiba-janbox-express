@@ -19,6 +19,7 @@ export interface loginExternalPayload {
 export interface IUserState {
   profile: Account | null;
   language: string | null;
+  currency: string | null;
   loading: boolean;
   tokenId: string | null;
   anonymousId: string | null;
@@ -33,6 +34,7 @@ export interface IUserState {
 const initialState: IUserState = {
   profile: null,
   language: null,
+  currency: null,
   loading: false,
   tokenId: null,
   anonymousId: null,
@@ -99,6 +101,9 @@ export const userSlice = createSlice({
     changeLoading: (state: IUserState, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
     },
+    changeCurrency: (state: IUserState, action: PayloadAction<string>) => {
+      state.currency = action.payload;
+    },
   },
 });
 
@@ -123,6 +128,9 @@ export const countNotifications =
   );
 export const takeSetAnonymousId = createAction<any>(
   `${SliceName.USER_SLICE}/setAnonymousId`,
+);
+export const changeCurrencyWithLaunch = createAction<string>(
+  `${SliceName.USER_SLICE}/changeCurrency`,
 );
 // export Actions
 export const {

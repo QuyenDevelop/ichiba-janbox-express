@@ -19,17 +19,19 @@ import {
   ActivityIndicator,
   DeviceEventEmitter,
   ScrollView,
+  Text,
   View,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { TabBar, TabBarIndicator, TabView } from "react-native-tab-view";
 import { BalanceView } from "../components/BalanceView/BalanceView";
-import { TransactionHistory, WalletInfo } from "./components";
+import { DebtInfo, TransactionHistory, WalletInfo } from "./components";
 import styles from "./styles";
 
-// const tabKey = {
-//   DEBT: "DEBT",
-//   TRANSACTION_HISTORY: "TRANSACTION_HISTORY",
-// };
+const tabKey = {
+  DEBT: "DEBT",
+  TRANSACTION_HISTORY: "TRANSACTION_HISTORY",
+};
 
 export const JanboxWalletScreen: FunctionComponent = () => {
   const insets = useSafeAreaInsets();
@@ -43,14 +45,14 @@ export const JanboxWalletScreen: FunctionComponent = () => {
     (state: IRootState) => state.user.profile?.locale,
   );
   const [allExchange, setAllExchange] = useState<ExchangeRateResponseV2[]>([]);
-  // const [index, setIndex] = useState<number>(0);
-  // const routes = [
-  //   {
-  //     key: tabKey.TRANSACTION_HISTORY,
-  //     title: translate("label.transactionHistory"),
-  //   },
-  //   { key: tabKey.DEBT, title: translate("label.debt") },
-  // ];
+  const [index, setIndex] = useState<number>(0);
+  const routes = [
+    {
+      key: tabKey.TRANSACTION_HISTORY,
+      title: translate("labelTransactionHistory"),
+    },
+    { key: tabKey.DEBT, title: translate("labelDebt") },
+  ];
   const exchange = allExchange.find(item => item.code === primaryCurrency);
   const jpyRate =
     exchange?.exchangerateItems.find(
@@ -114,45 +116,45 @@ export const JanboxWalletScreen: FunctionComponent = () => {
     };
   }, [refreshData]);
 
-  // const renderScene = useCallback(
-  //   ({ route }: { route: { key: string; title: string } }) => {
-  //     switch (route.key) {
-  //       case tabKey.TRANSACTION_HISTORY:
-  //         return <TransactionHistory />;
-  //       case tabKey.DEBT:
-  //         return <DebtInfo />;
-  //       default:
-  //         return null;
-  //     }
-  //   },
-  //   []
-  // );
+  const renderScene = useCallback(
+    ({ route }: { route: { key: string; title: string } }) => {
+      switch (route.key) {
+        case tabKey.TRANSACTION_HISTORY:
+          return <TransactionHistory />;
+        case tabKey.DEBT:
+          return <DebtInfo />;
+        default:
+          return null;
+      }
+    },
+    [],
+  );
 
-  // const renderTabBar = useCallback((props) => {
-  //   return (
-  //     <TabBar
-  //       {...props}
-  //       style={styles.tabBar}
-  //       renderIndicator={(indicatorProps) => (
-  //         <TabBarIndicator {...indicatorProps} style={styles.indicatorStyle} />
-  //       )}
-  //       renderLabel={({ route, focused }) => (
-  //         <Text
-  //           style={[
-  //             styles.tabBarLabel,
-  //             {
-  //               color: focused
-  //                 ? Themes.colors.coolGray100
-  //                 : Themes.colors.coolGray60,
-  //             },
-  //           ]}
-  //         >
-  //           {route.title}
-  //         </Text>
-  //       )}
-  //     />
-  //   );
-  // }, []);
+  const renderTabBar = useCallback(props => {
+    return (
+      <TabBar
+        {...props}
+        style={styles.tabBar}
+        renderIndicator={indicatorProps => (
+          <TabBarIndicator {...indicatorProps} style={styles.indicatorStyle} />
+        )}
+        renderLabel={({ route, focused }) => (
+          <Text
+            style={[
+              styles.tabBarLabel,
+              {
+                color: focused
+                  ? Themes.colors.coolGray100
+                  : Themes.colors.coolGray60,
+              },
+            ]}
+          >
+            {route.title}
+          </Text>
+        )}
+      />
+    );
+  }, []);
 
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
@@ -221,14 +223,14 @@ export const JanboxWalletScreen: FunctionComponent = () => {
 
             <Separator style={{ height: ScreenUtils.scale(12) }} />
             <View style={styles.dataContainer}>
-              <TransactionHistory />
-              {/* <TabView
+              {/* <TransactionHistory /> */}
+              <TabView
                 navigationState={{ index, routes }}
                 renderScene={renderScene}
                 onIndexChange={setIndex}
                 initialLayout={{ width: ScreenUtils.WIDTH_SCREEN }}
-                renderTabBar={() => null}
-              /> */}
+                renderTabBar={renderTabBar}
+              />
             </View>
           </ScrollView>
         </View>

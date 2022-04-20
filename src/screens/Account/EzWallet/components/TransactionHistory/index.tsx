@@ -30,7 +30,6 @@ import {
   DeviceEventEmitter,
   RefreshControl,
   ScrollView,
-  Text,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -219,7 +218,7 @@ export const TransactionHistory: FunctionComponent = () => {
   return (
     <View style={styles.container}>
       <View style={styles.toolBar}>
-        {isShowSearch ? (
+        {isShowSearch && (
           <View style={styles.container}>
             <Search
               iconName="ic_search"
@@ -228,10 +227,6 @@ export const TransactionHistory: FunctionComponent = () => {
               placeholder={translate("placeholder.baseSearch")}
             />
           </View>
-        ) : (
-          <Text style={styles.transactionHistory}>
-            {translate("labelTransactionHistory")}
-          </Text>
         )}
         {isShowSearch ? (
           <TouchableOpacity style={styles.searchButton} onPress={hideSearch}>

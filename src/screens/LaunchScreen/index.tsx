@@ -9,6 +9,7 @@ import {
   NativeStackScreenProps,
 } from "@react-navigation/native-stack";
 import {
+  changeCurrencyWithLaunch,
   changeLanguage,
   countNotifications,
   getUserAction,
@@ -28,6 +29,10 @@ type Props = NativeStackScreenProps<RootStackParamList>;
 export const LaunchScreen: FunctionComponent<Props> = () => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
+
+  const [currencyCodes] = useState({
+    currencyCode: RNLocalize.getCurrencies(),
+  });
 
   const [locates] = useState({
     locates: RNLocalize.getLocales(),
@@ -52,7 +57,11 @@ export const LaunchScreen: FunctionComponent<Props> = () => {
 
       dispatch(changeLanguage(location ? location.tag : CONSTANT.LANGUAGES.EN));
     }
+
     if (currency) {
+      dispatch(changeCurrencyWithLaunch(currency));
+    } else if (currencyCodes && currencyCodes.currencyCode.length > 0) {
+      dispatch(changeCurrencyWithLaunch(currencyCodes.currencyCode[0]));
     }
 
     if (accessToken) {

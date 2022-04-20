@@ -70,7 +70,7 @@ export default StyleSheet.create({
     marginHorizontal: ScreenUtils.scale(16),
   },
   dataContainer: {
-    height: (ScreenUtils.HEIGHT_SCREEN * 4) / 5,
+    height: ScreenUtils.HEIGHT_SCREEN,
     minHeight: ScreenUtils.HEIGHT_SCREEN / 2,
   },
 });

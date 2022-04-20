@@ -1,13 +1,13 @@
 import { SCREENS } from "@configs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
+  AnalysisScreen,
   DetailScreen,
   HomeScreen,
   IDetailScreenParams,
   InfoScreen,
   NewsScreen,
   ReviewScreen,
-  AnalysisScreen,
 } from "@screens";
 import React from "react";
 

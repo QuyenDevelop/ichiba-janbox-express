@@ -77,8 +77,8 @@ export const HomeOptions: FunctionComponent = () => {
           });
           break;
         case CONSTANT.MENU_CONSTANT.ANALYTIC:
-          navigation.navigate(SCREENS.ANALYTIC_STACK, {
-            screen: SCREENS.ANALYTIC_SCREEN,
+          navigation.navigate(SCREENS.ANALYSIS_SCREEN, {
+            screen: SCREENS.ANALYSIS_SCREEN,
           });
           break;
       }

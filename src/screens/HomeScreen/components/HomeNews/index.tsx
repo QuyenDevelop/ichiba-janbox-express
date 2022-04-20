@@ -1,3 +1,6 @@
+import { SCREENS } from "@configs";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { translate } from "@shared";
 import { Images } from "@themes";
 import React, { FunctionComponent, useCallback, useState } from "react";
@@ -36,10 +39,12 @@ const News: Array<newsItem> = [
 
 export const HomeNews: FunctionComponent = () => {
   const [news] = useState<Array<newsItem>>(News);
-  // const navigation = useNavigation<StackNavigationProp<any>>();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   const gotoSomewhere = useCallback(() => {}, []);
-  const gotoNewsList = () => {};
+  const gotoNewsList = () => {
+    navigation.navigate(SCREENS.NEWS_SCREEN);
+  };
 
   const renderItem = ({ item }: { item: newsItem }) => {
     return <HomeNewsItem item={item} router={gotoSomewhere} />;

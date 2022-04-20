@@ -179,7 +179,7 @@ export default {
     zip: "Zip Code",
     addressDetail: "Address Detail",
     addAddress: "Add Address",
-    labelAnalysis: "Analysis",
+    labelAnalysis: "Annalytic",
   },
   placeholder: {
     enterNotes: "Enter notes",

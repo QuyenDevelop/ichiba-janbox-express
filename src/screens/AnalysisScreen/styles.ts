@@ -60,9 +60,9 @@ export default StyleSheet.create({
     flex: 1,
     marginHorizontal: ScreenUtils.scale(10),
     flexDirection: "row",
-
     width: ScreenUtils.WIDTH_SCREEN / 2 - ScreenUtils.scale(38),
     borderRadius: ScreenUtils.scale(12),
+    borderColor: Themes.colors.colGray20,
   },
   frame20529: {
     borderWidth: 1,
@@ -72,23 +72,24 @@ export default StyleSheet.create({
     flexDirection: "row",
     width: ScreenUtils.WIDTH_SCREEN / 2 - ScreenUtils.scale(38),
     borderRadius: ScreenUtils.scale(12),
+    borderColor: Themes.colors.colGray20,
   },
   rectangle68: {
     flex: 0.1,
     backgroundColor: Themes.colors.blue006,
-    margin: 8,
+    margin: ScreenUtils.scale(8),
     borderRadius: 10,
   },
   rectangle682: {
     flex: 0.1,
     backgroundColor: Themes.colors.green3ED,
-    margin: 8,
+    margin: ScreenUtils.scale(8),
     borderRadius: 10,
   },
   rectangle683: {
     flex: 0.1,
     backgroundColor: Themes.colors.yellowFFC,
-    margin: 8,
+    margin: ScreenUtils.scale(8),
     borderRadius: 10,
   },
   frameContainer: {

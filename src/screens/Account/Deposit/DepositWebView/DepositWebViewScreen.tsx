@@ -37,7 +37,7 @@ export const DepositWebViewScreen: FunctionComponent = () => {
     if (request.url.includes(CONSTANT.PAYMENT_RETURN_URL.SUCCESS)) {
       DeviceEventEmitter.emit(
         CONSTANT.RELOAD_ACTION.RELOAD_WALLET,
-        translate("label.depositSuccess"),
+        translate("labelDepositSuccess"),
       );
       navigation.navigate(SCREENS.ACCOUNT_STACK, {
         screen: SCREENS.EZ_WALLET_SCREEN,
@@ -53,7 +53,7 @@ export const DepositWebViewScreen: FunctionComponent = () => {
   return (
     <View style={[styles.container, { paddingTop: insets.top }]}>
       <Header
-        title={translate("label.deposit")}
+        title={translate("labelDeposit")}
         iconLeftName={["ic_arrow_left"]}
         iconLeftOnPress={[() => navigation.goBack()]}
         isCenterTitle

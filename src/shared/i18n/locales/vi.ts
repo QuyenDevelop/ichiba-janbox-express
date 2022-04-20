@@ -180,6 +180,20 @@ export default {
     district: "Quận/Huyện",
     ward: "Phường",
     addressDetail: "Địa chỉ chi tiết",
+    modal: {
+      infoConfirm: "Thông tin đã được xác nhận thành công",
+      anyRequest: "Mọi thắc mắc vui lòng liên hệ tư vấn để được hỗ trợ",
+    },
+    note: {
+      pleasChose:
+        "Vui lòng chọn chuyển tiền đến 1 trong những tài khoản ngân hàng ở trên.",
+      weWillAssist:
+        "Chúng tôi sẽ hỗ trợ bạn tạo lệnh nạp bằng đúng số tiền cần thanh toán đơn hàng",
+      iChibaReceives:
+        "Đơn hàng của quý khách chỉ được xác nhận thanh toán sau khi Janbox nhận được thông báo từ Ngân hàng với nội dung thanh toán đầy đủ. Janbox xin trân trọng cảm ơn!",
+      note: "Lưu ý: Quý khách vui lòng thanh toán ngay để giữ giá tốt trong vòng 60 phút. Việc giao dịch chỉ được thực hiện ngay sau khi Janbox nhận được thanh toán. Quý khách sẽ nhận được thông báo xác nhận thanh toán qua tin nhắn và email.",
+      point: "Lưu ý: 1 ¥ = 1 J-Point",
+    },
   },
   placeholder: {
     enterNotes: "Nhập ghi chú",
@@ -369,6 +383,10 @@ export default {
   buttonDeposit: "Nạp tiền",
   buttonReset: "Đặt lại",
   buttonApply: "Áp dụng",
+  buttonDetail: "Chi tiết",
+  buttonConfirm: "Xác nhận",
+  buttonBack: "Quay lại",
+  buttonCurrency: "Tiền tệ",
 
   labelNotification: "Thông báo",
   labelResult: "Kết quả",
@@ -432,6 +450,42 @@ export default {
   labelNoTransactionHistory: "Không có lịch sử giao dịch",
   labelDebt: "Công nợ",
   labelNoDataService: "Không có dữ liệu",
+  labeDeposit: "Nạp tiền",
+  labelEnterDeposit: "Nhập số tiền nạp",
+  labelWarningDeposit: "*Lưu ý: Point đã nạp không thể rút",
+  labelTopSafe:
+    "Cổng thanh toán trực tuyến an toàn và bảo mật hàng đầu trên thế giới",
+  labelSecure: "Bảo mật tài khoản thanh toán được mã hóa SSL 256-bit",
+  labelBankTransfer: "Chuyển khoản ngân hàng",
+  labelPleaseEnterReason: "Vui lòng nhập lý do",
+  labelReasonCancelWithdraw: "Lý do hủy",
+  labelNext: "Tiếp tục",
+  labelAccountNumber: "Số tài khoản",
+  labelAccountHolder: "Chủ tài khoản",
+  labelBranchBank: "Chi nhánh ngân hàng",
+  labelReasonWithdraw: "Lý do rút tiền",
+  labelTransferContents: "Nội dung chuyển khoản",
+  labelPaymentsNotice: "Lưu ý",
+  labelNoteWithdraw:
+    "Quí khách vui lòng chờ Janbox xác thực giao dịch và thực hiện lệnh rút tiền, quí khách vui lòng kiểm tra chính xác thông tin Chuyển khoản. \n- Thời gian rút tiền 48h làm việc (ngoại trừ thứ 7, CN).\n- Trường hợp được thanh toán tại máy ATM, vì không thể ghi chú nội dung thanh toán nên qúy khách vui lòng thông báo qua email hoặc gọi trực tiếp tổng đài Janbox để được hỗ trợ.\n- Giao dịch của quý khách chỉ được xác nhận thành công sau khi Janbox thực hiện lệnh thành công với Ngân hàng.",
+  labelCancelWithdraw: "Hủy lệnh rút tiền",
+  labelTotalPayment: "Tổng thanh toán",
+  labelPayMeDes: "Nền tảng thanh toán hiệu quả số 1 Việt Nam",
+  labelCardNumber: "Số thẻ",
+  labelCardholderName: "Tên chủ thẻ",
+  labelExpirationDate: "Ngày hết hạn",
+  labelCvv: "Số thẻ",
+  labelRememberCard: "Nhớ thẻ này",
+  labelProvidedByStripe: "Được cung cấp bởi Stripe",
+  labelAddCard: "Thêm thẻ",
+  labelAnotherCard: "Bạn muốn sử dụng thẻ khác?",
+  labelChange: "Thay đổi",
+  labelWitchAccount: "Chuyển tài khoản",
+  labelPaypalWallet: "Ví Paypal",
+  labelExchangeRate: "Tỷ giá",
+  labelTransactionFee: "Phí",
+  labelDepositSuccess: "Nạp tiền thành công",
+  labelConfirmInformation: "Xác nhận thông tin",
 
   textWarningUserAndPass: "Tài khoản hoặc mật khẩu không được trống",
   textNotLogin: "Bạn chưa đăng nhập tài khoản",
@@ -439,6 +493,8 @@ export default {
   textEasyPayment: "Thanh toán dễ dàng",
   textRef: "Số:",
   textNote: "Ước tính giá chưa bao gồm thuế nhập khẩu",
+  textNoticeTransfer:
+    "Vui lòng chuyển tiền chính xác theo thông tin tài khoản ngân hàng và nội dung chuyển khoản.\n- Trường hợp được thanh toán tại máy ATM, vì không thể ghi chú nội dung thanh toán nên qúy khách vui lòng thông báo qua email hoặc gọi trực tiếp tổng đài Janbox để được hỗ trợ\n - Giao dịch của quý khách chỉ được xác nhận thanh toán sau khi Janbox nhận được thông báo từ Ngân hàng với nội dung thanh toán đầy đủ.",
 
   titleCreateShipment: "Tạo gói hàng",
   titleShipmentManage: "Quản lý gói hàng",

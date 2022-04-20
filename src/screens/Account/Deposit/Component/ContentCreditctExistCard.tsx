@@ -34,7 +34,7 @@ export const ContentCreditctExistCard: FunctionComponent<Props> = ({
       <View style={styles.itemCard}>
         <View>
           <Text style={styles.textNotePayBank}>
-            {translate("button.currency")}
+            {translate("buttonCurrency")}
           </Text>
           <Text style={styles.titleCard}>USD</Text>
         </View>
@@ -46,9 +46,9 @@ export const ContentCreditctExistCard: FunctionComponent<Props> = ({
         />
       </View>
       <View style={styles.flexRow}>
-        <Text style={styles.textNeed}>{translate("label.anotherCard")}</Text>
+        <Text style={styles.textNeed}>{translate("labelAnotherCard")}</Text>
         <TouchableOpacity onPress={() => setVisible(true)}>
-          <Text style={styles.addCard}>{translate("label.addCard")}</Text>
+          <Text style={styles.addCard}>{translate("labelAddCard")}</Text>
         </TouchableOpacity>
       </View>
     </View>

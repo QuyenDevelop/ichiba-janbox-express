@@ -50,7 +50,7 @@ export const InfoPayBankScreen: FunctionComponent<Props> = () => {
   return (
     <View style={{ ...styles.container, paddingTop: insets.top }}>
       <Header
-        title={translate("label.paymentInfo")}
+        title={translate("labelPaymentInfo")}
         iconLeftName={["ic_arrow_left"]}
         iconLeftOnPress={[() => navigation.goBack()]}
         isCenterTitle
@@ -58,25 +58,25 @@ export const InfoPayBankScreen: FunctionComponent<Props> = () => {
       <ScrollView style={styles.content}>
         {itemBank && itemBank.bankIc ? (
           <InputBankInfo
-            title={translate("label.bank")}
+            title={translate("labelBank")}
             textInput={itemBank.bankIc.bankFullName}
           />
         ) : null}
         {itemBank && itemBank.bankIc ? (
           <InputBankInfo
-            title={translate("label.accountNumber")}
+            title={translate("labelAccountNumber")}
             textInput={itemBank.bankIc.accountNumber}
           />
         ) : null}
         {itemBank && itemBank.bankIc ? (
           <InputBankInfo
-            title={translate("label.accountHolder")}
+            title={translate("labelAccountHolder")}
             textInput={itemBank.bankIc.accountName}
           />
         ) : null}
         {itemBank && itemBank.bankIc ? (
           <InputBankInfo
-            title={translate("label.branchBank")}
+            title={translate("labelBranchBank")}
             textInput={itemBank.bankIc.branch}
           />
         ) : null}
@@ -89,7 +89,7 @@ export const InfoPayBankScreen: FunctionComponent<Props> = () => {
 
         {itemBank ? (
           <InputBankInfo
-            title={translate("label.paymentAmount")}
+            title={translate("labelPaymentAmount")}
             textInput={Utils.formatNumber(itemBank.amount)}
             textRight={"VND"}
           />
@@ -97,7 +97,7 @@ export const InfoPayBankScreen: FunctionComponent<Props> = () => {
         {itemBank ? (
           <InputBankInfo
             onPressRight={() => copyTopClipboard()}
-            title={translate("label.transferContents")}
+            title={translate("labelTransferContents")}
             textInput={itemBank.code}
             iconRight="copy"
           />
@@ -115,7 +115,7 @@ export const InfoPayBankScreen: FunctionComponent<Props> = () => {
           onPress={() => handleConfirm()}
         >
           <Text style={styles.textSubmit}>
-            {translate("label.confirmInformation")}
+            {translate("labelConfirmInformation")}
           </Text>
         </TouchableOpacity>
       </ScrollView>

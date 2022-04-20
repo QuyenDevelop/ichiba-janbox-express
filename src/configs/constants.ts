@@ -37,6 +37,10 @@ export const CONSTANT = {
     LANGUAGES: "Languages",
     CURRENCY: "Currency",
   },
+  SHIPMENT_TYPE: {
+    ECOMMERCE: "ECOMMERCE",
+    GIFT: "GIFT",
+  },
   REVOKE_TOKEN_ENDPOINT: "revocation",
   MENU_CONSTANT: {
     CREATE_SHIPMENT: "CREATE_SHIPMENT",

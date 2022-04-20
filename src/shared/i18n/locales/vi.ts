@@ -311,6 +311,8 @@ export default {
   buttonViewAll: "Tất cả",
   buttonClearAll: "Xóa tất cả",
   buttonGetQuote: "Nhận báo giá",
+  buttonCancel: "Hủy",
+  buttonContinue: "Tiếp tục",
 
   labelNotification: "Thông báo",
   labelResult: "Kết quả",
@@ -340,6 +342,8 @@ export default {
   labelDimension: "Dimension (dài x rộng x cao)",
   labelCm: "(cm)",
   labelShippingAs: "Tôi đang vận chuyên như ...",
+  labelEcommerce: "Ecommerce",
+  labelGift: "Gift",
 
   textWarningUserAndPass: "Tài khoản hoặc mật khẩu không được trống",
   textNotLogin: "Bạn chưa đăng nhập tài khoản",

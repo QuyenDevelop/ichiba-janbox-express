@@ -308,6 +308,8 @@ export default {
   buttonViewAll: "View all",
   buttonClearAll: "Clear all",
   buttonGetQuote: "Get a quote",
+  buttonCancel: "Cancel",
+  buttonContinue: "Continue",
 
   labelNotification: "Notification",
   labelResult: "results",
@@ -337,6 +339,8 @@ export default {
   labelDimension: "Dimension (width x length x height)",
   labelCm: "(cm)",
   labelShippingAs: "I am shipping as ...",
+  labelEcommerce: "E-commerce",
+  labelGift: "Gift",
 
   textNotLogin: "You are not logged in account",
   textWarningUserAndPass: "You have not entered your username or password !!",

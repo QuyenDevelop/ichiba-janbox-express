@@ -1,4 +1,4 @@
-import { AccountApi } from "@api";
+import { accountApi } from "@api";
 import { Footer, Header } from "@components";
 import { SCREENS } from "@configs";
 import {
@@ -47,7 +47,8 @@ export const RegisterScreen: FunctionComponent<Props> = () => {
     setIsButtonClickSubmit(true);
     if (Utils.isValidEmail(email)) {
       setIsLoading(true);
-      AccountApi.getLinkUserRegister(email)
+      accountApi
+        .getLinkUserRegister(email)
         ?.then(res => {
           console.log(res);
           navigation.navigate(SCREENS.VERIFICATION, {
@@ -85,45 +86,37 @@ export const RegisterScreen: FunctionComponent<Props> = () => {
   };
 
   const externalRegister = (data: Account) => {
-    // accountApi
-    //   .externalRegister({
-    //     email: data.email,
-    //     firstName: data.given_name,
-    //     lastName: data.family_name,
-    //     profileImageUrl: data.picture,
-    //     phoneNumber: data.phone_number,
-    //     address: data.address,
-    //     provider: data.provider,
-    //     token: data.idToken,
-    //   })
-    //   ?.then(() => {
-    //     dispatch(
-    //       AccountAction.externalLogin(
-    //         {
-    //           token: data.idToken,
-    //           email: data.email,
-    //           provider: data.provider,
-    //         },
-    //         {
-    //           onFailure: (err: any) => {
-    //             hideLoading();
-    //           },
-    //           onSuccess: () => {
-    //             getUserInformation();
-    //           },
-    //         },
-    //       ),
-    //     );
-    //   })
-    //   .catch(err => {
-    //     hideLoading();
-    //     Alert.error(err?.title, true);
-    //   });
+    accountApi
+      .externalRegister({
+        email: data.email,
+        firstName: data.given_name,
+        lastName: data.family_name,
+        profileImageUrl: data.picture,
+        phoneNumber: data.phone_number,
+        address: data.address,
+        provider: data.provider,
+        token: data.idToken,
+      })
+      ?.then(() => {
+        dispatch(
+          loginExternalAction({
+            token: data.idToken,
+            email: data.email,
+            provider: data.provider,
+          }),
+        );
+        getUserInformation();
+      })
+      .catch(err => {
+        hideLoading();
+        Alert.error(err?.title, true);
+      });
   };
 
   const externalLogin = (profile: Account) => {
-    AccountApi.getUserInfoByToken(profile.idToken, profile.provider)?.then(
-      res => {
+    accountApi
+      .getUserInfoByToken(profile.idToken, profile.provider)
+      ?.then(res => {
         if (res?.isAssociate) {
           dispatch(
             loginExternalAction({
@@ -142,8 +135,7 @@ export const RegisterScreen: FunctionComponent<Props> = () => {
             // });
           }
         }
-      },
-    );
+      });
   };
 
   const getUserInformation = () => {

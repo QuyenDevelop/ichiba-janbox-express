@@ -73,10 +73,6 @@ export const RateAndTimeScreen: FunctionComponent<Props> = () => {
   };
   const onChangeToCountry = (data: LocationResponse) => {
     if (data !== toCountry) {
-      console.log(
-        "🚀🚀🚀 => onChangeFromCountry => data",
-        JSON.stringify(data),
-      );
       setToCountry(data);
       // getCallingCode(RNLocalize.getCountry() as CountryCode).then(
       //   callingCode => {

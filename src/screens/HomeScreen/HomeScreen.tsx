@@ -3,12 +3,15 @@ import { ScreenUtils } from "@helpers";
 import { useAppSelector, useStatusBar } from "@hooks";
 import React, { useEffect, useRef } from "react";
 import { Animated, View } from "react-native";
-import { FirstTimeUser } from "./components/FirstTimeUser";
-import { HomeAction } from "./components/HomeAction";
-import { BannerKeys, HomeBanner } from "./components/HomeBanner";
-import { HomeUseGuide } from "./components/HomeGuide";
-import { HomeNews } from "./components/HomeNews";
-import { HomeOptions } from "./components/HomeOptions";
+import {
+  BannerKeys,
+  FirstTimeUser,
+  HomeAction,
+  HomeBanner,
+  HomeNews,
+  HomeOptions,
+  HomeUseGuide,
+} from "./components";
 import styles from "./styles";
 
 export const HomeScreen = () => {

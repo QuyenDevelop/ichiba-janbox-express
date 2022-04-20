@@ -147,10 +147,6 @@ export const LoginScreen: FunctionComponent<Props> = () => {
 
   const loginWithGoogle = () => {
     ExternalAuthenticationUtils.signInByGoogle().then(user => {
-      console.log(
-        "🚀🚀🚀 => ExternalAuthenticationUtils.signInByGoogle => user",
-        user,
-      );
       showLoading();
       externalLogin(user);
     });

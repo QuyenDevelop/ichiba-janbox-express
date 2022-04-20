@@ -17,9 +17,7 @@ import FastImage from "react-native-fast-image";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useSelector } from "react-redux";
 import { IRootState } from "src/redux/store";
-import { ContentOptional } from "./Component/ContentOptional";
-import { ContentPurchase } from "./Component/ContentPurchase";
-import { ItemChooseEz } from "./Component/ItemChooseEz";
+import { ContentOptional, ContentPurchase, ItemChooseEz } from "./Component";
 import styles from "./styles";
 interface Props {}
 

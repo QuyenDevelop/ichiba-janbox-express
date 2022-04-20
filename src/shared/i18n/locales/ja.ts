@@ -325,6 +325,8 @@ export default {
   buttonViewAll: "すべて見る",
   buttonClearAll: "すべてクリア",
   buttonGetQuote: "見積もりを取得",
+  buttonCancel: "解約",
+  buttonContinue: "続ける",
 
   labelNotification: "通知",
   labelResult: "結果",
@@ -337,7 +339,7 @@ export default {
   labelViaWebsite: "ウェブサイト経由",
   labelViaMobile: "モバイル経由",
   labelViaDesktop: "デスクトップ経由",
-  labelWhyChooseUs: "Why choose us?",
+  labelWhyChooseUs: "なぜ私たちを選ぶのですか？",
   labelFirstTimeUserContent:
     "Janboxは、日本商品をオンラインで購入して入札にかけるのに役立つ国境を越えたEコマースプラットフォームです。 私たちはあなたに代わって商品を購入し、あなたが必要とするように輸送の世話をします。",
   labelNews: "News",
@@ -352,7 +354,9 @@ export default {
   labelGram: "(Gram)",
   labelDimension: "寸法（幅x長さx高さ）",
   labelCm: "(cm)",
-  labelShippingAs: "Tôi đang vận chuyên như ...",
+  labelShippingAs: "私はとして出荷しています...",
+  labelEcommerce: "電子商取引",
+  labelGift: "贈り物",
 
   textWarningUserAndPass: "ユーザー名またはパスワードを入力していません!!",
   textNotLogin: "あなたはアカウントに記録されていません",

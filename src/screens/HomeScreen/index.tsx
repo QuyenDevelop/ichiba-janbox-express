@@ -63,6 +63,9 @@ export const HomeScreen: FunctionComponent = () => {
   const goToReviewScreen = () => {
     navigation.navigate(SCREENS.REVIEW_SCREEN);
   };
+  const goToAnalysisScreen = () => {
+    navigation.navigate(SCREENS.ANALYSIS_SCREEN);
+  };
   // const profile = useAppSelector(state => state.user.profile);
   // console.log("Profile:", JSON.stringify(profile));
   return (
@@ -106,6 +109,9 @@ export const HomeScreen: FunctionComponent = () => {
       </TouchableOpacity>
       <TouchableOpacity style={styles.settingBtn} onPress={goToReviewScreen}>
         <Text style={styles.settingBtnText}>Review screen</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.settingBtn} onPress={goToAnalysisScreen}>
+        <Text style={styles.settingBtnText}>Analysis screen</Text>
       </TouchableOpacity>
     </View>
   );

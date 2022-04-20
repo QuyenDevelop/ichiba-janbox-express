@@ -5,7 +5,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import styles from "../styles";
 
 export const ButtonSuggestCmt = () => {
-  const [suggestCmt, setSuggestCmt] = useState([
+  const [suggestCmt] = useState([
     { id: 1, txt: "Great quality" },
     { id: 2, txt: "Fast delivery" },
     { id: 3, txt: "Good price" },

@@ -180,6 +180,7 @@ export default {
     district: "Quận/Huyện",
     ward: "Phường",
     addressDetail: "Địa chỉ chi tiết",
+    labelAnalysis: "Phân tích",
   },
   placeholder: {
     enterNotes: "Nhập ghi chú",
@@ -276,6 +277,24 @@ export default {
     },
     footer: {
       address: "Địa chỉ",
+    },
+    analysis: {
+      createOrder: "Tạo đơn hàng",
+      waitForPayment: "Chờ thanh toán",
+      paymentCOD: "Đã thanh toán COD",
+      arrivedAtWarehousePostal: "Đã đến kho [Bưu cực gửi]",
+      waitProcessingInfo: "Chờ xử lí thông tin [Lý do]",
+      saveAtWareHouse: "Lưu kho",
+      pastTheStoragePeriod: "Quá thời hạn lưu kho",
+      internationalShipping: "Đang vận chuyển quốc tế",
+      arrivedAtWarehouseRecieve: "Đã đến kho [Kho nhận]",
+      commingProvince: "Đang đến [Tỉnh nhận]",
+      recievingProvince: "Đã đến [Tỉnh nhận]",
+      postmanDelivery: "Bưu tá đang giao hàng",
+      successDelivery: "Giao hàng thành công | [Người ký nhận] Ký nhận",
+      deliveryAgain: "Giao lại",
+      cancelOrder: "Huỷ đơn",
+      refundOrder: "Hoàn",
     },
   },
   success: {

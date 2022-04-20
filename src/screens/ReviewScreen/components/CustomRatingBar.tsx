@@ -5,10 +5,10 @@ import styles from "../styles";
 
 export const CustomRatingBar = () => {
   const [defaultRating, setDefaultRating] = useState(1);
-  const [maxRating, setMaxRating] = useState([1, 2, 3, 4, 5]);
+  const [maxRating] = useState([1, 2, 3, 4, 5]);
   return (
     <View style={styles.customRatingBarStyle}>
-      {maxRating.map((item, key) => {
+      {maxRating.map(item => {
         return (
           <TouchableOpacity
             activeOpacity={0.7}

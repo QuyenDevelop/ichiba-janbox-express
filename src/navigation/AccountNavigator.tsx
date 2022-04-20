@@ -8,6 +8,7 @@ import {
   ChangePasswordScreen,
   FirstTimeUserScreen,
   HomeAccountScreen,
+  JanboxWalletScreen,
   LanguagesScreen,
   NotificationSettingScreen,
 } from "@screens";
@@ -72,6 +73,10 @@ export const AccountNavigator = () => {
       <AccountStack.Screen
         name={SCREENS.NOTIFICATION_SETTING}
         component={NotificationSettingScreen}
+      />
+      <AccountStack.Screen
+        name={SCREENS.EZ_WALLET_SCREEN}
+        component={JanboxWalletScreen}
       />
     </AccountStack.Navigator>
   );

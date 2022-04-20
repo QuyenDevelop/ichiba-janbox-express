@@ -1,13 +1,14 @@
-import { AccountApi } from "@api";
+import { accountApi } from "@api";
 import { Footer, Header } from "@components";
 import { CONSTANT, SCREENS } from "@configs";
 import {
+  Alert,
   ExternalAuthenticationUtils,
   removeAsyncItem,
   ScreenUtils,
   setAsyncItem,
 } from "@helpers";
-import { useAppDispatch, useAppSelector } from "@hooks";
+import { useAppDispatch, useAppSelector, useLoading } from "@hooks";
 import { Account } from "@models";
 import { RootStackParamList } from "@navigation";
 import { useNavigation } from "@react-navigation/native";
@@ -15,7 +16,7 @@ import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from "@react-navigation/native-stack";
-import { loginAction, loginExternalAction } from "@redux";
+import { IRootState, loginAction, loginExternalAction } from "@redux";
 import { Button, Checkbox, Icon, TextInput, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
 import React, { FunctionComponent, useEffect, useState } from "react";
@@ -27,8 +28,8 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import * as RNLocalize from "react-native-localize";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { IRootState } from "./../../../redux/store";
 import styles from "./styles";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
@@ -46,6 +47,10 @@ export const LoginScreen: FunctionComponent<Props> = () => {
   const [isRemember, setIsRemember] = useState(false);
   // const [isLoading, showLoading, hideLoading] = useBoolean(false);
   const [isLoading, setIsLoading] = useState<boolean>(loading);
+  const { showLoading, hideLoading } = useLoading();
+  const locates = {
+    locates: RNLocalize.getLocales(),
+  };
 
   useEffect(() => {
     setIsLoading(loading);
@@ -81,9 +86,41 @@ export const LoginScreen: FunctionComponent<Props> = () => {
     );
   };
 
+  const externalRegister = (data: Account) => {
+    accountApi
+      .externalRegister({
+        countryCode:
+          locates && locates.locates && locates.locates.length > 0
+            ? locates.locates[0].countryCode
+            : "US",
+        email: data.email,
+        firstName: data.given_name,
+        lastName: data.family_name,
+        profileImageUrl: data.picture,
+        phoneNumber: data.phone_number,
+        address: data.address,
+        provider: data.provider,
+        token: data.idToken,
+      })
+      ?.then(() => {
+        dispatch(
+          loginExternalAction({
+            token: data.idToken,
+            email: data.email,
+            provider: data.provider,
+          }),
+        );
+      })
+      .catch(err => {
+        hideLoading();
+        Alert.error(err?.title, true);
+      });
+  };
+
   const externalLogin = (profile: Account) => {
-    AccountApi.getUserInfoByToken(profile.idToken, profile.provider)?.then(
-      (res: any) => {
+    accountApi
+      .getUserInfoByToken(profile.idToken, profile.provider)
+      ?.then((res: any) => {
         if (res?.isAssociate) {
           dispatch(
             loginExternalAction({
@@ -93,30 +130,32 @@ export const LoginScreen: FunctionComponent<Props> = () => {
             }),
           );
         } else {
-          // if (res?.email) {
-          //   externalRegister(profile);
-          // }
+          if (res?.email) {
+            externalRegister(profile);
+          }
         }
-      },
-    );
+      });
   };
 
   const loginWithFacebook = () => {
     ExternalAuthenticationUtils.signInByFacebook().then(user => {
+      showLoading();
       externalLogin(user);
     });
   };
 
   const loginWithGoogle = () => {
     ExternalAuthenticationUtils.signInByGoogle().then(user => {
+      showLoading();
       externalLogin(user);
     });
   };
 
   const loginWithApple = () => {
-    // ExternalAuthenticationUtils.signInByApple().then((user) => {
-    //   externalLogin(user);
-    // });
+    ExternalAuthenticationUtils.signInByApple().then(user => {
+      showLoading();
+      externalLogin(user);
+    });
   };
 
   return (

@@ -8,12 +8,20 @@ import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from "@react-navigation/native-stack";
-import { changeLanguage, getUserAction } from "@redux";
+import {
+  changeCurrencyWithLaunch,
+  changeLanguage,
+  countNotifications,
+  getUserAction,
+  setAnonymousId,
+  takeSetAnonymousId,
+} from "@redux";
 import { AnimationImages } from "@themes";
 import LottieView from "lottie-react-native";
 import React, { FunctionComponent, useCallback, useState } from "react";
 import { Alert, Text, View } from "react-native";
 import * as RNLocalize from "react-native-localize";
+import uuid from "react-native-uuid";
 import styles from "./styles";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
@@ -21,6 +29,10 @@ type Props = NativeStackScreenProps<RootStackParamList>;
 export const LaunchScreen: FunctionComponent<Props> = () => {
   const dispatch = useAppDispatch();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
+
+  const [currencyCodes] = useState({
+    currencyCode: RNLocalize.getCurrencies(),
+  });
 
   const [locates] = useState({
     locates: RNLocalize.getLocales(),
@@ -34,6 +46,7 @@ export const LaunchScreen: FunctionComponent<Props> = () => {
       AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.LANGUAGE),
     ]);
     console.log("🚀🚀🚀 => authenticate => accessToken", accessToken);
+    const guid = uuid.v4();
 
     if (language != null) {
       dispatch(changeLanguage(language ? language : CONSTANT.LANGUAGES.EN));
@@ -44,15 +57,43 @@ export const LaunchScreen: FunctionComponent<Props> = () => {
 
       dispatch(changeLanguage(location ? location.tag : CONSTANT.LANGUAGES.EN));
     }
+
     if (currency) {
+      dispatch(changeCurrencyWithLaunch(currency));
+    } else if (currencyCodes && currencyCodes.currencyCode.length > 0) {
+      dispatch(changeCurrencyWithLaunch(currencyCodes.currencyCode[0]));
     }
 
     if (accessToken) {
       dispatch(getUserAction());
+      dispatch(
+        countNotifications({
+          pageIndex: 1,
+          pageSize: 10,
+        }),
+      );
+      dispatch(takeSetAnonymousId(guid));
       navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION);
     } else {
-      navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION, {
-        screen: SCREENS.HOME_STACK,
+      !anonymousId &&
+        (await AsyncStorage.setItem(
+          CONSTANT.TOKEN_STORAGE_KEY.ANONYMOUS_ID,
+          guid.toString(),
+        ));
+
+      if (anonymousId) {
+        dispatch(setAnonymousId(anonymousId));
+      } else {
+        dispatch(takeSetAnonymousId(guid));
+      }
+
+      // if (await checkIsFirstLaunch()) {
+      //   navigation.navigate(SCREENS.ON_BOARDING);
+      // } else {
+      //   onContinueFlow();
+      // }
+      navigation.navigate(SCREENS.AUTH_STACK, {
+        screen: SCREENS.LOGIN,
       });
       // navigation.navigate(SCREENS.AUTH_STACK);
     }

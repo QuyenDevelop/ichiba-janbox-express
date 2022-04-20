@@ -32,7 +32,7 @@ export const HeaderView: FunctionComponent<Props> = props => {
           <View style={styles.avatar}>
             <FastImage
               resizeMode={FastImage.resizeMode.contain}
-              source={profile?.avatar ? profile.avatar : Images.lockedAccount}
+              source={profile?.picture ? profile.picture : Images.lockedAccount}
               style={styles.image}
             />
           </View>

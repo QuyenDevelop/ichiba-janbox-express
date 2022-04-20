@@ -1,4 +1,4 @@
-// import appleAuth from "@invertase/react-native-apple-authentication";
+import appleAuth from "@invertase/react-native-apple-authentication";
 import { Account } from "@models";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { Platform } from "react-native";
@@ -9,11 +9,11 @@ import {
   GraphRequestManager,
   LoginManager,
 } from "react-native-fbsdk-next";
-import { RNFetchBlob } from "rn-fetch-blob";
+import RNFetchBlob from "rn-fetch-blob";
 
 const { GOOGLE_CLIENT_ID } = Config;
 
-export const ExternelAuth = {
+export const ExternalAuth = {
   Google: "GOOGLE",
   Facebook: "FACEBOOK",
   Apple: "APPLE",
@@ -38,7 +38,7 @@ export const ExternalAuthenticationUtils = {
                 picture: res.user.photo,
                 email: res.user.email,
                 idToken: res.idToken,
-                provider: ExternelAuth.Google,
+                provider: ExternalAuth.Google,
               } as Account);
             })
             .catch((err: any) => {
@@ -102,7 +102,7 @@ export const ExternalAuthenticationUtils = {
                           : response.path(),
                       email: res.email,
                       idToken: token?.accessToken,
-                      provider: ExternelAuth.Facebook,
+                      provider: ExternalAuth.Facebook,
                       base64_picture: await response.readFile("base64"),
                     } as Account);
                   })
@@ -117,31 +117,25 @@ export const ExternalAuthenticationUtils = {
     });
   },
 
-  // signInByApple() {
-  //   return new Promise<Account>((resolve, reject) => {
-  //     appleAuth
-  //       .performRequest({
-  //         requestedOperation: appleAuth.Operation.LOGIN,
-  //         requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
-  //       })
-  //       .then(
-  //         (res: {
-  //           fullName: { givenName: any; familyName: any };
-  //           email: any;
-  //           identityToken: any;
-  //         }) => {
-  //           resolve({
-  //             given_name: res.fullName?.givenName,
-  //             family_name: res.fullName?.familyName,
-  //             email: res.email,
-  //             provider: ExternelAuth.Apple,
-  //             idToken: res.identityToken,
-  //           } as Account);
-  //         },
-  //       )
-  //       .catch((err: any) => {
-  //         reject(err);
-  //       });
-  //   });
-  // },
+  signInByApple() {
+    return new Promise<Account>((resolve, reject) => {
+      appleAuth
+        .performRequest({
+          requestedOperation: appleAuth.Operation.LOGIN,
+          requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
+        })
+        .then(res => {
+          resolve({
+            given_name: res.fullName?.givenName,
+            family_name: res.fullName?.familyName,
+            email: res.email,
+            provider: ExternalAuth.Apple,
+            idToken: res.identityToken,
+          } as Account);
+        })
+        .catch((err: any) => {
+          reject(err);
+        });
+    });
+  },
 };

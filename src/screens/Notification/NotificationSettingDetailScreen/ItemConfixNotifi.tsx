@@ -1,4 +1,4 @@
-import { NotificationApi } from "@api";
+import { notificationApi } from "@api";
 import { CustomerNotifyConfigRequest } from "@models";
 import { translate } from "@shared";
 import { Themes } from "@themes";
@@ -74,9 +74,10 @@ export const ItemConfixNotifi: FunctionComponent<Props> = ({
   const handlePutRequest = (
     requestNotifi: Array<CustomerNotifyConfigRequest>,
   ) => {
-    NotificationApi.putNotifiCustomerConfig({
-      customerNotifyConfigs: requestNotifi,
-    })
+    notificationApi
+      .putNotifiCustomerConfig({
+        customerNotifyConfigs: requestNotifi,
+      })
       ?.then(res => {
         if (res.status) {
           setActive(!active);

@@ -84,6 +84,11 @@ export const Themes = {
     green3ED: "#3ED599",
     yellowFFC: "#FFC542",
     whiteF6F: "#F6FBFF",
+    menuRedBrand: "#FD2B18",
+    menuWarehouse: "#F43739",
+    menuGreenBrand: "#3DAB25",
+    menuManage: "#1E7EF7",
+    menuRate: "#364CC9",
   },
   font: {
     bold: {

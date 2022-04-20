@@ -9,7 +9,7 @@ export default StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     paddingLeft: ScreenUtils.scale(8),
-    paddingVertical: ScreenUtils.scale(8),
+    paddingVertical: ScreenUtils.scale(12),
   },
   headerLeft: {
     display: "flex",
@@ -21,7 +21,6 @@ export default StyleSheet.create({
     overflow: "hidden",
   },
   image: {
-    borderRadius: 25,
     width: ScreenUtils.scale(50),
     height: ScreenUtils.scale(50),
   },

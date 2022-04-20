@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { CustomerApi } from "@api";
+import { customerApi } from "@api";
 import { ConfirmDialog, Header } from "@components";
 import { SCREENS } from "@configs";
 import { Alert, ScreenUtils } from "@helpers";
@@ -7,13 +7,12 @@ import { useAppDispatch, useAppSelector, useStatusBar } from "@hooks";
 import { Address } from "@models";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { setAddressSelectedId } from "@redux";
+import { IRootState, setAddressSelectedId } from "@redux";
 import { Flatlist, Icon, RadioButton, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { IRootState } from "../../../redux/store";
 import EditAddressModal from "./EditAddressModal/EditAddressModal";
 import styles from "./styles";
 
@@ -47,7 +46,8 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
   }, [isEdited]);
 
   const getData = () => {
-    CustomerApi.getListAddress()
+    customerApi
+      .getListAddress()
       ?.then(res => {
         const defaultAddress = res?.data?.find(address => address.active);
         if (defaultAddress) {
@@ -68,7 +68,8 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
   };
 
   const onDelete = () => {
-    CustomerApi.deleteAddress(idAddress!)
+    customerApi
+      .deleteAddress(idAddress!)
       ?.then((response: any) => {
         if (response.status) {
           Alert.success(response.message[0], true);
@@ -82,7 +83,7 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
   };
 
   const setDefault = (id: number) => {
-    CustomerApi.setDefaultAddress(id)?.then(() => {
+    customerApi.setDefaultAddress(id)?.then(() => {
       let newData = data && [...data];
       newData?.map(address => {
         if (address.active) {

@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { CustomerApi, LocationApi } from "@api";
+import { customerApi, locationApi } from "@api";
 import { Header, LocationModal } from "@components";
 import { Alert, ScreenUtils } from "@helpers";
 import { useStatusBar } from "@hooks";
@@ -72,8 +72,8 @@ const EditAddressModal: FunctionComponent<Props> = props => {
 
   useEffect(() => {
     Promise.all([
-      LocationApi?.getAllCountry()!,
-      CustomerApi?.getAddress(id),
+      locationApi?.getAllCountry()!,
+      customerApi?.getAddress(id),
     ]).then(([res, customerAddressResponse]) => {
       setCountries(res?.data!);
       setCountry({
@@ -121,7 +121,7 @@ const EditAddressModal: FunctionComponent<Props> = props => {
         callingCode: [callingCode],
       } as Country);
     });
-    LocationApi?.getStateProvinceByCountry(data?.id)?.then(res => {
+    locationApi?.getStateProvinceByCountry(data?.id)?.then(res => {
       setIsLoadingProvince(false);
       setProvinces(res?.data);
     });
@@ -135,7 +135,7 @@ const EditAddressModal: FunctionComponent<Props> = props => {
     setProvince(data);
     setProvinceName(data.name);
     setIsLoadingDistrict(true);
-    LocationApi?.getDistrictByProvince(data?.id, country?.id)?.then(res => {
+    locationApi?.getDistrictByProvince(data?.id, country?.id)?.then(res => {
       setIsLoadingDistrict(false);
       setDistricts(res?.data);
     });
@@ -147,14 +147,12 @@ const EditAddressModal: FunctionComponent<Props> = props => {
     setDistrict(newDistrict);
     setDistrictName(newDistrict.name);
     setIsLoadingWard(true);
-    LocationApi?.getWardByDistrict(
-      newDistrict?.id,
-      province?.id,
-      country?.id,
-    )?.then(res => {
-      setIsLoadingWard(false);
-      setWards(res?.data);
-    });
+    locationApi
+      ?.getWardByDistrict(newDistrict?.id, province?.id, country?.id)
+      ?.then(res => {
+        setIsLoadingWard(false);
+        setWards(res?.data);
+      });
   };
   const submit = () => {
     setIsButtonClickSubmit(true);
@@ -174,21 +172,22 @@ const EditAddressModal: FunctionComponent<Props> = props => {
       address
     ) {
       setIsSubmitting(true);
-      CustomerApi.updateAddress({
-        customerId: customerAddress?.customerId!,
-        name,
-        id,
-        phone: `+${countryCode?.callingCode?.[0]}${phone}`,
-        country: countryName,
-        province: provinceName,
-        district: districtName,
-        countryCode: country ? country?.code! : customerAddress?.countryCode!,
-        ward: wardName,
-        address,
-        active: isActive,
-        postalCode: zip,
-        taxCode: taxCode,
-      })
+      customerApi
+        .updateAddress({
+          customerId: customerAddress?.customerId!,
+          name,
+          id,
+          phone: `+${countryCode?.callingCode?.[0]}${phone}`,
+          country: countryName,
+          province: provinceName,
+          district: districtName,
+          countryCode: country ? country?.code! : customerAddress?.countryCode!,
+          ward: wardName,
+          address,
+          active: isActive,
+          postalCode: zip,
+          taxCode: taxCode,
+        })
         ?.then(() => {
           Alert.success("success.updateAddress");
           setEdited && setEdited(true);

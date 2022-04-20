@@ -5,6 +5,12 @@ import { FontFamily } from "./../../themes/theme";
 export default StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: Themes.colors.white,
+  },
+  containerStyle: {
+    backgroundColor: Themes.colors.white,
+    borderBottomLeftRadius: ScreenUtils.scale(40),
+    borderBottomRightRadius: ScreenUtils.scale(40),
   },
   inputView: {
     flexDirection: "row",
@@ -42,5 +48,64 @@ export default StyleSheet.create({
     fontFamily: FontFamily.bold,
     alignSelf: "center",
     marginBottom: ScreenUtils.scale(10),
+  },
+  contentContainer: {
+    flex: 1,
+    flexDirection: "row",
+    paddingHorizontal: ScreenUtils.scale(16),
+  },
+  childContainer: {
+    position: "absolute",
+    flexDirection: "row",
+    // top: ScreenUtils.scale(-40),
+    bottom: ScreenUtils.scale(-10),
+    left: ScreenUtils.scale(16),
+    backgroundColor: Themes.colors.white,
+    paddingVertical: ScreenUtils.scale(8),
+    overflow: "hidden",
+    borderRadius: ScreenUtils.scale(8),
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 5,
+      height: 16,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 5,
+    elevation: 6,
+  },
+  pointContainer: {
+    width: ScreenUtils.WIDTH_SCREEN / 2 - 16,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  icons: {
+    width: ScreenUtils.scale(40),
+    height: ScreenUtils.scale(40),
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  titleContent: {},
+  title: {
+    ...Themes.font.regular,
+    fontSize: 12,
+    color: Themes.colors.coolGray60,
+  },
+  subTitle: {
+    ...Themes.font.medium,
+    fontSize: 14,
+    color: Themes.colors.coolGray100,
+  },
+  walletContainer: {
+    width: ScreenUtils.WIDTH_SCREEN / 2 - 16,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
+  heightSeparator: {
+    width: ScreenUtils.scale(2),
+    height: ScreenUtils.scale(30),
+    marginVertical: ScreenUtils.scale(12),
+    backgroundColor: Themes.colors.colGray20,
   },
 });

@@ -26,12 +26,12 @@ class NotificationApi extends BaseApi {
   putNotifiCustomerConfig(data: UpdateCustomerNotifyConfigRequestClient) {
     return this.put("updatecustomernotifyconfig", data, {});
   }
-  getListNotifi(request: SearchAppNotificationRequestClient) {
+  getListNotify = async (request: SearchAppNotificationRequestClient) => {
     return this.get<BasePagingResponseEntity<Array<AppNotificationResponse>>>(
       "searchappnotification",
       request,
     );
-  }
+  };
   getWhatNews(request: WhatNewsRequest) {
     return this.get<BasePagingResponseEntity<Array<WhatNewResponse>>>(
       `getWhatNews?pageIndex=${request.pageIndex}&pageSize=${request.pageSize}`,

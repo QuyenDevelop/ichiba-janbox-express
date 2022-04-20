@@ -1,15 +1,19 @@
-import AccountApi from "./account-api";
+import accountApi from "./account-api";
 import authApi from "./authApi";
-import CustomerApi from "./customer-api";
+import commonApi from "./common-api";
+import customerApi from "./customer-api";
 import imageApi from "./imageApi";
-import LocationApi from "./location-api";
-import NotificationApi from "./notification-api";
+import locationApi from "./location-api";
+import notificationApi from "./notification-api";
+import paymentApi from "./payment-api";
 
 export {
   imageApi,
   authApi,
-  AccountApi,
-  LocationApi,
-  CustomerApi,
-  NotificationApi,
+  accountApi,
+  locationApi,
+  customerApi,
+  notificationApi,
+  commonApi,
+  paymentApi,
 };

@@ -10,7 +10,7 @@ import {
 import { Account, PickerItemsResponse } from "@models";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { logout } from "@redux";
+import { IRootState, logout } from "@redux";
 import { Button, Icon, translate } from "@shared";
 import { Icons, Metrics, Themes } from "@themes";
 import React, {
@@ -21,11 +21,8 @@ import React, {
 } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { IRootState } from "src/redux/store";
 import { AccountOptions } from "./components/AccountOptions/AccountOptions";
 import { HeaderView } from "./components/HeaderView/HeaderView";
-// import { IRootState } from "src/redux/reducers";
-// import { BalanceView, HeaderView } from "./AccountScreen/components";
 import styles from "./styles";
 
 interface OwnProps {}
@@ -55,11 +52,6 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [showConfirm, setShowConfirm, setHideConfirm] = useBoolean(false);
-  // const [isShowModalChangeLanguge, setIsShowModalChangeLanguge] =
-  //   useState(false);
-  // const anonymousId = useAppSelector(
-  //   (state: IRootState) => state.user.anonymousId,
-  // ) as string;
   const profile = useAppSelector(
     (state: IRootState) => state.user.profile,
   ) as Account;
@@ -67,10 +59,6 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
   const [selectedLanguage, setSelectedLanguage] =
     useState<PickerItemsResponse>();
   const dispatch = useAppDispatch();
-  // const [customerWallet, setCustomerWallet] = useState<Wallet[] | undefined>();
-  // const [dataCustomerLevel, setDataCustomerLevel] =
-  //   useState<CustomerLevelResponse>();
-  // const [allExchange, setAllExchange] = useState<ExchangeRateResponseV2[]>([]);
 
   const handleLogout = () => {
     setHideConfirm();
@@ -124,7 +112,15 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
         <AccountOptions
           title={translate("label.wallet")}
           rightTitle={translate("label.wallet")}
-          // onPress={() => navigation.navigate(SCREENS.CHANGE_PASSWORD)}
+          onPress={() =>
+            profile
+              ? navigation.navigate(SCREENS.ACCOUNT_STACK, {
+                  screen: SCREENS.EZ_WALLET_SCREEN,
+                })
+              : navigation.navigate(SCREENS.AUTH_STACK, {
+                  screen: SCREENS.LOGIN,
+                })
+          }
           icon={() => {
             return (
               <Icons.Entypo

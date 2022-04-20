@@ -1,4 +1,7 @@
 export const Images = {
+  bannerDefault: require("../assets/banner-default.png"),
+  bannerHomeDefault: require("../assets/banner/home_banner_default.png"),
+  bannerHomeBrandDefault: require("../assets/banner/home_banner_brand_default.png"),
   icHome: require("../assets/icons/bottomTab/ic_home.png"),
   icHomeFill: require("../assets/icons/bottomTab/ic_home_fill.png"),
   icNotification: require("../assets/icons/bottomTab/ic_notification.png"),
@@ -24,6 +27,32 @@ export const Images = {
   yourFavoriteItems1: require("../assets/home/YourFavoriteItem/ImageProduct.png"),
   shoe: require("../assets/shoe.png"),
   notificationSample: require("../assets/notification-sample.png"),
+  icQuestion: require("../assets/icons/ic_question.png"),
+  icCreateShipment: require("../assets/home/menu/create_shipment.png"),
+  icCreateFromPast: require("../assets/home/menu/create_from_past.png"),
+  icWarehouse: require("../assets/home/menu/warehouse.png"),
+  icShipmentManage: require("../assets/home/menu/manage_shipment.png"),
+  icRateTime: require("../assets/home/menu/rate_time.png"),
+  icAnalytic: require("../assets/home/menu/analytic.png"),
+  pickButton: require("../assets/button/picker.png"),
+  icHoldPoint: require("../assets/icons/ic_hold_point.png"),
+  icJGift: require("../assets/icons/ic_j_gift.png"),
+  icJapan: require("../assets/icons/ic_japan.png"),
+  icVietNam: require("../assets/icons/ic_vietnam.png"),
+  icUSA: require("../assets/icons/ic_usa.png"),
+
+  //region Deposit
+  secure: require("../assets/deposit/secure.png"),
+  VisaCardMethod: require("../assets/deposit/VisaCardMethod.png"),
+  MasterCardMethod: require("../assets/deposit/MasterCardMethod.png"),
+  maestro: require("../assets/deposit/maestro.png"),
+  Amex: require("../assets/deposit/Amex.png"),
+  logoPaypal: require("../assets/deposit/logoPaypal.png"),
+  card: require("../assets/deposit/Card.png"),
+  gmo: require("../assets/deposit/payment-gmo.png"),
+  icAlipay: require("../assets/deposit/ic_alipay.png"),
+  paypalMethod: require("../assets/deposit/paypal.png"),
+  icPayMe: require("../assets/deposit/ic_pay_me.png"),
 };
 
 export const AnimationImages = {

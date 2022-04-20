@@ -6,6 +6,10 @@ export const CONSTANT = {
     CN: "zh-CN",
     TW: "zh-TW",
   },
+  REGION: {
+    VN: "VN",
+    US: "US",
+  },
   TOKEN_STORAGE_KEY: {
     ACCESS_TOKEN: "access_token",
     REFRESH_TOKEN: "refresh_token",
@@ -24,6 +28,8 @@ export const CONSTANT = {
     RELOAD_PACKAGE_DELIVERY: "reload_package_delivery",
     RELOAD_ADDRESS: "reload_address",
   },
+  WHATSAPP_LINK:
+    "https://api.whatsapp.com/send/?phone=818060227335&text&app_absent=0",
   CURRENCY: {
     JA: "JPY",
     VND: "VND",
@@ -31,9 +37,66 @@ export const CONSTANT = {
     CNY: "CNY",
     TWD: "TWD",
   },
+  PAYPAL_METHOD_PAY: {
+    PaypalBalance: "Paypal_Balance",
+    CardBank: "CardBank",
+  },
+  PAYMENT_OPTION: {
+    Gmo: "GMO",
+    Paypal: "PAYPAL",
+    Wallet: "WALLET",
+    VndWallet: "VND_WALLET",
+    Credit: "CREDIT",
+    BankTransfer: "BankTransfer",
+    JpyWallet: "JPY_WALLET",
+    PayMe: "PAY_ME",
+  },
   TYPE_PICKER: {
     LANGUAGES: "Languages",
     CURRENCY: "Currency",
   },
+  SHIPMENT_TYPE: {
+    ECOMMERCE: "ECOMMERCE",
+    GIFT: "GIFT",
+  },
   REVOKE_TOKEN_ENDPOINT: "revocation",
+  MENU_CONSTANT: {
+    CREATE_SHIPMENT: "CREATE_SHIPMENT",
+    CREATE_FROM_PAST: "CREATE_FROM_PAST",
+    WAREHOUSE: "WAREHOUSE",
+    SHIPMENT_MANAGE: "SHIPMENT_MANAGE",
+    RATE_TIME: "RATE_TIME",
+    ANALYTIC: "ANALYTIC",
+  },
+  WALLET_TYPE: {
+    JPY_WALLET: "JPY_WALLET",
+    PROMOTION_WALLET: "PROMOTION_WALLET",
+    VND_WALLET: "VND_WALLET",
+    USD_WALLET: "USD_WALLET",
+  },
+  RELOAD_ACTION: {
+    RELOAD_PACKAGE: "RELOAD_PACKAGE",
+    RELOAD_DETAIL_AUCTION: "RELOAD_DETAIL_AUCTION",
+    RELOAD_WALLET: "RELOAD_WALLET",
+    RELOAD_PAYMENT: "RELOAD_PAYMENT",
+    RELOAD_TRANSACTION: "RELOAD_TRANSACTION",
+  },
+  PAYMENT_RETURN_URL: {
+    SUCCESS: "https://janbox.com/order/success",
+    CANCEL: "https://janbox.com/order/cancel",
+    ADD_CARD_SUCCESS: "member/complete",
+  },
+  PAYME_TRANSACTION_FEE: {
+    PAYME_WALLET_FEE: "PAYME_WALLET_FEE",
+    PAYME_ATMCARD_FEE: "PAYME_ATMCARD_FEE",
+    PAYME_QRPAY_FEE: "PAYME_QRPAY_FEE",
+    PAYME_BANKTRANSFER_FEE: "PAYME_BANKTRANSFER_FEE",
+    PAYME_ATMCARD_FLAT_FEE: "PAYME_ATMCARD_FLAT_FEE",
+  },
+  PAYME_PAYMENT_METHOD: {
+    PAYME: "PAYME",
+    ATMCARD: "ATMCARD",
+    QRPAY: "QRPAY",
+    BANKTRANSFER: "BANKTRANSFER",
+  },
 };

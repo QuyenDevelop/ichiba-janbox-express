@@ -1,7 +1,12 @@
-import { authApi } from "@api";
+import { authApi, notificationApi } from "@api";
 import { CONSTANT } from "@configs";
 import { Alert, Utils } from "@helpers";
-import { Account } from "@models";
+import {
+  Account,
+  AppNotificationResponse,
+  BasePagingResponseEntity,
+  SearchAppNotificationRequestClient,
+} from "@models";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { loginAction } from "@redux";
@@ -13,6 +18,8 @@ import { AuthorizeResult } from "src/@types/api-sso";
 import {
   changeLanguage,
   changeLanguageSuccess,
+  countNotifications,
+  getCountNotification,
   getUserAction,
   getUserInfo,
   loginExternalAction,
@@ -126,6 +133,18 @@ function* takeUserInfo() {
   } catch (error) {}
 }
 
+// ----- region getUserInfo
+function* takeGetListNotifications(
+  action: PayloadAction<SearchAppNotificationRequestClient>,
+) {
+  try {
+    const response: BasePagingResponseEntity<AppNotificationResponse[]> =
+      yield call(notificationApi.getListNotify, action.payload);
+    if (response?.total) {
+      yield put(getCountNotification(response?.total));
+    }
+  } catch (error) {}
+}
 // ----- region root userSaga
 export default function* userSaga() {
   yield all([
@@ -134,5 +153,6 @@ export default function* userSaga() {
     takeLatest(logout, takeLogout),
     takeLatest(changeLanguage, takeChangeLanguage),
     takeLatest(getUserAction, takeUserInfo),
+    takeLatest(countNotifications, takeGetListNotifications),
   ]);
 }

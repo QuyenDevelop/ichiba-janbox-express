@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { CustomerApi, LocationApi } from "@api";
+import { customerApi, locationApi } from "@api";
 import { Header, LocationModal } from "@components";
 import { CONSTANT } from "@configs";
 import { Alert, ScreenUtils } from "@helpers";
@@ -68,7 +68,7 @@ export const AddAddressScreen: FunctionComponent = () => {
 
   useEffect(() => {
     Promise.all([
-      LocationApi?.getAllCountry()!,
+      locationApi?.getAllCountry()!,
       getCallingCode(RNLocalize.getCountry() as CountryCode),
     ]).then(([res, callingCode]) => {
       setCountries(res?.data!);
@@ -99,7 +99,7 @@ export const AddAddressScreen: FunctionComponent = () => {
           } as Country);
         },
       );
-      LocationApi?.getStateProvinceByCountry(data?.id)?.then(res => {
+      locationApi?.getStateProvinceByCountry(data?.id)?.then(res => {
         setIsLoadingProvince(false);
         setProvinces(res?.data);
       });
@@ -111,7 +111,7 @@ export const AddAddressScreen: FunctionComponent = () => {
     setWard(undefined);
     setProvince(data);
     setIsLoadingDistrict(true);
-    LocationApi?.getDistrictByProvince(data?.id, country?.id)?.then(res => {
+    locationApi?.getDistrictByProvince(data?.id, country?.id)?.then(res => {
       setIsLoadingDistrict(false);
       setDistricts(res?.data);
     });
@@ -121,14 +121,12 @@ export const AddAddressScreen: FunctionComponent = () => {
     setWard(undefined);
     setDistrict(newDistrict);
     setIsLoadingWard(true);
-    LocationApi?.getWardByDistrict(
-      newDistrict?.id,
-      province?.id,
-      country?.id,
-    )?.then(res => {
-      setIsLoadingWard(false);
-      setWards(res?.data);
-    });
+    locationApi
+      ?.getWardByDistrict(newDistrict?.id, province?.id, country?.id)
+      ?.then(res => {
+        setIsLoadingWard(false);
+        setWards(res?.data);
+      });
   };
 
   const submit = () => {
@@ -150,19 +148,20 @@ export const AddAddressScreen: FunctionComponent = () => {
         ward
       ) {
         setIsSubmitting(true);
-        CustomerApi.addAddress({
-          name,
-          phone: `+${countryCode?.callingCode?.[0]}${phone}`,
-          country: country?.name,
-          province: province?.name,
-          district: district?.name,
-          countryCode: country?.code,
-          ward: ward?.name,
-          address,
-          active: isActive,
-          postalCode: zip,
-          taxCode: taxCode,
-        })
+        customerApi
+          .addAddress({
+            name,
+            phone: `+${countryCode?.callingCode?.[0]}${phone}`,
+            country: country?.name,
+            province: province?.name,
+            district: district?.name,
+            countryCode: country?.code,
+            ward: ward?.name,
+            address,
+            active: isActive,
+            postalCode: zip,
+            taxCode: taxCode,
+          })
           ?.then(() => {
             Alert.success("success.addAddress");
             DeviceEventEmitter.emit(CONSTANT.RELOAD_CONSTANTS.RELOAD_ADDRESS);
@@ -182,19 +181,20 @@ export const AddAddressScreen: FunctionComponent = () => {
         (wards[0] || wardInput)
       ) {
         setIsSubmitting(true);
-        CustomerApi.addAddress({
-          name,
-          phone: `+${countryCode?.callingCode?.[0]}${phone}`,
-          country: country?.name,
-          province: provinces[0] ? provinces[0].name : provinceInput,
-          district: districts[0] ? districts[0].name : districtInput,
-          countryCode: country?.code,
-          ward: wards[0] ? wards[0].name : wardInput,
-          address,
-          active: isActive,
-          postalCode: zip,
-          taxCode: taxCode,
-        })
+        customerApi
+          .addAddress({
+            name,
+            phone: `+${countryCode?.callingCode?.[0]}${phone}`,
+            country: country?.name,
+            province: provinces[0] ? provinces[0].name : provinceInput,
+            district: districts[0] ? districts[0].name : districtInput,
+            countryCode: country?.code,
+            ward: wards[0] ? wards[0].name : wardInput,
+            address,
+            active: isActive,
+            postalCode: zip,
+            taxCode: taxCode,
+          })
           ?.then(() => {
             DeviceEventEmitter.emit(CONSTANT.RELOAD_CONSTANTS.RELOAD_ADDRESS);
             Alert.success("success.addAddress");

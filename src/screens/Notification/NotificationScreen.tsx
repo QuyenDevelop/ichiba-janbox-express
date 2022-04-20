@@ -6,6 +6,7 @@ import { Account } from "@models";
 import { NotificationStackParamsList } from "@navigation";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { IRootState } from "@redux";
 import { Button, translate } from "@shared";
 import { Themes } from "@themes";
 import React, {
@@ -17,7 +18,6 @@ import React, {
 import { Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { TabBar, TabBarIndicator, TabView } from "react-native-tab-view";
-import { IRootState } from "../../redux/store";
 import {
   GeneralNotification,
   OrderNotification,

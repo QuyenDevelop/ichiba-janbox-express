@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { NotificationApi } from "@api";
+import { notificationApi } from "@api";
 import { FastImageLoading } from "@components";
 import { Utils } from "@helpers";
 import { useLoadMore } from "@hooks";
@@ -32,7 +32,8 @@ export const GeneralNotification: FunctionComponent<Props> = () => {
       pageSize: pageSize ?? 10,
     };
     setLoading(true);
-    return NotificationApi.getListNotifi(request)
+    return notificationApi
+      .getListNotify(request)
       ?.then(data => {
         return processData({
           page: page,
@@ -44,7 +45,8 @@ export const GeneralNotification: FunctionComponent<Props> = () => {
       .finally(() => setLoading(false));
   };
   const handleReadAll = () => {
-    NotificationApi.markReadAll({})
+    notificationApi
+      .markReadAll({})
       ?.then(res => {
         if (res?.status) {
           setShouldRefreshWhenFocus(true);

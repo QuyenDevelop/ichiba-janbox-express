@@ -5,6 +5,7 @@ import { IPhoto } from "@models";
 import { HomeStackParamsList } from "@navigation";
 import { useNavigation } from "@react-navigation/core";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { IRootState } from "@redux";
 import { Flatlist } from "@shared";
 import React, { FunctionComponent, useEffect, useState } from "react";
 import {
@@ -15,7 +16,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { IRootState } from "src/redux/store";
 import Photo from "./components/Photo";
 import styles from "./styles";
 

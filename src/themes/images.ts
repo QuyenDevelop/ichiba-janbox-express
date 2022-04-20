@@ -34,6 +34,12 @@ export const Images = {
   icShipmentManage: require("../assets/home/menu/manage_shipment.png"),
   icRateTime: require("../assets/home/menu/rate_time.png"),
   icAnalytic: require("../assets/home/menu/analytic.png"),
+  pickButton: require("../assets/button/picker.png"),
+  icHoldPoint: require("../assets/icons/ic_hold_point.png"),
+  icJGift: require("../assets/icons/ic_j_gift.png"),
+  icJapan: require("../assets/icons/ic_japan.png"),
+  icVietNam: require("../assets/icons/ic_vietnam.png"),
+  icUSA: require("../assets/icons/ic_usa.png"),
 };
 
 export const AnimationImages = {

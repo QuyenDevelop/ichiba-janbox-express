@@ -2,10 +2,9 @@ import { SCREENS } from "@configs";
 import { useAppDispatch, useAppSelector } from "@hooks";
 import { useNavigation } from "@react-navigation/core";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { logout } from "@redux";
+import { IRootState, logout } from "@redux";
 import React, { FunctionComponent, useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
-import { IRootState } from "src/redux/store";
 import styles from "./styles";
 
 export const InfoScreen: FunctionComponent = () => {

@@ -8,12 +8,19 @@ import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from "@react-navigation/native-stack";
-import { changeLanguage, getUserAction } from "@redux";
+import {
+  changeLanguage,
+  countNotifications,
+  getUserAction,
+  setAnonymousId,
+  takeSetAnonymousId,
+} from "@redux";
 import { AnimationImages } from "@themes";
 import LottieView from "lottie-react-native";
 import React, { FunctionComponent, useCallback, useState } from "react";
 import { Alert, Text, View } from "react-native";
 import * as RNLocalize from "react-native-localize";
+import uuid from "react-native-uuid";
 import styles from "./styles";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
@@ -27,13 +34,14 @@ export const LaunchScreen: FunctionComponent<Props> = () => {
   });
 
   const authenticate = async (): Promise<void> => {
-    const [accessToken, currency, language] = await Promise.all([
+    const [accessToken, currency, anonymousId, language] = await Promise.all([
       AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.ACCESS_TOKEN),
       AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.CURRENCY),
       AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.ANONYMOUS_ID),
       AsyncStorage.getItem(CONSTANT.TOKEN_STORAGE_KEY.LANGUAGE),
     ]);
     console.log("🚀🚀🚀 => authenticate => accessToken", accessToken);
+    const guid = uuid.v4();
 
     if (language != null) {
       dispatch(changeLanguage(language ? language : CONSTANT.LANGUAGES.EN));
@@ -49,8 +57,32 @@ export const LaunchScreen: FunctionComponent<Props> = () => {
 
     if (accessToken) {
       dispatch(getUserAction());
+      dispatch(
+        countNotifications({
+          pageIndex: 1,
+          pageSize: 10,
+        }),
+      );
+      dispatch(takeSetAnonymousId(guid));
       navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION);
     } else {
+      !anonymousId &&
+        (await AsyncStorage.setItem(
+          CONSTANT.TOKEN_STORAGE_KEY.ANONYMOUS_ID,
+          guid.toString(),
+        ));
+
+      if (anonymousId) {
+        dispatch(setAnonymousId(anonymousId));
+      } else {
+        dispatch(takeSetAnonymousId(guid));
+      }
+
+      // if (await checkIsFirstLaunch()) {
+      //   navigation.navigate(SCREENS.ON_BOARDING);
+      // } else {
+      //   onContinueFlow();
+      // }
       navigation.navigate(SCREENS.AUTH_STACK, {
         screen: SCREENS.LOGIN,
       });

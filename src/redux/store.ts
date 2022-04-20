@@ -1,11 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
 import rootSaga from "./sagas";
-import { IUserState, userReducer } from "./slices";
-
-export interface IRootState {
-  user: IUserState;
-}
+import { IRootState, userReducer } from "./slices";
 
 const rootReducer = combineReducers({
   user: userReducer,

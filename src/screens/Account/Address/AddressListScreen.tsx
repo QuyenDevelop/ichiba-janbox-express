@@ -7,13 +7,12 @@ import { useAppDispatch, useAppSelector, useStatusBar } from "@hooks";
 import { Address } from "@models";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { setAddressSelectedId } from "@redux";
+import { IRootState, setAddressSelectedId } from "@redux";
 import { Flatlist, Icon, RadioButton, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { IRootState } from "../../../redux/store";
 import EditAddressModal from "./EditAddressModal/EditAddressModal";
 import styles from "./styles";
 

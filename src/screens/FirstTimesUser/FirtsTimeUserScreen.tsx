@@ -3,6 +3,7 @@ import { SCREENS } from "@configs";
 import { Account } from "@models";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { IRootState } from "@redux";
 import { translate } from "@shared";
 import { Images } from "@themes";
 import React, { FunctionComponent } from "react";
@@ -16,7 +17,6 @@ import {
 import FastImage from "react-native-fast-image";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useSelector } from "react-redux";
-import { IRootState } from "src/redux/store";
 import { ContentOptional, ContentPurchase, ItemChooseEz } from "./Component";
 import styles from "./styles";
 interface Props {}

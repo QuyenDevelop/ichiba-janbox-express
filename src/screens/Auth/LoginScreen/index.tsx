@@ -16,7 +16,7 @@ import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
 } from "@react-navigation/native-stack";
-import { loginAction, loginExternalAction } from "@redux";
+import { IRootState, loginAction, loginExternalAction } from "@redux";
 import { Button, Checkbox, Icon, TextInput, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
 import React, { FunctionComponent, useEffect, useState } from "react";
@@ -30,7 +30,6 @@ import {
 } from "react-native";
 import * as RNLocalize from "react-native-localize";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { IRootState } from "./../../../redux/store";
 import styles from "./styles";
 
 type Props = NativeStackScreenProps<RootStackParamList>;

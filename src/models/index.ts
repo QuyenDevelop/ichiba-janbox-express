@@ -7,3 +7,4 @@ export * from "./Notification";
 export * from "./request";
 export * from "./response";
 export * from "./UserRegisterVerify";
+export * from "./Wallet";

@@ -341,6 +341,7 @@ export default {
   labelShippingAs: "I am shipping as ...",
   labelEcommerce: "E-commerce",
   labelGift: "Gift",
+  labelEzWallet: "Ví của tôi",
 
   textNotLogin: "You are not logged in account",
   textWarningUserAndPass: "You have not entered your username or password !!",

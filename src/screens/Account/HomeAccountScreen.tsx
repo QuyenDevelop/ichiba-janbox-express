@@ -10,7 +10,7 @@ import {
 import { Account, PickerItemsResponse } from "@models";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { logout } from "@redux";
+import { IRootState, logout } from "@redux";
 import { Button, Icon, translate } from "@shared";
 import { Icons, Metrics, Themes } from "@themes";
 import React, {
@@ -21,7 +21,6 @@ import React, {
 } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { IRootState } from "src/redux/store";
 import { AccountOptions } from "./components/AccountOptions/AccountOptions";
 import { HeaderView } from "./components/HeaderView/HeaderView";
 import styles from "./styles";
@@ -113,7 +112,15 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
         <AccountOptions
           title={translate("label.wallet")}
           rightTitle={translate("label.wallet")}
-          // onPress={() => navigation.navigate(SCREENS.CHANGE_PASSWORD)}
+          onPress={() =>
+            profile
+              ? navigation.navigate(SCREENS.ACCOUNT_STACK, {
+                  screen: SCREENS.EZ_WALLET_SCREEN,
+                })
+              : navigation.navigate(SCREENS.AUTH_STACK, {
+                  screen: SCREENS.LOGIN,
+                })
+          }
           icon={() => {
             return (
               <Icons.Entypo

@@ -1,7 +1,10 @@
-import { Account } from "@models";
+import { CONSTANT } from "@configs";
+import { Account, SearchAppNotificationRequestClient } from "@models";
 import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { SliceName } from "./constants";
-
+export interface IRootState {
+  user: IUserState;
+}
 export interface loginInternalPayload {
   username?: string;
   password?: string;
@@ -23,6 +26,8 @@ export interface IUserState {
   isLogging: boolean;
   messageFailed: string | null;
   selectedAddressId: number | null;
+  primaryCurrency: string;
+  setCountNotification: number;
 }
 
 const initialState: IUserState = {
@@ -35,6 +40,8 @@ const initialState: IUserState = {
   isLogging: false,
   messageFailed: null,
   selectedAddressId: null,
+  primaryCurrency: CONSTANT.CURRENCY.VND,
+  setCountNotification: 0,
 };
 
 export const userSlice = createSlice({
@@ -74,8 +81,20 @@ export const userSlice = createSlice({
       state.tokenId = null;
       state.profile = null;
     },
+    setAnonymousId: (state: IUserState, action: PayloadAction<string>) => {
+      state.anonymousId = action.payload;
+    },
     setAddressId: (state: IUserState, action: PayloadAction<number>) => {
       state.selectedAddressId = action.payload;
+    },
+    updatePrimaryWallet: (state: IUserState, action: PayloadAction<string>) => {
+      state.primaryCurrency = action.payload;
+    },
+    getCountNotification: (
+      state: IUserState,
+      action: PayloadAction<number>,
+    ) => {
+      state.setCountNotification = action.payload;
     },
     changeLoading: (state: IUserState, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
@@ -98,7 +117,13 @@ export const changeLanguage = createAction<string>(
 export const setAddressSelectedId = createAction<number>(
   `${SliceName.USER_SLICE}/setAddressId`,
 );
-
+export const countNotifications =
+  createAction<SearchAppNotificationRequestClient>(
+    `${SliceName.USER_SLICE}/countNotifications`,
+  );
+export const takeSetAnonymousId = createAction<any>(
+  `${SliceName.USER_SLICE}/setAnonymousId`,
+);
 // export Actions
 export const {
   loginLoading,
@@ -109,8 +134,11 @@ export const {
   getUserInfo,
   loginExternalSuccess,
   changeLanguageSuccess,
+  setAnonymousId,
   setAddressId,
+  updatePrimaryWallet,
   changeLoading,
+  getCountNotification,
 } = userSlice.actions;
 
 // export reducer

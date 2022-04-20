@@ -7,4 +7,5 @@ export * from "./Icon";
 export * from "./NoData/NoData";
 export * from "./Picker/Picker";
 export * from "./RadioButton/RadioButton";
+export * from "./Search/Search";
 export * from "./TextInput/TextInput";

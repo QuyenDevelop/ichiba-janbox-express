@@ -33,7 +33,7 @@ export const GeneralNotification: FunctionComponent<Props> = () => {
     };
     setLoading(true);
     return notificationApi
-      .getListNotifi(request)
+      .getListNotify(request)
       ?.then(data => {
         return processData({
           page: page,

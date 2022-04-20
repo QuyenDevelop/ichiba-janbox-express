@@ -1,6 +1,7 @@
 export * from "./Banner/Banner";
 export * from "./ConfirmDialog/ConfirmDialog";
 export * from "./ContentLoader";
+export * from "./Copy/CodeCopySuccess";
 export * from "./CreateShipmentButton";
 export * from "./DateTime/DateTime";
 export * from "./FastImage/FastImageLoading";

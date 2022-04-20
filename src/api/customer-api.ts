@@ -1,4 +1,16 @@
-import { Address, BaseResponseEntity, UpdateCustomerRequest } from "@models";
+import {
+  Address,
+  BasePagingResponseEntity,
+  BaseResponseEntity,
+  CustomerResponse,
+  DepositTransactionResponse,
+  TransactionHistoryRequest,
+  TransactionHistoryResponse,
+  UpdateCustomerRequest,
+  UpdateTransactionRequest,
+  Wallet,
+  WalletWithPrimaryCurrency,
+} from "@models";
 import { BaseApi } from "./baseApi";
 
 class CustomerApi extends BaseApi {
@@ -35,6 +47,10 @@ class CustomerApi extends BaseApi {
     return this.delete("deletecustomeraddress", { id }, {});
   }
 
+  getCustomerWallet() {
+    return this.get<BaseResponseEntity<Wallet[]>>("getcustomerwallet", {});
+  }
+
   // updateDeviceId(deviceTokenMobile: string) {
   //   return this.post("updatedevicetoken", { deviceTokenMobile }, {});
   // }
@@ -68,24 +84,24 @@ class CustomerApi extends BaseApi {
   //   );
   // }
 
-  // getDepositDetail(transactionId: number) {
-  //   return this.get<BaseResponseEntity<DepositTransactionResponse>>(
-  //     "getdepositdetail",
-  //     { transactionId: transactionId },
-  //   );
-  // }
+  getDepositDetail(transactionId: number) {
+    return this.get<BaseResponseEntity<DepositTransactionResponse>>(
+      "getdepositdetail",
+      { transactionId: transactionId },
+    );
+  }
 
-  // getTransactionHistory = (
-  //   transactionHistoryRequest: TransactionHistoryRequest,
-  // ) => {
-  //   return this.get<
-  //     BasePagingResponseEntity<Array<TransactionHistoryResponse>>
-  //   >("gettransactionhistory", transactionHistoryRequest);
-  // };
+  getTransactionHistory = (
+    transactionHistoryRequest: TransactionHistoryRequest,
+  ) => {
+    return this.get<
+      BasePagingResponseEntity<Array<TransactionHistoryResponse>>
+    >("gettransactionhistory", transactionHistoryRequest);
+  };
 
-  // getCustomerProfileById = () => {
-  //   return this.get<BaseResponseEntity<CustomerResponse>>("getbyaccountid", {});
-  // };
+  getCustomerProfileById = () => {
+    return this.get<BaseResponseEntity<CustomerResponse>>("getbyaccountid", {});
+  };
 
   // updateLocale = (countryCode: string) => {
   //   return this.post("updatecustomerlocale", { countryCode }, {});
@@ -104,16 +120,16 @@ class CustomerApi extends BaseApi {
   //   return this.post("customercreatewithdrawaltransaction", request, {});
   // };
 
-  // getWalletWithPrimaryCurrency = (currencyCode?: string) => {
-  //   return this.get<BaseResponseEntity<WalletWithPrimaryCurrency>>(
-  //     "getwalletwithprimarycurrency",
-  //     { currencyCode },
-  //   );
-  // };
+  getWalletWithPrimaryCurrency = (currencyCode?: string) => {
+    return this.get<BaseResponseEntity<WalletWithPrimaryCurrency>>(
+      "getwalletwithprimarycurrency",
+      { currencyCode },
+    );
+  };
 
-  // setDefaultWallet = (walletId: string) => {
-  //   return this.post("setdefaultwallet", { walletId }, {});
-  // };
+  setDefaultWallet = (walletId: string) => {
+    return this.post("setdefaultwallet", { walletId }, {});
+  };
 
   // getListBank = () => {
   //   return this.get<BaseResponseEntity<Array<string>>>("getlistbank", {});
@@ -123,9 +139,9 @@ class CustomerApi extends BaseApi {
   //   return this.post("depositpayme", depositRequest, {});
   // }
 
-  // updateWithdrawalTransaction(request: UpdateTransactionRequest) {
-  //   return this.post("updatewithdrawaltransaction", request, {});
-  // }
+  updateWithdrawalTransaction(request: UpdateTransactionRequest) {
+    return this.post("updatewithdrawaltransaction", request, {});
+  }
 }
 
 export default new CustomerApi("customer");

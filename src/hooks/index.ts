@@ -1,5 +1,6 @@
 export * from "./useAppDispatch";
 export * from "./useAppSelector";
+export * from "./useBalance";
 export * from "./useBoolean";
 export * from "./useDebounce";
 export * from "./useIsMounted";

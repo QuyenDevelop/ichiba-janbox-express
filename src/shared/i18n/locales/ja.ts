@@ -357,6 +357,7 @@ export default {
   labelShippingAs: "私はとして出荷しています...",
   labelEcommerce: "電子商取引",
   labelGift: "贈り物",
+  labelEzWallet: "Ví của tôi",
 
   textWarningUserAndPass: "ユーザー名またはパスワードを入力していません!!",
   textNotLogin: "あなたはアカウントに記録されていません",

@@ -9,3 +9,4 @@ export * from "./Picker/Picker";
 export * from "./RadioButton/RadioButton";
 export * from "./Search/Search";
 export * from "./TextInput/TextInput";
+export * from "./TextInputFomat/TextInputFomat";

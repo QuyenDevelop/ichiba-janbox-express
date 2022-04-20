@@ -1,8 +1,10 @@
 import {
   Address,
+  BankIcResponse,
   BasePagingResponseEntity,
   BaseResponseEntity,
   CustomerResponse,
+  DepositRequest,
   DepositTransactionResponse,
   TransactionHistoryRequest,
   TransactionHistoryResponse,
@@ -61,28 +63,28 @@ class CustomerApi extends BaseApi {
   //   });
   // }
 
-  // depositPaypal(depositRequest: DepositRequest) {
-  //   return this.post("depositpaypal", depositRequest, {});
-  // }
+  depositPaypal(depositRequest: DepositRequest) {
+    return this.post("depositpaypal", depositRequest, {});
+  }
 
-  // getAllBank() {
-  //   return this.get<BaseResponseEntity<Array<BankIcResponse>>>(
-  //     "getallbank",
-  //     {},
-  //   );
-  // }
+  getAllBank() {
+    return this.get<BaseResponseEntity<Array<BankIcResponse>>>(
+      "getallbank",
+      {},
+    );
+  }
 
-  // createDepositFromBank(amount: number, bankName: string, bankNumber: string) {
-  //   return this.post(
-  //     "createdepositfrombank",
-  //     {
-  //       amount: amount,
-  //       bankName: bankName,
-  //       bankNumber: bankNumber,
-  //     },
-  //     {},
-  //   );
-  // }
+  createDepositFromBank(amount: number, bankName: string, bankNumber: string) {
+    return this.post(
+      "createdepositfrombank",
+      {
+        amount: amount,
+        bankName: bankName,
+        bankNumber: bankNumber,
+      },
+      {},
+    );
+  }
 
   getDepositDetail(transactionId: number) {
     return this.get<BaseResponseEntity<DepositTransactionResponse>>(
@@ -135,9 +137,9 @@ class CustomerApi extends BaseApi {
   //   return this.get<BaseResponseEntity<Array<string>>>("getlistbank", {});
   // };
 
-  // depositPayME(depositRequest: DepositRequest) {
-  //   return this.post("depositpayme", depositRequest, {});
-  // }
+  depositPayME(depositRequest: DepositRequest) {
+    return this.post("depositpayme", depositRequest, {});
+  }
 
   updateWithdrawalTransaction(request: UpdateTransactionRequest) {
     return this.post("updatewithdrawaltransaction", request, {});

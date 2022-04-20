@@ -3,6 +3,7 @@ export * from "./AnalyticStack";
 export * from "./AuthNavigator";
 export * from "./BottomTabNavigator";
 export * from "./CreateShipmentStack";
+export * from "./DepositNavigator";
 export * from "./HomeNavigator";
 export * from "./NavigateManagement";
 export * from "./NotificationNavigator";

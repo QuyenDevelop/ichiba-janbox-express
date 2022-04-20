@@ -1,8 +1,10 @@
 import { customerApi } from "@api";
-import { CONSTANT } from "@configs";
+import { CONSTANT, SCREENS } from "@configs";
 import { Alert, Utils } from "@helpers";
 import { useAppDispatch, useAppSelector, useBoolean } from "@hooks";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { IRootState, updatePrimaryWallet } from "@redux";
 import { Icon, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
@@ -32,7 +34,7 @@ interface Props {
 
 export const WalletInfo: FunctionComponent<Props> = (props: Props) => {
   const dispatch = useAppDispatch();
-  // const navigation = useNavigation<StackNavigationProp<any>>();
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const primaryCurrency = useAppSelector(
     (state: IRootState) => state.user.primaryCurrency,
   );
@@ -51,12 +53,12 @@ export const WalletInfo: FunctionComponent<Props> = (props: Props) => {
   const [isLoading, showLoading, hideLoading] = useBoolean();
 
   const goToDeposit = () => {
-    // navigation.navigate(SCREENS.DepositStack, {
-    //   screen: SCREENS.DEPOSIT_SCREEN,
-    //   params: {
-    //     walletId: walletId,
-    //   },
-    // });
+    navigation.navigate(SCREENS.DEPOSIT_STACK, {
+      screen: SCREENS.DEPOSIT_SCREEN,
+      params: {
+        walletId: walletId,
+      },
+    });
   };
 
   const goToWithdraw = () => {

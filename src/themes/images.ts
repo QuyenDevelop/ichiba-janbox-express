@@ -40,6 +40,19 @@ export const Images = {
   icJapan: require("../assets/icons/ic_japan.png"),
   icVietNam: require("../assets/icons/ic_vietnam.png"),
   icUSA: require("../assets/icons/ic_usa.png"),
+
+  //region Deposit
+  secure: require("../assets/deposit/secure.png"),
+  VisaCardMethod: require("../assets/deposit/VisaCardMethod.png"),
+  MasterCardMethod: require("../assets/deposit/MasterCardMethod.png"),
+  maestro: require("../assets/deposit/maestro.png"),
+  Amex: require("../assets/deposit/Amex.png"),
+  logoPaypal: require("../assets/deposit/logoPaypal.png"),
+  card: require("../assets/deposit/Card.png"),
+  gmo: require("../assets/deposit/payment-gmo.png"),
+  icAlipay: require("../assets/deposit/ic_alipay.png"),
+  paypalMethod: require("../assets/deposit/paypal.png"),
+  icPayMe: require("../assets/deposit/ic_pay_me.png"),
 };
 
 export const AnimationImages = {

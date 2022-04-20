@@ -37,6 +37,20 @@ export const CONSTANT = {
     CNY: "CNY",
     TWD: "TWD",
   },
+  PAYPAL_METHOD_PAY: {
+    PaypalBalance: "Paypal_Balance",
+    CardBank: "CardBank",
+  },
+  PAYMENT_OPTION: {
+    Gmo: "GMO",
+    Paypal: "PAYPAL",
+    Wallet: "WALLET",
+    VndWallet: "VND_WALLET",
+    Credit: "CREDIT",
+    BankTransfer: "BankTransfer",
+    JpyWallet: "JPY_WALLET",
+    PayMe: "PAY_ME",
+  },
   TYPE_PICKER: {
     LANGUAGES: "Languages",
     CURRENCY: "Currency",
@@ -66,5 +80,23 @@ export const CONSTANT = {
     RELOAD_WALLET: "RELOAD_WALLET",
     RELOAD_PAYMENT: "RELOAD_PAYMENT",
     RELOAD_TRANSACTION: "RELOAD_TRANSACTION",
+  },
+  PAYMENT_RETURN_URL: {
+    SUCCESS: "https://janbox.com/order/success",
+    CANCEL: "https://janbox.com/order/cancel",
+    ADD_CARD_SUCCESS: "member/complete",
+  },
+  PAYME_TRANSACTION_FEE: {
+    PAYME_WALLET_FEE: "PAYME_WALLET_FEE",
+    PAYME_ATMCARD_FEE: "PAYME_ATMCARD_FEE",
+    PAYME_QRPAY_FEE: "PAYME_QRPAY_FEE",
+    PAYME_BANKTRANSFER_FEE: "PAYME_BANKTRANSFER_FEE",
+    PAYME_ATMCARD_FLAT_FEE: "PAYME_ATMCARD_FLAT_FEE",
+  },
+  PAYME_PAYMENT_METHOD: {
+    PAYME: "PAYME",
+    ATMCARD: "ATMCARD",
+    QRPAY: "QRPAY",
+    BANKTRANSFER: "BANKTRANSFER",
   },
 };

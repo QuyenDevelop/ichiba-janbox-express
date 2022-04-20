@@ -11,6 +11,7 @@ import React from "react";
 import { AccountNavigator } from "./AccountNavigator";
 import { AnalyticStack } from "./AnalyticStack";
 import { AuthNavigation } from "./AuthNavigator";
+import { DepositNavigator } from "./DepositNavigator";
 import { NotificationStack } from "./NotificationNavigator";
 import { RateTimeStackStack } from "./RateAndTimeStack";
 import { SearchStack } from "./SearchStack";
@@ -29,6 +30,7 @@ export type RootStackParamList = {
   [SCREENS.WAREHOUSE_STACK]: undefined;
   [SCREENS.ANALYTIC_STACK]: undefined;
   [SCREENS.RATE_TIME_STACK]: undefined;
+  [SCREENS.DEPOSIT_STACK]: undefined;
 };
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -78,6 +80,10 @@ export const RootNavigator = () => {
       <RootStack.Screen
         name={SCREENS.RATE_TIME_STACK}
         component={RateTimeStackStack}
+      />
+      <RootStack.Screen
+        name={SCREENS.DEPOSIT_STACK}
+        component={DepositNavigator}
       />
     </RootStack.Navigator>
   );

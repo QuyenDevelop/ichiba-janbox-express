@@ -131,7 +131,7 @@ export const DepositScreen: FunctionComponent = () => {
   return (
     <View style={{ ...styles.container, paddingTop: insets.top }}>
       <Header
-        title={translate("labelDeposit")}
+        title={translate("labeDeposit")}
         iconLeftName={["ic_arrow_left"]}
         iconLeftOnPress={[() => navigation.goBack()]}
         isCenterTitle

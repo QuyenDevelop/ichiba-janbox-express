@@ -20,7 +20,6 @@ import React, {
   useState,
 } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AccountOptions } from "./components/AccountOptions/AccountOptions";
 import { HeaderView } from "./components/HeaderView/HeaderView";
 import styles from "./styles";
@@ -49,7 +48,6 @@ let dataLanguages: Array<PickerItemsResponse> = [
 
 export const HomeAccountScreen: FunctionComponent<Props> = () => {
   useStatusBar("dark-content");
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [showConfirm, setShowConfirm, setHideConfirm] = useBoolean(false);
   const profile = useAppSelector(
@@ -266,7 +264,7 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
   }, [checkedSelectedLanguage, navigation]);
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={styles.container}>
       <Header isCenterTitle={true} title={translate("label.account")} />
       <ScrollView
         showsVerticalScrollIndicator={false}

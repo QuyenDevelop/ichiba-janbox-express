@@ -16,7 +16,6 @@ import React, {
   useState,
 } from "react";
 import { Text, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { TabBar, TabBarIndicator, TabView } from "react-native-tab-view";
 import { useSelector } from "react-redux";
 import { DepositCurrency, DepositVND } from "./Component";
@@ -60,7 +59,6 @@ export const DepositScreen: FunctionComponent = () => {
   const route = useRoute<DepositScreenRoute>();
   const { walletId } = route.params || {};
   const locale = useSelector((state: IRootState) => state.user.profile?.locale);
-  const insets = useSafeAreaInsets();
   const [index, setIndex] = useState<number>(
     routes.findIndex(item => item.walletId === walletId),
   );
@@ -129,7 +127,7 @@ export const DepositScreen: FunctionComponent = () => {
   }, []);
 
   return (
-    <View style={{ ...styles.container, paddingTop: insets.top }}>
+    <View style={{ ...styles.container }}>
       <Header
         title={translate("labeDeposit")}
         iconLeftName={["ic_arrow_left"]}

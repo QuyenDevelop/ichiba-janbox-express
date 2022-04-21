@@ -7,18 +7,15 @@ import { translate } from "@shared";
 import { Icons, Metrics, Themes } from "@themes";
 import React, { FunctionComponent } from "react";
 import { View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AccountOptions } from "../components/AccountOptions/AccountOptions";
 import styles from "./styles";
 
 interface Props {}
 
 export const AccountSettingOptionsScreen: FunctionComponent<Props> = () => {
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
-
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={styles.container}>
       <Header
         title={translate("label.setting")}
         iconLeftName={["ic_arrow_left"]}

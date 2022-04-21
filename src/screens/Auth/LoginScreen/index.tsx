@@ -29,13 +29,11 @@ import {
   View,
 } from "react-native";
 import * as RNLocalize from "react-native-localize";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import styles from "./styles";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 export const LoginScreen: FunctionComponent<Props> = () => {
-  const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
   const { loading, isLogging, messageFailed } = useAppSelector(
     (state: IRootState) => state.user,
@@ -159,7 +157,7 @@ export const LoginScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={styles.container}>
       <Header isEnableChangeLanguage />
       <KeyboardAvoidingView
         enabled={Platform.OS === "ios"}

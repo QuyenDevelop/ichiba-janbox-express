@@ -16,7 +16,6 @@ import React, {
   useState,
 } from "react";
 import { Text, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { TabBar, TabBarIndicator, TabView } from "react-native-tab-view";
 import {
   GeneralNotification,
@@ -41,7 +40,6 @@ const TabKey = {
 
 export const NotificationScreen: FunctionComponent = () => {
   useStatusBar("dark-content");
-  const insets = useSafeAreaInsets();
   const route = useRoute<NavigationRoute>();
   const { isShowBackOnHeader } = route.params || {};
   const profile = useAppSelector(
@@ -121,7 +119,7 @@ export const NotificationScreen: FunctionComponent = () => {
     });
   };
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={styles.container}>
       <Header
         title={translate("labelNotification")}
         iconLeftName={isShowBackOnHeader ? ["ic_arrow_left"] : []}

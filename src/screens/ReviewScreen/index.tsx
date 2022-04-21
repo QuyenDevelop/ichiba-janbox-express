@@ -7,7 +7,6 @@ import { translate } from "@shared";
 import React, { FunctionComponent, useEffect } from "react";
 import { SafeAreaView, ScrollView, Text, TextInput, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ButtonSuggestCmt } from "./components/ButtonSuggestCmt";
 import { CustomRatingBar } from "./components/CustomRatingBar";
 import { UploadPhoto } from "./components/UploadPhoto";
@@ -23,13 +22,12 @@ interface IProps {
 }
 
 export const ReviewScreen: FunctionComponent<IProps> = () => {
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const language = useAppSelector(state => state.user.language);
   useEffect(() => {}, [language]);
 
   return (
-    <SafeAreaView style={[styles.container, { paddingTop: insets.top }]}>
+    <SafeAreaView style={styles.container}>
       <ScrollView>
         <Header
           titleLeft={translate("labelReview")}

@@ -7,7 +7,6 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { translate } from "@shared";
 import React, { FunctionComponent, useEffect } from "react";
 import { DeviceEventEmitter, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import WebView from "react-native-webview";
 import {
   OnShouldStartLoadWithRequest,
@@ -26,7 +25,6 @@ export interface DepositWebviewRouteParams {
 
 export const DepositWebViewScreen: FunctionComponent = () => {
   useStatusBar("dark-content");
-  const insets = useSafeAreaInsets();
   const route = useRoute<NavigationRoute>();
   const navigation = useNavigation<StackNavigationProp<any>>();
   const { redirectUrl } = route?.params;
@@ -51,7 +49,7 @@ export const DepositWebViewScreen: FunctionComponent = () => {
   }, [showLoading]);
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={styles.container}>
       <Header
         title={translate("labelDeposit")}
         iconLeftName={["ic_arrow_left"]}

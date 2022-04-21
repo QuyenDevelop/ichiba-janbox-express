@@ -22,7 +22,6 @@ import {
   Text,
   View,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { TabBar, TabBarIndicator, TabView } from "react-native-tab-view";
 import { BalanceView } from "../components/BalanceView/BalanceView";
 import { DebtInfo, TransactionHistory, WalletInfo } from "./components";
@@ -34,7 +33,6 @@ const tabKey = {
 };
 
 export const JanboxWalletScreen: FunctionComponent = () => {
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation<StackNavigationProp<any>>();
   const primaryCurrency = useAppSelector(
     (state: IRootState) => state.user.primaryCurrency,
@@ -157,7 +155,7 @@ export const JanboxWalletScreen: FunctionComponent = () => {
   }, []);
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={styles.container}>
       <Header
         title={translate("labelEzWallet")}
         iconLeftName={["ic_arrow_left"]}

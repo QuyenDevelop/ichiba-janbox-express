@@ -15,7 +15,6 @@ import {
 } from "react-native-country-picker-modal";
 import * as RNLocalize from "react-native-localize";
 import Modal from "react-native-modal";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import styles from "./styles";
 
 interface OwnProps {
@@ -30,7 +29,6 @@ type Props = OwnProps;
 
 const EditAddressModal: FunctionComponent<Props> = props => {
   const { onCloseModal, onModalHide, isShowModal, id, setEdited } = props;
-  const insets = useSafeAreaInsets();
   useStatusBar("dark-content");
   const [countryCode, setCountryCode] = useState({
     cca2: RNLocalize.getCountry() as CountryCode,
@@ -214,7 +212,7 @@ const EditAddressModal: FunctionComponent<Props> = props => {
       hideModalContentWhileAnimating={true}
       backdropTransitionOutTiming={0}
     >
-      <View style={{ ...styles.container, paddingTop: insets.top }}>
+      <View style={{ ...styles.container }}>
         <Header
           title={translate("text.footer.address")}
           iconLeftName={["ic_close"]}

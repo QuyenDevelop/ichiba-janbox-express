@@ -20,7 +20,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { SearchItem, SearchItemResponse } from "./SearchItem";
 import styles from "./styles";
 
@@ -42,7 +41,6 @@ const Data: Array<SearchItemResponse> = [
 export const SearchScreen: FunctionComponent<Props> = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   useStatusBar("dark-content");
-  const insets = useSafeAreaInsets();
   const [timer, setTimer] = useState<any>();
 
   const [data, setData] = useState<Array<SearchItemResponse>>(Data);
@@ -141,7 +139,7 @@ export const SearchScreen: FunctionComponent<Props> = () => {
   }, []);
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={styles.container}>
       <Header
         title={translate("search.search")}
         iconLeftName={["ic_arrow_left"]}

@@ -98,7 +98,7 @@ export const RateAndTimeScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <ScrollView style={[styles.container, { paddingTop: insets.top }]}>
+    <ScrollView style={styles.container}>
       <Header
         title={translate("buttonRateAndTime")}
         iconLeftName={["ic_arrow_left"]}

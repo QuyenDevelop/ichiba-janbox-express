@@ -25,7 +25,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import * as Yup from "yup";
 import { WithdrawSuccessModal } from "./components/WithdrawSuccessModal";
 import styles from "./styles";
@@ -47,7 +46,6 @@ interface FormWithdraw {
 }
 
 export const WithdrawScreen: FunctionComponent = () => {
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation();
   const route = useRoute<WithdrawScreenNavigationRoute>();
   const { walletId } = route.params;
@@ -196,7 +194,7 @@ export const WithdrawScreen: FunctionComponent = () => {
   };
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={styles.container}>
       <Header
         title={translate("labelWithdraw")}
         iconLeftName={["ic_arrow_left"]}

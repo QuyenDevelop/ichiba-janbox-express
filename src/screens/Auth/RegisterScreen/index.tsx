@@ -28,14 +28,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import styles from "./styles";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 export const RegisterScreen: FunctionComponent<Props> = () => {
   // useStatusBar("dark-content");
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const dispatch = useAppDispatch();
   const [email, setEmail] = useState("");
@@ -160,7 +158,7 @@ export const RegisterScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={styles.container}>
       <Header isGoBack isEnableChangeLanguage />
       <KeyboardAvoidingView
         enabled={Platform.OS === "ios"}

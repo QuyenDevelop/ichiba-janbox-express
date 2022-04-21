@@ -9,7 +9,6 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { translate } from "@shared";
 import React, { FunctionComponent, useState } from "react";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { InputBankInfo, ModalSucessPay } from "../Component";
 import styles from "../styles";
 export interface InfoPayBankRouteParams {
@@ -25,7 +24,7 @@ interface Props {}
 
 export const InfoPayBankScreen: FunctionComponent<Props> = () => {
   const route = useRoute<InfoPayBankNavigationRoute>();
-  const insets = useSafeAreaInsets();
+
   const navigation = useNavigation<StackNavigationProp<any>>();
   const [visible, setVisible] = useState<boolean>(false);
   const { itemBank } = route.params;
@@ -48,7 +47,7 @@ export const InfoPayBankScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={{ ...styles.container, paddingTop: insets.top }}>
+    <View style={{ ...styles.container }}>
       <Header
         title={translate("labelPaymentInfo")}
         iconLeftName={["ic_arrow_left"]}

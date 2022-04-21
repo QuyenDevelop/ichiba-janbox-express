@@ -24,7 +24,6 @@ import {
   View,
 } from "react-native";
 import FastImage from "react-native-fast-image";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ListCountry } from "./ListCountry";
 import styles from "./styles";
 const prefixPhones = require("../../../themes/prefixPhone.json");
@@ -70,7 +69,6 @@ const getPhone = (profile?: Account | null) => {
 export const AccountInformationScreen: FunctionComponent<Props> = () => {
   const profile = useAppSelector(state => state.user.profile);
   useStatusBar("dark-content");
-  const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
   const navigation = useNavigation<StackNavigationProp<any>>();
 
@@ -199,7 +197,7 @@ export const AccountInformationScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={styles.container}>
       <Header
         title={translate("label.information")}
         iconLeftName={["ic_arrow_left"]}

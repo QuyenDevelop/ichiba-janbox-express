@@ -370,7 +370,7 @@ export default {
   buttonLiveChat: "Live chat",
   buttonViewMore: "Xem thêm",
   buttonCreateShipment: "Tạo gói hàng",
-  buttonCreateFromPast: "Create from the past",
+  buttonCreateFromPast: "Tạo từ quá khứ",
   buttonWarehouse: "Thông tin kho",
   buttonShipmentManage: "Quản lý gói hàng",
   buttonRateAndTime: "Tỷ lệ & Thời gian",

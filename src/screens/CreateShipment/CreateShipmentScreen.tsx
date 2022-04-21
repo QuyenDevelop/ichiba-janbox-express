@@ -1,12 +1,12 @@
 import { Header, Separator } from "@components";
 import { CONSTANT, SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
-import { useStatusBar } from "@hooks";
+import { useAppSelector, useStatusBar } from "@hooks";
 import { useNavigation } from "@react-navigation/core";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Button, Checkbox, translate } from "@shared";
 import { Icons, Metrics, Themes } from "@themes";
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { CreateEcomShipment, CreateGiftShipment } from "./components";
@@ -18,12 +18,14 @@ export const CreateShipmentScreen: FunctionComponent<Props> = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   useStatusBar("dark-content");
   const insets = useSafeAreaInsets();
+  const language = useAppSelector(state => state.user.language);
 
   const [shipmentType, setShipmentType] = useState<string>(
     CONSTANT.SHIPMENT_TYPE.ECOMMERCE,
   );
   const [isLoading, setIsLoading] = useState(false);
 
+  useEffect(() => {}, [language]);
   const goBack = () => {
     navigation.goBack();
   };

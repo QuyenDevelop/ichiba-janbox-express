@@ -299,7 +299,7 @@ export const DepositVND: FunctionComponent<Props> = ({
           <HeaderItem
             paymentOption={paymentOption}
             onChange={handleMethodCard}
-            title={translate("paymentMethod.payMeWallet")}
+            title={translate("paymentMethod.paymeWallet")}
             type={CONSTANT.PAYME_PAYMENT_METHOD.PAYME}
             paymentFee={`${paymeWalletFee}%`}
           />

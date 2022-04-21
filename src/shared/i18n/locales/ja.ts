@@ -205,6 +205,7 @@ export default {
     shipment: "出荷コード",
     myJanbox: "My Janbox",
     addAddress: "住所を追加",
+    labelAnalysis: "分析",
   },
   placeholder: {
     enterNotes: "ノートを入力してください",
@@ -304,6 +305,24 @@ export default {
     },
     footer: {
       address: "住所",
+    },
+    analysis: {
+      createOrder: "注文を作成する",
+      waitForPayment: "支払いを待つ",
+      paymentCOD: "有料代金引換",
+      arrivedAtWarehousePostal: "倉庫に到着【郵便局発送】",
+      waitProcessingInfo: "情報処理待ち【理由】",
+      saveAtWareHouse: "ストレージ",
+      pastTheStoragePeriod: "保管期間を過ぎた",
+      internationalShipping: "海外発送",
+      arrivedAtWarehouseRecieve: "倉庫に到着【デポ受領】",
+      commingProvince: "到着【受信州】",
+      recievingProvince: "到着しました【受け取り州】",
+      postmanDelivery: "郵便配達員が配達しています",
+      successDelivery: "正常な配信",
+      deliveryAgain: "注文を返す",
+      cancelOrder: "注文キャンセル",
+      refundOrder: "注文の払い戻し",
     },
   },
   success: {
@@ -523,6 +542,7 @@ export default {
 
   titleCreateShipment: "配送ルートを選択",
   titleShipmentManage: "出荷管理",
+  labelReview: "レビュー",
   titlePoint: "パワーポイント",
   titleWallet: "私の財布",
   titleScanQRCode: "スキャンコード",

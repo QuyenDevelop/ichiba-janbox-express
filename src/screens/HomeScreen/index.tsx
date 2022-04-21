@@ -57,6 +57,15 @@ export const HomeScreen: FunctionComponent = () => {
     navigation.navigate(SCREENS.INFO_SCREEN);
   };
 
+  const goToNewsScreen = () => {
+    navigation.navigate(SCREENS.NEWS_SCREEN);
+  };
+  const goToReviewScreen = () => {
+    navigation.navigate(SCREENS.REVIEW_SCREEN);
+  };
+  const goToAnalysisScreen = () => {
+    navigation.navigate(SCREENS.ANALYSIS_SCREEN);
+  };
   // const profile = useAppSelector(state => state.user.profile);
   // console.log("Profile:", JSON.stringify(profile));
   return (
@@ -94,6 +103,15 @@ export const HomeScreen: FunctionComponent = () => {
       <Text style={styles.userName}>{userInfo?.profile?.name}</Text>
       <TouchableOpacity style={styles.settingBtn} onPress={goToInfoScreen}>
         <Text style={styles.settingBtnText}>Setting</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.settingBtn} onPress={goToNewsScreen}>
+        <Text style={styles.settingBtnText}>News screen</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.settingBtn} onPress={goToReviewScreen}>
+        <Text style={styles.settingBtnText}>Review screen</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.settingBtn} onPress={goToAnalysisScreen}>
+        <Text style={styles.settingBtnText}>Analysis screen</Text>
       </TouchableOpacity>
     </View>
   );

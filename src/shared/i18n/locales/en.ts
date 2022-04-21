@@ -198,6 +198,7 @@ export default {
     zip: "Zip Code",
     addressDetail: "Address Detail",
     addAddress: "Add Address",
+    labelAnalysis: "Annalytic",
   },
   placeholder: {
     enterNotes: "Enter notes",
@@ -293,6 +294,24 @@ export default {
     },
     footer: {
       address: "Address",
+    },
+    analysis: {
+      createOrder: "Create order",
+      waitForPayment: "Wait for pay",
+      paymentCOD: "Paid COD",
+      arrivedAtWarehousePostal: "Arrived at the warehouse [Post Office sent]",
+      waitProcessingInfo: "Waiting for information processing [Reason]",
+      saveAtWareHouse: "Storage",
+      pastTheStoragePeriod: "Past the storage period",
+      internationalShipping: "International shipping",
+      arrivedAtWarehouseRecieve: "Arrived at the warehouse [Depot Received]",
+      commingProvince: "Arriving [Receiving Province]",
+      recievingProvince: "Arrived [Receiving Province]",
+      postmanDelivery: "Postman is delivering",
+      successDelivery: "Delivery successful",
+      deliveryAgain: "Return the order",
+      cancelOrder: "Order cancellation",
+      refundOrder: "Refund order",
     },
   },
   success: {
@@ -507,6 +526,7 @@ export default {
 
   titleCreateShipment: "Create Shipment",
   titleShipmentManage: "Shipment manage",
+  labelReview: "Review",
   titlePoint: "Power Point",
   titleWallet: "My Wallet",
   titleScanQRCode: "Scan QR code",

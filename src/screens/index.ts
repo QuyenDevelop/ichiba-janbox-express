@@ -1,5 +1,5 @@
 export * from "./Account";
-export * from "./Analytics/AnalyticScreen";
+// export * from "./Analytics/AnalyticScreen";
 export * from "./Auth";
 export * from "./CreateShipment/CreateShipmentScreen";
 export * from "./CreateShipmentFromPast/CreateShipmentFromPastScreen";
@@ -16,4 +16,7 @@ export * from "./RateAndTime/RateAndTime";
 export * from "./Search/ScanQRCodeScreen";
 export * from "./Search/SearchScreen";
 export * from "./Shipment/ShipmentManageScreen/ShipmentManageScreen";
+export * from "./NewsScreen";
+export * from "./ReviewScreen";
+export * from "./AnalysisScreen";
 export * from "./Warehouse/WarehouseScreen";

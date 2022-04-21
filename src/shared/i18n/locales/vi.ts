@@ -180,6 +180,7 @@ export default {
     district: "Quận/Huyện",
     ward: "Phường",
     addressDetail: "Địa chỉ chi tiết",
+    labelAnalysis: "Phân tích",
     modal: {
       infoConfirm: "Thông tin đã được xác nhận thành công",
       anyRequest: "Mọi thắc mắc vui lòng liên hệ tư vấn để được hỗ trợ",
@@ -290,6 +291,24 @@ export default {
     },
     footer: {
       address: "Địa chỉ",
+    },
+    analysis: {
+      createOrder: "Tạo đơn hàng",
+      waitForPayment: "Chờ thanh toán",
+      paymentCOD: "Đã thanh toán COD",
+      arrivedAtWarehousePostal: "Đã đến kho [Bưu cực gửi]",
+      waitProcessingInfo: "Chờ xử lí thông tin [Lý do]",
+      saveAtWareHouse: "Lưu kho",
+      pastTheStoragePeriod: "Quá thời hạn lưu kho",
+      internationalShipping: "Đang vận chuyển quốc tế",
+      arrivedAtWarehouseRecieve: "Đã đến kho [Kho nhận]",
+      commingProvince: "Đang đến [Tỉnh nhận]",
+      recievingProvince: "Đã đến [Tỉnh nhận]",
+      postmanDelivery: "Bưu tá đang giao hàng",
+      successDelivery: "Giao hàng thành công | [Người ký nhận] Ký nhận",
+      deliveryAgain: "Giao lại",
+      cancelOrder: "Huỷ đơn",
+      refundOrder: "Hoàn",
     },
   },
   success: {
@@ -505,6 +524,7 @@ export default {
 
   titleCreateShipment: "Tạo gói hàng",
   titleShipmentManage: "Quản lý gói hàng",
+  labelReview: "Đánh giá",
   titlePoint: "Điểm tích lũy",
   titleWallet: "Ví của tôi",
   titleScanQRCode: "Quét mã vạch",

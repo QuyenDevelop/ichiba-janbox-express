@@ -31,6 +31,7 @@ interface OwnProps {
   iconRightStyle?: Array<StyleProp<ViewStyle>>;
   iconRightOnPress?: Array<() => void>;
   titleRight?: string;
+  titleLeft?: string;
   titleRightStyle?: StyleProp<TextStyle>;
   titleRightOnPress?: () => void;
   title?: string;
@@ -73,6 +74,7 @@ export const Header: FunctionComponent<Props> = props => {
     iconRightSize,
     iconRightStyle,
     titleRight,
+    titleLeft,
     titleRightStyle,
     titleRightOnPress,
     title,
@@ -271,7 +273,9 @@ export const Header: FunctionComponent<Props> = props => {
             styles={styles.iconGoBack}
           />
           {isHiddenTextBack ? null : (
-            <Text style={styles.goBack}>{translate("button.back")}</Text>
+            <Text style={styles.goBack}>
+              {titleLeft ? titleLeft : translate("button.back")}
+            </Text>
           )}
         </TouchableOpacity>
       </View>

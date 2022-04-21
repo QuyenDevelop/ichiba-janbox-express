@@ -62,12 +62,12 @@ export const WalletInfo: FunctionComponent<Props> = (props: Props) => {
   };
 
   const goToWithdraw = () => {
-    // navigation.navigate(SCREENS.DepositStack, {
-    //   screen: SCREENS.WITHDRAW_SCREEN,
-    //   params: {
-    //     walletId: walletId,
-    //   },
-    // });
+    navigation.navigate(SCREENS.DEPOSIT_STACK, {
+      screen: SCREENS.WITHDRAW_SCREEN,
+      params: {
+        walletId: walletId,
+      },
+    });
   };
 
   const setPrimaryCurrency = () => {

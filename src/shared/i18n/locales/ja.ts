@@ -402,6 +402,9 @@ export default {
   buttonConfirm: "確認",
   buttonBack: "戻る",
   buttonCurrency: "通貨",
+  buttonNewTransaction: "新しいトランザクション",
+  buttonBackToWallet: "財布に戻る",
+  buttonWithdraw: "引き出し",
 
   labelNotification: "通知",
   labelResult: "結果",
@@ -499,6 +502,10 @@ export default {
   labelTransactionFee: "取引料金",
   labelDepositSuccess: "入金成功",
   labelConfirmInformation: "情報を確認",
+  labelCommandWithdraw: "あなたは金額を撤回するためのコマンドを作成しました",
+  labelAvailableBalance: "利用可能残高",
+  labelEnterMount: "金額を入力してください",
+  labelBank: "戻る",
 
   textWarningUserAndPass: "ユーザー名またはパスワードを入力していません!!",
   textNotLogin: "あなたはアカウントに記録されていません",

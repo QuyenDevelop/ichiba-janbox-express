@@ -3,6 +3,7 @@ import {
   BankIcResponse,
   BasePagingResponseEntity,
   BaseResponseEntity,
+  CustomerCreateWithdrawalTransactionRequest,
   CustomerResponse,
   DepositRequest,
   DepositTransactionResponse,
@@ -116,11 +117,11 @@ class CustomerApi extends BaseApi {
   //   );
   // };
 
-  // customerCreateWithdrawalTransaction = (
-  //   request: CustomerCreateWithdrawalTransactionRequest,
-  // ) => {
-  //   return this.post("customercreatewithdrawaltransaction", request, {});
-  // };
+  customerCreateWithdrawalTransaction = (
+    request: CustomerCreateWithdrawalTransactionRequest,
+  ) => {
+    return this.post("customercreatewithdrawaltransaction", request, {});
+  };
 
   getWalletWithPrimaryCurrency = (currencyCode?: string) => {
     return this.get<BaseResponseEntity<WalletWithPrimaryCurrency>>(
@@ -133,9 +134,9 @@ class CustomerApi extends BaseApi {
     return this.post("setdefaultwallet", { walletId }, {});
   };
 
-  // getListBank = () => {
-  //   return this.get<BaseResponseEntity<Array<string>>>("getlistbank", {});
-  // };
+  getListBank = () => {
+    return this.get<BaseResponseEntity<Array<string>>>("getlistbank", {});
+  };
 
   depositPayME(depositRequest: DepositRequest) {
     return this.post("depositpayme", depositRequest, {});

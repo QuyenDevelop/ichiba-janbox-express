@@ -387,6 +387,9 @@ export default {
   buttonConfirm: "Xác nhận",
   buttonBack: "Quay lại",
   buttonCurrency: "Tiền tệ",
+  buttonNewTransaction: "Tạo giao dịch mới",
+  buttonBackToWallet: "Quay lại ví",
+  buttonWithdraw: "Rút tiền",
 
   labelNotification: "Thông báo",
   labelResult: "Kết quả",
@@ -486,6 +489,10 @@ export default {
   labelTransactionFee: "Phí",
   labelDepositSuccess: "Nạp tiền thành công",
   labelConfirmInformation: "Xác nhận thông tin",
+  labelCommandWithdraw: "Bạn đã tạo thành công lệnh rút số tiền",
+  labelAvailableBalance: "Số dư khả dụng",
+  labelEnterMount: "Nhập số tiền",
+  labelBank: "Ngân hàng",
 
   textWarningUserAndPass: "Tài khoản hoặc mật khẩu không được trống",
   textNotLogin: "Bạn chưa đăng nhập tài khoản",

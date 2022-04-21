@@ -6,7 +6,6 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#E5E5E5",
-    marginTop: ScreenUtils.scale(10),
     paddingHorizontal: ScreenUtils.scale(16),
   },
   settingBtn: {

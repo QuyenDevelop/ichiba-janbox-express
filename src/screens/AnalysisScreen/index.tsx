@@ -8,11 +8,13 @@ import { Icons, Themes } from "@themes";
 import React, { FunctionComponent, useEffect } from "react";
 import { ScrollView, Text, View } from "react-native";
 import Pie from "react-native-pie";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { InfoDetail } from "./components";
 import styles from "./styles";
 
 export const AnalysisScreen: FunctionComponent = () => {
   const language = useAppSelector(state => state.user.language);
+  const insets = useSafeAreaInsets();
   useEffect(() => {}, [language]);
   const data = [
     {
@@ -115,7 +117,7 @@ export const AnalysisScreen: FunctionComponent = () => {
   ];
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { paddingTop: insets.top }]}>
       <Header
         title={translate("label.labelAnalysis")}
         iconLeftName={["ic_arrow_left"]}

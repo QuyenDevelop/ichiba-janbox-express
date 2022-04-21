@@ -1,7 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import { Banner, BannerContentLoader, Triangle } from "@components";
+import { SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
 import { BannerResponse } from "@models";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Icon, translate } from "@shared";
 import { Icons, Images, Metrics, Themes } from "@themes";
 import React, { FunctionComponent, useEffect, useState } from "react";
@@ -26,6 +29,7 @@ export const HomeBanner: FunctionComponent<Props> = ({
 }) => {
   const [headerBannerHome] = useState<Array<BannerResponse>>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   // const isMounted = useIsMounted();
   // const fetchHomeBanner = () => {
@@ -49,7 +53,11 @@ export const HomeBanner: FunctionComponent<Props> = ({
   }, []);
 
   const gotoPoint = () => {};
-  const gotoWallet = () => {};
+  const gotoWallet = () => {
+    navigation.navigate(SCREENS.DEPOSIT_STACK, {
+      screen: SCREENS.EZ_WALLET_SCREEN,
+    });
+  };
 
   return (
     <View style={containerStyle}>

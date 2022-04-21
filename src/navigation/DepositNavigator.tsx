@@ -7,6 +7,8 @@ import {
   DepositWebViewScreen,
   InfoPayBankRouteParams,
   InfoPayBankScreen,
+  WithdrawScreen,
+  WithdrawScreenParams,
 } from "@screens";
 import React from "react";
 
@@ -14,7 +16,7 @@ export type DepositStackParamList = {
   [SCREENS.DEPOSIT_SCREEN]: DepositParams;
   [SCREENS.INFO_PAYMENT_SCREEN]: InfoPayBankRouteParams;
   [SCREENS.DEPOSIT_WEBVIEW_SCREEN]: DepositWebviewRouteParams;
-  // [SCREENS.WITHDRAW_SCREEN]: WithdrawScreenParams;
+  [SCREENS.WITHDRAW_SCREEN]: WithdrawScreenParams;
 };
 const DepositStack = NavigationUtils.createNavigation<DepositStackParamList>();
 export const DepositNavigator = () => {
@@ -37,10 +39,10 @@ export const DepositNavigator = () => {
         name={SCREENS.DEPOSIT_WEBVIEW_SCREEN}
         component={DepositWebViewScreen}
       />
-      {/* <DepositStack.Screen
+      <DepositStack.Screen
         name={SCREENS.WITHDRAW_SCREEN}
-        component={WithdrawScreenParams}
-      /> */}
+        component={WithdrawScreen}
+      />
     </DepositStack.Navigator>
   );
 };

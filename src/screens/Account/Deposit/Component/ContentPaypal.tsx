@@ -34,11 +34,11 @@ export const ContentPaypal: FunctionComponent<Props> = props => {
           <Text style={styles.textPaypal}>Paypal Balance</Text>
           <View style={styles.switckPaypal}>
             <TouchableOpacity onPress={() => setShow(true)}>
-              <Text style={styles.addCard}>{translate("label.change")}</Text>
+              <Text style={styles.addCard}>{translate("labelChange")}</Text>
             </TouchableOpacity>
             <TouchableOpacity>
               <Text style={styles.addCard}>
-                {translate("label.switchAccount")}
+                {translate("labelWitchAccount")}
               </Text>
             </TouchableOpacity>
           </View>
@@ -49,7 +49,7 @@ export const ContentPaypal: FunctionComponent<Props> = props => {
           <View style={styles.br} />
           <View style={styles.showMoreContent}>
             <Text style={styles.titlePaypal}>
-              {translate("label.paypalWallet")}
+              {translate("labelPaypalWallet")}
             </Text>
             <View style={styles.itemMethodPaypal}>
               <HeaderItem
@@ -78,7 +78,7 @@ export const ContentPaypal: FunctionComponent<Props> = props => {
                 <View>
                   <Text style={styles.textnumberCard}>**** **** **** 6789</Text>
                   <Text style={styles.textExchange}>
-                    {translate("label.exchangeRate")}:
+                    {translate("labelExchangeRate")}:
                   </Text>
                   <Text style={styles.textVnd}>1 VND = $0.000042 USD</Text>
                 </View>

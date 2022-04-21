@@ -19,7 +19,7 @@ export const TotalPayment: FunctionComponent<Props> = ({ total, currency }) => {
           size={Metrics.icons.small}
           color={Themes.colors.info60}
         />
-        <Text style={styles.total}>{translate("label.totalPayment")}</Text>
+        <Text style={styles.total}>{translate("labelTotalPayment")}</Text>
       </View>
       <Text style={styles.totalValue}>
         {Utils.formatMoneyCurrency(total, currency)}

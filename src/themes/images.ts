@@ -53,6 +53,7 @@ export const Images = {
   icAlipay: require("../assets/deposit/ic_alipay.png"),
   paypalMethod: require("../assets/deposit/paypal.png"),
   icPayMe: require("../assets/deposit/ic_pay_me.png"),
+  icWithdrawSuccess: require("../assets/deposit/ic_withdraw_success.png"),
 };
 
 export const AnimationImages = {

@@ -61,39 +61,39 @@ export const ModalAddCard: FunctionComponent<Props> = ({
               color={Themes.colors.coolGray60}
             />
           </TouchableOpacity>
-          <Text style={styles.titleAddCard}>{translate("label.addCard")}</Text>
+          <Text style={styles.titleAddCard}>{translate("labelAddCard")}</Text>
           <ScrollView>
             <TextInputCredit
-              title={translate("label.cardNumber")}
+              title={translate("labelCardNumber")}
               textInput={inputCardNumber}
               onChangeText={setInputCradNumber}
-              placeholder={translate("label.cardNumber")}
+              placeholder={translate("labelCardNumber")}
             />
             <TextInputCredit
-              title={translate("label.cardholderName")}
+              title={translate("labelCardholderName")}
               textInput={inputCardholder}
               onChangeText={setInputCardholder}
-              placeholder={translate("label.cardholderName")}
+              placeholder={translate("labelCardholderName")}
             />
             <TextInputCredit
-              title={translate("label.expirationDate")}
+              title={translate("labelExpirationDate")}
               textInput={inputExpiration}
               onChangeText={setInputExpiration}
-              placeholder={translate("label.expirationDate")}
+              placeholder={translate("labelExpirationDate")}
             />
             <View style={styles.flexCvv}>
               <View style={styles.itemLeft}>
                 <TextInputCredit
-                  title={translate("label.cvv")}
+                  title={translate("labelCvv")}
                   textInput={inputCVV}
                   onChangeText={setInputCVV}
-                  placeholder={translate("label.cvv")}
+                  placeholder={translate("labelCvv")}
                 />
               </View>
               <View style={styles.itemLeft}>
                 <View style={styles.contentInputCredit}>
                   <Text style={styles.titleItemInfo}>
-                    {translate("button.currency")}
+                    {translate("buttonCurrency")}
                   </Text>
                   <TouchableOpacity style={styles.inputCreditLayer}>
                     <Text style={styles.textCurrent}>USD</Text>
@@ -127,12 +127,12 @@ export const ModalAddCard: FunctionComponent<Props> = ({
                 ) : null}
               </TouchableOpacity>
               <Text style={styles.textRemember}>
-                {translate("label.rememberCard")}
+                {translate("labelRememberCard")}
               </Text>
             </View>
             <View style={styles.provider}>
               <Text style={styles.textProvider}>
-                {translate("label.providedByStripe")}
+                {translate("labelProvidedByStripe")}
               </Text>
               <FastImage
                 source={Images.secure}
@@ -147,7 +147,7 @@ export const ModalAddCard: FunctionComponent<Props> = ({
                 onPress={() => handleAddCard()}
               >
                 <Text style={styles.textSubmit}>
-                  {translate("label.addCard")}
+                  {translate("labelAddCard")}
                 </Text>
               </TouchableOpacity>
             </View>

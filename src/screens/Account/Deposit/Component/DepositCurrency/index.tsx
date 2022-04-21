@@ -1,9 +1,11 @@
 import { customerApi, paymentApi } from "@api";
 import { Separator } from "@components";
-import { CONSTANT } from "@configs";
+import { CONSTANT, SCREENS } from "@configs";
 import { Alert, ScreenUtils, Utils } from "@helpers";
 import { useLoading } from "@hooks";
 import { DepositRequest, PaypalPaymentFee } from "@models";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { TextInputFormat, translate } from "@shared";
 import { Images, Themes } from "@themes";
 import React, { FunctionComponent, useEffect, useState } from "react";
@@ -17,7 +19,7 @@ interface Props {
   walletId: string;
 }
 export const DepositCurrency: FunctionComponent<Props> = ({ walletId }) => {
-  // const navigation = useNavigation<StackNavigationProp<any>>();
+  const navigation = useNavigation<StackNavigationProp<any>>();
   const [numberRequest, setNumberRequest] = useState<string | undefined>();
   const [textInput, setTextInput] = useState<string | undefined>();
   const [isButtonClickSubmit, setIsButtonClickSubmit] = useState(false);
@@ -109,9 +111,9 @@ export const DepositCurrency: FunctionComponent<Props> = ({ walletId }) => {
           ?.then(response => {
             const redirectUrl = response?.data?.redirectUrl;
             if (redirectUrl) {
-              // navigation.navigate(SCREENS.DEPOSIT_WEBVIEW_SCREEN, {
-              //   redirectUrl: redirectUrl,
-              // });
+              navigation.navigate(SCREENS.DEPOSIT_WEBVIEW_SCREEN, {
+                redirectUrl: redirectUrl,
+              });
             } else {
               Alert.error("error.generic");
             }
@@ -141,13 +143,11 @@ export const DepositCurrency: FunctionComponent<Props> = ({ walletId }) => {
         }}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.titleInputDeposit}>
-          {translate("label.deposit")}
-        </Text>
+        <Text style={styles.titleInputDeposit}>{translate("labeDeposit")}</Text>
         <TextInputFormat
           keyboardType={"number-pad"}
           onChangeText={setTextInput}
-          placeholder={translate("label.enterDeposit")}
+          placeholder={translate("labelEnterDeposit")}
           textRight={getCurrency(walletId).title}
           errorMessage={isButtonClickSubmit ? validation() : ""}
           setValueDefault={setNumberRequest}
@@ -157,17 +157,17 @@ export const DepositCurrency: FunctionComponent<Props> = ({ walletId }) => {
         />
         <View style={styles.warningContent}>
           <Text style={styles.warning}>
-            {translate("label.warningDeposit")}.
+            {translate("labelWarningDeposit")}.
           </Text>
           <TouchableOpacity onPress={goToDetails}>
             <Text style={styles.detailBtnText}>
-              ({translate("button.detail")})
+              ({translate("buttonDetail")})
             </Text>
           </TouchableOpacity>
         </View>
 
         <Text style={styles.paymentMethodTitle}>
-          {translate("label.paymentMethod")}
+          {translate("labelPaymentMethod")}
         </Text>
         <View>
           <HeaderItem
@@ -176,7 +176,7 @@ export const DepositCurrency: FunctionComponent<Props> = ({ walletId }) => {
             title="Paypal"
             type={CONSTANT.PAYMENT_OPTION.Paypal}
           />
-          <Text style={styles.secureLabel}>{translate("label.topSafe")}</Text>
+          <Text style={styles.secureLabel}>{translate("labelTopSafe")}</Text>
           <FastImage
             source={Images.paypalMethod}
             resizeMode={FastImage.resizeMode.contain}
@@ -199,7 +199,7 @@ export const DepositCurrency: FunctionComponent<Props> = ({ walletId }) => {
                   disable={true}
                 />
                 <Text style={styles.secureLabel}>
-                  {translate("label.secure")}
+                  {translate("labelSecure")}
                 </Text>
                 <FastImage
                   source={Images.icAlipay}
@@ -218,7 +218,7 @@ export const DepositCurrency: FunctionComponent<Props> = ({ walletId }) => {
                   disable={true}
                 />
                 <Text style={styles.secureLabel}>
-                  {translate("label.topSafe")}
+                  {translate("labelTopSafe")}
                 </Text>
                 <FastImage
                   source={Images.gmo}
@@ -241,7 +241,7 @@ export const DepositCurrency: FunctionComponent<Props> = ({ walletId }) => {
           ]}
           onPress={handleRecharge}
         >
-          <Text style={styles.textSubmit}>{translate("button.confirm")}</Text>
+          <Text style={styles.textSubmit}>{translate("buttonConfirm")}</Text>
         </TouchableOpacity>
       </View>
     </View>

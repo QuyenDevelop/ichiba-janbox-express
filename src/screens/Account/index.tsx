@@ -6,3 +6,4 @@ export * from "./ChangePasswordScreens/ChangePasswordScreens";
 export * from "./Deposit";
 export * from "./EzWallet";
 export * from "./HomeAccountScreen";
+export * from "./Withdraw";

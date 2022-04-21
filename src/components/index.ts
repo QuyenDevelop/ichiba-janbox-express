@@ -10,6 +10,7 @@ export * from "./Header/Header";
 export * from "./HomeHeader/HomeHeaderAnimated";
 export * from "./ListProductSearchLoader/ListProductSearchLoader";
 export * from "./LocationModal/LocationModal";
+export * from "./ModalBottomRadioButton/ModalBottomRadioButton";
 export * from "./PhoneNumber/PhoneNumber";
 export * from "./Picker/Picker";
 export * from "./PickerItems/PickerItems";

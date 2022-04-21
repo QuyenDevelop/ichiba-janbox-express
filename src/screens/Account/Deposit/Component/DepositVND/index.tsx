@@ -1,6 +1,6 @@
 import { customerApi, paymentApi } from "@api";
 import { Separator } from "@components";
-import { CONSTANT } from "@configs";
+import { CONSTANT, SCREENS } from "@configs";
 import { Alert, ScreenUtils, Utils } from "@helpers";
 import { useBoolean, useLoading } from "@hooks";
 import {
@@ -9,6 +9,8 @@ import {
   DepositTransactionResponse,
   PayMETransactionFee,
 } from "@models";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { TextInputFormat, translate } from "@shared";
 import { Images, Themes } from "@themes";
 import React, { FunctionComponent, useEffect, useState } from "react";
@@ -34,7 +36,7 @@ export const DepositVND: FunctionComponent<Props> = ({
   dataBank,
   customerInfo,
 }) => {
-  // const navigation = useNavigation<StackNavigationProp<any>>();
+  const navigation = useNavigation<StackNavigationProp<any>>();
   const [numberRequest, setNumberRequest] = useState<string | undefined>();
   const [textInput, setTextInput] = useState<string | undefined>();
   const [isButtonClickSubmit, setIsButtonClickSubmit] = useState(false);
@@ -162,9 +164,9 @@ export const DepositVND: FunctionComponent<Props> = ({
       ?.then(response => {
         const redirectUrl = response?.data?.redirectUrl;
         if (redirectUrl) {
-          // navigation.navigate(SCREENS.DEPOSIT_WEBVIEW_SCREEN, {
-          //   redirectUrl: redirectUrl.replace("http:", "https:"), // sửa lại sau khi lên prod
-          // });
+          navigation.navigate(SCREENS.DEPOSIT_WEBVIEW_SCREEN, {
+            redirectUrl: redirectUrl.replace("http:", "https:"), // sửa lại sau khi lên prod
+          });
         } else {
           Alert.error("error.generic");
         }
@@ -219,13 +221,11 @@ export const DepositVND: FunctionComponent<Props> = ({
         }}
         showsVerticalScrollIndicator={false}
       >
-        <Text style={styles.titleInputDeposit}>
-          {translate("label.deposit")}
-        </Text>
+        <Text style={styles.titleInputDeposit}>{translate("labeDeposit")}</Text>
         <TextInputFormat
           keyboardType={"number-pad"}
           onChangeText={setTextInput}
-          placeholder={translate("label.enterDeposit")}
+          placeholder={translate("labelEnterDeposit")}
           textRight="₫"
           errorMessage={isButtonClickSubmit ? validation() : ""}
           setValueDefault={setNumberRequest}
@@ -235,7 +235,7 @@ export const DepositVND: FunctionComponent<Props> = ({
         />
         {/* <Text style={styles.warning}>{translate("label.warningDeposit")}</Text> */}
         <Text style={styles.paymentMethodTitle}>
-          {translate("label.paymentMethod")}
+          {translate("labelPaymentMethod")}
         </Text>
         <View>
           <HeaderItem
@@ -299,11 +299,11 @@ export const DepositVND: FunctionComponent<Props> = ({
           <HeaderItem
             paymentOption={paymentOption}
             onChange={handleMethodCard}
-            title={translate("paymentMethod.paymeWallet")}
+            title={translate("paymentMethod.payMeWallet")}
             type={CONSTANT.PAYME_PAYMENT_METHOD.PAYME}
             paymentFee={`${paymeWalletFee}%`}
           />
-          <Text style={styles.secureLabel}>{translate("label.payMeDes")}</Text>
+          <Text style={styles.secureLabel}>{translate("labelPayMeDes")}</Text>
 
           <Image source={Images.icPayMe} style={styles.icon} />
           {paymentOption === CONSTANT.PAYME_PAYMENT_METHOD.PAYME && (
@@ -318,10 +318,10 @@ export const DepositVND: FunctionComponent<Props> = ({
           <HeaderItem
             paymentOption={paymentOption}
             onChange={handleMethodCard}
-            title={translate("label.bankTransfer")}
+            title={translate("labelBankTransfer")}
             type={CONSTANT.PAYMENT_OPTION.BankTransfer}
           />
-          <Text style={styles.secureLabel}>{translate("label.secure")}</Text>
+          <Text style={styles.secureLabel}>{translate("labelSecure")}</Text>
           {paymentOption === CONSTANT.PAYMENT_OPTION.BankTransfer && (
             <>
               <TotalPayment
@@ -357,7 +357,7 @@ export const DepositVND: FunctionComponent<Props> = ({
           ]}
           onPress={handleRecharge}
         >
-          <Text style={styles.textSubmit}>{translate("button.confirm")}</Text>
+          <Text style={styles.textSubmit}>{translate("buttonConfirm")}</Text>
         </TouchableOpacity>
       </View>
       <InfoTransferModal

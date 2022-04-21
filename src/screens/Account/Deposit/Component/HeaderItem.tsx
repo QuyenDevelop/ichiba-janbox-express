@@ -37,7 +37,7 @@ export const HeaderItem: FunctionComponent<Props> = ({
       {!!paymentFee && (
         <View style={styles.transactionFee}>
           <Text style={styles.paymentTitle}>
-            {translate("label.transactionFee")}:{" "}
+            {translate("labelTransactionFee")}:{" "}
             <Text style={styles.paymentFee}>{paymentFee}</Text>
           </Text>
         </View>

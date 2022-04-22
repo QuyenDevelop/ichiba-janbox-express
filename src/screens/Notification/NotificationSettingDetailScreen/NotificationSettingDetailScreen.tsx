@@ -12,7 +12,6 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Flatlist, translate } from "@shared";
 import React, { useEffect, useState } from "react";
 import { View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ItemConfixNotifi } from "./ItemConfixNotifi";
 import styles from "./styles";
 type NavigationProp = NativeStackNavigationProp<
@@ -32,7 +31,6 @@ export interface NotificationSettingDetailRouteParams {
 
 export const NotificationSettingDetailScreen = () => {
   useStatusBar("dark-content");
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
   const route = useRoute<NavigationRoute>();
   const { item, dataRequet } = route.params;
@@ -98,7 +96,7 @@ export const NotificationSettingDetailScreen = () => {
   };
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={[styles.container]}>
       <Header
         title={item.title}
         iconLeftName={["ic_arrow_left"]}

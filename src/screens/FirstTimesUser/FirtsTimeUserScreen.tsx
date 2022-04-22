@@ -15,14 +15,12 @@ import {
   View,
 } from "react-native";
 import FastImage from "react-native-fast-image";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { useSelector } from "react-redux";
 import { ContentOptional, ContentPurchase, ItemChooseEz } from "./Component";
 import styles from "./styles";
 interface Props {}
 
 export const FirstTimeUserScreen: FunctionComponent<Props> = () => {
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation<StackNavigationProp<any>>();
   const profile = useSelector(
     (state: IRootState) => state.user.profile,
@@ -50,7 +48,7 @@ export const FirstTimeUserScreen: FunctionComponent<Props> = () => {
     },
   ];
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={[styles.container]}>
       {/* <View style={styles.contentLayout}>
         <HomeHeader />
         <HomeTopBar />

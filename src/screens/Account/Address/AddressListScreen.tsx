@@ -12,7 +12,6 @@ import { Flatlist, Icon, RadioButton, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import EditAddressModal from "./EditAddressModal/EditAddressModal";
 import styles from "./styles";
 
@@ -20,7 +19,6 @@ interface Props {}
 
 export const AddressListScreen: FunctionComponent<Props> = () => {
   useStatusBar("dark-content");
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation<StackNavigationProp<any>>();
   const [data, setData] = useState<Address[] | undefined>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -192,7 +190,7 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={[styles.container]}>
       <Header
         title={translate("label.addressList")}
         iconLeftName={["ic_arrow_left"]}

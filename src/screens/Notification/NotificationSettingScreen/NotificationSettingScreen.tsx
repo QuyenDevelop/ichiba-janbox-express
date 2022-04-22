@@ -13,7 +13,6 @@ import { Flatlist, Icon, translate } from "@shared";
 import { Metrics, Themes } from "@themes";
 import React, { useCallback, useEffect, useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import styles from "./styles";
 type NavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -23,7 +22,6 @@ type NavigationProp = NativeStackNavigationProp<
 export const NotificationSettingScreen = () => {
   useStatusBar("dark-content");
   // const profile = useAppSelector((state: IRootState) => state.user.profile);
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavigationProp>();
   const [data, setData] = useState<
     Array<NotifyConfigAndNotifyConfigGroupResponse> | undefined
@@ -97,7 +95,7 @@ export const NotificationSettingScreen = () => {
     );
   };
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={[styles.container]}>
       <Header
         title={translate("label.notificationSetting")}
         iconLeftName={["ic_arrow_left"]}

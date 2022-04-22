@@ -23,12 +23,10 @@ import {
   getCallingCode,
 } from "react-native-country-picker-modal";
 import * as RNLocalize from "react-native-localize";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import styles from "./styles";
 
 export const AddAddressScreen: FunctionComponent = () => {
   useStatusBar("dark-content");
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation<StackNavigationProp<any>>();
   const [countryCode, setCountryCode] = useState({
     cca2: RNLocalize.getCountry() as CountryCode,
@@ -206,7 +204,7 @@ export const AddAddressScreen: FunctionComponent = () => {
   };
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={[styles.container]}>
       <Header
         title={translate("label.addAddress")}
         iconLeftName={["ic_arrow_left"]}

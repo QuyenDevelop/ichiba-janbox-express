@@ -1,4 +1,4 @@
-import { AccountApi } from "@api";
+import { accountApi } from "@api";
 import { Alert, Utils } from "@helpers";
 import { BaseBottomSheet, BottomSheet, Button, Icon, translate } from "@shared";
 import { FontFamily, Metrics, Themes } from "@themes";
@@ -77,7 +77,7 @@ export const PhoneNumber: FunctionComponent<Props> = props => {
     setIsButtonClickSubmit(true);
     let phoneWrap = `${prefixPhone}${phone}`;
     if (Utils.isPhone(phoneWrap)) {
-      AccountApi.verifyOtp(phoneWrap)?.then((response: any) => {
+      accountApi.verifyOtp(phoneWrap)?.then((response: any) => {
         console.log("🚀🚀🚀 => AccountApi.verifyOtp => response", response);
         if (response.status === 500 || response.status === 400) {
           setIsSendVerify(false);
@@ -103,7 +103,7 @@ export const PhoneNumber: FunctionComponent<Props> = props => {
   const resendOTP = () => {
     let phoneWrap = `${prefixPhone}${phone}`;
     if (Utils.isPhone(phoneWrap)) {
-      AccountApi.verifyOtp(phoneWrap)?.then((response: any) => {
+      accountApi.verifyOtp(phoneWrap)?.then((response: any) => {
         if (response.status === 500 || response.status === 400) {
           setIsSendVerify(false);
           Alert.error("error.generic");

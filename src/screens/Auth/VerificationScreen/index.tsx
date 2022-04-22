@@ -6,7 +6,6 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Button, translate } from "@shared";
 import React, { FunctionComponent, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import styles from "./styles";
 
 type NavigationProp = NativeStackNavigationProp<
@@ -24,14 +23,13 @@ interface Props {}
 
 export const VerificationScreen: FunctionComponent<Props> = () => {
   // useStatusBar("dark-content");
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const route = useRoute<NavigationRoute>();
   const { email } = route.params;
   const [isLoading] = useState(false);
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={[styles.container]}>
       <Header isGoBack />
       <ScrollView
         style={styles.childContainer}

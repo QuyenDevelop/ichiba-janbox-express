@@ -12,7 +12,6 @@ import {
   Text,
   View,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import styles from "./styles";
 
 export interface ForgotPasswordNotificationRouteParams {
@@ -33,7 +32,6 @@ export const ForgotPasswordNotificationScreen: FunctionComponent<
 > = () => {
   //#region State
   // useStatusBar("dark-content");
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const route = useRoute<NavigationRoute>();
   const [isLoading] = useState(false);
@@ -42,7 +40,7 @@ export const ForgotPasswordNotificationScreen: FunctionComponent<
   const { email } = route?.params;
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={[styles.container]}>
       <Header isGoBack isEnableChangeLanguage />
       <KeyboardAvoidingView
         enabled={Platform.OS === "ios"}

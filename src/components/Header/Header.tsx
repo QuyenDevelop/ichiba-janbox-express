@@ -13,6 +13,7 @@ import {
   View,
   ViewStyle,
 } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { styles } from "./styles";
 
 interface OwnProps {
@@ -90,6 +91,7 @@ export const Header: FunctionComponent<Props> = props => {
   const language = useAppSelector(state => state.user.language);
   const [isShowChangeLanguageModal, setIsShowChangeLanguageModal] =
     useState(false);
+  const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
   // const [accLanguage] = useState(useAppSelector(state => state.user.language));
@@ -308,7 +310,7 @@ export const Header: FunctionComponent<Props> = props => {
   };
 
   return (
-    <View style={[styles.container, style]}>
+    <View style={[styles.container, style, { paddingTop: insets.top }]}>
       {isGoBack ? renderGoback() : renderLeftIcon()}
       {!isEnableSearch && title ? (
         <Text

@@ -118,12 +118,7 @@ export const FilterModal: FunctionComponent<Props> = props => {
       hideModalContentWhileAnimating
       style={styles.rightModal}
     >
-      <View
-        style={[
-          styles.flex1,
-          { paddingTop: insets.top, paddingBottom: insets.bottom },
-        ]}
-      >
+      <View style={[styles.flex1, { paddingBottom: insets.bottom }]}>
         <View style={styles.headerContainer}>
           <TouchableOpacity
             style={styles.headerButton}

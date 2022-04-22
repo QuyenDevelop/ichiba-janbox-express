@@ -8,7 +8,6 @@ import React, { FunctionComponent } from "react";
 import { Text, Vibration, View } from "react-native";
 import BarcodeMask from "react-native-barcode-mask";
 import { RNCamera } from "react-native-camera";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import styles from "./styles";
 
 interface Props {}
@@ -16,7 +15,6 @@ interface Props {}
 export const ScanQRCodeScreen: FunctionComponent<Props> = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   useStatusBar("dark-content");
-  const insets = useSafeAreaInsets();
 
   const onBarCodeRead = (scanResult: any) => {
     Vibration.vibrate();
@@ -31,7 +29,7 @@ export const ScanQRCodeScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={[styles.container]}>
       <Header
         title={translate("titleScanQRCode")}
         iconLeftName={["ic_arrow_left"]}

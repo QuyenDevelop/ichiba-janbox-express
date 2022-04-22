@@ -8,7 +8,6 @@ import { Button, Checkbox, translate } from "@shared";
 import { Icons, Metrics, Themes } from "@themes";
 import React, { FunctionComponent, useEffect, useState } from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { CreateEcomShipment, CreateGiftShipment } from "./components";
 import styles from "./styles";
 
@@ -17,7 +16,6 @@ interface Props {}
 export const CreateShipmentScreen: FunctionComponent<Props> = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   useStatusBar("dark-content");
-  const insets = useSafeAreaInsets();
   const language = useAppSelector(state => state.user.language);
 
   const [shipmentType, setShipmentType] = useState<string>(
@@ -38,7 +36,7 @@ export const CreateShipmentScreen: FunctionComponent<Props> = () => {
     navigation.navigate(SCREENS.HOME_SCREEN);
   };
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={[styles.container]}>
       <Header
         title={translate("titleCreateShipment")}
         iconLeftName={["ic_arrow_left"]}

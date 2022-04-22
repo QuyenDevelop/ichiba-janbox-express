@@ -34,7 +34,7 @@ export const HomeBanner: FunctionComponent<Props> = ({
   // const isMounted = useIsMounted();
   // const fetchHomeBanner = () => {
   //   setIsLoading(true);
-  //   CommonApi.getHomeBanner("", group || "")
+  //   commonApi.getHomeBanner("", group || "")
   //     ?.then(response => {
   //       if (response?.status && isMounted.current) {
   //         setHeaderBannerHome(response.data || []);

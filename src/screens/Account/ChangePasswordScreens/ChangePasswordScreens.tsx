@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import { AccountApi } from "@api";
+import { accountApi } from "@api";
 import { Header } from "@components";
 import { SCREENS } from "@configs";
 import { Alert, Utils } from "@helpers";
@@ -12,7 +12,6 @@ import { Button, TextInput, translate } from "@shared";
 import { Metrics } from "@themes";
 import React, { FunctionComponent, useState } from "react";
 import { KeyboardAvoidingView, Platform, ScrollView, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import styles from "./styles";
 
 interface OwnProps {
@@ -23,7 +22,6 @@ type Props = OwnProps;
 
 export const ChangePasswordScreen: FunctionComponent<Props> = () => {
   useStatusBar("dark-content");
-  const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
   const navigation = useNavigation<StackNavigationProp<any>>();
   const profile = useAppSelector(state => state.user.profile);
@@ -50,12 +48,13 @@ export const ChangePasswordScreen: FunctionComponent<Props> = () => {
       setIsLoading(true);
       profile &&
         profile?.email &&
-        AccountApi.changePassword(
-          profile.email,
-          oldPassword,
-          newPassword,
-          confirmPassword,
-        )
+        accountApi
+          .changePassword(
+            profile.email,
+            oldPassword,
+            newPassword,
+            confirmPassword,
+          )
           ?.then(response => {
             if (response === true) {
               Alert.success("success.changePassword");
@@ -75,7 +74,7 @@ export const ChangePasswordScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={[styles.container]}>
       <Header
         title={translate("label.changePassword")}
         iconLeftName={["ic_arrow_left"]}

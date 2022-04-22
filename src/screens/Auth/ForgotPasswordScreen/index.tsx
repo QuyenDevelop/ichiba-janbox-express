@@ -1,4 +1,4 @@
-import { AccountApi } from "@api";
+import { accountApi } from "@api";
 import { Footer, Header } from "@components";
 import { SCREENS } from "@configs";
 import { Alert, Utils } from "@helpers";
@@ -18,13 +18,11 @@ import {
   Text,
   View,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import styles from "./styles";
 
 type Props = NativeStackScreenProps<RootStackParamList>;
 
 export const ForgotPasswordScreen: FunctionComponent<Props> = () => {
-  const insets = useSafeAreaInsets();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -33,7 +31,8 @@ export const ForgotPasswordScreen: FunctionComponent<Props> = () => {
   const sendResetPasswordEmail = () => {
     setIsLoading(true);
     setIsButtonClickSubmit(true);
-    AccountApi.forgotPassword(email)
+    accountApi
+      .forgotPassword(email)
       ?.then(() => {
         navigation.navigate(SCREENS.FORGOT_PASSWORD_NOTIFICATION, {
           email: email,
@@ -49,7 +48,7 @@ export const ForgotPasswordScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={[styles.container]}>
       <Header isGoBack isEnableChangeLanguage />
       <KeyboardAvoidingView
         enabled={Platform.OS === "ios"}

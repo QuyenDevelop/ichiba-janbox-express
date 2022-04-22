@@ -7,7 +7,6 @@ import { translate } from "@shared";
 import { Themes } from "@themes";
 import React, { FunctionComponent } from "react";
 import { ScrollView, View } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import styles from "./styles";
 
 interface OwnProps {
@@ -53,7 +52,6 @@ export const LanguagesScreen: FunctionComponent<Props> = () => {
   const language = useAppSelector(state => state.user.language);
   useStatusBar("dark-content");
   const scrollRef = React.useRef(null);
-  const insets = useSafeAreaInsets();
 
   const renderData = () => {
     return (
@@ -73,7 +71,7 @@ export const LanguagesScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top }]}>
+    <View style={[styles.container]}>
       <Header
         style={{ paddingHorizontal: ScreenUtils.scale(20) }}
         colorIconGoBack={Themes.colors.coolGray60}

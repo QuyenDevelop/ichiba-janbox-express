@@ -13,7 +13,6 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import styles from "./styles";
 
 interface IProps {
@@ -26,7 +25,6 @@ interface IProps {
 
 export const NewsScreen: FunctionComponent<IProps> = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
-  const insets = useSafeAreaInsets();
   const language = useAppSelector(state => state.user.language);
   useEffect(() => {}, [language]);
   const data = [
@@ -70,7 +68,7 @@ export const NewsScreen: FunctionComponent<IProps> = () => {
   const renderItem = ({ item }: { item: any }) => <Item item={item} />;
 
   return (
-    <SafeAreaView style={[styles.container, { paddingTop: insets.top }]}>
+    <SafeAreaView style={[styles.container]}>
       <Header
         title={translate("labelNews")}
         iconLeftName={["ic_arrow_left"]}

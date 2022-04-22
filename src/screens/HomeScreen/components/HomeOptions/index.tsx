@@ -59,7 +59,7 @@ export const HomeOptions: FunctionComponent = () => {
           });
           break;
         case CONSTANT.MENU_CONSTANT.CREATE_FROM_PAST:
-          () => {};
+          navigation.navigate(SCREENS.CREATE_SHIPMENT_FROM_PAST_SCREEN);
           break;
         case CONSTANT.MENU_CONSTANT.WAREHOUSE:
           navigation.navigate(SCREENS.WAREHOUSE_STACK, {

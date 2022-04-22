@@ -2,6 +2,7 @@ import { SCREENS } from "@configs";
 import { BottomTabNavigator } from "@navigation";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
+  CreateShipmentFromPastScreen,
   JanboxWalletScreen,
   LaunchScreen,
   NotificationSettingDetailRouteParams,
@@ -13,6 +14,7 @@ import { AccountNavigator } from "./AccountNavigator";
 import { AnalyticStack } from "./AnalyticStack";
 import { AuthNavigation } from "./AuthNavigator";
 import { ComplaintManagementNavigator } from "./ComplaintManagementNavigator";
+import { CreateShipmentStack } from "./CreateShipmentStack";
 import { DepositNavigator } from "./DepositNavigator";
 import { NotificationStack } from "./NotificationNavigator";
 import { RateTimeStackStack } from "./RateAndTimeStack";
@@ -35,6 +37,8 @@ export type RootStackParamList = {
   [SCREENS.DEPOSIT_STACK]: undefined;
   [SCREENS.COMPLAINT_STACK]: undefined;
   [SCREENS.EZ_WALLET_SCREEN]: undefined;
+  [SCREENS.CREATE_SHIPMENT_STACK]: undefined;
+  [SCREENS.CREATE_SHIPMENT_FROM_PAST_SCREEN]: undefined;
 };
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -96,6 +100,14 @@ export const RootNavigator = () => {
       <RootStack.Screen
         name={SCREENS.COMPLAINT_STACK}
         component={ComplaintManagementNavigator}
+      />
+      <RootStack.Screen
+        name={SCREENS.CREATE_SHIPMENT_STACK}
+        component={CreateShipmentStack}
+      />
+      <RootStack.Screen
+        name={SCREENS.CREATE_SHIPMENT_FROM_PAST_SCREEN}
+        component={CreateShipmentFromPastScreen}
       />
     </RootStack.Navigator>
   );

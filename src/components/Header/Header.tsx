@@ -1,3 +1,4 @@
+/* eslint-disable no-sparse-arrays */
 import { ScreenUtils } from "@helpers";
 import { useAppDispatch, useAppSelector } from "@hooks";
 import { useNavigation } from "@react-navigation/core";
@@ -225,6 +226,7 @@ export const Header: FunctionComponent<Props> = props => {
             key={index}
             style={[
               iconRightStyle && iconRightStyle[index] && iconRightStyle[index],
+              { marginLeft: ScreenUtils.scale(12) },
             ]}
             hitSlop={{ top: 5, bottom: 5, left: 5, right: 5 }}
           >

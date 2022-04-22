@@ -5,6 +5,7 @@ export * from "./EzWallerResponse";
 export * from "./LocationResponse";
 export * from "./NotificationResponse";
 export * from "./OrderManagement/OrderResponse";
+export * from "./PackageResponse";
 export * from "./PaymentMethodResponse";
 export * from "./PickerItemsResponse";
 export * from "./Product";

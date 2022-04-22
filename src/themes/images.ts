@@ -54,6 +54,9 @@ export const Images = {
   paypalMethod: require("../assets/deposit/paypal.png"),
   icPayMe: require("../assets/deposit/ic_pay_me.png"),
   icWithdrawSuccess: require("../assets/deposit/ic_withdraw_success.png"),
+
+  //region Complaints
+  noComplaintsImage: require("../assets/complaint.png"),
 };
 
 export const AnimationImages = {

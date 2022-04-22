@@ -2,6 +2,7 @@ import { SCREENS } from "@configs";
 import { BottomTabNavigator } from "@navigation";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
+  JanboxWalletScreen,
   LaunchScreen,
   NotificationSettingDetailRouteParams,
   NotificationSettingDetailScreen,
@@ -11,6 +12,7 @@ import React from "react";
 import { AccountNavigator } from "./AccountNavigator";
 import { AnalyticStack } from "./AnalyticStack";
 import { AuthNavigation } from "./AuthNavigator";
+import { ComplaintManagementNavigator } from "./ComplaintManagementNavigator";
 import { DepositNavigator } from "./DepositNavigator";
 import { NotificationStack } from "./NotificationNavigator";
 import { RateTimeStackStack } from "./RateAndTimeStack";
@@ -31,6 +33,8 @@ export type RootStackParamList = {
   [SCREENS.ANALYTIC_STACK]: undefined;
   [SCREENS.RATE_TIME_STACK]: undefined;
   [SCREENS.DEPOSIT_STACK]: undefined;
+  [SCREENS.COMPLAINT_STACK]: undefined;
+  [SCREENS.EZ_WALLET_SCREEN]: undefined;
 };
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -68,6 +72,10 @@ export const RootNavigator = () => {
           gestureEnabled: false,
         }}
       />
+      <RootStack.Screen
+        name={SCREENS.EZ_WALLET_SCREEN}
+        component={JanboxWalletScreen}
+      />
       <RootStack.Screen name={SCREENS.SEARCH_STACK} component={SearchStack} />
       <RootStack.Screen
         name={SCREENS.WAREHOUSE_STACK}
@@ -84,6 +92,10 @@ export const RootNavigator = () => {
       <RootStack.Screen
         name={SCREENS.DEPOSIT_STACK}
         component={DepositNavigator}
+      />
+      <RootStack.Screen
+        name={SCREENS.COMPLAINT_STACK}
+        component={ComplaintManagementNavigator}
       />
     </RootStack.Navigator>
   );

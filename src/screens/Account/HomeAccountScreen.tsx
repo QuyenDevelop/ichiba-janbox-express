@@ -201,7 +201,15 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
         />
         <AccountOptions
           title={translate("label.manageComplaint")}
-          // onPress={() => navigation.navigate(SCREENS.CHANGE_PASSWORD)}
+          onPress={() =>
+            profile
+              ? navigation.navigate(SCREENS.COMPLAINT_STACK, {
+                  screen: SCREENS.COMPLAINT_MANAGE_SCREEN,
+                })
+              : navigation.navigate(SCREENS.AUTH_STACK, {
+                  screen: SCREENS.LOGIN,
+                })
+          }
           iconLeftName={"ic_comment_dots"}
           iconRightName={"arrow-forward-ios"}
         />

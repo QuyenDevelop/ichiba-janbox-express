@@ -54,9 +54,7 @@ export const HomeBanner: FunctionComponent<Props> = ({
 
   const gotoPoint = () => {};
   const gotoWallet = () => {
-    navigation.navigate(SCREENS.DEPOSIT_STACK, {
-      screen: SCREENS.EZ_WALLET_SCREEN,
-    });
+    navigation.navigate(SCREENS.EZ_WALLET_SCREEN);
   };
 
   return (

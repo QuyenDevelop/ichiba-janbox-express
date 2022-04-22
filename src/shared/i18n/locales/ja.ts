@@ -429,6 +429,7 @@ export default {
   buttonNewTransaction: "新しいトランザクション",
   buttonBackToWallet: "財布に戻る",
   buttonWithdraw: "引き出し",
+  buttonCreateComplaint: "苦情を送信",
 
   labelNotification: "通知",
   labelResult: "結果",
@@ -530,7 +531,12 @@ export default {
   labelAvailableBalance: "利用可能残高",
   labelEnterMount: "金額を入力してください",
   labelBank: "戻る",
+  labelComplaints: "苦情",
+  labelWaiting: "処理待ち",
+  labelDone: "処理",
 
+  textComplaintContent: "あなたの満足は目標であり、Janboxの力を推進します",
+  textComplaintNotification: "ごめんなさい！ あなたの苦情は空です",
   textWarningUserAndPass: "ユーザー名またはパスワードを入力していません!!",
   textNotLogin: "あなたはアカウントに記録されていません",
   textConvenientPurchase: "便利な購入",

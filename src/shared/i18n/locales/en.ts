@@ -412,6 +412,7 @@ export default {
   buttonNewTransaction: "NewTransaction",
   buttonBackToWallet: "Back To Wallet",
   buttonWithdraw: "Withdraw",
+  buttonCreateComplaint: "Send request complaints",
 
   labelNotification: "Notification",
   labelResult: "results",
@@ -514,7 +515,13 @@ export default {
   labelAvailableBalance: "Available Balance",
   labelEnterMount: "Enter Mount",
   labelBank: "Bank",
+  labelComplaints: "Complaints",
+  labelWaiting: "Waiting",
+  labelDone: "processing",
 
+  textComplaintContent:
+    "Your satisfaction is the goal and driving force of Janbox",
+  textComplaintNotification: "Please select one payment method from below: ",
   textNotLogin: "You are not logged in account",
   textWarningUserAndPass: "You have not entered your username or password !!",
   textConvenientPurchase: "Convenient Purchase",

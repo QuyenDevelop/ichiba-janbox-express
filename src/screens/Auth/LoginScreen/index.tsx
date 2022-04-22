@@ -157,7 +157,7 @@ export const LoginScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header isEnableChangeLanguage />
       <KeyboardAvoidingView
         enabled={Platform.OS === "ios"}

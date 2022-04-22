@@ -19,7 +19,7 @@ export const HomeComplaintManageScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={translate("labelNotification")}
         iconLeftName={["ic_arrow_left"]}

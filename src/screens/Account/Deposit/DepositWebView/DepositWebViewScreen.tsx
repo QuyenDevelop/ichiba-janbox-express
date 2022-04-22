@@ -49,7 +49,7 @@ export const DepositWebViewScreen: FunctionComponent = () => {
   }, [showLoading]);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={translate("labelDeposit")}
         iconLeftName={["ic_arrow_left"]}
@@ -60,6 +60,7 @@ export const DepositWebViewScreen: FunctionComponent = () => {
         <WebView
           automaticallyAdjustContentInsets={false}
           androidHardwareAccelerationDisabled
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{ flex: 1 }}
           source={{ uri: redirectUrl }}
           onLoadEnd={() => hideLoading()}

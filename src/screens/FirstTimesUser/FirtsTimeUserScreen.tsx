@@ -48,7 +48,7 @@ export const FirstTimeUserScreen: FunctionComponent<Props> = () => {
     },
   ];
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       {/* <View style={styles.contentLayout}>
         <HomeHeader />
         <HomeTopBar />

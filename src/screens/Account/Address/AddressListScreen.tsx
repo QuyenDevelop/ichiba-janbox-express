@@ -190,7 +190,7 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={translate("label.addressList")}
         iconLeftName={["ic_arrow_left"]}

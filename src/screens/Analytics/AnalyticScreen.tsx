@@ -19,7 +19,7 @@ export const AnalyticScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={translate("buttonAnalytics")}
         iconLeftName={["ic_arrow_left"]}

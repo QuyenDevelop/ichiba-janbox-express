@@ -1,4 +1,4 @@
-import { AccountApi } from "@api";
+import { accountApi } from "@api";
 import { Footer, Header } from "@components";
 import { SCREENS } from "@configs";
 import { Alert, Utils } from "@helpers";
@@ -31,7 +31,8 @@ export const ForgotPasswordScreen: FunctionComponent<Props> = () => {
   const sendResetPasswordEmail = () => {
     setIsLoading(true);
     setIsButtonClickSubmit(true);
-    AccountApi.forgotPassword(email)
+    accountApi
+      .forgotPassword(email)
       ?.then(() => {
         navigation.navigate(SCREENS.FORGOT_PASSWORD_NOTIFICATION, {
           email: email,

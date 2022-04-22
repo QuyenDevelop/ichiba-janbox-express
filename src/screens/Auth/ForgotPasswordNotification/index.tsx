@@ -40,7 +40,7 @@ export const ForgotPasswordNotificationScreen: FunctionComponent<
   const { email } = route?.params;
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header isGoBack isEnableChangeLanguage />
       <KeyboardAvoidingView
         enabled={Platform.OS === "ios"}

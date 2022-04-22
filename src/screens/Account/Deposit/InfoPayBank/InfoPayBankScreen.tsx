@@ -24,7 +24,6 @@ interface Props {}
 
 export const InfoPayBankScreen: FunctionComponent<Props> = () => {
   const route = useRoute<InfoPayBankNavigationRoute>();
-
   const navigation = useNavigation<StackNavigationProp<any>>();
   const [visible, setVisible] = useState<boolean>(false);
   const { itemBank } = route.params;

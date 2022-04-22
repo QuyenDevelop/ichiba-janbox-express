@@ -15,7 +15,6 @@ import {
   getCallingCode,
 } from "react-native-country-picker-modal";
 import * as RNLocalize from "react-native-localize";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ShipmentInfo } from "./components/ShipmentInfo";
 import { Warning } from "./components/Warning";
 import styles from "./styles";
@@ -25,7 +24,6 @@ interface Props {}
 export const RateAndTimeScreen: FunctionComponent<Props> = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   useStatusBar("dark-content");
-  const insets = useSafeAreaInsets();
 
   const [countryCode, setCountryCode] = useState({
     cca2: RNLocalize.getCountry() as CountryCode,
@@ -98,7 +96,7 @@ export const RateAndTimeScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={[styles.container]}>
       <Header
         title={translate("buttonRateAndTime")}
         iconLeftName={["ic_arrow_left"]}

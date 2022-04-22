@@ -194,7 +194,7 @@ export const WithdrawScreen: FunctionComponent = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={translate("labelWithdraw")}
         iconLeftName={["ic_arrow_left"]}

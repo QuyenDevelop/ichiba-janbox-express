@@ -264,7 +264,7 @@ export const HomeAccountScreen: FunctionComponent<Props> = () => {
   }, [checkedSelectedLanguage, navigation]);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header isCenterTitle={true} title={translate("label.account")} />
       <ScrollView
         showsVerticalScrollIndicator={false}

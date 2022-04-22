@@ -197,7 +197,7 @@ export const AccountInformationScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={translate("label.information")}
         iconLeftName={["ic_arrow_left"]}

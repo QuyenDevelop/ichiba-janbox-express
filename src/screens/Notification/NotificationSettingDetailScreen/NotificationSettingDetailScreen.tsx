@@ -96,7 +96,7 @@ export const NotificationSettingDetailScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={item.title}
         iconLeftName={["ic_arrow_left"]}

@@ -28,8 +28,9 @@ export const TopBarSearchResult: FunctionComponent<Props> = props => {
     onFilter,
     showFilter,
   } = props;
-  // const navigation = useNavigation<StackNavigationProp<any>>();
+
   const insets = useSafeAreaInsets();
+  // const navigation = useNavigation<StackNavigationProp<any>>();
 
   return (
     <View

@@ -155,7 +155,7 @@ export const JanboxWalletScreen: FunctionComponent = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={translate("labelEzWallet")}
         iconLeftName={["ic_arrow_left"]}

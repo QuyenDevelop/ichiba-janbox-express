@@ -204,7 +204,7 @@ export const AddAddressScreen: FunctionComponent = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={translate("label.addAddress")}
         iconLeftName={["ic_arrow_left"]}

@@ -115,7 +115,7 @@ export const AnalysisScreen: FunctionComponent = () => {
   ];
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={translate("label.labelAnalysis")}
         iconLeftName={["ic_arrow_left"]}

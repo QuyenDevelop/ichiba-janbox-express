@@ -36,7 +36,7 @@ export const CreateShipmentScreen: FunctionComponent<Props> = () => {
     navigation.navigate(SCREENS.HOME_SCREEN);
   };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={translate("titleCreateShipment")}
         iconLeftName={["ic_arrow_left"]}

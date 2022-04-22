@@ -92,6 +92,7 @@ export const Header: FunctionComponent<Props> = props => {
   const language = useAppSelector(state => state.user.language);
   const [isShowChangeLanguageModal, setIsShowChangeLanguageModal] =
     useState(false);
+  const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
   // const [accLanguage] = useState(useAppSelector(state => state.user.language));

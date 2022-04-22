@@ -71,7 +71,7 @@ export const LanguagesScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         style={{ paddingHorizontal: ScreenUtils.scale(20) }}
         colorIconGoBack={Themes.colors.coolGray60}

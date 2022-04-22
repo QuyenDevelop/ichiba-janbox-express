@@ -19,7 +19,7 @@ export const WarehouseScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={translate("buttonWarehouse")}
         iconLeftName={["ic_arrow_left"]}

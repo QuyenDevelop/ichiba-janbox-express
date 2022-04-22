@@ -139,7 +139,7 @@ export const SearchScreen: FunctionComponent<Props> = () => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={translate("search.search")}
         iconLeftName={["ic_arrow_left"]}

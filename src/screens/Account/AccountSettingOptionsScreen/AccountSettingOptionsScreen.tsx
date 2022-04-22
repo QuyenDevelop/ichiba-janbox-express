@@ -15,7 +15,7 @@ interface Props {}
 export const AccountSettingOptionsScreen: FunctionComponent<Props> = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={translate("label.setting")}
         iconLeftName={["ic_arrow_left"]}

@@ -19,7 +19,7 @@ export const CreateShipmentFromPastScreen: FunctionComponent<Props> = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={translate("buttonCreateFromPast")}
         iconLeftName={["ic_arrow_left"]}

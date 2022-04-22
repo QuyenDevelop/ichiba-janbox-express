@@ -119,7 +119,7 @@ export const NotificationScreen: FunctionComponent = () => {
     });
   };
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <Header
         title={translate("labelNotification")}
         iconLeftName={isShowBackOnHeader ? ["ic_arrow_left"] : []}

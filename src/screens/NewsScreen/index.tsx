@@ -68,7 +68,7 @@ export const NewsScreen: FunctionComponent<IProps> = () => {
   const renderItem = ({ item }: { item: any }) => <Item item={item} />;
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container]}>
       <Header
         title={translate("labelNews")}
         iconLeftName={["ic_arrow_left"]}

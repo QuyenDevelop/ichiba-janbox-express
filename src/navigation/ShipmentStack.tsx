@@ -1,10 +1,10 @@
 import { SCREENS } from "@configs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { ShipmentManageScreen } from "@screens";
+import { PackageManagerParams, ShipmentManageScreen } from "@screens";
 import React from "react";
 
 export type ShipmentParamList = {
-  [SCREENS.SHIPMENT_MANAGE_SCREEN]: undefined;
+  [SCREENS.SHIPMENT_MANAGE_SCREEN]: PackageManagerParams;
 };
 
 const ShipmentStackNavigator = createNativeStackNavigator<ShipmentParamList>();

@@ -86,7 +86,7 @@ export const userSlice = createSlice({
     setAnonymousId: (state: IUserState, action: PayloadAction<string>) => {
       state.anonymousId = action.payload;
     },
-    setAddressId: (state: IUserState, action: PayloadAction<number>) => {
+    setAddressId: (state: IUserState, action: PayloadAction<number | null>) => {
       state.selectedAddressId = action.payload;
     },
     updatePrimaryWallet: (state: IUserState, action: PayloadAction<string>) => {

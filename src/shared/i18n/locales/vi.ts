@@ -45,6 +45,23 @@ export default {
       confirmPassword: "Vui lòng nhập lại mật khẩu",
     },
   },
+  packageStatus: {
+    created: "Khởi tạo",
+    internationalShipping: "Vận chuyển quốc tế",
+    domesticShipping: "Đang vận chuyển nội địa",
+    arrivedWarehouse: "Chờ thanh toán",
+    waitingForProgressing: "Chờ xử lý",
+    waitForPay: "Chờ thanh toán",
+    waitDelivery: "Chờ giao hàng",
+    delivered: "Đã giao hàng",
+    canceled: "Đã hủy",
+  },
+  packageManagementTab: {
+    created: "Khởi tạo",
+    inOriginalStorage: "Trong kho gốc",
+    internationalShipping: "Vận chuyển quốc tế",
+    completed: "Hoàn thành",
+  },
   label: {
     error: "Lỗi",
     warning: "Cảnh báo",
@@ -418,8 +435,6 @@ export default {
   buttonTakePhoto: "Chụp ảnh",
   buttonChooseLibrary: "Chọn từ thư viện",
 
-  labelWaiting: "Chờ xử lý",
-  labelDone: "Đã xử lý",
   labelNotification: "Thông báo",
   labelResult: "Kết quả",
   labelNotificationCount: "{{count}} thông báo",
@@ -530,6 +545,12 @@ export default {
   labelAttachFile: "Đính kèm tệp",
   labelNoFileChoose: "Không có tệp nào được chọn",
   labelInquiryContent: "Nội dung yêu cầu",
+  labelPackageNotFound: "Không tìm thấy gói hàng nào",
+  labelSelected: "Chọn",
+  labelWaiting: "Chờ xử lý",
+  labelDone: "Đã xử lý",
+  labelRoute: "Tuyến hàng",
+  labelStatus: "Trạng thái",
 
   textComplaintContent:
     "Sự hài lòng của bạn là mục tiêu và là động lực thúc đẩy của Janbox",

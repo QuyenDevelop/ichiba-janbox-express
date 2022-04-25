@@ -6,5 +6,6 @@ export * from "./useDebounce";
 export * from "./useIsMounted";
 export * from "./useLoading";
 export * from "./useLoadMore";
+export * from "./useOrderExpired";
 export * from "./useShow";
 export * from "./useStatusBar";

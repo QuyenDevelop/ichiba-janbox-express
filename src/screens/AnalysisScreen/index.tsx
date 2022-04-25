@@ -188,6 +188,7 @@ export const AnalysisScreen: FunctionComponent = () => {
         >
           {data.map(item => (
             <InfoDetail
+              key={item.id}
               colorDot={item.colorDot}
               title={item.title}
               value={item.value}

@@ -5,7 +5,9 @@ import { FontFamily } from "./../../themes/theme";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#E5E5E5",
+    backgroundColor: Themes.colors.white,
+  },
+  flatListContainer: {
     paddingHorizontal: ScreenUtils.scale(16),
   },
   settingBtn: {

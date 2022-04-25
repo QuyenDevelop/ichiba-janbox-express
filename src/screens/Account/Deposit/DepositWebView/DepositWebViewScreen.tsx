@@ -60,6 +60,7 @@ export const DepositWebViewScreen: FunctionComponent = () => {
         <WebView
           automaticallyAdjustContentInsets={false}
           androidHardwareAccelerationDisabled
+          // eslint-disable-next-line react-native/no-inline-styles
           style={{ flex: 1 }}
           source={{ uri: redirectUrl }}
           onLoadEnd={() => hideLoading()}

@@ -89,10 +89,10 @@ export const Header: FunctionComponent<Props> = props => {
     colorIconGoBack,
     onGoBack,
   } = props;
+  const insets = useSafeAreaInsets();
   const language = useAppSelector(state => state.user.language);
   const [isShowChangeLanguageModal, setIsShowChangeLanguageModal] =
     useState(false);
-  const insets = useSafeAreaInsets();
   const dispatch = useAppDispatch();
   const navigation = useNavigation();
   // const [accLanguage] = useState(useAppSelector(state => state.user.language));

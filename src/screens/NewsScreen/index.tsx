@@ -6,14 +6,11 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Flatlist, translate } from "@shared";
 import { Images } from "@themes";
 import React, { FunctionComponent, useEffect } from "react";
-import {
-  Image,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { SafeAreaView, View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { NewsItem } from "./NewsItem";
 import styles from "./styles";
+export * from "./NewsItem";
 
 interface IProps {
   id: any;
@@ -56,17 +53,20 @@ export const NewsScreen: FunctionComponent<IProps> = () => {
       detail:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec neque vel lectus feugiat feugiat quis sit amet magna 4.",
     },
+    {
+      id: 5,
+      image: Images.shoe,
+      title: "Chiết khấu 6,8% thanh toán bằng ví Janbox 5",
+      detail:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec neque vel lectus feugiat feugiat quis sit amet magna 4.",
+    },
   ];
-  const Item = ({ item }: { item: any }) => (
-    <TouchableOpacity style={styles.containerItems} onPress={() => {}}>
-      <Image source={item.image} style={styles.imgStyle} />
 
-      <Text style={styles.title}>{item.title}</Text>
-      <Text style={styles.detail}>{item.detail}</Text>
-    </TouchableOpacity>
-  );
-  const renderItem = ({ item }: { item: any }) => <Item item={item} />;
-
+  const renderItem = ({ item }: { item: any }) => <NewsItem item={item} />;
+  const setKey = (item: any) => {
+    return item.id;
+  };
+  const insets = useSafeAreaInsets();
   return (
     <SafeAreaView style={[styles.container]}>
       <Header
@@ -75,11 +75,9 @@ export const NewsScreen: FunctionComponent<IProps> = () => {
         iconLeftOnPress={[() => navigation.goBack()]}
         isCenterTitle
       />
-      <View style={{ flex: 0.9 }}>
+      <View style={[styles.flatListContainer, { paddingBottom: 70 }]}>
         <Flatlist
-          keyExtractor={item => {
-            return item.id;
-          }}
+          keyExtractor={setKey}
           automaticallyAdjustContentInsets={false}
           scrollEventThrottle={1}
           data={data}

@@ -28,13 +28,13 @@ export const ReviewScreen: FunctionComponent<IProps> = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header
+        titleLeft={translate("labelReview")}
+        iconLeftName={["ic_arrow_left"]}
+        iconLeftOnPress={[() => navigation.goBack()]}
+        isGoBack={true}
+      />
       <ScrollView>
-        <Header
-          titleLeft={translate("labelReview")}
-          iconLeftName={["ic_arrow_left"]}
-          iconLeftOnPress={[() => navigation.goBack()]}
-          isGoBack={true}
-        />
         <View style={styles.titleContainer}>
           <Text style={styles.txtTitle}>Shipment</Text>
           <Text style={{ marginVertical: ScreenUtils.scale(4) }}>

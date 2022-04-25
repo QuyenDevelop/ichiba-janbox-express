@@ -89,6 +89,7 @@ export const Themes = {
     menuGreenBrand: "#3DAB25",
     menuManage: "#1E7EF7",
     menuRate: "#364CC9",
+    redE11: "#E11F2F",
   },
   font: {
     bold: {

@@ -49,7 +49,7 @@ export default StyleSheet.create({
   },
   packageItemText: {
     ...Themes.font.regular,
-    fontSize: 14,
+    fontSize: 13,
     color: Themes.colors.coolGray100,
   },
   statusView: {
@@ -60,6 +60,7 @@ export default StyleSheet.create({
   },
   packageContent: {
     paddingHorizontal: ScreenUtils.scale(16),
+    marginBottom: ScreenUtils.scale(16),
   },
   packageItem: {
     flexDirection: "row",
@@ -84,7 +85,7 @@ export default StyleSheet.create({
     paddingHorizontal: ScreenUtils.scale(16),
     flexDirection: "row",
     justifyContent: "space-between",
-    marginVertical: ScreenUtils.scale(16),
+    marginBottom: ScreenUtils.scale(16),
   },
   touchDetail: {
     width: ScreenUtils.WIDTH_SCREEN / 2 - 48,

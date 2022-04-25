@@ -1,5 +1,4 @@
 import { PackageShipmentResponse } from "@models";
-import { Checkbox } from "@shared";
 import { Themes } from "@themes";
 import React, { FunctionComponent } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
@@ -20,7 +19,7 @@ export const PackageItem: FunctionComponent<Props> = props => {
     <View style={styles.PackageItemContainer}>
       <View style={styles.PackageItemHeader}>
         <View style={styles.line}>
-          <Checkbox />
+          {/* <Checkbox /> */}
           <View style={styles.marginLeft}>
             <Text style={styles.packageId}>#AUC123456789</Text>
             <Text style={styles.packageTitle}>EZTESTNVT000556</Text>
@@ -64,24 +63,26 @@ export const PackageItem: FunctionComponent<Props> = props => {
           </View>
           <View>
             <Text style={styles.packageItemText}>
-              <Text style={styles.default}>GW</Text> 5000(g)
+              <Text style={styles.default}>DW</Text> 5000(g)
             </Text>
           </View>
           <View>
             <Text style={styles.packageItemText}>
-              <Text style={styles.default}>GW</Text> 5000(g)
+              <Text style={styles.default}>CW</Text> 5000(g)
             </Text>
           </View>
         </View>
       </View>
-      <View style={styles.packageFooter}>
-        <TouchableOpacity style={styles.touchDetail} onPress={onPress}>
-          <Text style={styles.packageDetailText}>Detail</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.touchRecreate}>
-          <Text style={styles.packageRecreateText}>Recreate</Text>
-        </TouchableOpacity>
-      </View>
+      {item.status && (
+        <View style={styles.packageFooter}>
+          <TouchableOpacity style={styles.touchDetail} onPress={onPress}>
+            <Text style={styles.packageDetailText}>Detail</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.touchRecreate}>
+            <Text style={styles.packageRecreateText}>Recreate</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 };

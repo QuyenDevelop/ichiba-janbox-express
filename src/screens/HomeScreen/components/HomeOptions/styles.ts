@@ -27,7 +27,10 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  titleContent: { marginTop: ScreenUtils.scale(8) },
+  titleContent: {
+    marginTop: ScreenUtils.scale(8),
+    paddingHorizontal: ScreenUtils.scale(8),
+  },
   webText: {
     ...Themes.font.medium,
     fontSize: 12,

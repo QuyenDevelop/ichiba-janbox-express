@@ -14,7 +14,6 @@ export const ShipmentManageScreen: FunctionComponent<Props> = () => {
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   useStatusBar("dark-content");
   const language = useAppSelector(state => state.user.language);
-
   useEffect(() => {}, [language]);
 
   const goBack = () => {

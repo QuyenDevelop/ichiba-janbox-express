@@ -62,10 +62,10 @@ export const HomeOptions: FunctionComponent = () => {
           () => {};
           break;
         case CONSTANT.MENU_CONSTANT.WAREHOUSE:
-          // navigation.navigate(SCREENS.WAREHOUSE_STACK, {
-          //   screen: SCREENS.WAREHOUSE_SCREEN,
-          // });
-          navigation.navigate(SCREENS.REVIEW_SCREEN);
+          navigation.navigate(SCREENS.WAREHOUSE_STACK, {
+            screen: SCREENS.WAREHOUSE_SCREEN,
+          });
+          // navigation.navigate(SCREENS.REVIEW_SCREEN);
           break;
         case CONSTANT.MENU_CONSTANT.SHIPMENT_MANAGE:
           navigation.navigate(SCREENS.SHIPMENT_STACK, {

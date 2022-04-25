@@ -99,4 +99,11 @@ export default StyleSheet.create({
     marginRight: ScreenUtils.scale(20),
     marginTop: ScreenUtils.scale(12),
   },
+  btnStyles: {
+    marginHorizontal: ScreenUtils.scale(16.5),
+    marginBottom: ScreenUtils.scale(10),
+    borderRadius: ScreenUtils.scale(8),
+    backgroundColor: Themes.colors.orangeF27C,
+  },
+  btnChildStyles: { width: "100%", backgroundColor: Themes.colors.orangeF27C },
 });

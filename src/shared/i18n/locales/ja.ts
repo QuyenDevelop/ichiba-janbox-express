@@ -206,6 +206,8 @@ export default {
     myJanbox: "My Janbox",
     addAddress: "住所を追加",
     labelAnalysis: "分析",
+    activate: "活性化",
+    labelMoreInfo: "詳細情報を探しています",
   },
   placeholder: {
     enterNotes: "ノートを入力してください",
@@ -269,6 +271,7 @@ export default {
     delete: "削除",
     deleteAddress: "この住所を削除しますか？",
     updateAddress: "変更",
+    activate: "活性化",
   },
   search: {
     prefixPhone: "電話番号の先頭を検索",

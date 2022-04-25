@@ -1,6 +1,6 @@
 export * from "./alert-utils";
 export * from "./asyncStorage";
-export * from "./externalAuthenticationUtils";
+export * from "./ExternalAuthenticationUtils";
 export * from "./screenUtils";
 export * from "./utils";
 export { NavigationUtils };

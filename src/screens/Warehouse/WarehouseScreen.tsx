@@ -1,9 +1,9 @@
 import { Header, ModalWithIcon, Separator } from "@components";
 import { ScreenUtils } from "@helpers";
-import { useStatusBar } from "@hooks";
+import { useBoolean, useStatusBar } from "@hooks";
 import { useNavigation } from "@react-navigation/core";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { translate } from "@shared";
+import { Button, translate } from "@shared";
 import { Themes } from "@themes";
 import React, { FunctionComponent, useCallback, useState } from "react";
 import { FlatList, View } from "react-native";
@@ -46,7 +46,7 @@ let dataWarehouse: Array<GuideItem> = [
 interface Props {}
 
 export const WarehouseScreen: FunctionComponent<Props> = () => {
-  const [isShowConfirm, setIsShowConfirm] = useState(false);
+  const [isShowConfirm, setIsShowConfirm, hideConfirm] = useBoolean();
   const [data] = useState(dataWarehouse);
 
   const change = useCallback(() => {}, []);
@@ -66,7 +66,7 @@ export const WarehouseScreen: FunctionComponent<Props> = () => {
       <RenderInfoWarehouse
         item={item}
         changeStatus={() => {
-          setIsShowConfirm(true);
+          setIsShowConfirm();
           item.id > 0;
         }}
       />
@@ -93,14 +93,18 @@ export const WarehouseScreen: FunctionComponent<Props> = () => {
         iconName={"ic_home_fill"}
         message={translate("textActive")}
         isVisible={isShowConfirm}
-        onDismiss={() => setIsShowConfirm(false)}
-        onDeclinePress={() => {
-          setIsShowConfirm(false);
-        }}
+        onDismiss={hideConfirm}
+        onDeclinePress={hideConfirm}
         isHyperLink={true}
         txtHyperLink={translate("label.labelMoreInfo")}
         onAcceptPress={change}
         acceptText={translate("button.activate")}
+      />
+      <Button
+        buttonStyle={styles.btnStyles}
+        buttonChildStyle={styles.btnChildStyles}
+        title={"Get a quote"}
+        onPress={() => {}}
       />
     </View>
   );

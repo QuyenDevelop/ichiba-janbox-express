@@ -4,7 +4,6 @@ import { Themes, FontFamily } from "@themes";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    //marginTop: ScreenUtils.scale(10),
     backgroundColor: Themes.colors.white,
   },
   settingBtn: {
@@ -126,6 +125,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     marginHorizontal: ScreenUtils.scale(24),
   },
+  txtInput: { paddingVertical: 5 },
   txtClose: { textAlign: "center", color: "white" },
   imgUpload: {
     width: 88,
@@ -148,8 +148,6 @@ export default StyleSheet.create({
     alignItems: "center",
     marginTop: ScreenUtils.scale(18),
     marginBottom: ScreenUtils.scale(15),
-    // position: "absolute",
-    // bottom: ScreenUtils.scale(42),
   },
   txtSubmitReview: {
     ...Themes.font.semiBold,

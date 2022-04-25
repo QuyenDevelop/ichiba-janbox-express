@@ -17,3 +17,4 @@ export * from "./PickerItems/PickerItems";
 export * from "./Separator";
 export * from "./TopBarSearchResult/TopBarSearchResult";
 export * from "./Triangle";
+export * from "./ModalWithIcon/ModalWithIcon";

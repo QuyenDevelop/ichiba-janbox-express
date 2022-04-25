@@ -1,4 +1,4 @@
-import { ConfirmDialog, Header, Separator } from "@components";
+import { Header, ModalWithIcon, Separator } from "@components";
 import { ScreenUtils } from "@helpers";
 import { useStatusBar } from "@hooks";
 import { useNavigation } from "@react-navigation/core";
@@ -47,10 +47,9 @@ interface Props {}
 
 export const WarehouseScreen: FunctionComponent<Props> = () => {
   const [isShowConfirm, setIsShowConfirm] = useState(false);
-  // const [active, setActive] = useState<boolean>(false);
-  const [data, setData] = useState(dataWarehouse);
+  const [data] = useState(dataWarehouse);
 
-  const change = useCallback((id: number) => {}, []);
+  const change = useCallback(() => {}, []);
 
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   useStatusBar("dark-content");
@@ -59,20 +58,20 @@ export const WarehouseScreen: FunctionComponent<Props> = () => {
     navigation.goBack();
   };
 
-  const renderItem = useCallback(
-    ({ item }: { item: GuideItem }) => {
-      return (
-        <RenderInfoWarehouse
-          item={item}
-          changeStatus={() => {
-            setIsShowConfirm(true);
-            item.id > 0;
-          }}
-        />
-      );
-    },
-    [change],
-  );
+  const keyExtractor = (item: GuideItem, index: number) =>
+    `${item.id}_${index}`;
+
+  const renderItem = useCallback(({ item }: { item: GuideItem }) => {
+    return (
+      <RenderInfoWarehouse
+        item={item}
+        changeStatus={() => {
+          setIsShowConfirm(true);
+          item.id > 0;
+        }}
+      />
+    );
+  }, []);
   return (
     <View style={[styles.container]}>
       <Header
@@ -86,18 +85,22 @@ export const WarehouseScreen: FunctionComponent<Props> = () => {
       <Separator height={ScreenUtils.scale(2)} />
       <FlatList
         data={data}
-        keyExtractor={(item, index) => `${item.id}_${index}`}
+        keyExtractor={keyExtractor}
         renderItem={renderItem}
       />
-      <ConfirmDialog
-        message={translate("button.deleteAddress")}
+      <ModalWithIcon
+        iconAtHead={true}
+        iconName={"ic_home_fill"}
+        message={translate("textActive")}
         isVisible={isShowConfirm}
         onDismiss={() => setIsShowConfirm(false)}
         onDeclinePress={() => {
           setIsShowConfirm(false);
         }}
-        //onAcceptPress={onDelete}
-        acceptText={translate("button.confirm")}
+        isHyperLink={true}
+        txtHyperLink={translate("label.labelMoreInfo")}
+        onAcceptPress={change}
+        acceptText={translate("button.activate")}
       />
     </View>
   );

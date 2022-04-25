@@ -1,3 +1,6 @@
+import { SCREENS } from "@configs";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Icons } from "@themes";
 import React, { FunctionComponent } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
@@ -6,6 +9,7 @@ import styles from "./styles";
 interface Props {}
 
 export const CreateGiftShipment: FunctionComponent<Props> = props => {
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const {} = props;
   return (
     <View style={styles.container}>
@@ -30,7 +34,13 @@ export const CreateGiftShipment: FunctionComponent<Props> = props => {
         <Text style={styles.title}>Receiver's address</Text>
         <View style={styles.chooseBtn}>
           <TextInput style={styles.textChoose} placeholder="Delivery address" />
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate(SCREENS.ACCOUNT_STACK, {
+                screen: SCREENS.ADDRESS_LIST_SCREEN,
+              })
+            }
+          >
             <Icons.FontAwesome
               name="angle-right"
               size={16}

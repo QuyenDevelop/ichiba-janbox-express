@@ -321,12 +321,64 @@ const transactionSource = [
   },
 ];
 
+const packageStatus = [
+  {
+    id: 0,
+    name: "packageStatus.domesticShipping",
+    value: 0,
+    color: Themes.colors.warningMain,
+  },
+  {
+    id: 1,
+    name: "packageStatus.arrivedWarehouse",
+    value: 1,
+    color: Themes.colors.warningMain,
+  },
+  {
+    id: 2,
+    name: "packageStatus.waitingForProgressing",
+    value: 2,
+    color: Themes.colors.warningMain,
+  },
+  {
+    id: 3,
+    name: "packageStatus.waitForPay",
+    value: 3,
+    color: Themes.colors.warningMain,
+  },
+  {
+    id: 4,
+    name: "packageStatus.waitDelivery",
+    value: 4,
+    color: Themes.colors.warningMain,
+  },
+  {
+    id: 5,
+    name: "packageStatus.delivered",
+    value: 5,
+    color: Themes.colors.success60,
+  },
+  {
+    id: 6,
+    name: "packageStatus.canceled",
+    value: 6,
+    color: Themes.colors.danger60,
+  },
+  {
+    id: 7,
+    name: "packageStatus.created",
+    value: 7,
+    color: Themes.colors.primary,
+  },
+];
+
 export const DATA_CONSTANT = {
   LANGUAGE_CODE: languageCodes,
   PAYMENT_METHODS: paymentMethods,
   TRANSACTION_TYPES: transactionTypes,
   TRANSACTION_TYPES_VALUE: transactionTypesValue,
   RANGE_DAY: rangeDay,
+  PACKAGE_STATUS: packageStatus,
   TRANSACTION_STATUS: transactionStatus,
   TRANSACTION_SOURCE: transactionSource,
 };

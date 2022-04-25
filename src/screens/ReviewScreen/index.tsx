@@ -1,15 +1,30 @@
 import { Header } from "@components";
+import { SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
-import { useNavigation } from "@react-navigation/native";
+import { OrderPackageCollectionResponse } from "@models";
+import { ShipmentParamList } from "@navigation";
+import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { translate } from "@shared";
 import { Icons, Themes } from "@themes";
 import React, { FunctionComponent, useState } from "react";
-import { SafeAreaView, ScrollView, Text, TextInput, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import {
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { UploadPhoto } from "./components/UploadPhoto";
 import styles from "./styles";
 export * from "./types";
+
+export interface ReviewScreenParams {
+  item?: OrderPackageCollectionResponse;
+}
+
+type NavigationRoute = RouteProp<ShipmentParamList, SCREENS.REVIEW_SCREEN>;
 
 interface IProps {
   id: any;
@@ -27,10 +42,13 @@ const dataQuantity = [
   ,
 ];
 export const ReviewScreen: FunctionComponent<IProps> = () => {
+  const routeNavigation = useRoute<NavigationRoute>();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const goBack = () => {
     navigation.goBack();
   };
+  const { item } = routeNavigation?.params || {};
+  console.log("🚀🚀🚀 => item", item);
   const [defaultRating, setDefaultRating] = useState(1);
   const [maxRating] = useState([1, 2, 3, 4, 5]);
   const [suggestCmt] = useState(dataQuantity);
@@ -89,7 +107,6 @@ export const ReviewScreen: FunctionComponent<IProps> = () => {
         <View style={styles.inputContainer}>
           <TextInput
             placeholder="Content rated..."
-            style={styles.txtInput}
             maxLength={100}
             numberOfLines={3}
             multiline={true}

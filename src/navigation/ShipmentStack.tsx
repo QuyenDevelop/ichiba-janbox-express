@@ -1,11 +1,16 @@
 import { SCREENS } from "@configs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { PackageManagerParams, ShipmentManageScreen } from "@screens";
+import {
+  PackageManagerParams,
+  ReviewScreen,
+  ReviewScreenParams,
+  ShipmentManageScreen,
+} from "@screens";
 import React from "react";
 
 export type ShipmentParamList = {
   [SCREENS.SHIPMENT_MANAGE_SCREEN]: PackageManagerParams;
-  // [SCREENS.REVIEW_SCREEN]: ReviewScreenParams;
+  [SCREENS.REVIEW_SCREEN]: ReviewScreenParams;
 };
 
 const ShipmentStackNavigator = createNativeStackNavigator<ShipmentParamList>();
@@ -29,13 +34,13 @@ export const ShipmentStack = () => {
           headerShown: false,
         }}
       /> */}
-      {/* <ShipmentStackNavigator.Screen
+      <ShipmentStackNavigator.Screen
         name={SCREENS.REVIEW_SCREEN}
         component={ReviewScreen}
         options={{
           headerShown: false,
         }}
-      /> */}
+      />
     </ShipmentStackNavigator.Navigator>
   );
 };

@@ -38,7 +38,12 @@ export const ItemOrder: FunctionComponent<Props> = props => {
 
   const goToDetail = () => {};
   const goToReview = () => {
-    navigation.navigate(SCREENS.REVIEW_SCREEN);
+    navigation.navigate(SCREENS.SHIPMENT_MANAGE_SCREEN, {
+      screen: SCREENS.REVIEW_SCREEN,
+      params: {
+        item: order,
+      },
+    });
   };
 
   return (

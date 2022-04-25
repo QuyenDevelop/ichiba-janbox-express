@@ -389,6 +389,7 @@ export default {
     withdraw: "Withdraw",
   },
   packageStatus: {
+    created: "Created",
     internationalShipping: "International shipping",
     domesticShipping: "Domestic shipping",
     arrivedWarehouse: "Wait for pay",

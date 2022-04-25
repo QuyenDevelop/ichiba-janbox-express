@@ -212,6 +212,8 @@ export default {
       note: "Lưu ý: Quý khách vui lòng thanh toán ngay để giữ giá tốt trong vòng 60 phút. Việc giao dịch chỉ được thực hiện ngay sau khi Janbox nhận được thanh toán. Quý khách sẽ nhận được thông báo xác nhận thanh toán qua tin nhắn và email.",
       point: "Lưu ý: 1 ¥ = 1 J-Point",
     },
+    activate: "Kích hoạt",
+    labelMoreInfo: "Tìm hiểu thêm chi tiết thông tin",
   },
   placeholder: {
     enterNotes: "Nhập ghi chú",
@@ -273,6 +275,7 @@ export default {
     delete: "Xóa",
     deleteAddress: "Bán có muốn xóa địa chỉ này?",
     updateAddress: "Cập nhật",
+    activate: "Kích hoạt",
   },
   search: {
     prefixPhone: "Tìm kiếm đầu số điện thoại",

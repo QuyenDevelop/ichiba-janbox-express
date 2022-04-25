@@ -5,11 +5,11 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   inStorage: {
     flex: 1,
-    backgroundColor: Themes.colors.background,
   },
   inStorageList: {
     flex: 1,
     paddingTop: ScreenUtils.scale(12),
+    paddingHorizontal: ScreenUtils.scale(16),
   },
   inStorageListContent: {
     paddingBottom: ScreenUtils.scale(20),

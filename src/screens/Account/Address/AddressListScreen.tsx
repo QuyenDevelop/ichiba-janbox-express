@@ -3,7 +3,12 @@ import { customerApi } from "@api";
 import { ConfirmDialog, Header } from "@components";
 import { SCREENS } from "@configs";
 import { Alert, ScreenUtils } from "@helpers";
-import { useAppDispatch, useAppSelector, useStatusBar } from "@hooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+  useBoolean,
+  useStatusBar,
+} from "@hooks";
 import { Address } from "@models";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
@@ -19,6 +24,7 @@ interface Props {}
 
 export const AddressListScreen: FunctionComponent<Props> = () => {
   useStatusBar("dark-content");
+  const [showConfirm, setShowConfirm, setHideConfirm] = useBoolean(false);
   const navigation = useNavigation<StackNavigationProp<any>>();
   const [data, setData] = useState<Address[] | undefined>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -26,9 +32,8 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
     (state: IRootState) => state.user.selectedAddressId,
   );
   const [idAddress, setIdAddress] = useState<number>();
-  const [isShowConfirm, setIsShowConfirm] = useState(false);
   const [isShowEditAddress, setIsShowEditAddress] = useState(false);
-  const [isEdited, setIsEdited] = useState(false);
+  const [, setIsEdited] = useState(false);
 
   const dispatch = useAppDispatch();
 
@@ -39,9 +44,9 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
     return unsubscribe;
   }, [navigation]);
 
-  useEffect(() => {
-    getData();
-  }, [isEdited]);
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   const getData = () => {
     customerApi
@@ -75,7 +80,7 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
         }
       })
       .finally(() => {
-        setIsShowConfirm(false);
+        setHideConfirm();
         setIdAddress(undefined);
       });
   };
@@ -174,7 +179,7 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
               <TouchableOpacity
                 style={{ marginRight: ScreenUtils.scale(5) }}
                 onPress={() => {
-                  setIsShowConfirm(true);
+                  setShowConfirm();
                   item.id > 0 && setIdAddress(item.id);
                 }}
               >
@@ -189,12 +194,17 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
     );
   };
 
+  const onDeclinePress = () => {
+    setHideConfirm();
+    setIdAddress(undefined);
+  };
+
   return (
     <View style={[styles.container]}>
       <Header
         title={translate("label.addressList")}
         iconLeftName={["ic_arrow_left"]}
-        iconLeftOnPress={[() => navigation.goBack()]}
+        iconLeftOnPress={[navigation.goBack]}
         isCenterTitle
       />
       <View style={styles.childContainer}>
@@ -227,12 +237,9 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
       </View>
       <ConfirmDialog
         message={translate("button.deleteAddress")}
-        isVisible={isShowConfirm}
-        onDismiss={() => setIsShowConfirm(false)}
-        onDeclinePress={() => {
-          setIsShowConfirm(false);
-          setIdAddress(undefined);
-        }}
+        isVisible={showConfirm}
+        onDismiss={setHideConfirm}
+        onDeclinePress={onDeclinePress}
         onAcceptPress={onDelete}
         acceptText={translate("button.confirm")}
       />

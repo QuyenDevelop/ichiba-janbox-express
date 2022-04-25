@@ -1,5 +1,5 @@
 import { CONSTANT, SCREENS } from "@configs";
-import { useAppDispatch } from "@hooks";
+import { useAppDispatch, useBoolean } from "@hooks";
 import { PickerItemsResponse } from "@models";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -39,11 +39,11 @@ export const PickerItems: FunctionComponent<Props> = props => {
   const [currentIndexActive, setCurrentIndexActive] =
     useState(activeDefaultData);
 
-  const [isShowModal, setIsShowModal] = useState(false);
+  const [isShowModal, showModal, hideModal] = useBoolean();
   const [languageUser, setLanguageUser] = useState("");
 
   const confirmChangeLanguage = () => {
-    setIsShowModal(false);
+    showModal();
     dispatch(changeLanguage(languageUser));
 
     // tạm thời vì chưa có code push nên chưa reset app nên cho navigate về màn LaunchScreen
@@ -56,7 +56,7 @@ export const PickerItems: FunctionComponent<Props> = props => {
     setCurrentIndexActive(id);
     switch (type) {
       case CONSTANT.TYPE_PICKER.LANGUAGES:
-        setIsShowModal(true);
+        showModal();
         setLanguageUser(value);
         break;
       // case CONSTANT.TYPE_PICKER.CURRENCY:
@@ -93,11 +93,9 @@ export const PickerItems: FunctionComponent<Props> = props => {
       <ConfirmDialog
         message={translate("button.changeLanguage")}
         isVisible={isShowModal}
-        onDismiss={() => setIsShowModal(false)}
-        onDeclinePress={() => {
-          setIsShowModal(false);
-        }}
-        onAcceptPress={() => confirmChangeLanguage()}
+        onDismiss={hideModal}
+        onDeclinePress={hideModal}
+        onAcceptPress={confirmChangeLanguage}
         acceptText={translate("button.confirm")}
       />
       <ScrollView showsVerticalScrollIndicator={false}>

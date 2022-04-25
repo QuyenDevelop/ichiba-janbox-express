@@ -20,26 +20,35 @@ let dataWarehouse: Array<GuideItem> = [
     area: "浙江嘉兴秀洲区",
     address: "浙江省-嘉兴市秀洲区-王店镇梅秀路399号1号车间3楼转lexluthor",
     name: "蒋紫宸",
-    phone: 15669302909,
+    phone: "15669302909",
     isActive: false,
   },
   {
     id: 2,
-    titleWarehouse: "Shanghai",
+    titleWarehouse: "Sheng",
     area: "浙江嘉兴秀洲区",
     address: "浙江省-嘉兴市秀洲区-王店镇梅秀路399号1号车间3楼转lexluthor",
     name: "蒋紫宸",
-    phone: 15669302910,
+    phone: "15669302910",
     isActive: true,
   },
   {
     id: 3,
-    titleWarehouse: "Shanghai",
+    titleWarehouse: "Goku",
     area: "浙江嘉兴秀洲区",
     address: "浙江省-嘉兴市秀洲区-王店镇梅秀路399号1号车间3楼转lexluthor",
     name: "蒋紫宸",
-    phone: 15669302911,
+    phone: "15669302911",
     isActive: false,
+  },
+  {
+    id: 4,
+    titleWarehouse: "Midnight",
+    area: "浙江嘉兴秀洲区",
+    address: "浙江省-嘉兴市秀洲区-王店镇梅秀路399号1号车间3楼转lexluthor",
+    name: "蒋紫宸",
+    phone: "15669302912",
+    isActive: true,
   },
 ];
 
@@ -48,8 +57,10 @@ interface Props {}
 export const WarehouseScreen: FunctionComponent<Props> = () => {
   const [isShowConfirm, setIsShowConfirm, hideConfirm] = useBoolean();
   const [data] = useState(dataWarehouse);
-
-  const change = useCallback(() => {}, []);
+  //const [isActivate, setActivate] = useState(false);
+  const change = useCallback(() => {
+    hideConfirm();
+  }, [hideConfirm]);
 
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   useStatusBar("dark-content");
@@ -61,17 +72,20 @@ export const WarehouseScreen: FunctionComponent<Props> = () => {
   const keyExtractor = (item: GuideItem, index: number) =>
     `${item.id}_${index}`;
 
-  const renderItem = useCallback(({ item }: { item: GuideItem }) => {
-    return (
-      <RenderInfoWarehouse
-        item={item}
-        changeStatus={() => {
-          setIsShowConfirm();
-          item.id > 0;
-        }}
-      />
-    );
-  }, []);
+  const renderItem = useCallback(
+    ({ item }: { item: GuideItem }) => {
+      return (
+        <RenderInfoWarehouse
+          item={item}
+          changeStatus={() => {
+            setIsShowConfirm();
+            item.id > 0;
+          }}
+        />
+      );
+    },
+    [setIsShowConfirm],
+  );
   return (
     <View style={[styles.container]}>
       <Header

@@ -199,6 +199,8 @@ export default {
     addressDetail: "Address Detail",
     addAddress: "Add Address",
     labelAnalysis: "Annalytic",
+    activate: "Activate",
+    labelMoreInfo: "Looking for more information",
   },
   placeholder: {
     enterNotes: "Enter notes",
@@ -260,6 +262,7 @@ export default {
     delete: "Delete",
     deleteAddress: "Do you want to delete this address?",
     updateAddress: "Update",
+    activate: "Activate",
   },
   search: {
     prefixPhone: "Search for the beginning of a phone number",
@@ -546,6 +549,7 @@ export default {
   labelRoute: "Route",
   labelStatus: "Status",
 
+  textActive: "Agree to Janbox's warehouse management policies. \n",
   textComplaintContent:
     "Your satisfaction is the goal and driving force of Janbox",
   textComplaintNotification: "Please select one payment method from below: ",

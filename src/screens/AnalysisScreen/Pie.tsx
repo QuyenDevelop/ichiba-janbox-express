@@ -9,7 +9,7 @@ export const createPath = (
   startAngle: number,
   arcAngle: number,
   isBezian: undefined,
-  innerRadius: number | undefined,
+  innerRadius: number,
 ) => {
   const p = new Path();
   //starting point of our chart
@@ -69,8 +69,7 @@ const ArcShape = ({
   arcAngle: any;
   isBezian: any;
 }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { radius, innerRadius, width, dividerSize } = dimensions;
+  const { radius, innerRadius, width } = dimensions;
   const path = createPath(
     radius,
     radius,
@@ -123,8 +122,7 @@ const Sections = ({
   strokeCapForLargeBands: any;
 }) => {
   let startValue = 0;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { radius, width, dividerSize } = dimensions;
+  const { dividerSize } = dimensions;
   const showDividers = shouldShowDivider(sections, dividerSize);
   paintedSections = sections.map(
     (
@@ -153,120 +151,53 @@ const Sections = ({
   return paintedSections;
 };
 
-// These are the rounded dividers when strokeCap='round'
-const RoundDividers = ({
-  dimensions,
-  paintedSections,
-  backgroundColor,
-  visible,
-}: {
-  dimensions: any;
-  paintedSections: any;
-  backgroundColor: any;
-  visible: boolean;
-}) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { dividerSize, radius, innerRadius, width } = dimensions;
-  const dividerOffSet = dividerSize * 2 + 6;
-  const strokeCap = "butt";
-  const isBezian = true;
-  let dividerColorOverlayArray: {} | null | undefined = [];
-  let dividerArray: {} | null | undefined = [];
-
-  if (paintedSections.length > 1 && visible) {
-    paintedSections.forEach(
-      (
-        section: { arcAngle?: any; color?: any; startAngle?: any },
-        index: React.Key | null | undefined,
-      ) => {
-        const { color, startAngle } = section;
-
-        for (let i = 0; i < dividerSize + 2; i++) {
-          dividerArray?.push(
-            <ArcShape
-              key={index}
-              dimensions={dimensions}
-              color={backgroundColor}
-              startAngle={
-                startAngle + section.arcAngle + dividerSize + i - dividerOffSet
-              }
-              arcAngle={1}
-              isBezian={isBezian}
-              strokeCap={strokeCap}
-            />,
-          );
-          dividerColorOverlayArray?.push(
-            <ArcShape
-              key={index}
-              dimensions={dimensions}
-              color={color}
-              startAngle={
-                startAngle + section.arcAngle - dividerSize + i - dividerOffSet
-              }
-              arcAngle={1}
-              isBezian={isBezian}
-              strokeCap={strokeCap}
-            />,
-          );
-        }
-      },
-    );
-  }
-  return (
-    <Group>
-      {dividerArray}
-      {dividerColorOverlayArray}
-    </Group>
-  );
-};
-
 // These circles clean up the strokes left over from the bezian curves
-const CleanUpCircles = ({
-  dimensions,
-  backgroundColor,
-  visible,
-}: {
-  dimensions: any;
-  backgroundColor: string;
-  visible: boolean;
-}) => {
-  const { radius, innerRadius, width } = dimensions;
-  const innerBackgroundPath = createPath(
-    radius,
-    radius,
-    innerRadius - width / 2,
-    0,
-    360,
-    undefined,
-    undefined,
-  );
-  const outerBackgroundPath = createPath(
-    radius,
-    radius,
-    radius + width / 2,
-    0,
-    360,
-    undefined,
-    undefined,
-  );
-  if (width < 100 && visible) {
-    return (
-      <>
-        <Shape
-          d={innerBackgroundPath}
-          stroke={backgroundColor}
-          strokeWidth={width}
-        />
-        <Shape
-          d={outerBackgroundPath}
-          stroke={backgroundColor}
-          strokeWidth={width}
-        />
-      </>
-    );
-  }
-  return null;
-};
+// const CleanUpCircles = ({
+//   dimensions,
+//   backgroundColor,
+//   visible,
+// }: {
+//   dimensions: any;
+//   backgroundColor: string;
+//   visible: boolean;
+// }) => {
+//   const { radius, innerRadius, width } = dimensions;
+//   const innerBackgroundPath = createPath(
+//     radius,
+//     radius,
+//     innerRadius - width / 2,
+//     0,
+//     360,
+//     undefined,
+//     0,
+//   );
+//   const outerBackgroundPath = createPath(
+//     radius,
+//     radius,
+//     radius + width / 2,
+//     0,
+//     360,
+//     undefined,
+//     0,
+//   );
+//   if (width < 100 && visible) {
+//     return (
+//       <>
+//         <Shape
+//           d={innerBackgroundPath}
+//           stroke={backgroundColor}
+//           strokeWidth={width}
+//         />
+//         <Shape
+//           d={outerBackgroundPath}
+//           stroke={backgroundColor}
+//           strokeWidth={width}
+//         />
+//       </>
+//     );
+//   }
+//   return null;
+// };
 
 const Pie = ({
   sections,
@@ -296,7 +227,7 @@ const Pie = ({
 
   return (
     <Surface width={radius * 2} height={radius * 2}>
-      <Group rotation={-90} originX={radius} originY={radius}>
+      <Group originX={radius} originY={radius}>
         <Background dimensions={dimensions} color={backgroundColor} />
         <Sections
           dimensions={dimensions}
@@ -305,17 +236,11 @@ const Pie = ({
           strokeCapForLargeBands={strokeCapForLargeBands}
           shouldShowRoundDividers={shouldShowRoundDividers}
         />
-        <RoundDividers
-          dimensions={dimensions}
-          paintedSections={paintedSections}
-          backgroundColor={backgroundColor}
-          visible={shouldShowRoundDividers}
-        />
-        <CleanUpCircles
+        {/* <CleanUpCircles
           dimensions={dimensions}
           backgroundColor={backgroundColor}
           visible={shouldShowRoundDividers}
-        />
+        /> */}
       </Group>
     </Surface>
   );

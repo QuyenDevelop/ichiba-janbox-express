@@ -92,6 +92,7 @@ export default StyleSheet.create({
     margin: ScreenUtils.scale(8),
     borderRadius: 10,
   },
+  groupFrame: { flexDirection: "column" },
   frameContainer: {
     flex: 0.9,
     flexDirection: "column",
@@ -108,4 +109,5 @@ export default StyleSheet.create({
     color: Themes.colors.black,
     fontWeight: "500",
   },
+  contentContainer: { marginTop: ScreenUtils.scale(40) },
 });

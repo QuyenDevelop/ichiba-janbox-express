@@ -18,3 +18,4 @@ export * from "./Separator";
 export * from "./SuccessModal/SuccessModal";
 export * from "./TopBarSearchResult/TopBarSearchResult";
 export * from "./Triangle";
+export * from "./ModalWithIcon/ModalWithIcon";

@@ -10,6 +10,10 @@ export const CONSTANT = {
     VN: "VN",
     US: "US",
   },
+  ROUTE: {
+    JP: "JP",
+    US: "US",
+  },
   TOKEN_STORAGE_KEY: {
     ACCESS_TOKEN: "access_token",
     REFRESH_TOKEN: "refresh_token",

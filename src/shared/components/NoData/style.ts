@@ -37,4 +37,25 @@ export default StyleSheet.create({
     textAlign: "center",
     marginTop: ScreenUtils.scale(12),
   },
+  flexRow: { flexDirection: "row" },
+  touchDetail: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: Themes.colors.primary,
+    borderRadius: ScreenUtils.scale(8),
+    overflow: "hidden",
+    marginTop: ScreenUtils.scale(32),
+    paddingHorizontal: ScreenUtils.scale(42),
+    paddingVertical: ScreenUtils.scale(10),
+  },
+  packageDetailText: {
+    fontSize: 14,
+    color: Themes.colors.white,
+    ...Themes.font.medium,
+    textAlign: "center",
+  },
+  arrowIcon: {
+    marginLeft: ScreenUtils.scale(8),
+  },
 });

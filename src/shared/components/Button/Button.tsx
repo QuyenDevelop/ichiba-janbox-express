@@ -1,5 +1,5 @@
 import { ScreenUtils } from "@helpers";
-import { Metrics, Themes } from "@themes";
+import { Icons, Metrics, Themes } from "@themes";
 import React, { FunctionComponent } from "react";
 import {
   ActivityIndicator,
@@ -10,7 +10,6 @@ import {
   View,
   ViewStyle,
 } from "react-native";
-import { Icon } from "../Icon";
 import { styles } from "./styles";
 
 interface OwnProps {
@@ -56,34 +55,21 @@ export const Button: FunctionComponent<Props> = props => {
         disabled={isDisable || isLoading}
       >
         {iconName && !isLoading && (
-          <Icon
+          <Icons.FontAwesome5
             name={iconName}
             size={iconSize ? iconSize : Metrics.icons.tiny}
             color={iconCorlor ? iconCorlor : Themes.colors.surface}
-            styles={
-              title
-                ? {
-                    marginRight: ScreenUtils.scale(6),
-                  }
-                : {}
-            }
           />
         )}
         {!isLoading && title ? (
           <Text style={[styles.title, titleStyle]}>{title}</Text>
         ) : null}
         {iconRightName && !isLoading && (
-          <Icon
+          <Icons.FontAwesome5
             name={iconRightName}
             size={iconSize ? iconSize : Metrics.icons.tiny}
             color={iconCorlor ? iconCorlor : Themes.colors.surface}
-            styles={
-              title
-                ? {
-                    marginLeft: ScreenUtils.scale(6),
-                  }
-                : {}
-            }
+            style={{ marginLeft: ScreenUtils.scale(8) }}
           />
         )}
         {isLoading && (

@@ -1,8 +1,8 @@
 import { ScreenUtils } from "@helpers";
 import { Button, translate } from "@shared";
-import { Images } from "@themes";
+import { Icons, Images, Themes } from "@themes";
 import React, { FunctionComponent } from "react";
-import { Text, View, ViewStyle } from "react-native";
+import { Text, TouchableOpacity, View, ViewStyle } from "react-native";
 import FastImage from "react-native-fast-image";
 import styles from "./style";
 
@@ -14,6 +14,8 @@ interface Props {
   goBack?: () => void;
   content?: string;
   gift?: any;
+  buttonTitle?: string;
+  onPress?: () => void;
 }
 
 export const NoData: FunctionComponent<Props> = props => {
@@ -25,6 +27,8 @@ export const NoData: FunctionComponent<Props> = props => {
     container,
     content,
     gift,
+    buttonTitle,
+    onPress,
   } = props;
   return (
     <View style={[styles.noDataContainer, container]}>
@@ -53,6 +57,19 @@ export const NoData: FunctionComponent<Props> = props => {
           title={translate(titleButtonGoBack)}
           buttonStyle={{ marginTop: ScreenUtils.scale(16) }}
         />
+      )}
+      {buttonTitle && (
+        <TouchableOpacity
+          style={styles.touchDetail}
+          onPress={onPress ? onPress : () => {}}
+        >
+          <Text style={styles.packageDetailText}>{buttonTitle}</Text>
+          <Icons.FontAwesome5
+            name={"arrow-right"}
+            color={Themes.colors.white}
+            style={styles.arrowIcon}
+          />
+        </TouchableOpacity>
       )}
     </View>
   );

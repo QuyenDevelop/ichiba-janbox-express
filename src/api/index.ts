@@ -5,6 +5,7 @@ import customerApi from "./customer-api";
 import imageApi from "./imageApi";
 import locationApi from "./location-api";
 import notificationApi from "./notification-api";
+import orderApi from "./order-api";
 import paymentApi from "./payment-api";
 
 export {
@@ -16,4 +17,5 @@ export {
   notificationApi,
   commonApi,
   paymentApi,
+  orderApi,
 };

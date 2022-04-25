@@ -54,7 +54,7 @@ export const LocationModal: FunctionComponent<IProps> = props => {
     }
     if (filter && filter !== "") {
       const result = fuse.search(filter);
-      return result.map(r => r.item);
+      return result.map((r: any) => r.item);
     } else {
       return data;
     }

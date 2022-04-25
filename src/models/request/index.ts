@@ -1,5 +1,6 @@
 export * from "./CustomerRequest";
 export * from "./EzWalletRequest";
+export * from "./GetListOrderPackageRequest";
 export * from "./NotifiConfixRequest";
 export * from "./PaymentRequest";
 export * from "./RegisterUserRequest";

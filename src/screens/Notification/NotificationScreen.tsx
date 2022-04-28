@@ -9,12 +9,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { IRootState } from "@redux";
 import { Button, translate } from "@shared";
 import { Themes } from "@themes";
-import React, {
-  FunctionComponent,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import React, { FunctionComponent, useCallback, useState } from "react";
 import { Text, View } from "react-native";
 import { TabBar, TabBarIndicator, TabView } from "react-native-tab-view";
 import {
@@ -45,7 +40,6 @@ export const NotificationScreen: FunctionComponent = () => {
   const profile = useAppSelector(
     (state: IRootState) => state.user.profile,
   ) as Account;
-  const language = useAppSelector(state => state.user.language);
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const [index, setIndex] = useState<number>(0);
   const routes = [
@@ -56,8 +50,6 @@ export const NotificationScreen: FunctionComponent = () => {
     { key: TabKey.ODER, title: translate("labelOrder") },
     { key: TabKey.SYSTEM, title: translate("labelSystem") },
   ];
-
-  useEffect(() => {}, [language]);
 
   const renderTabBar = useCallback(props => {
     return (

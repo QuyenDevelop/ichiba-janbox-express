@@ -1,13 +1,13 @@
 import { ChooseAddressModal, Header, Separator } from "@components";
 import { CONSTANT, SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
-import { useAppSelector, useBoolean, useStatusBar } from "@hooks";
+import { useBoolean, useStatusBar } from "@hooks";
 import { Address } from "@models";
 import { useNavigation } from "@react-navigation/core";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Button, Checkbox, translate } from "@shared";
 import { Icons, Metrics, Themes } from "@themes";
-import React, { FunctionComponent, useEffect, useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
 import { CreateEcomShipment, CreateGiftShipment } from "./components";
 import styles from "./styles";
@@ -19,8 +19,6 @@ interface Props {}
 export const CreateShipmentScreen: FunctionComponent<Props> = () => {
   useStatusBar("dark-content");
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
-  const language = useAppSelector(state => state.user.language);
-  useEffect(() => {}, [language]);
 
   const [shipmentType, setShipmentType] = useState<string>(
     CONSTANT.SHIPMENT_TYPE.ECOMMERCE,

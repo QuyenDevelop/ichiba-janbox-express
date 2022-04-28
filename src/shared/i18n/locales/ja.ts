@@ -451,6 +451,10 @@ export default {
   buttonBackToWallet: "財布に戻る",
   buttonWithdraw: "引き出し",
   buttonCreateComplaint: "苦情を送信",
+  buttonUploadFile: "Tải file lên",
+  buttonAddComplaint: "Thêm đơn khiếu nại",
+  buttonTakePhoto: "Chụp ảnh",
+  buttonChooseLibrary: "Chọn từ thư viện",
 
   labelNotification: "通知",
   labelResult: "結果",

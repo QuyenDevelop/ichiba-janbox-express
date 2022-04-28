@@ -1,12 +1,7 @@
 import { Separator, TopBarSearchResult } from "@components";
 import { SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
-import {
-  useAppSelector,
-  useBoolean,
-  useOrderExpired,
-  useStatusBar,
-} from "@hooks";
+import { useBoolean, useOrderExpired, useStatusBar } from "@hooks";
 import { ShipmentParamList } from "@navigation";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/core";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -15,7 +10,6 @@ import { Themes } from "@themes";
 import React, {
   FunctionComponent,
   useCallback,
-  useEffect,
   useMemo,
   useRef,
   useState,
@@ -137,10 +131,6 @@ export const ShipmentManageScreen: FunctionComponent<Props> = () => {
   const [totalInStorage, setTotalInStorage] = useState<number>(0);
   const [totalWaitExport, setTotalWaitExport] = useState<number>(0);
   const [totalDelivery, setTotalDelivery] = useState<number>(0);
-
-  //TODO: bỏ khi có code push vì bottomTab k re-render component
-  const language = useAppSelector(state => state.user.language);
-  useEffect(() => {}, [language]);
 
   const goBack = () => {
     navigation.goBack();

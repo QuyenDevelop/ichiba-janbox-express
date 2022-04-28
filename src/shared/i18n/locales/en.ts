@@ -433,6 +433,10 @@ export default {
   buttonBackToWallet: "Back To Wallet",
   buttonWithdraw: "Withdraw",
   buttonCreateComplaint: "Send request complaints",
+  buttonUploadFile: "Upload File",
+  buttonAddComplaint: "Add Complaint",
+  buttonTakePhoto: "Take Photo",
+  buttonChooseLibrary: "Choose from Library",
 
   labelNotification: "Notification",
   labelResult: "results",

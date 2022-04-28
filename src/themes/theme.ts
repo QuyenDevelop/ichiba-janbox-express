@@ -20,7 +20,7 @@ export const Themes = {
     red0722: "#FF0722",
     text: "#000000",
     gradient: "#00AEE4",
-    primary: "#005DF8",
+    primary: "#F27C08",
     textPrimary: "#121619",
     secondary: "#414757",
     surface: "#EEEEEE",

@@ -30,7 +30,7 @@ let dataWarehouse: Array<GuideItem> = [
     address: "浙江省-嘉兴市秀洲区-王店镇梅秀路399号1号车间3楼转lexluthor",
     name: "蒋紫宸",
     phone: "15669302910",
-    isActive: true,
+    isActive: false,
   },
   {
     id: 3,
@@ -86,6 +86,11 @@ export const WarehouseScreen: FunctionComponent<Props> = () => {
     },
     [setIsShowConfirm],
   );
+
+  const sortData = useCallback(() => {
+    return data.sort((a, b) => (a.isActive > b.isActive ? -1 : 1));
+  }, [data]);
+
   return (
     <View style={[styles.container]}>
       <Header
@@ -98,7 +103,7 @@ export const WarehouseScreen: FunctionComponent<Props> = () => {
       />
       <Separator height={ScreenUtils.scale(2)} />
       <FlatList
-        data={data}
+        data={sortData()}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
       />

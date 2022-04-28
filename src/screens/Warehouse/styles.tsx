@@ -101,7 +101,7 @@ export default StyleSheet.create({
   },
   btnStyles: {
     marginHorizontal: ScreenUtils.scale(16.5),
-    marginBottom: ScreenUtils.scale(10),
+    marginBottom: ScreenUtils.scale(33),
     borderRadius: ScreenUtils.scale(8),
     backgroundColor: Themes.colors.orangeF27C,
   },

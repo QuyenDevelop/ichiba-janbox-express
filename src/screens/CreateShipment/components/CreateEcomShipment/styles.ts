@@ -18,6 +18,7 @@ export default StyleSheet.create({
     color: Themes.colors.coolGray100,
   },
   chooseBtn: {
+    marginTop: ScreenUtils.scale(11),
     flexDirection: "row",
     alignItems: "center",
   },
@@ -26,6 +27,7 @@ export default StyleSheet.create({
     fontFamily: FontFamily.regular,
     fontSize: ScreenUtils.scale(16),
     paddingHorizontal: ScreenUtils.scale(16),
+    marginBottom: ScreenUtils.scale(7),
   },
   iconArrRight: {
     fontFamily: FontFamily.bold,

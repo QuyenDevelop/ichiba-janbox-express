@@ -5,7 +5,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Flatlist, translate } from "@shared";
 import { Images } from "@themes";
 import React, { FunctionComponent, useState } from "react";
-import { SafeAreaView, View } from "react-native";
+import { View } from "react-native";
 import { NewsItem } from "./NewsItem";
 import styles from "./styles";
 export * from "./NewsItem";
@@ -27,14 +27,14 @@ const data = [
   },
   {
     id: 2,
-    image: Images.shoe,
+    image: Images.imgDefautFirstTime,
     title: "Chiết khấu 6,8% thanh toán bằng ví Janbox 2",
     detail:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec neque vel lectus feugiat feugiat quis sit amet magna 2.",
   },
   {
     id: 3,
-    image: Images.imgDefautFirstTime,
+    image: Images.shoe,
     title: "Chiết khấu 6,8% thanh toán bằng ví Janbox 3",
     detail:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec neque vel lectus feugiat feugiat quis sit amet magna 3.",
@@ -64,7 +64,7 @@ export const NewsScreen: FunctionComponent<IProps> = () => {
     return item.id;
   };
   return (
-    <SafeAreaView style={[styles.container]}>
+    <View style={[styles.container]}>
       <Header
         title={translate("labelNews")}
         iconLeftName={["ic_arrow_left"]}
@@ -82,6 +82,6 @@ export const NewsScreen: FunctionComponent<IProps> = () => {
           disableLoadMore
         />
       </View>
-    </SafeAreaView>
+    </View>
   );
 };

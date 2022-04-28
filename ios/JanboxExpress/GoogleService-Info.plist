@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>526209044156-pbfotb6nebtof6gp3ehd18gaf9l2npu0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.526209044156-pbfotb6nebtof6gp3ehd18gaf9l2npu0</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>526209044156-4enf3sme97900apbtveogl8eunrhpbi3.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDIFj7Wznmx5wbnFS8KAxanmxyaEY1cjKg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>526209044156</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>jp.janbox.JanboxExpress</string>
+	<key>PROJECT_ID</key>
+	<string>ezbuy-mobileapp</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ezbuy-mobileapp.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:526209044156:ios:ccc5b515320db74125cab9</string>
+</dict>
+</plist>

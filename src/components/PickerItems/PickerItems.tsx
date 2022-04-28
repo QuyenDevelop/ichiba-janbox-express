@@ -46,10 +46,8 @@ export const PickerItems: FunctionComponent<Props> = props => {
     showModal();
     dispatch(changeLanguage(languageUser));
 
-    // tạm thời vì chưa có code push nên chưa reset app nên cho navigate về màn LaunchScreen
-    navigation.navigate(SCREENS.BOTTOM_TAB_NAVIGATION, {
-      screen: SCREENS.LAUNCH_SCREEN,
-    });
+    //TODO: tạm thời vì chưa có code push nên chưa reset app nên cho navigate về màn LaunchScreen
+    navigation.navigate(SCREENS.LAUNCH_SCREEN);
   };
 
   const setValue = (value: any, id: any) => {
@@ -59,30 +57,6 @@ export const PickerItems: FunctionComponent<Props> = props => {
         showModal();
         setLanguageUser(value);
         break;
-      // case CONSTANT.TYPE_PICKER.CURRENCY:
-      //   dispatch(AccountAction.changeCurrency({ currency: value }));
-      //   break;
-      // case CONSTANT.TYPE_PICKER.CATEGORIES:
-      //   navigation.navigate(SCREENS.SUB_CATEGORIES, {
-      //     id: id,
-      //     name: name,
-      //     value: value,
-      //     parentId: null,
-      //     endPoint: obj.endPoint,
-      //     metaTitle: "",
-      //   });
-      //   break;
-      // case CONSTANT.TYPE_PICKER.SHOPPING_SITE:
-      //   if (obj.refType === "ZOZOTOWN") {
-      //     obj.refType = "ZOZO";
-      //   }
-
-      //   dispatch(
-      //     AccountAction.changeWebsite({
-      //       websiteShopping: obj,
-      //     }),
-      //   );
-      //   break;
     }
   };
 

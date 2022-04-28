@@ -1,7 +1,7 @@
 export default {
   error: {
     updateAddressFail: "Change of address failed. Please try again!",
-    generic: "Đã có lỗi xảy ra",
+    generic: "An error has occurred",
     validation: {
       sellerName: "Please enter the seller name",
       pleaseSelectBank: "Please select a bank",
@@ -287,8 +287,7 @@ export default {
       firstContent:
         "For your security, we need to make sure it's really you. Please let us know your email.",
     },
-    confirmAccount:
-      "Xác thực tài khoản để bắt đầu sử dụng dịch vụ của chúng tôi",
+    confirmAccount: "Verify your account to start using our service",
     verifyPhone: {
       notification: "We sent you a code to verify your phone number",
       sentTo: "Sent to",

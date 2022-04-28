@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 import { Header } from "@components";
 import { SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
@@ -9,7 +10,6 @@ import { translate } from "@shared";
 import { Icons, Themes } from "@themes";
 import React, { FunctionComponent, useState } from "react";
 import {
-  SafeAreaView,
   ScrollView,
   Text,
   TextInput,
@@ -58,14 +58,14 @@ export const ReviewScreen: FunctionComponent<IProps> = () => {
   const [checkChooseSuggest, setChooseSuggest] = useState(-1);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Header
         titleLeft={translate("labelReview")}
         iconLeftName={["ic_arrow_left"]}
         iconLeftOnPress={[goBack]}
         isGoBack={true}
       />
-      <ScrollView>
+      <ScrollView style={styles.contentContainer}>
         <View style={styles.titleContainer}>
           <Text style={styles.txtTitle}>Shipment</Text>
           <Text style={{ marginVertical: ScreenUtils.scale(4) }}>
@@ -121,6 +121,6 @@ export const ReviewScreen: FunctionComponent<IProps> = () => {
           <Text style={styles.txtSubmitReview}>Submit Review</Text>
         </TouchableOpacity>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };

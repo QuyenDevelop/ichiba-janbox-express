@@ -51,11 +51,10 @@ const styles = StyleSheet.create<Styles>({
     marginVertical: ScreenUtils.scale(25),
     flexDirection: "row",
     paddingVertical: ScreenUtils.scale(10),
-    width: ScreenUtils.WIDTH_SCREEN / 3,
+    width: ScreenUtils.WIDTH_SCREEN / 2.5,
     borderRadius: ScreenUtils.scale(8),
-    justifyContent: "space-around",
+    justifyContent: "space-evenly",
     alignItems: "center",
     backgroundColor: Themes.colors.colGray20,
-    marginHorizontal: ScreenUtils.scale(35),
   },
 });

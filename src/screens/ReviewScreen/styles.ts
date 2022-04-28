@@ -15,6 +15,7 @@ export default StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
+  contentContainer: { paddingHorizontal: ScreenUtils.scale(24) },
   settingBtnText: {
     color: Themes.colors.white,
     fontFamily: FontFamily.bold,
@@ -60,15 +61,13 @@ export default StyleSheet.create({
   suggestContainer: {
     flexDirection: "row",
     flexWrap: "wrap",
-    paddingHorizontal: ScreenUtils.scale(27),
     marginTop: ScreenUtils.scale(16),
   },
   btnSuggest: {
     padding: ScreenUtils.scale(10),
     backgroundColor: Themes.colors.colGray10,
-    marginVertical: ScreenUtils.scale(4),
-    marginHorizontal: ScreenUtils.scale(4),
     borderRadius: ScreenUtils.scale(20),
+    margin: ScreenUtils.scale(4),
     alignItems: "center",
   },
   titleContainer: {
@@ -83,13 +82,12 @@ export default StyleSheet.create({
   },
   txtDescription: {
     marginTop: ScreenUtils.scale(30),
-    marginLeft: ScreenUtils.scale(27),
     fontFamily: FontFamily.bold,
     fontSize: ScreenUtils.scale(14),
     color: Themes.colors.coolGray100,
   },
   inputContainer: {
-    width: 327,
+    width: "100%",
     height: 111,
     borderWidth: ScreenUtils.scale(0.4),
     borderColor: Themes.colors.colGray20,
@@ -98,24 +96,14 @@ export default StyleSheet.create({
     marginTop: ScreenUtils.scale(5),
   },
   maxCharacter: {
-    marginHorizontal: ScreenUtils.scale(35),
     marginVertical: ScreenUtils.scale(10),
-  },
-  btnPhotos: {
-    marginVertical: ScreenUtils.scale(25),
-    flexDirection: "row",
-    paddingVertical: ScreenUtils.scale(10),
-    width: ScreenUtils.WIDTH_SCREEN / 3,
-    borderRadius: ScreenUtils.scale(8),
-    justifyContent: "space-around",
-    alignItems: "center",
-    backgroundColor: Themes.colors.colGray20,
-    marginHorizontal: ScreenUtils.scale(35),
   },
   betweenStar: { marginHorizontal: ScreenUtils.scale(5) },
   closeImg: {
     width: 24,
     height: 24,
+    justifyContent: "center",
+    alignItems: "center",
     borderRadius: 12,
     backgroundColor: "red",
     marginLeft: ScreenUtils.scale(60),
@@ -123,10 +111,9 @@ export default StyleSheet.create({
   },
   containerImg: {
     flexDirection: "row",
-    marginHorizontal: ScreenUtils.scale(24),
   },
   txtInput: { paddingVertical: 5 },
-  txtClose: { textAlign: "center", color: "white" },
+  txtClose: { color: "white" },
   imgUpload: {
     width: 88,
     height: 88,
@@ -134,7 +121,6 @@ export default StyleSheet.create({
     marginTop: ScreenUtils.scale(7),
   },
   imgSubContainer: {
-    marginLeft: ScreenUtils.scale(12),
     flex: 1,
     width: 100,
     height: 100,
@@ -142,7 +128,6 @@ export default StyleSheet.create({
   btnSubmitReview: {
     paddingVertical: ScreenUtils.scale(14),
     backgroundColor: Themes.colors.orangeF27,
-    marginHorizontal: ScreenUtils.scale(16),
     borderRadius: ScreenUtils.scale(8),
     justifyContent: "center",
     alignItems: "center",

@@ -1,10 +1,10 @@
 import { SCREENS } from "@configs";
 import { NavigationUtils } from "@helpers";
-import { CreateShipmentScreen } from "@screens";
+import { CreateShipmentScreen, CreateShipmentScreenParams } from "@screens";
 import React from "react";
 
 export type CreateShipmentParamList = {
-  [SCREENS.CREATE_SHIPMENT_SCREEN]: undefined;
+  [SCREENS.CREATE_SHIPMENT_SCREEN]: CreateShipmentScreenParams;
 };
 
 const CreateShipmentStackNavigator =

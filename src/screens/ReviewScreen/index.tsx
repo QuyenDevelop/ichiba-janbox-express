@@ -21,7 +21,7 @@ import styles from "./styles";
 export * from "./types";
 
 export interface ReviewScreenParams {
-  items?: OrderPackageCollectionResponse;
+  item?: OrderPackageCollectionResponse;
 }
 
 type ReviewNavigationRoute = RouteProp<
@@ -50,12 +50,12 @@ export const ReviewScreen: FunctionComponent<IProps> = () => {
   const goBack = () => {
     navigation.goBack();
   };
-  const { items } = routeNavigation?.params || {};
-  console.log("🚀🚀🚀 => item", items);
-  const [defaultRating, setDefaultRating] = useState(1);
+  const { item } = routeNavigation?.params || {};
+  console.log("🚀🚀🚀 => item", item);
+  const [defaultRating, setDefaultRating] = useState(0);
   const [maxRating] = useState([1, 2, 3, 4, 5]);
   const [suggestCmt] = useState(dataQuantity);
-  const [checkChooseSuggest, setChooseSuggest] = useState(0);
+  const [checkChooseSuggest, setChooseSuggest] = useState(-1);
 
   return (
     <SafeAreaView style={styles.container}>

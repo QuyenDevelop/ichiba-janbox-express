@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
 import { customerApi } from "@api";
 import { ConfirmDialog, Header } from "@components";
@@ -47,6 +48,14 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
   // useEffect(() => {
   //   getData();
   // }, []);
+
+  const goBackCreateShipment = (item: Address) => {
+    dispatch(setAddressSelectedId(item?.id));
+    navigation.navigate(SCREENS.CREATE_SHIPMENT_STACK, {
+      screen: SCREENS.CREATE_SHIPMENT_SCREEN,
+      params: { item: item },
+    });
+  };
 
   const getData = () => {
     customerApi
@@ -104,9 +113,7 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
   const renderItem = ({ item }: { item: Address; index: number }) => {
     return (
       <TouchableOpacity
-        onPress={() => {
-          dispatch(setAddressSelectedId(item?.id));
-        }}
+        onPress={() => goBackCreateShipment(item)}
         style={[
           styles.item,
           item?.id === selectedAddressId && {

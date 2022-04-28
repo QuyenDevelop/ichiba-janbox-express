@@ -13,7 +13,7 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		149B813C280D40E800C4822E /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149B813B280D40E800C4822E /* File.swift */; };
-		14D91E23280D1F28005D7209 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14D91E22280D1F28005D7209 /* GoogleService-Info.plist */; };
+		14C0B6F5281A41CA00A6563A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 14C0B6F4281A41CA00A6563A /* GoogleService-Info.plist */; };
 		2077796D92B64DD68A7B8FC3 /* SFProText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0B258F3D73AC4555BC20BA51 /* SFProText-Semibold.ttf */; };
 		24B4275832B1431EB2906BE7 /* Oswald-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 05ED36303F94448ABDE44C61 /* Oswald-Medium.ttf */; };
 		36A3DE48F4BE4E06A5C78A62 /* SFProText-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6458E3AE89AF4EBD8A2A330E /* SFProText-Medium.ttf */; };
@@ -54,7 +54,7 @@
 		149B813A280D40E700C4822E /* JanboxExpress-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JanboxExpress-Bridging-Header.h"; sourceTree = "<group>"; };
 		149B813B280D40E800C4822E /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		149B813E280D78C200C4822E /* JanboxExpress.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = JanboxExpress.entitlements; path = JanboxExpress/JanboxExpress.entitlements; sourceTree = "<group>"; };
-		14D91E22280D1F28005D7209 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		14C0B6F4281A41CA00A6563A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "JanboxExpress/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2AAE12B12AC143C89C787C07 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		2F0EA8E6A2E34C9AAFBEC108 /* Oswald-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Oswald-Regular.ttf"; path = "../src/assets/fonts/Oswald-Regular.ttf"; sourceTree = "<group>"; };
 		3736769E3362417E815BFC33 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
@@ -125,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				149B813E280D78C200C4822E /* JanboxExpress.entitlements */,
-				14D91E22280D1F28005D7209 /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -187,6 +186,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				14C0B6F4281A41CA00A6563A /* GoogleService-Info.plist */,
 				149B813B280D40E800C4822E /* File.swift */,
 				13B07FAE1A68108700A75B9A /* JanboxExpress */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
@@ -325,7 +325,7 @@
 				6323D97EEBB245FBA5F7FB8F /* Oswald-SemiBold.ttf in Resources */,
 				5CC1CC367B3D4BF3B5A1DC7E /* SFProText-Bold.ttf in Resources */,
 				36A3DE48F4BE4E06A5C78A62 /* SFProText-Medium.ttf in Resources */,
-				14D91E23280D1F28005D7209 /* GoogleService-Info.plist in Resources */,
+				14C0B6F5281A41CA00A6563A /* GoogleService-Info.plist in Resources */,
 				5716A29718A040D685078A14 /* SFProText-Regular.ttf in Resources */,
 				2077796D92B64DD68A7B8FC3 /* SFProText-Semibold.ttf in Resources */,
 			);
@@ -666,7 +666,7 @@
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -732,7 +732,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = "arm64 i386";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = i386;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

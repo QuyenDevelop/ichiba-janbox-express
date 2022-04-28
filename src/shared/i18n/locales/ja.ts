@@ -567,6 +567,7 @@ export default {
   labelRoute: "Tuyến hàng",
   labelStatus: "Trạng thái",
 
+  textActive: "Janboxの倉庫管理ポリシーに同意します。 \n",
   textComplaintContent: "あなたの満足は目標であり、Janboxの力を推進します",
   textComplaintNotification: "ごめんなさい！ あなたの苦情は空です",
   textWarningUserAndPass: "ユーザー名またはパスワードを入力していません!!",

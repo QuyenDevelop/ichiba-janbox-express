@@ -552,6 +552,7 @@ export default {
   labelRoute: "Tuyến hàng",
   labelStatus: "Trạng thái",
 
+  textActive: "Đồng ý với các chính sách quản lý kho của Janbox. \n",
   textComplaintContent:
     "Sự hài lòng của bạn là mục tiêu và là động lực thúc đẩy của Janbox",
   textComplaintNotification: "Bạn chưa có khiếu nại nào",

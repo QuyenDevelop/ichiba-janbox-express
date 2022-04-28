@@ -35,9 +35,8 @@ export default StyleSheet.create({
     borderRadius: ScreenUtils.scale(12),
     borderColor: "#ddd",
     shadowColor: "#000000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.9,
-    shadowRadius: ScreenUtils.scale(12),
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.4,
     elevation: 3,
   },
   title: {

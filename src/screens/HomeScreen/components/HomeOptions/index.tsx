@@ -56,6 +56,7 @@ export const HomeOptions: FunctionComponent = () => {
         case CONSTANT.MENU_CONSTANT.CREATE_SHIPMENT:
           navigation.navigate(SCREENS.CREATE_SHIPMENT_STACK, {
             screen: SCREENS.CREATE_SHIPMENT_SCREEN,
+            params: {},
           });
           break;
         case CONSTANT.MENU_CONSTANT.CREATE_FROM_PAST:

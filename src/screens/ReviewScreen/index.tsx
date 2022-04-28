@@ -24,7 +24,10 @@ export interface ReviewScreenParams {
   items?: OrderPackageCollectionResponse;
 }
 
-type NavigationRoute = RouteProp<ShipmentParamList, SCREENS.REVIEW_SCREEN>;
+type ReviewNavigationRoute = RouteProp<
+  ShipmentParamList,
+  SCREENS.REVIEW_SCREEN
+>;
 
 interface IProps {
   id: any;
@@ -42,7 +45,7 @@ const dataQuantity = [
   ,
 ];
 export const ReviewScreen: FunctionComponent<IProps> = () => {
-  const routeNavigation = useRoute<NavigationRoute>();
+  const routeNavigation = useRoute<ReviewNavigationRoute>();
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const goBack = () => {
     navigation.goBack();

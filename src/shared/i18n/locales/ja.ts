@@ -566,6 +566,7 @@ export default {
   labelDone: "Đã xử lý",
   labelRoute: "Tuyến hàng",
   labelStatus: "Trạng thái",
+  labelChooseAddress: "Chọn địa chỉ",
 
   textComplaintContent: "あなたの満足は目標であり、Janboxの力を推進します",
   textComplaintNotification: "ごめんなさい！ あなたの苦情は空です",

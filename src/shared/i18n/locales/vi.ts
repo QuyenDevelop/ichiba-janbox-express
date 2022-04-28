@@ -551,6 +551,7 @@ export default {
   labelDone: "Đã xử lý",
   labelRoute: "Tuyến hàng",
   labelStatus: "Trạng thái",
+  labelChooseAddress: "Chọn địa chỉ",
 
   textComplaintContent:
     "Sự hài lòng của bạn là mục tiêu và là động lực thúc đẩy của Janbox",

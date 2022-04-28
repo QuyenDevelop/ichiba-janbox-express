@@ -51,10 +51,10 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
 
   const goBackCreateShipment = (item: Address) => {
     dispatch(setAddressSelectedId(item?.id));
-    navigation.navigate(SCREENS.CREATE_SHIPMENT_STACK, {
-      screen: SCREENS.CREATE_SHIPMENT_SCREEN,
-      params: { address: item },
-    });
+    // navigation.navigate(SCREENS.CREATE_SHIPMENT_STACK, {
+    //   screen: SCREENS.CREATE_SHIPMENT_SCREEN,
+    //   params: { item: item },
+    // });
   };
 
   const getData = () => {

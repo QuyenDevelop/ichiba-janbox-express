@@ -549,6 +549,7 @@ export default {
   labelDone: "Done",
   labelRoute: "Route",
   labelStatus: "Status",
+  labelChooseAddress: "Choose Address",
 
   textActive: "Agree to Janbox's warehouse management policies. \n",
   textComplaintContent:

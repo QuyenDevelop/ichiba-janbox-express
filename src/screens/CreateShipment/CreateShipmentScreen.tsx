@@ -1,10 +1,9 @@
-import { Header, Separator } from "@components";
+import { ChooseAddressModal, Header, Separator } from "@components";
 import { CONSTANT, SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
-import { useAppSelector, useStatusBar } from "@hooks";
-import { Address, PackageShipmentResponse } from "@models";
-import { CreateShipmentParamList } from "@navigation";
-import { RouteProp, useNavigation, useRoute } from "@react-navigation/core";
+import { useAppSelector, useBoolean, useStatusBar } from "@hooks";
+import { Address } from "@models";
+import { useNavigation } from "@react-navigation/core";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Button, Checkbox, translate } from "@shared";
 import { Icons, Metrics, Themes } from "@themes";
@@ -13,25 +12,13 @@ import { ScrollView, TouchableOpacity, View } from "react-native";
 import { CreateEcomShipment, CreateGiftShipment } from "./components";
 import styles from "./styles";
 
-export interface CreateShipmentScreenParams {
-  address?: Address | {};
-  shipment?: PackageShipmentResponse | {};
-}
-
-type NavigationRoute = RouteProp<
-  CreateShipmentParamList,
-  SCREENS.CREATE_SHIPMENT_SCREEN
->;
+export interface CreateShipmentScreenParams {}
 
 interface Props {}
 
 export const CreateShipmentScreen: FunctionComponent<Props> = () => {
   useStatusBar("dark-content");
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
-  const routeNavigation = useRoute<NavigationRoute>();
-  const { address, shipment } = routeNavigation?.params;
-  console.log("🚀🚀🚀 => address", address);
-  console.log("🚀🚀🚀 => shipment", shipment);
   const language = useAppSelector(state => state.user.language);
   useEffect(() => {}, [language]);
 
@@ -39,6 +26,8 @@ export const CreateShipmentScreen: FunctionComponent<Props> = () => {
     CONSTANT.SHIPMENT_TYPE.ECOMMERCE,
   );
   const [isLoading, setIsLoading] = useState(false);
+  const [showModal, setShowModal, setHideModal] = useBoolean();
+  const [receivedAddress, setReceivedAddress] = useState<Address>();
 
   const goBack = () => {
     navigation.goBack();
@@ -51,6 +40,7 @@ export const CreateShipmentScreen: FunctionComponent<Props> = () => {
   const handleCancel = () => {
     navigation.navigate(SCREENS.HOME_SCREEN);
   };
+
   return (
     <View style={[styles.container]}>
       <Header
@@ -100,7 +90,10 @@ export const CreateShipmentScreen: FunctionComponent<Props> = () => {
             <CreateEcomShipment />
           )}
           {shipmentType === CONSTANT.SHIPMENT_TYPE.GIFT && (
-            <CreateGiftShipment />
+            <CreateGiftShipment
+              address={receivedAddress}
+              chooseAddress={setShowModal}
+            />
           )}
         </View>
       </ScrollView>
@@ -120,6 +113,13 @@ export const CreateShipmentScreen: FunctionComponent<Props> = () => {
           buttonStyle={styles.button}
         />
       </View>
+      <ChooseAddressModal
+        title={translate("labelChooseAddress")}
+        onClose={setHideModal}
+        isVisible={showModal}
+        onPress={data => setReceivedAddress(data)}
+        selectedItem={receivedAddress?.id}
+      />
     </View>
   );
 };

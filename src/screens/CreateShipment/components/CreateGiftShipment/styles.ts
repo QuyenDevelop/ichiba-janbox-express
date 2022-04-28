@@ -5,7 +5,6 @@ export default StyleSheet.create({
   container: {
     paddingHorizontal: ScreenUtils.scale(16),
     backgroundColor: Themes.colors.white,
-    marginTop: ScreenUtils.scale(30),
   },
   chooseContainer: {
     flexDirection: "column",
@@ -20,12 +19,50 @@ export default StyleSheet.create({
   chooseBtn: {
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: ScreenUtils.scale(4),
+    paddingHorizontal: ScreenUtils.scale(16),
+  },
+  addressButton: {
+    paddingHorizontal: ScreenUtils.scale(16),
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingVertical: ScreenUtils.scale(10),
+    borderRadius: ScreenUtils.scale(8),
+    borderStyle: "dashed",
+    borderColor: Themes.colors.coolGray30,
+    borderWidth: ScreenUtils.scale(1),
+    marginTop: ScreenUtils.scale(8),
+  },
+  addressText: {
+    ...Themes.font.regular,
+    fontSize: 14,
+    color: Themes.colors.coolGray100,
+  },
+  addressContent: {
+    ...Themes.font.regular,
+    fontSize: 12,
+    color: Themes.colors.coolGray60,
+  },
+  addressIcon: {
+    width: ScreenUtils.scale(24),
+    height: ScreenUtils.scale(24),
+    marginLeft: ScreenUtils.scale(8),
+    justifyContent: "center",
+    alignItems: "center",
   },
   textChoose: {
     flex: 0.9,
     fontFamily: FontFamily.regular,
     fontSize: ScreenUtils.scale(16),
-    paddingHorizontal: ScreenUtils.scale(16),
+  },
+  iconTouch: {
+    width: ScreenUtils.scale(16),
+    height: ScreenUtils.scale(16),
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: ScreenUtils.scale(8),
   },
   iconArrRight: {
     fontFamily: FontFamily.bold,

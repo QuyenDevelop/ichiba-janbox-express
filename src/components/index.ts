@@ -1,4 +1,5 @@
 export * from "./Banner/Banner";
+export * from "./ChooseAddressModal/ChooseAddressModal";
 export * from "./ConfirmDialog/ConfirmDialog";
 export * from "./ContentLoader";
 export * from "./Copy/CodeCopySuccess";
@@ -11,6 +12,7 @@ export * from "./HomeHeader/HomeHeaderAnimated";
 export * from "./ListProductSearchLoader/ListProductSearchLoader";
 export * from "./LocationModal/LocationModal";
 export * from "./ModalBottomRadioButton/ModalBottomRadioButton";
+export * from "./ModalWithIcon/ModalWithIcon";
 export * from "./PhoneNumber/PhoneNumber";
 export * from "./Picker/Picker";
 export * from "./PickerItems/PickerItems";
@@ -18,4 +20,3 @@ export * from "./Separator";
 export * from "./SuccessModal/SuccessModal";
 export * from "./TopBarSearchResult/TopBarSearchResult";
 export * from "./Triangle";
-export * from "./ModalWithIcon/ModalWithIcon";

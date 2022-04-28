@@ -414,6 +414,7 @@ export default {
   },
 
   packageStatus: {
+    created: "Khởi tạo",
     internationalShipping: "海外発送",
     domesticShipping: "国内出荷",
     arrivedWarehouse: "給料を待ちます",

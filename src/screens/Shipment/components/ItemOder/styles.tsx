@@ -41,6 +41,7 @@ export default StyleSheet.create({
     ...Themes.font.regular,
     fontSize: 12,
     color: Themes.colors.coolGray60,
+    textAlign: "center",
   },
   packageStatus: {
     ...Themes.font.regular,

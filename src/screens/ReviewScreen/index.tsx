@@ -21,7 +21,7 @@ import styles from "./styles";
 export * from "./types";
 
 export interface ReviewScreenParams {
-  item?: OrderPackageCollectionResponse;
+  items?: OrderPackageCollectionResponse;
 }
 
 type NavigationRoute = RouteProp<ShipmentParamList, SCREENS.REVIEW_SCREEN>;
@@ -47,8 +47,8 @@ export const ReviewScreen: FunctionComponent<IProps> = () => {
   const goBack = () => {
     navigation.goBack();
   };
-  const { item } = routeNavigation?.params || {};
-  console.log("🚀🚀🚀 => item", item);
+  const { items } = routeNavigation?.params || {};
+  console.log("🚀🚀🚀 => item", items);
   const [defaultRating, setDefaultRating] = useState(1);
   const [maxRating] = useState([1, 2, 3, 4, 5]);
   const [suggestCmt] = useState(dataQuantity);

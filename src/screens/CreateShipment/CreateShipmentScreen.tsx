@@ -87,7 +87,10 @@ export const CreateShipmentScreen: FunctionComponent<Props> = () => {
         </View>
         <View>
           {shipmentType === CONSTANT.SHIPMENT_TYPE.ECOMMERCE && (
-            <CreateEcomShipment />
+            <CreateEcomShipment
+              address={receivedAddress}
+              chooseAddress={setShowModal}
+            />
           )}
           {shipmentType === CONSTANT.SHIPMENT_TYPE.GIFT && (
             <CreateGiftShipment

@@ -21,6 +21,7 @@ export const CreateShipmentButton: FunctionComponent<Props> = ({ props }) => {
         onPress={() => {
           navigation.navigate(SCREENS.CREATE_SHIPMENT_STACK, {
             screen: SCREENS.CREATE_SHIPMENT_SCREEN,
+            params: {},
           });
         }}
         style={styles.createShipmentButton}

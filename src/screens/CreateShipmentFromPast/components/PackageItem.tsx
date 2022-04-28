@@ -6,14 +6,12 @@ import styles from "./styles";
 
 interface Props {
   item: PackageShipmentResponse;
-  router?: (id: number) => void;
 }
 
 export const PackageItem: FunctionComponent<Props> = props => {
-  const { item, router } = props;
-  const onPress = () => {
-    router?.(item.id);
-  };
+  const { item } = props;
+  const gotoDetails = () => {};
+  const gotoRecreate = () => {};
 
   return (
     <View style={styles.PackageItemContainer}>
@@ -75,10 +73,10 @@ export const PackageItem: FunctionComponent<Props> = props => {
       </View>
       {item.status && (
         <View style={styles.packageFooter}>
-          <TouchableOpacity style={styles.touchDetail} onPress={onPress}>
+          <TouchableOpacity style={styles.touchDetail} onPress={gotoDetails}>
             <Text style={styles.packageDetailText}>Detail</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.touchRecreate}>
+          <TouchableOpacity style={styles.touchRecreate} onPress={gotoRecreate}>
             <Text style={styles.packageRecreateText}>Recreate</Text>
           </TouchableOpacity>
         </View>

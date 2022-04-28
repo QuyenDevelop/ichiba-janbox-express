@@ -53,7 +53,7 @@ export const AddressListScreen: FunctionComponent<Props> = () => {
     dispatch(setAddressSelectedId(item?.id));
     navigation.navigate(SCREENS.CREATE_SHIPMENT_STACK, {
       screen: SCREENS.CREATE_SHIPMENT_SCREEN,
-      params: { item: item },
+      params: { address: item },
     });
   };
 

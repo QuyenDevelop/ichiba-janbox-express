@@ -2,7 +2,7 @@ import { Header, Separator } from "@components";
 import { CONSTANT, SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
 import { useAppSelector, useStatusBar } from "@hooks";
-import { Address } from "@models";
+import { Address, PackageShipmentResponse } from "@models";
 import { CreateShipmentParamList } from "@navigation";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/core";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -14,7 +14,8 @@ import { CreateEcomShipment, CreateGiftShipment } from "./components";
 import styles from "./styles";
 
 export interface CreateShipmentScreenParams {
-  item?: Address;
+  address?: Address | {};
+  shipment?: PackageShipmentResponse | {};
 }
 
 type NavigationRoute = RouteProp<
@@ -25,19 +26,19 @@ type NavigationRoute = RouteProp<
 interface Props {}
 
 export const CreateShipmentScreen: FunctionComponent<Props> = () => {
+  useStatusBar("dark-content");
   const navigation = useNavigation<NativeStackNavigationProp<any>>();
   const routeNavigation = useRoute<NavigationRoute>();
-  const { item } = routeNavigation?.params || {};
-  console.log(item);
-  useStatusBar("dark-content");
+  const { address, shipment } = routeNavigation?.params;
+  console.log("🚀🚀🚀 => address", address);
+  console.log("🚀🚀🚀 => shipment", shipment);
+  const language = useAppSelector(state => state.user.language);
+  useEffect(() => {}, [language]);
 
   const [shipmentType, setShipmentType] = useState<string>(
     CONSTANT.SHIPMENT_TYPE.ECOMMERCE,
   );
   const [isLoading, setIsLoading] = useState(false);
-
-  const language = useAppSelector(state => state.user.language);
-  useEffect(() => {}, [language]);
 
   const goBack = () => {
     navigation.goBack();

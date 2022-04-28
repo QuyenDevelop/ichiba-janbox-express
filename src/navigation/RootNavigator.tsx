@@ -2,6 +2,7 @@ import { SCREENS } from "@configs";
 import { BottomTabNavigator } from "@navigation";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
+  AnalysisScreen,
   CreateShipmentFromPastScreen,
   JanboxWalletScreen,
   LaunchScreen,
@@ -39,6 +40,7 @@ export type RootStackParamList = {
   [SCREENS.EZ_WALLET_SCREEN]: undefined;
   [SCREENS.CREATE_SHIPMENT_STACK]: undefined;
   [SCREENS.CREATE_SHIPMENT_FROM_PAST_SCREEN]: undefined;
+  [SCREENS.ANALYSIS_SCREEN]: undefined;
 };
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -108,6 +110,10 @@ export const RootNavigator = () => {
       <RootStack.Screen
         name={SCREENS.CREATE_SHIPMENT_FROM_PAST_SCREEN}
         component={CreateShipmentFromPastScreen}
+      />
+      <RootStack.Screen
+        name={SCREENS.ANALYSIS_SCREEN}
+        component={AnalysisScreen}
       />
     </RootStack.Navigator>
   );

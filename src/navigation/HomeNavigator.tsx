@@ -1,13 +1,11 @@
 import { SCREENS } from "@configs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
-  AnalysisScreen,
   DetailScreen,
   HomeScreen,
   IDetailScreenParams,
   InfoScreen,
   NewsScreen,
-  ReviewScreen,
 } from "@screens";
 import React from "react";
 
@@ -16,8 +14,6 @@ export type HomeStackParamsList = {
   [SCREENS.DETAIL_SCREEN]: IDetailScreenParams;
   [SCREENS.INFO_SCREEN]: undefined;
   [SCREENS.NEWS_SCREEN]: undefined;
-  [SCREENS.REVIEW_SCREEN]: undefined;
-  [SCREENS.ANALYSIS_SCREEN]: undefined;
 };
 
 const HomeStackNavigator = createNativeStackNavigator<HomeStackParamsList>();
@@ -45,14 +41,6 @@ export const HomeStack = () => {
       <HomeStackNavigator.Screen
         name={SCREENS.NEWS_SCREEN}
         component={NewsScreen}
-      />
-      <HomeStackNavigator.Screen
-        name={SCREENS.REVIEW_SCREEN}
-        component={ReviewScreen}
-      />
-      <HomeStackNavigator.Screen
-        name={SCREENS.ANALYSIS_SCREEN}
-        component={AnalysisScreen}
       />
     </HomeStackNavigator.Navigator>
   );

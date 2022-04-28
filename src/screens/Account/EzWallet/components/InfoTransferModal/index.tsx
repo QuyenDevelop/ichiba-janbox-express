@@ -76,7 +76,7 @@ export const InfoTransferModal: FunctionComponent<Props> = ({
 
   const confirmCancelWithdraw = () => {
     if (!reason.trim()) {
-      setWarning(translate("label.pleaseEnterReason"));
+      setWarning(translate("labelPleaseEnterReason"));
       return;
     }
 
@@ -116,7 +116,7 @@ export const InfoTransferModal: FunctionComponent<Props> = ({
     <BaseBottomSheet
       isShowModal={visible}
       onCloseModal={closeModal}
-      headerTitle={translate("label.paymentInfo")}
+      headerTitle={translate("labelPaymentInfo")}
       showCloseModal={true}
     >
       <View>
@@ -124,12 +124,12 @@ export const InfoTransferModal: FunctionComponent<Props> = ({
           <View style={styles.content}>
             <Text style={styles.reasonCancelWithdraw}>
               <Text style={styles.obligatory}>* </Text>
-              {translate("label.reasonCancelWithdraw")}
+              {translate("labelReasonCancelWithdraw")}
             </Text>
             <View style={styles.inputContainer}>
               <TextInput
                 ref={inputRef}
-                placeholder={translate("label.reasonCancelWithdraw")}
+                placeholder={translate("labelReasonCancelWithdraw")}
                 style={styles.cancelWithdrawInput}
                 value={reason}
                 onChangeText={onChangeReason}
@@ -195,7 +195,7 @@ export const InfoTransferModal: FunctionComponent<Props> = ({
             </View>
             <View style={styles.spaceView}>
               <Text style={styles.titleRow}>
-                {translate("label.accountNumber")}:
+                {translate("labelAccountNumber")}:
               </Text>
               <TouchableOpacity
                 style={styles.copyButton}
@@ -214,14 +214,14 @@ export const InfoTransferModal: FunctionComponent<Props> = ({
             </View>
             <View style={styles.spaceView}>
               <Text style={styles.titleRow}>
-                {translate("label.accountHolder")}:
+                {translate("labelAccountHolder")}:
               </Text>
               <Text style={styles.contentRow}>{data?.bankIc.accountName}</Text>
             </View>
             {data?.bankIc.branch && (
               <View style={styles.spaceView}>
                 <Text style={styles.titleRow}>
-                  {translate("label.branchBank")}
+                  {translate("labelBranchBank")}
                 </Text>
                 <Text style={styles.contentRow}>{data?.bankIc.branch}</Text>
               </View>
@@ -231,7 +231,7 @@ export const InfoTransferModal: FunctionComponent<Props> = ({
               <>
                 <View style={styles.spaceView}>
                   <Text style={styles.titleRow}>
-                    {translate("label.reasonWithdraw")}:
+                    {translate("labelReasonWithdraw")}:
                   </Text>
                   <Text style={styles.contentRow}>
                     {data.bankIc.description}
@@ -243,7 +243,7 @@ export const InfoTransferModal: FunctionComponent<Props> = ({
               <>
                 <View style={styles.spaceView}>
                   <Text style={styles.titleRow}>
-                    {translate("label.transferContents")}:
+                    {translate("labelTransferContents")}:
                   </Text>
                 </View>
                 <View style={styles.spaceView}>
@@ -264,17 +264,17 @@ export const InfoTransferModal: FunctionComponent<Props> = ({
             )}
             <View style={styles.noticeContainer}>
               <Text style={styles.bankName}>
-                {translate("label.payments.notice")}:
+                {translate("labelPaymentsNotice")}:
               </Text>
               {data?.type === DATA_CONSTANT.TRANSACTION_TYPES_VALUE.DEPOSIT && (
                 <Text style={styles.contentRow}>
-                  {translate("text.noticeTransfer")}
+                  {translate("textNoticeTransfer")}
                 </Text>
               )}
               {data?.type ===
                 DATA_CONSTANT.TRANSACTION_TYPES_VALUE.WITHDRAW && (
                 <Text style={styles.contentRow}>
-                  {translate("label.noteWithdraw")}
+                  {translate("labelNoteWithdraw")}
                 </Text>
               )}
             </View>
@@ -284,7 +284,7 @@ export const InfoTransferModal: FunctionComponent<Props> = ({
                 onPress={onCancel}
               >
                 <Text style={styles.cancelWithdrawBtnText}>
-                  {translate("label.cancelWithdraw")}
+                  {translate("labelCancelWithdraw")}
                 </Text>
               </TouchableOpacity>
             )}

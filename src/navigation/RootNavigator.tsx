@@ -3,6 +3,8 @@ import { BottomTabNavigator } from "@navigation";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {
   AnalysisScreen,
+  CreateShipmentDetailScreen,
+  CreateShipmentDetailScreenParams,
   CreateShipmentFromPastScreen,
   JanboxWalletScreen,
   LaunchScreen,
@@ -41,6 +43,7 @@ export type RootStackParamList = {
   [SCREENS.CREATE_SHIPMENT_STACK]: undefined;
   [SCREENS.CREATE_SHIPMENT_FROM_PAST_SCREEN]: undefined;
   [SCREENS.ANALYSIS_SCREEN]: undefined;
+  [SCREENS.CREATE_SHIPMENT_DETAIL_SCREEN]: CreateShipmentDetailScreenParams;
 };
 
 const RootStack = createNativeStackNavigator<RootStackParamList>();
@@ -114,6 +117,13 @@ export const RootNavigator = () => {
       <RootStack.Screen
         name={SCREENS.ANALYSIS_SCREEN}
         component={AnalysisScreen}
+      />
+      <RootStack.Screen
+        name={SCREENS.CREATE_SHIPMENT_DETAIL_SCREEN}
+        component={CreateShipmentDetailScreen}
+        options={{
+          headerShown: false,
+        }}
       />
     </RootStack.Navigator>
   );

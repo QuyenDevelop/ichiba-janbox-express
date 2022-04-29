@@ -9,8 +9,9 @@ import { CONSTANT, SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
 import { useBoolean, useStatusBar } from "@hooks";
 import { Address } from "@models";
+import { RootStackParamList } from "@navigation";
 import { useNavigation } from "@react-navigation/core";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { StackNavigationProp } from "@react-navigation/stack";
 import { Button, Checkbox, translate } from "@shared";
 import { Icons, Metrics, Themes } from "@themes";
 import React, { FunctionComponent, useState } from "react";
@@ -20,12 +21,16 @@ import styles from "./styles";
 
 export interface CreateShipmentScreenParams {}
 
+type NavigationProp = StackNavigationProp<
+  RootStackParamList,
+  SCREENS.CREATE_SHIPMENT_STACK
+>;
+
 interface Props {}
 
 export const CreateShipmentScreen: FunctionComponent<Props> = () => {
   useStatusBar("dark-content");
-  const navigation = useNavigation<NativeStackNavigationProp<any>>();
-
+  const navigation = useNavigation<NavigationProp>();
   const [shipmentType, setShipmentType] = useState<string>(
     CONSTANT.SHIPMENT_TYPE.ECOMMERCE,
   );
@@ -44,13 +49,21 @@ export const CreateShipmentScreen: FunctionComponent<Props> = () => {
   const handleContinue = () => {
     setIsLoading(true);
 
-    // TODO: check validate and continue
+    navigation.navigate(SCREENS.CREATE_SHIPMENT_DETAIL_SCREEN, {
+      shipmentType: shipmentType,
+      receiveId: receivedAddress?.id || 0,
+      postOfficeId: postOfficerAddress?.id || 0,
+      senderAddress: senderAddress?.id || 0,
+    });
     setTimeout(() => {
       setIsLoading(false);
     }, 1000);
   };
   const handleCancel = () => {
-    navigation.navigate(SCREENS.HOME_SCREEN);
+    setReceivedAddress(undefined);
+    setPostOfficeAddress(undefined);
+    setSenderAddress(undefined);
+    navigation.navigate(SCREENS.HOME_STACK);
   };
 
   const onChangeGiftTab = () => {

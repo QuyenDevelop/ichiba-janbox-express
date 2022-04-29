@@ -28,7 +28,6 @@ export const ChooseAddressModal: FunctionComponent<IProps> = props => {
 
   useMemo(() => {
     customerApi.getListAddress()?.then(address => {
-      console.log(address);
       setData(address?.data || []);
     });
   }, []);

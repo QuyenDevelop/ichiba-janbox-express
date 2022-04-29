@@ -5,12 +5,11 @@ export default StyleSheet.create({
   container: {
     paddingHorizontal: ScreenUtils.scale(16),
     backgroundColor: Themes.colors.white,
-    marginTop: ScreenUtils.scale(30),
   },
   chooseContainer: {
     flexDirection: "column",
     alignItemsL: "center",
-    marginTop: ScreenUtils.scale(32),
+    marginTop: ScreenUtils.scale(24),
   },
   title: {
     fontFamily: FontFamily.bold,
@@ -18,30 +17,21 @@ export default StyleSheet.create({
     color: Themes.colors.coolGray100,
   },
   chooseBtn: {
-    marginTop: ScreenUtils.scale(11),
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    paddingHorizontal: ScreenUtils.scale(16),
   },
   textChoose: {
     flex: 1,
     fontFamily: FontFamily.regular,
     fontSize: ScreenUtils.scale(16),
-    paddingLeft: ScreenUtils.scale(16),
   },
-  iconArrRight1: {
-    fontFamily: FontFamily.bold,
-    color: Themes.colors.coolGray100,
-  },
-  iconArrRight: {
-    fontFamily: FontFamily.bold,
-    color: Themes.colors.coolGray100,
-    paddingRight: ScreenUtils.scale(16),
-  },
+  iconArrRight1: {},
+  iconArrRight: {},
   addressButton: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
     padding: ScreenUtils.scale(16),
     marginTop: ScreenUtils.scale(8),
     borderRadius: ScreenUtils.scale(8),
@@ -55,6 +45,11 @@ export default StyleSheet.create({
     color: Themes.colors.coolGray100,
     marginBottom: 4,
   },
+  addressNameText: {
+    ...Themes.font.bold,
+    fontSize: 16,
+    color: Themes.colors.coolGray100,
+  },
   addressContent: {
     ...Themes.font.regular,
     fontSize: 12,
@@ -66,10 +61,21 @@ export default StyleSheet.create({
   },
   line: {
     borderBottomWidth: 1,
-    marginTop: ScreenUtils.scale(7),
     borderBottomColor: Themes.colors.collGray40,
   },
-  txtAddressContent: { marginRight: ScreenUtils.scale(59) },
+  iconLeft: {
+    width: ScreenUtils.scale(48),
+    height: ScreenUtils.scale(48),
+    borderRadius: ScreenUtils.scale(25),
+    backgroundColor: Themes.colors.colGray10,
+    overflow: "hidden",
+    justifyContent: "center",
+    alignItems: "center",
+    marginRight: ScreenUtils.scale(16),
+  },
+  txtAddressContent: {
+    flex: 1,
+  },
   chooseBtnSender: {
     flexDirection: "row",
     justifyContent: "center",

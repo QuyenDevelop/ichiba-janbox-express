@@ -1,3 +1,4 @@
+import { WarehouseItem } from "@components";
 import { ScreenUtils } from "@helpers";
 import { Address } from "@models";
 import { Icons } from "@themes";
@@ -7,11 +8,13 @@ import styles from "./styles";
 
 interface Props {
   address?: Address;
+  postOffice?: WarehouseItem;
   chooseAddress?: () => void;
+  chooseOfficer?: () => void;
 }
 
 export const CreateEcomShipment: FunctionComponent<Props> = props => {
-  const { address, chooseAddress } = props;
+  const { address, chooseAddress, chooseOfficer } = props;
   // const navigation = useNavigation<NativeStackNavigationProp<any>>();
   return (
     <View style={styles.container}>
@@ -22,7 +25,7 @@ export const CreateEcomShipment: FunctionComponent<Props> = props => {
             style={styles.textChoose}
             placeholder="Choose a post office"
           />
-          <TouchableOpacity>
+          <TouchableOpacity onPress={chooseOfficer}>
             <Icons.FontAwesome
               name="angle-right"
               size={16}

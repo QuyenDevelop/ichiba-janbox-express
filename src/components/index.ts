@@ -1,5 +1,6 @@
 export * from "./Banner/Banner";
 export * from "./ChooseAddressModal/ChooseAddressModal";
+export * from "./ChooseWarehouseModal/ChooseWarehouseModal";
 export * from "./ConfirmDialog/ConfirmDialog";
 export * from "./ContentLoader";
 export * from "./Copy/CodeCopySuccess";

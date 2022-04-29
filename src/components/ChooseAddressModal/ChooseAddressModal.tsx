@@ -2,8 +2,15 @@ import { customerApi } from "@api";
 import { Header } from "@components";
 import { Address } from "@models";
 import { Flatlist } from "@shared";
+import { Icons, Themes } from "@themes";
 import React, { FunctionComponent, useMemo, useState } from "react";
-import { Modal, SafeAreaView, Text, TouchableOpacity } from "react-native";
+import {
+  Modal,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import styles from "./styles";
 
 interface IProps {
@@ -16,7 +23,7 @@ interface IProps {
 }
 
 export const ChooseAddressModal: FunctionComponent<IProps> = props => {
-  const { onClose, isVisible, onPress, title } = props;
+  const { onClose, isVisible, onPress, title, selectedItem } = props;
   const [data, setData] = useState<Array<Address>>();
 
   useMemo(() => {
@@ -36,14 +43,28 @@ export const ChooseAddressModal: FunctionComponent<IProps> = props => {
   };
 
   const RenderItem = ({ item: location }: { item: Address }) => (
-    <TouchableOpacity style={styles.item} onPress={() => onSelect(location)}>
-      <Text style={styles.text}>{location?.name}</Text>
-      <Text style={styles.content}>{`${location?.address}, ${
-        location?.ward || ""
-      }, ${location?.district || ""}, ${location?.province || ""}, ${
-        location?.postalCode || ""
-      }`}</Text>
-      <Text style={[styles.phone]}>{location?.phone}</Text>
+    <TouchableOpacity
+      style={[
+        styles.item,
+        {
+          borderColor:
+            selectedItem === location.id
+              ? Themes.colors.primary
+              : Themes.colors.colGray20,
+        },
+      ]}
+      onPress={() => onSelect(location)}
+    >
+      <Icons.Ionicons name={"location"} size={28} />
+      <View>
+        <Text style={styles.text}>{location?.name}</Text>
+        <Text style={styles.content}>{`${location?.address}, ${
+          location?.ward || ""
+        }, ${location?.district || ""}, ${location?.province || ""}, ${
+          location?.postalCode || ""
+        }`}</Text>
+        <Text style={[styles.phone]}>{location?.phone}</Text>
+      </View>
     </TouchableOpacity>
   );
 

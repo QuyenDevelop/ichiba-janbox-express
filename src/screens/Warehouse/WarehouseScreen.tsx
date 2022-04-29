@@ -1,4 +1,4 @@
-import { Header, ModalWithIcon, Separator } from "@components";
+import { Header, ModalWithIcon, Separator, WarehouseItem } from "@components";
 import { ScreenUtils } from "@helpers";
 import { useBoolean, useStatusBar } from "@hooks";
 import { useNavigation } from "@react-navigation/core";
@@ -7,13 +7,10 @@ import { Button, translate } from "@shared";
 import { Themes } from "@themes";
 import React, { FunctionComponent, useCallback, useState } from "react";
 import { FlatList, View } from "react-native";
-import {
-  GuideItem,
-  RenderInfoWarehouse,
-} from "./components/RenderInfoWarehouse";
+import { RenderInfoWarehouse } from "./components/RenderInfoWarehouse";
 import styles from "./styles";
 
-let dataWarehouse: Array<GuideItem> = [
+let dataWarehouse: Array<WarehouseItem> = [
   {
     id: 1,
     titleWarehouse: "Shanghai",
@@ -69,22 +66,16 @@ export const WarehouseScreen: FunctionComponent<Props> = () => {
     navigation.goBack();
   };
 
-  const keyExtractor = (item: GuideItem, index: number) =>
+  const keyExtractor = (item: WarehouseItem, index: number) =>
     `${item.id}_${index}`;
 
-  const changeStatusActive = (item: GuideItem) => {
-    setIsShowConfirm();
-    item.id > 0;
-  };
+  // const changeStatusActive = (item: WarehouseItem) => {
+  //   setIsShowConfirm();
+  // };
 
   const renderItem = useCallback(
-    ({ item }: { item: GuideItem }) => {
-      return (
-        <RenderInfoWarehouse
-          item={item}
-          changeStatus={() => changeStatusActive(item)}
-        />
-      );
+    ({ item }: { item: WarehouseItem }) => {
+      return <RenderInfoWarehouse item={item} />;
     },
     [setIsShowConfirm],
   );
@@ -108,6 +99,8 @@ export const WarehouseScreen: FunctionComponent<Props> = () => {
         data={sortData()}
         keyExtractor={keyExtractor}
         renderItem={renderItem}
+        automaticallyAdjustContentInsets={false}
+        scrollEventThrottle={1}
       />
       <ModalWithIcon
         iconAtHead={true}

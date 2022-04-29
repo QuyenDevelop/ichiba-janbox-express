@@ -18,6 +18,9 @@ export default StyleSheet.create({
     marginVertical: ScreenUtils.scale(4),
     borderRadius: ScreenUtils.scale(8),
   },
+  icon: {
+    marginHorizontal: ScreenUtils.scale(4),
+  },
   text: {
     ...Themes.font.regular,
     fontSize: 16,

@@ -1,3 +1,4 @@
+import { WarehouseItem } from "@components";
 import { ScreenUtils } from "@helpers";
 import Clipboard from "@react-native-community/clipboard";
 import { Icon } from "@shared";
@@ -6,19 +7,9 @@ import React, { FunctionComponent } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import styles from "../styles";
 
-export interface GuideItem {
-  id: number;
-  titleWarehouse: string;
-  area: string;
-  address: string;
-  name: string;
-  phone: string;
-  isActive: boolean;
-}
-
 interface Props {
-  item: GuideItem;
-  changeStatus: (id: number) => void;
+  item: WarehouseItem;
+  changeStatus?: (id: number) => void;
   active?: boolean;
 }
 export const RenderInfoWarehouse: FunctionComponent<Props> = props => {
@@ -37,7 +28,7 @@ export const RenderInfoWarehouse: FunctionComponent<Props> = props => {
         <TouchableOpacity
           style={styles.activeWarehouse}
           disabled={item.isActive === true}
-          onPress={() => changeStatus(item.id)}
+          onPress={() => changeStatus?.(item.id)}
         >
           <Text style={item.isActive ? styles.txtActivated : styles.txtActive}>
             {item.isActive ? "Activated" : "Activate"}

@@ -1,4 +1,10 @@
-import { ChooseAddressModal, Header, Separator } from "@components";
+import {
+  ChooseAddressModal,
+  ChooseWarehouseModal,
+  Header,
+  Separator,
+  WarehouseItem,
+} from "@components";
 import { CONSTANT, SCREENS } from "@configs";
 import { ScreenUtils } from "@helpers";
 import { useBoolean, useStatusBar } from "@hooks";
@@ -24,8 +30,13 @@ export const CreateShipmentScreen: FunctionComponent<Props> = () => {
     CONSTANT.SHIPMENT_TYPE.ECOMMERCE,
   );
   const [isLoading, setIsLoading] = useState(false);
-  const [showModal, setShowModal, setHideModal] = useBoolean();
+  const [showAddressModal, setShowAddressModal, setHideAddressModal] =
+    useBoolean();
+  const [showOfficerModal, setShowOfficerModal, setHideOfficerModal] =
+    useBoolean();
   const [receivedAddress, setReceivedAddress] = useState<Address>();
+  const [postOfficerAddress, setPostOfficeAddress] = useState<WarehouseItem>();
+  const [senderAddress, setSenderAddress] = useState<Address>();
 
   const goBack = () => {
     navigation.goBack();
@@ -34,11 +45,26 @@ export const CreateShipmentScreen: FunctionComponent<Props> = () => {
     setIsLoading(true);
 
     // TODO: check validate and continue
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
   const handleCancel = () => {
     navigation.navigate(SCREENS.HOME_SCREEN);
   };
 
+  const onChangeGiftTab = () => {
+    setReceivedAddress(undefined);
+    setPostOfficeAddress(undefined);
+    setSenderAddress(undefined);
+    setShipmentType(CONSTANT.SHIPMENT_TYPE.GIFT);
+  };
+  const onChangeEcomTab = () => {
+    setReceivedAddress(undefined);
+    setPostOfficeAddress(undefined);
+    setSenderAddress(undefined);
+    setShipmentType(CONSTANT.SHIPMENT_TYPE.ECOMMERCE);
+  };
   return (
     <View style={[styles.container]}>
       <Header
@@ -56,7 +82,7 @@ export const CreateShipmentScreen: FunctionComponent<Props> = () => {
                 shipmentType === CONSTANT.SHIPMENT_TYPE.ECOMMERCE ? true : false
               }
               title={translate("labelEcommerce")}
-              onChange={() => setShipmentType(CONSTANT.SHIPMENT_TYPE.ECOMMERCE)}
+              onChange={onChangeEcomTab}
             />
             <TouchableOpacity style={styles.iconButton}>
               <Icons.FontAwesome5
@@ -72,7 +98,7 @@ export const CreateShipmentScreen: FunctionComponent<Props> = () => {
                 shipmentType === CONSTANT.SHIPMENT_TYPE.GIFT ? true : false
               }
               title={translate("labelGift")}
-              onChange={() => setShipmentType(CONSTANT.SHIPMENT_TYPE.GIFT)}
+              onChange={onChangeGiftTab}
             />
             <TouchableOpacity style={styles.iconButton}>
               <Icons.FontAwesome5
@@ -87,13 +113,19 @@ export const CreateShipmentScreen: FunctionComponent<Props> = () => {
           {shipmentType === CONSTANT.SHIPMENT_TYPE.ECOMMERCE && (
             <CreateEcomShipment
               address={receivedAddress}
-              chooseAddress={setShowModal}
+              postOffice={postOfficerAddress}
+              chooseAddress={setShowAddressModal}
+              chooseOfficer={setShowOfficerModal}
             />
           )}
           {shipmentType === CONSTANT.SHIPMENT_TYPE.GIFT && (
             <CreateGiftShipment
               address={receivedAddress}
-              chooseAddress={setShowModal}
+              postOffice={postOfficerAddress}
+              sender={senderAddress}
+              chooseAddress={setShowAddressModal}
+              chooseOfficer={setShowOfficerModal}
+              chooseSender={() => {}}
             />
           )}
         </View>
@@ -116,10 +148,17 @@ export const CreateShipmentScreen: FunctionComponent<Props> = () => {
       </View>
       <ChooseAddressModal
         title={translate("labelChooseAddress")}
-        onClose={setHideModal}
-        isVisible={showModal}
+        onClose={setHideAddressModal}
+        isVisible={showAddressModal}
         onPress={data => setReceivedAddress(data)}
         selectedItem={receivedAddress?.id}
+      />
+      <ChooseWarehouseModal
+        title={translate("labelChooseAddress")}
+        onClose={setHideOfficerModal}
+        isVisible={showOfficerModal}
+        onPress={data => setPostOfficeAddress(data)}
+        selectedItem={postOfficerAddress?.id}
       />
     </View>
   );

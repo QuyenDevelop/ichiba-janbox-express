@@ -1,3 +1,4 @@
+import { ScreenUtils } from "@helpers";
 import { Address } from "@models";
 import { Icons } from "@themes";
 import React, { FunctionComponent } from "react";
@@ -37,7 +38,7 @@ export const CreateGiftShipment: FunctionComponent<Props> = props => {
             style={styles.addressButton}
             onPress={chooseAddress}
           >
-            <View>
+            <View style={styles.txtAddressContent}>
               <Text style={styles.addressText}>
                 {address?.name} <Text> {address?.phone}</Text>
               </Text>
@@ -49,25 +50,29 @@ export const CreateGiftShipment: FunctionComponent<Props> = props => {
             </View>
             <Icons.FontAwesome
               name="angle-right"
-              size={24}
-              style={styles.addressIcon}
+              size={16}
+              style={styles.iconArrRight1}
             />
           </TouchableOpacity>
         ) : (
-          <View style={styles.chooseBtn}>
-            <TextInput
-              style={styles.textChoose}
-              placeholder="Delivery address"
-            />
-            <TouchableOpacity style={styles.iconTouch} onPress={chooseAddress}>
-              <Icons.FontAwesome
-                name="angle-right"
-                size={16}
-                style={styles.iconArrRight}
+          <>
+            <View style={styles.chooseBtn}>
+              <TextInput
+                style={styles.textChoose}
+                placeholder="Delivery address"
               />
-            </TouchableOpacity>
+
+              <TouchableOpacity>
+                <Icons.FontAwesome
+                  name="angle-right"
+                  size={16}
+                  style={styles.iconArrRight}
+                  onPress={chooseAddress}
+                />
+              </TouchableOpacity>
+            </View>
             <View style={styles.line} />
-          </View>
+          </>
         )}
       </View>
       <View style={styles.chooseContainer}>

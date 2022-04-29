@@ -72,15 +72,17 @@ export const WarehouseScreen: FunctionComponent<Props> = () => {
   const keyExtractor = (item: GuideItem, index: number) =>
     `${item.id}_${index}`;
 
+  const changeStatusActive = (item: GuideItem) => {
+    setIsShowConfirm();
+    item.id > 0;
+  };
+
   const renderItem = useCallback(
     ({ item }: { item: GuideItem }) => {
       return (
         <RenderInfoWarehouse
           item={item}
-          changeStatus={() => {
-            setIsShowConfirm();
-            item.id > 0;
-          }}
+          changeStatus={() => changeStatusActive(item)}
         />
       );
     },
